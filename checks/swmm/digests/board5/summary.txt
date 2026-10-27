@@ -1,0 +1,21 @@
+threads  gcc-O2-t1 vs gcc-O2-t2: IDENTICAL
+threads  gcc-O2-t1 vs gcc-O2-t4: IDENTICAL
+threads  gcc-O2-t1 vs gcc-O2-t8-rep1: IDENTICAL
+threads  gcc-O2-t1 vs gcc-O2-t8-rep2: IDENTICAL
+threads  gcc-O2-t1 vs gcc-O2-t8: IDENTICAL
+build    gcc-O2 vs gcc-O0: IDENTICAL (0 models decoded as differing)
+build    gcc-O2 vs gcc-O3: IDENTICAL (0 models decoded as differing)
+build    gcc-O2 vs gcc-O2-nocontract: IDENTICAL (0 models decoded as differing)
+build    gcc-O2 vs gcc-O2-native: DIFFERS (8 models decoded as differing)
+threads  gcc-O3-native-t1 vs gcc-O3-native-t4-rep1: IDENTICAL
+threads  gcc-O3-native-t1 vs gcc-O3-native-t4-rep2: IDENTICAL
+threads  gcc-O3-native-t1 vs gcc-O3-native-t4: IDENTICAL
+build    gcc-O2 vs gcc-O3-native: DIFFERS (8 models decoded as differing)
+build    gcc-O2 vs gcc-O3-native-nocontract: IDENTICAL (0 models decoded as differing)
+threads  clang-O2-t1 vs clang-O2-t4: IDENTICAL
+threads  clang-O2-t1 vs clang-O2-t8-rep1: IDENTICAL
+threads  clang-O2-t1 vs clang-O2-t8-rep2: IDENTICAL
+threads  clang-O2-t1 vs clang-O2-t8: IDENTICAL
+build    gcc-O2 vs clang-O2: IDENTICAL (0 models decoded as differing)
+build    gcc-O2 vs clang-O3-native: DIFFERS (8 models decoded as differing)
+build    gcc-O2 vs clang-O3-native-nocontract: IDENTICAL (0 models decoded as differing)

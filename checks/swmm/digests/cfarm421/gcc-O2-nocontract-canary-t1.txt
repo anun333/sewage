@@ -1,0 +1,4 @@
+# tag=gcc-O2-nocontract-canary-t1 threads=1 omp=1 machine=x86_64 system=Linux-6.12.107+deb13-amd64-x86_64-with-glibc2.41 preload=libcrlibm_canary.so
+# model sha256(.out) sha256(masked .rpt) threads_used
+examples/Example1.inp 4c487d648e33d982e940b5f7a4aa207482487e534197d60019ab0236fb0044e2 2a0d019d4c12821b1160edde63b104803d1c3b6f5818ea3c0c5b7c1330c31de2 None
+user/user1.inp 850d7ad549db21fddd8fbd8a396332398d0274a8b5b1957e2c942eaf1485a42f 05fb511ee58baa0c7338a3678ae16929e22d11f17d99732761c01f3d8e7f8d36 1

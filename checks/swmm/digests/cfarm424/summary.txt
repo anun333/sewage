@@ -1,0 +1,17 @@
+build gcc-O2: gcc -O2; libswmm5.so sha256 f130e26997d00c2c; 429 FMA instructions
+digcmp board5-gcc-O2-t1_vs_gcc-O2-t1: DIFFERS [Example1(.out,.rpt) Example3(.rpt) Example4(.rpt) bioretention(.out) catchment_as_outfall(.rpt) gate_control_2(.out) porous_pavement(.out) user1(.out,.rpt) user3(.out) user5(.out,.rpt) ]
+build gcc-O2-nocontract: gcc -O2 -ffp-contract=off; libswmm5.so sha256 708def777c2056ab; 0 FMA instructions
+digcmp board5-gcc-O2-t1_vs_gcc-O2-nocontract-t1: DIFFERS [catchment_as_outfall(.rpt) ]
+digcmp gcc-O2-t1_vs_gcc-O2-nocontract-t1: DIFFERS [Example1(.out,.rpt) Example3(.rpt) Example4(.rpt) bioretention(.out) gate_control_2(.out) porous_pavement(.out) user1(.out,.rpt) user3(.out) user5(.out,.rpt) ]
+shim: libm imports of libswmm5.so, all answered: acos asin atan cos exp log log10 pow sin sincos tan
+canary (pow wrong by 2^-20): changed Example1 and user1, so the preload reaches libswmm5
+digcmp board5-gcc-O2-t1_vs_gcc-O2-nocontract-cr-t1: DIFFERS [Example1(.out,.rpt) Example3(.rpt) catchment_as_outfall(.rpt) gate_control_2(.out) user3(.out) user4(.out) user5(.out,.rpt) ]
+digcmp board5-gcc-O2-nocontract-cr-t1_vs_gcc-O2-nocontract-cr-t1: DIFFERS [catchment_as_outfall(.rpt) ]
+digcmp gcc-O2-nocontract-t1_vs_gcc-O2-nocontract-cr-t1: DIFFERS [Example1(.out,.rpt) Example3(.rpt) gate_control_2(.out) user3(.out) user4(.out) user5(.out,.rpt) ]
+build gcc-O2-nocontract-b2: gcc -O2 -ffp-contract=off; libswmm5.so sha256 666a64a6af30ac18; 0 FMA instructions
+libswmm5 .text of the two -ffp-contract=off builds: same bytes (the files differ by the BUILD_ID timestamp)
+threads: 8 models report 4 threads used
+digcmp gcc-O2-nocontract-t1_vs_gcc-O2-nocontract-b2-t4: IDENTICAL
+dmr_geomean: exit 1: DIFFERS (exp(mean(log)) against the exact geometric mean)
+dmr_rounding --rule half_even --trials 50000: exit 1: DIFFERS (method binary, rule half_even, against exact decimal)
+done in 200 s with 4 build jobs, runs on 1 thread (4 for the thread run)

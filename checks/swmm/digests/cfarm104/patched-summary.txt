@@ -1,0 +1,7 @@
+patchcheck: exit 0; patched -O2 vs ref/patchcheck-ref.txt: DIFFERS update_v5111/catchment_as_outfall.inp(.rpt)
+build base: cc -O2; libswmm5.dylib sha256 e3fe646f189580e9; 460 FMA instructions
+build patched: cc -O2; libswmm5.dylib sha256 8531a697ead6a11f; 0 FMA instructions
+shim: libm imports of libswmm5.dylib, all answered: __exp10 __sincos_stret acos asin atan cos exp log log10 pow sin tan
+canary (pow wrong by 2^-20): changed Example1 and user1, so the preload reaches libswmm5
+patched + CORE-MATH vs ref/cr-ref.txt: IDENTICAL
+done in 262 s

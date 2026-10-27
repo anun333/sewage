@@ -1,0 +1,44 @@
+From 76f0265be33e50d047b5e4fa7d5e7f697f83a436 Mon Sep 17 00:00:00 2001
+From: anun333 <anun333@posteo.net>
+Date: Tue, 27 Oct 2026 13:46:43 -0500
+Subject: [PATCH 1/2] gage: don't convert a one-point rain series' interval to
+ int
+
+A rain gage reading a time series with one point has no interval to check: table_validate
+leaves dxMin at BIG (1e10 days), and gage_validate converts dxMin*SECperDAY (8.64e14) to
+int, which is out of range and undefined behavior. x86-64 yields INT_MIN, so no warning;
+aarch64 saturates to INT_MAX, so the report gains WARNING 09 for the same input
+(update_v5111/catchment_as_outfall.inp in swmm-nrtestsuite). Leave the interval at 0 when
+it does not fit in an int, which keeps x86-64's output and makes aarch64's agree.
+---
+ src/solver/gage.c | 7 ++++++-
+ 1 file changed, 6 insertions(+), 1 deletion(-)
+
+diff --git a/src/solver/gage.c b/src/solver/gage.c
+index d8e4e2b..f34628a 100644
+--- a/src/solver/gage.c
++++ b/src/solver/gage.c
+@@ -23,6 +23,7 @@
+ 
+ #include <string.h>
+ #include <math.h>
++#include <limits.h>
+ #include "headers.h"
+ 
+ //-----------------------------------------------------------------------------
+@@ -248,7 +249,11 @@ void  gage_validate(int j)
+         {
+             report_writeErrorMsg(ERR_RAIN_GAGE_TSERIES, Gage[j].ID);
+         }
+-        gageInterval = (int)(floor(Tseries[k].dxMin*SECperDAY + 0.5));
++        // --- a series with fewer than two points has no interval (dxMin stays
++        //     at BIG); converting that to int would be undefined behavior
++        gageInterval = 0;
++        if ( Tseries[k].dxMin * SECperDAY < INT_MAX )
++            gageInterval = (int)(floor(Tseries[k].dxMin*SECperDAY + 0.5));
+         if ( gageInterval > 0 && Gage[j].rainInterval > gageInterval )
+         {
+             report_writeErrorMsg(ERR_RAIN_GAGE_INTERVAL, Gage[j].ID);
+-- 
+2.43.0
+

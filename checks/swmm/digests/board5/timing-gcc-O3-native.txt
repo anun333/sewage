@@ -1,0 +1,13 @@
+# board5 2026-10-27 13:49-13:53 CDT: patchcheck.sh gcc "-O3 -march=native", 5 interleaved repeats, pinned to CPU 3
+# base = develop 6c81201, patched = repro-fp f30b92c; load average rose from ~1.4 to 6.8 during the runs (other work on board5)
+model                                  time-base time-patched     B/A  (median of 5 and 5 repeats)
+examples/Example3.inp                      0.62s     0.65s   1.048  (A's spread 60%)
+update_v5111/events_example.inp            1.22s     1.11s   0.910  (A's spread 51%)
+update_v5111/gate_control_2.inp            5.03s     4.79s   0.952  (A's spread 34%)
+update_v5111/gate_control_3.inp            1.21s     1.16s   0.959  (A's spread 48%)
+user/user1.inp                             0.27s     0.26s   0.963  (A's spread 41%)
+user/user2.inp                             1.44s     1.43s   0.993  (A's spread 39%)
+user/user3.inp                             3.97s     3.97s   1.000  (A's spread 45%)
+user/user4.inp                             2.64s     2.72s   1.030  (A's spread 44%)
+user/user5.inp                             9.05s     8.93s   0.987  (A's spread 38%)
+total of medians                          26.14s    25.71s   0.984

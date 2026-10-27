@@ -1,0 +1,23 @@
+# Python
+__pycache__/
+*.pyc
+
+# SWMM and EPANET work: clones, build trees, run directories and model outputs stay local;
+# the digests in checks/swmm/digests/ are what the verdicts rest on
+src/
+work/
+build/
+builds/
+runs/
+*.out
+*.rpt
+*.bin
+*.log
+
+# Notes that name private repos or machines' private paths
+private/
+
+# Editors and OS
+.DS_Store
+.vscode/
+*.swp

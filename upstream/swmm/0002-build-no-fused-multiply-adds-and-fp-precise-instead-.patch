@@ -1,0 +1,54 @@
+From f30b92c96948e1570216f8002d0c8adb3ba46e0d Mon Sep 17 00:00:00 2001
+From: anun333 <anun333@posteo.net>
+Date: Tue, 27 Oct 2026 13:46:59 -0500
+Subject: [PATCH 2/2] build: no fused multiply-adds, and /fp:precise instead of
+ /fp:fast
+
+gcc and clang contract a*b+c into one fused multiply-add wherever the target has the
+instruction: by default on aarch64 and Apple silicon, and on x86-64 with -march=native.
+MSVC's /fp:fast allows that and more. The rounding differs from a separate multiply and
+add, and in some models a last-bit difference grows: on swmm-nrtestsuite v3.3.0, builds
+with FMA fail nrtest-swmm's allclose (rtol 0.01) on Example1, user1 and user5 against a
+build without, and fail the report comparison on five models. The same split shows
+between the suite's own Linux, macOS and Windows benchmarks.
+
+With -ffp-contract=off, gcc and clang builds at -O0 to -O3, with and without
+-march=native, give bit-identical .out files on x86-64, and aarch64 Linux matches x86-64.
+macOS still differs through its libm, which no flag changes.
+---
+ CMakeLists.txt            | 5 +++++
+ src/solver/CMakeLists.txt | 2 +-
+ 2 files changed, 6 insertions(+), 1 deletion(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index b85f03c..558f1a9 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -66,6 +66,11 @@ if(BUILD_DOCS)
+     add_subdirectory(docs)
+ endif()
+ 
++# Same floating-point results on every compiler and CPU: gcc and clang otherwise fuse
++# multiply-adds wherever the target has them (aarch64, Apple silicon, x86-64 with
++# -march=native), which moves results on some models past the regression tolerance
++add_compile_options($<$<C_COMPILER_ID:GNU,Clang,AppleClang>:-ffp-contract=off>)
++
+ add_subdirectory(src/outfile)
+ add_subdirectory(src/solver)
+ add_subdirectory(src/run)
+diff --git a/src/solver/CMakeLists.txt b/src/solver/CMakeLists.txt
+index 2bd4985..734457d 100644
+--- a/src/solver/CMakeLists.txt
++++ b/src/solver/CMakeLists.txt
+@@ -67,7 +67,7 @@ target_compile_options(swmm5
+     PUBLIC
+         "$<$<C_COMPILER_ID:MSVC>:"
+             "$<$<CONFIG:Release>:/GL>"
+-            "$<$<CONFIG:Release>:/fp:fast>"
++            "$<$<CONFIG:Release>:/fp:precise>"
+             "$<$<CONFIG:Release>:/Zi>"
+         ">"
+         $<$<C_COMPILER_ID:AppleClang>:
+-- 
+2.43.0
+

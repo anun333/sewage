@@ -1,0 +1,11 @@
+build gcc-O2: gcc -O2; libswmm5.so sha256 3df407411740941d; 0 FMA instructions
+digcmp board5-gcc-O2-t1_vs_gcc-O2-t1: IDENTICAL
+build gcc-O2-nocontract: gcc -O2 -ffp-contract=off; libswmm5.so sha256 f628ecea89292336; 0 FMA instructions
+digcmp board5-gcc-O2-t1_vs_gcc-O2-nocontract-t1: IDENTICAL
+digcmp gcc-O2-t1_vs_gcc-O2-nocontract-t1: IDENTICAL
+shim: libm imports of libswmm5.so, all answered: acos asin atan cos exp log log10 pow sin sincos tan
+canary (pow wrong by 2^-20): changed Example1 and user1, so the preload reaches libswmm5
+digcmp board5-gcc-O2-t1_vs_gcc-O2-nocontract-cr-t1: DIFFERS [Example1(.out,.rpt) Example3(.rpt) gate_control_2(.out) user3(.out) user4(.out) user5(.out,.rpt) ]
+digcmp board5-gcc-O2-nocontract-cr-t1_vs_gcc-O2-nocontract-cr-t1: IDENTICAL
+digcmp gcc-O2-nocontract-t1_vs_gcc-O2-nocontract-cr-t1: DIFFERS [Example1(.out,.rpt) Example3(.rpt) gate_control_2(.out) user3(.out) user4(.out) user5(.out,.rpt) ]
+done in 167 s with 4 build jobs, runs on 1 thread (4 for the thread run)

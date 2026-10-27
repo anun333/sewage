@@ -1,0 +1,13 @@
+build clang-O2: cc -O2; libswmm5.dylib sha256 2cc573ea93ab8b5a; 460 FMA instructions
+digcmp board5-gcc-O2-t1_vs_clang-O2-t1: DIFFERS [Example1(.out,.rpt) Example3(.rpt) Example4(.rpt) bioretention(.out) catchment_as_outfall(.rpt) events_example(.out) porous_pavement(.out) user1(.out,.rpt) user3(.out) user5(.out,.rpt) ]
+build clang-O2-nocontract: cc -O2 -ffp-contract=off; libswmm5.dylib sha256 a9291f8383caaa3b; 0 FMA instructions
+digcmp board5-gcc-O2-t1_vs_clang-O2-nocontract-t1: DIFFERS [Example1(.out,.rpt) Example3(.rpt) catchment_as_outfall(.rpt) user3(.out) user5(.out,.rpt) ]
+digcmp clang-O2-t1_vs_clang-O2-nocontract-t1: DIFFERS [Example1(.out,.rpt) Example3(.rpt) Example4(.rpt) bioretention(.out) events_example(.out) porous_pavement(.out) user1(.out,.rpt) user3(.out) user5(.out,.rpt) ]
+shim: libm imports of libswmm5.dylib, all answered: __exp10 __sincos_stret acos asin atan cos exp log log10 pow sin tan
+canary (pow wrong by 2^-20): changed Example1 and user1, so the preload reaches libswmm5
+digcmp board5-gcc-O2-t1_vs_clang-O2-nocontract-cr-t1: DIFFERS [Example1(.out,.rpt) Example3(.rpt) catchment_as_outfall(.rpt) user3(.out) user4(.out) user5(.out,.rpt) ]
+digcmp board5-gcc-O2-nocontract-cr-t1_vs_clang-O2-nocontract-cr-t1: DIFFERS [catchment_as_outfall(.rpt) ]
+digcmp clang-O2-nocontract-t1_vs_clang-O2-nocontract-cr-t1: DIFFERS [Example1(.out,.rpt) Example3(.rpt) user3(.out) user4(.out) user5(.out,.rpt) ]
+dmr_geomean: exit 1: DIFFERS (exp(mean(log)) against the exact geometric mean)
+dmr_rounding --rule half_even --trials 50000: exit 1: DIFFERS (method binary, rule half_even, against exact decimal)
+done in 98 s with 2 build jobs; runs on 1 thread

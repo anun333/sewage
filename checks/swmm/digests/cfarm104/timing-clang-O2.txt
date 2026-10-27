@@ -1,0 +1,30 @@
+# cfarm104 2026-10-27 18:58-19:02 UTC: patchcheck.sh cc "-O2" (Apple M1, macOS 26.5.2, Apple clang 21.0.0), 5 interleaved repeats at nice 19, NOT pinned (macOS has no taskset; runs may land on P or E cores)
+# base = develop 6c81201 (460 FMA instructions in libswmm5), patched = repro-fp f30b92c (0); 33 models (gate_control_2 left out); load average 5.5 before, 4.6 after on 8 cores (another user's three single-threaded processes at ~99% each)
+# timecmp.py:
+model                                  time-base time-patched     B/A  (median of 5 and 5 repeats)
+examples/Example3.inp                      0.40s     0.40s   1.000  (A's spread 7%)
+update_v5111/events_example.inp            0.65s     0.66s   1.015  (A's spread 2%)
+update_v5111/gate_control_3.inp            0.75s     0.76s   1.013  (A's spread 28%)
+user/user1.inp                             0.21s     0.22s   1.048  (A's spread 0%)
+user/user2.inp                             1.05s     1.06s   1.010  (A's spread 0%)
+user/user3.inp                             2.99s     3.02s   1.010  (A's spread 1%)
+user/user4.inp                             2.24s     2.26s   1.009  (A's spread 8%)
+user/user5.inp                             7.52s     7.58s   1.008  (A's spread 1%)
+total of medians                          16.20s    16.35s   1.009
+# both builds' spread ((max-min)/median), timesum.py:
+| model | base median (s) | patched median (s) | patched/base | base spread | patched spread |
+| --- | ---: | ---: | ---: | ---: | ---: |
+| Example3 | 0.40 | 0.40 | 1.000 | 7% | 7% |
+| events_example | 0.65 | 0.66 | 1.015 | 2% | 6% |
+| gate_control_3 | 0.75 | 0.76 | 1.013 | 28% | 1% |
+| user1 | 0.21 | 0.22 | 1.048 | 0% | 5% |
+| user2 | 1.05 | 1.06 | 1.010 | 0% | 9% |
+| user3 | 2.99 | 3.02 | 1.010 | 1% | 8% |
+| user4 | 2.24 | 2.26 | 1.009 | 8% | 7% |
+| user5 | 7.52 | 7.58 | 1.008 | 1% | 5% |
+| total of medians (all 33) | 16.20 | 16.35 | 1.009 | | |
+per-repeat totals: base 16.2 16.4 16.5 16.2 16.2; patched 16.8 16.9 16.4 16.4 16.8
+per-repeat patched/base (paired): 1.034 1.028 0.994 1.009 1.037
+digests of the 5 base repeats: all the same
+digests of the 5 patched repeats: all the same
+patched repeats vs patched-check: same

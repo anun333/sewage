@@ -1,0 +1,7 @@
+patchcheck: exit 0; patched -O2 vs ref/patchcheck-ref.txt: IDENTICAL
+build base: gcc -O2; libswmm5.so sha256 4237152600db8b0c; 429 FMA instructions
+build patched: gcc -O2; libswmm5.so sha256 dbb986850d738f7b; 0 FMA instructions
+shim: libm imports of libswmm5.so, all answered: acos asin atan cos exp log log10 pow sin sincos tan
+canary (pow wrong by 2^-20): changed Example1 and user1, so the preload reaches libswmm5
+patched + CORE-MATH vs ref/cr-ref.txt: IDENTICAL
+done in 532 s

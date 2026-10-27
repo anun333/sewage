@@ -1,0 +1,14 @@
+# name|C compiler|C++ compiler|CFLAGS|thread counts to run
+# The first line is the reference every other configuration is compared to.
+# Thread counts above the CPUs available are oversubscribed (8 on board5's
+# 4-CPU limit); swmmrun.py sets OMP_NUM_THREADS to the same number.
+gcc-O2|gcc|g++|-O2|1 2 4 8
+gcc-O0|gcc|g++||1
+gcc-O3|gcc|g++|-O3|1
+gcc-O2-nocontract|gcc|g++|-O2 -ffp-contract=off|1
+gcc-O2-native|gcc|g++|-O2 -march=native|1
+gcc-O3-native|gcc|g++|-O3 -march=native|1 4
+gcc-O3-native-nocontract|gcc|g++|-O3 -march=native -ffp-contract=off|1
+clang-O2|clang|clang++|-O2|1 4 8
+clang-O3-native|clang|clang++|-O3 -march=native|1
+clang-O3-native-nocontract|clang|clang++|-O3 -march=native -ffp-contract=off|1

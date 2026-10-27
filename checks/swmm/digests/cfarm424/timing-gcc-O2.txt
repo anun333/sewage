@@ -1,0 +1,32 @@
+# cfarm424 2026-10-27 18:55-19:04 UTC: patchcheck.sh gcc "-O2" (Neoverse-N1, Debian 13.7, gcc 14.2.0), 5 interleaved repeats at nice 19, pinned to CPU 49 (builds and checks on 48-51)
+# base = develop 6c81201 (429 FMA instructions in libswmm5), patched = repro-fp f30b92c (0); load average 31.6 before, 34.3 after (a GCC testsuite of another user, ~45% busy on every CPU, nothing idle)
+# timecmp.py:
+model                                  time-base time-patched     B/A  (median of 5 and 5 repeats)
+examples/Example3.inp                      0.87s     0.88s   1.011  (A's spread 5%)
+update_v5111/events_example.inp            1.37s     1.41s   1.029  (A's spread 1%)
+update_v5111/gate_control_2.inp            7.08s     7.19s   1.016  (A's spread 9%)
+update_v5111/gate_control_3.inp            1.90s     1.91s   1.005  (A's spread 3%)
+user/user1.inp                             0.39s     0.43s   1.103  (A's spread 10%)
+user/user2.inp                             2.19s     2.23s   1.018  (A's spread 3%)
+user/user3.inp                             6.28s     6.34s   1.010  (A's spread 3%)
+user/user4.inp                             4.28s     4.32s   1.009  (A's spread 11%)
+user/user5.inp                            13.40s    13.57s   1.013  (A's spread 1%)
+total of medians                          38.53s    39.09s   1.015
+# both builds' spread ((max-min)/median), timesum.py:
+| model | base median (s) | patched median (s) | patched/base | base spread | patched spread |
+| --- | ---: | ---: | ---: | ---: | ---: |
+| Example3 | 0.87 | 0.88 | 1.011 | 5% | 5% |
+| events_example | 1.37 | 1.41 | 1.029 | 1% | 1% |
+| gate_control_2 | 7.08 | 7.19 | 1.016 | 9% | 3% |
+| gate_control_3 | 1.90 | 1.91 | 1.005 | 3% | 3% |
+| user1 | 0.39 | 0.43 | 1.103 | 10% | 9% |
+| user2 | 2.19 | 2.23 | 1.018 | 3% | 2% |
+| user3 | 6.28 | 6.34 | 1.010 | 3% | 1% |
+| user4 | 4.28 | 4.32 | 1.009 | 11% | 1% |
+| user5 | 13.40 | 13.57 | 1.013 | 1% | 2% |
+| total of medians (all 34) | 38.53 | 39.09 | 1.015 | | |
+per-repeat totals: base 38.5 38.6 38.7 38.6 40.0; patched 39.1 39.1 39.3 39.4 39.0
+per-repeat patched/base (paired): 1.016 1.015 1.016 1.019 0.974
+digests of the 5 base repeats: all the same
+digests of the 5 patched repeats: all the same
+patched repeats vs patched-check: same
