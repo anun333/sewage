@@ -37,6 +37,8 @@ In the same Python model:
 
 I haven't built and run it in SWMM. The example above was confirmed with a real run of USEPA `develop`, where the header said 15:30 and the first period 15:50.
 
+I can open a PR with this change, checked against the test suite and with a regression input, if you want it.
+
 Related: USEPA/Stormwater-Management-Model#152 and #237, the same `floor()` of a day difference in `project.c`.
 
 Drafted with an AI assistant (Claude), which also ran the builds and checks reported here; I read it before posting.
