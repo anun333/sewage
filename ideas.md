@@ -24,11 +24,12 @@ pilot.
    - **It reaches users (2026-10-29).** pyswmm's published aarch64 wheel (swmm-toolkit
      0.17.0) is built with FMA and disagrees with the x86-64 wheel on 10 of 34 models.
      The difference is past tolerance on 3: user5's 400.6 against 450.9 cfs again.
-   - **Drafted, not posted:** an issue and two patches for the pyswmm fork, in
-     [upstream/swmm/](upstream/swmm/README.md). One patch is the build flag, which costs
-     about 1%; the other is the UB fix. Both were tested on all three platforms, and
-     with them every file matches, reports included (macOS needs CORE-MATH as well).
-     Not posted yet.
+   - **Issue posted 2026-10-29** as pyswmm/Stormwater-Management-Model#431.
+   - **Still drafts,** in [upstream/swmm/](upstream/swmm/README.md):
+     - two patches: the build flag, which costs about 1%, and the `gage.c` fix. Both
+       were tested on all three platforms, and with them every file matches, reports
+       included (macOS needs CORE-MATH as well);
+     - a second issue, about the `.out` header's start date.
 2. **[U6](#u6): BSM1 checked across its open implementations. Steady state done
    2026-10-29 ([checks/bsm1/](checks/bsm1/README.md)).**
    - Once each implementation's departures from BSM1's equations are removed, all

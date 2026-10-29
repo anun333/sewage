@@ -14,7 +14,7 @@ is kept verbatim, unchecked, in [thread/2026-10-27-initial.md](thread/2026-10-27
 | [landscape.md](landscape.md) | The projects, checked against their own repos and papers on 2026-10-27, each claim in the thread with a verdict, and what the thread missed |
 | [ideas.md](ideas.md) | Ways to contribute, upstream and in our repos, each with what it rests on, what would prove it wrong, and the first step |
 | [checks/](checks/) | Measurements behind the ideas, rerunnable, with verdict lines |
-| [upstream/](upstream/swmm/README.md) | Drafts for other projects, not yet posted: two issues and two patches for SWMM ([swmm/](upstream/swmm/README.md)), an issue for WaterTAP ([watertap/](upstream/watertap/README.md), posted as watertap-org/watertap#1892), and an issue for EXPOsan ([exposan/](upstream/exposan/README.md), posted as QSD-Group/EXPOsan#80) |
+| [upstream/](upstream/swmm/README.md) | Drafts for other projects, not yet posted: two issues and two patches for SWMM ([swmm/](upstream/swmm/README.md); the first issue posted as pyswmm/Stormwater-Management-Model#431), an issue for WaterTAP ([watertap/](upstream/watertap/README.md), posted as watertap-org/watertap#1892), and an issue for EXPOsan ([exposan/](upstream/exposan/README.md), posted as QSD-Group/EXPOsan#80) |
 | [rules/](rules/README.md) | The laws, standards and terms that bear on this work, checked 2026-10-29, with what each changes |
 | [thread/](thread/) | The conversations this started from, verbatim |
 

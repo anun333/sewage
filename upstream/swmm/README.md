@@ -1,11 +1,11 @@
 # upstream/swmm: drafts for pyswmm/Stormwater-Management-Model
 
-**Nothing here has been posted.** The full text of anything that goes to another project
+**The issue is posted** ([#431](https://github.com/pyswmm/Stormwater-Management-Model/issues/431), 2026-10-29); the PRs and the second issue are not. The full text of anything that goes to another project
 is reviewed before it goes ([ideas U1](../../ideas.md#u1)).
 
 | File | What |
 | --- | --- |
-| [issue.md](issue.md) | The issue: the measurements, the cause, and the two PRs offered |
+| [issue.md](issue.md) | **Posted as [#431](https://github.com/pyswmm/Stormwater-Management-Model/issues/431).** The issue: the measurements, the cause, and the two PRs offered |
 | [pr-build.md](pr-build.md), [0002-build-*.patch](0002-build-no-fused-multiply-adds-and-fp-precise-instead-.patch) | `-ffp-contract=off` for gcc and clang, and `/fp:precise` for MSVC Release |
 | [pr-gage.md](pr-gage.md), [0001-gage-*.patch](0001-gage-don-t-convert-a-one-point-rain-series-interval-.patch) | The out-of-range `double`-to-`int` conversion at `gage.c:251` (undefined in ISO C, an unspecified value under Annex F) |
 | [issue-output-start-date.md](issue-output-start-date.md) | A second issue: the `.out` header's start date is one report step early in about a third of runs whose REPORT_START is a whole number of steps after START (`output.c`); found while reviewing USEPA #237 |
@@ -33,5 +33,5 @@ offering the PRs, lets them say how they want it before anything lands in their 
    ([checks/swmm/README.md](../../checks/swmm/README.md#patches-2026-10-27)).
 2. **Done: the evidence link.** The repo is public, so the issue links to
    [checks/swmm/](../../checks/swmm/README.md).
-3. **The order.** Open the issue, wait for a maintainer, then fork and open the PRs from
+3. **The order.** Open the issue (done, #431), wait for a maintainer, then fork and open the PRs from
    anun333's fork with `pr-toolbox check` and `landing` run first.

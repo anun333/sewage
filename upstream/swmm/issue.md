@@ -1,4 +1,4 @@
-<!-- DRAFT for pyswmm/Stormwater-Management-Model. Not posted; reviewed before posting. -->
+<!-- Posted 2026-10-29 as https://github.com/pyswmm/Stormwater-Management-Model/issues/431 after the maintainer read and approved this text. -->
 
 **Title:** Results change with FMA contraction and the C library's maths; a build flag makes them reproducible
 
