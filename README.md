@@ -55,4 +55,7 @@ MIT licensed ([LICENSE](LICENSE)), except the material listed in
 [THIRD_PARTY.md](THIRD_PARTY.md): 24 values copied from bsm2-python (BSD-3-Clause,
 notice included there) and numbers cited from the BSM1 report. The patches in
 `upstream/swmm/` change SWMM, which is public domain (EPA) with MIT additions (the
-pyswmm fork).
+pyswmm fork); our changes in them are also dedicated to the public domain under CC0 1.0,
+so either line can take them. Text, code and analysis here were produced with an AI
+assistant (Claude), which also ran the builds and checks; the maintainer reads and
+approves what is published.

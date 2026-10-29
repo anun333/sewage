@@ -34,3 +34,7 @@ The patch takes `libswmm5`'s FMA instructions from 429 to 0 on aarch64 and from 
 These are shared machines, and the per-model spread was larger than the differences, so read this as "about 1%, at most". On x86-64 without `-march`, gcc emits no FMA, and the patch changes no instruction that matters.
 
 Not tested: MSVC.
+
+I dedicate my changes in this PR to the public domain under CC0 1.0 (https://creativecommons.org/publicdomain/zero/1.0/), so they can go on to USEPA's repository unchanged; you can also take them under this repository's MIT terms. For CONTRIBUTORS: `N: anun333`, `L: Public Domain`, `D: build flags for reproducible results`.
+
+Drafted with an AI assistant (Claude), which also ran the builds and checks reported here; I read it before posting.

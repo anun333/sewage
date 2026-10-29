@@ -69,5 +69,14 @@ included here; only the printed numbers are copied, not its text, tables or figu
 ## upstream/swmm/
 
 The patches change SWMM: public domain (US EPA), with MIT-licensed additions by the
-pyswmm fork's contributors. The unchanged context lines remain under SWMM's terms; our
-changes in them are MIT licensed, like the rest of this repository.
+pyswmm fork's contributors. The unchanged context lines remain under SWMM's terms. Our
+changes in them are MIT licensed and also dedicated to the public domain under CC0 1.0
+(https://creativecommons.org/publicdomain/zero/1.0/), so the pyswmm fork and US EPA can
+each take them on their own terms.
+
+## AI assistance
+
+Much of the text, code and analysis here was produced with an AI assistant (Claude, by
+Anthropic), which also ran the builds and checks. The maintainer reads and approves what
+is published here and upstream. `thread/2026-10-27-initial.md` is an AI assistant's
+answer, kept verbatim and unchecked.

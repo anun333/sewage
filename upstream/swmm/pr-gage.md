@@ -25,3 +25,7 @@ if ( Tseries[k].dxMin * SECperDAY < INT_MAX )
 - **aarch64** (Neoverse-N1, gcc 14.2, and an Apple M1 with Apple clang 21): `catchment_as_outfall`'s report now matches x86-64's byte for byte. Before the fix, both had the WARNING 09 version.
 
 EPA's v5.2.4 has the same line.
+
+I dedicate my changes in this PR to the public domain under CC0 1.0 (https://creativecommons.org/publicdomain/zero/1.0/), so they can go on to USEPA's repository unchanged; you can also take them under this repository's MIT terms. For CONTRIBUTORS: `N: anun333`, `L: Public Domain`, `D: gage.c interval fix`.
+
+Drafted with an AI assistant (Claude), which also ran the builds and checks reported here; I read it before posting.

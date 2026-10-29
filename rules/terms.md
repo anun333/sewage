@@ -90,11 +90,18 @@ reading of published terms, not legal advice.
    ([Policy 15](https://nassco.org/wp-content/uploads/2023/08/Policy-15-Import-and-Export-Software-Testing-v7.0-Final-24July2020.pdf)).
    A defect classifier of ours that outputs PACP codes falls under this. EN 13508-2
    stays the open target. Checked 2026-10-29.
-8. **bsm2-python may not take contributions on GitHub at all.** Its CONTRIBUTING walks
-   contributors through FAU's own GitLab (gitlab.rrze.fau.de). On GitHub it has merged
-   four PRs ever, the last on 2025-07-20. Issue #7 and PR #8 (2026-10-06) have no
-   maintainer reply. Ask where contributions go before drafting U6's fix for it.
-   Checked 2026-10-29.
+8. **bsm2-python takes contributions on GitHub, but slowly.**
+   - Its CONTRIBUTING still walks contributors through FAU's own GitLab
+     (gitlab.rrze.fau.de).
+   - That GitLab repo's last commit (2025-05-31) replaced its README with "This repo has
+     moved to GitHub ... All future development will take place there!"
+   - FAU's GitLab doesn't accept outside sign-ups: `/users/sign_up` redirects to sign-in,
+     which offers only LDAP and admin-made accounts.
+   - So GitHub is the place, and CONTRIBUTING is stale.
+   - On GitHub it has merged four PRs ever, the last on 2025-07-20. Issue #7 and PR #8
+     (2026-10-06) have no maintainer reply.
+   
+   Checked 2026-10-29; corrected the same day after reading the GitLab repo.
 9. **Make the BSM1 inputs impossible to commit.**
    - **What:** the commands download Lund's report (no licence), its `pdftotext` output,
      and IWA's influent and sensor-noise files (no terms stated).
@@ -130,7 +137,7 @@ CDC.
 | WaterTAP | BSD-3-Clause-LBNL (`LICENSE.md`) | PR "Legal Acknowledgement": under the licence, authorised by employer | none | none | none | 2026-10-01 | not separable; 32 open |
 | IDAES (idaes-pse) | BSD-3-Clause-LBNL (`LICENSE.md`) | the same acknowledgement | **disclosure required** | none | none | 2026-10-19 | not separable; 25 open |
 | idaes-ext (binaries we ran) | IDAES BSD plus bundled EPL-2.0, EPL-1.0, LGPL and HSL terms (`license.txt`) | n/a | none | none | none | n/a | n/a |
-| bsm2-python | BSD-3-Clause (`LICENSE`, "Copyright (c) 2025, FAU-EVT") | CONTRIBUTING points to FAU's GitLab | **none** | PSF's, "as a reference" | none | 2025-07-20 | 1 merged ever |
+| bsm2-python | BSD-3-Clause (`LICENSE`, "Copyright (c) 2025, FAU-EVT") | CONTRIBUTING still points to FAU's GitLab, but that repo moved to GitHub (2025-05-31) | **none** | PSF's, "as a reference" | none | 2025-07-20 | 1 merged ever |
 | SWMManywhere | BSD-3-Clause (`LICENSE`); bundles netcomp (MIT) | issue first for new functions and metrics; PR checklist | none | Contributor Covenant | none | 2026-10-26 | 2 merged (rest team and bots) |
 | ECHO_modules (EDGI) | **GPL-3.0 (`LICENSE`) but README says BSD-3-Clause** | EDGI: chat or issue first; review "within about 3 days" | none | EDGI's | none | 2025-12-17 | 4 merged |
 | CORE-MATH | MIT (`LICENSE`; each source file carries it) | none in README | none | none | none | GitLab, not assessed | n/a |
@@ -299,8 +306,9 @@ Scanned 2026-10-29: every tracked file, plus the uncommitted BSM1 closed-loop wo
 
 **Applied 2026-10-29:** 1 (`THIRD_PARTY.md`, without the CC0 and AI-assistance
 sections, which wait on a decision), 2 (the README's licence paragraph, without those
-two sentences), 3 and 4. **Waiting on a decision:** the CC0 dedication (1, 2 and 5) and
-the AI-assistance disclosure (1, 2, 5 and 6).
+two sentences), 3 and 4. **Applied later the same day, after a decision:** the CC0 dedication (1, 2 and 5) and the
+AI-assistance disclosure (1, 2, 5 and 6). The disclosure was reworded to be accurate: the
+assistant ran the builds and checks, and the maintainer reads and approves what is posted.
 
 **1. Add `THIRD_PARTY.md`** at the root:
 
@@ -454,7 +462,7 @@ On WNTR and IDAES, fill in their template sections in full instead.
 - **Which Anthropic terms govern the account.** Both sets assign Outputs to the user.
 - **GitHub's `author_association` counts.** They understate members who hide their
   membership, so "outside" counts for WaterTAP, IDAES and CDC mean little.
-- **Contribution practice on Inria's GitLab (CORE-MATH) and FAU's GitLab
-  (bsm2-python):** not assessed.
+- **Contribution practice on Inria's GitLab (CORE-MATH):** not assessed. FAU's GitLab
+  copy of bsm2-python is retired (see item 8).
 - **Whether swmm-toolkit's wheels ship an OpenMP runtime, and under what licence:** not
   checked. We only install them.

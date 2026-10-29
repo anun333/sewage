@@ -75,12 +75,13 @@ Paid and registration-only standards are listed with how to get them, not downlo
   - QSDsan accepts AI-assisted work but holds the contributor responsible for every
     line.
   - USEPA SWMM, EPANET and bsm2-python have no policy.
-  - We are deciding on a standard disclosure line.
+  - We now disclose on everything we post (see below).
 - **USEPA's SWMM repo has no licence file or contribution terms.** The pyswmm fork
-  records each contributor as MIT or Public Domain, so offering our patches under CC0
-  as well as MIT is under consideration.
-- **bsm2-python's contribution guide points to FAU's GitLab,** and its GitHub repo has
-  merged four PRs ever.
+  records each contributor as MIT or Public Domain. Our patches are offered under CC0
+  as well as MIT.
+- **bsm2-python's contribution guide still points to FAU's GitLab, which is retired.**
+  The GitLab repo says it moved to GitHub in 2025, and FAU's GitLab takes no outside
+  sign-ups. GitHub is the place, but it has merged four PRs ever.
 - **EDGI's ECHO_modules says GPL-3.0 in LICENSE and BSD-3 in its README.** Code for N2
   should be offered under BSD-3, which fits either, and we should ask which they mean.
 - **mWater's asset standard is CC BY-SA 4.0 and Brick is BSD-3,** so a Brick extension
@@ -93,8 +94,12 @@ Paid and registration-only standards are listed with how to get them, not downlo
     `simulink200.csv`;
   - the HSL acknowledgement for the WaterTAP run;
   - `.gitignore` lines so the BSM1 report and IWA's files can't be committed.
-- **Not applied, waiting on a decision:** the CC0 dedication and an AI-assistance
-  statement.
+- **Also applied, with the maintainer's agreement:**
+  - the CC0 dedication for our SWMM changes;
+  - an AI-assistance statement in the README and `THIRD_PARTY.md`;
+  - a standard disclosure line on everything we post: "Drafted with an AI assistant
+    (Claude), which also ran the builds and checks reported here; I read it before
+    posting."
 
 **Parked work:**
 - **Lift stations are permit-required confined spaces** (29 CFR 1910.146; 1926.1201

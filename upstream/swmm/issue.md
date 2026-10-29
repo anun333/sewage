@@ -57,3 +57,5 @@ swmm-toolkit builds the solver through its top-level CMakeLists (`add_subdirecto
 The scripts, digests and commands are at https://github.com/anun333/sewage/tree/main/checks/swmm. They are plain Python and POSIX sh. They build, run and compare digests, with controls: planted bit flips and missing files must be caught.
 
 Related: #203; pyswmm/swmm-python#47 (a more forgiving comparison); USEPA/Stormwater-Management-Model#143 (the arm64 build).
+
+Drafted with an AI assistant (Claude), which also ran the builds and checks reported here; I read it before posting.
