@@ -1,10 +1,10 @@
 # upstream/watertap: drafts for watertap-org/watertap
 
-Not posted. Each draft is read and approved in full before it goes out.
+Each draft is read and approved in full before it goes out.
 
 | File | What |
 | --- | --- |
-| [issue.md](issue.md) | `ASM1_flowsheet.py` holds reactor 5's oxygen at 0.449 g/m³ where BSM1's open loop gives 0.491. Effluent nitrate and ammonia move 2.6% and 7.3%, and the test accepts it. Two fixes, both measured |
+| [issue.md](issue.md) | **Posted 2026-10-29 as [#1892](https://github.com/watertap-org/watertap/issues/1892).** `ASM1_flowsheet.py` holds reactor 5's oxygen at 0.449 g/m³ where BSM1's open loop gives 0.491. Effluent nitrate and ammonia move 2.6% and 7.3%, and the test accepts it. Two fixes, both measured |
 
 The evidence is in [checks/bsm1/](../../checks/bsm1/README.md): `run_watertap.py`, its
 four cases, and `results/ss_watertap.csv`.
@@ -17,10 +17,24 @@ four cases, and `results/ss_watertap.csv`.
   [rules/terms.md](../../rules/terms.md).
 - **AI disclosure.** WaterTAP's template doesn't ask, but IDAES's does, and we disclose
   everywhere anyway.
-- **Run WaterTAP's own test.** `tests/test_asm1_flowsheet.py` pins the shipped values
-  (S_O 4.49e-4, S_NO 10.14e-3, S_NH 1.86e-3, at rel 1e-2). A fix has to update them, and
-  the suite should pass with the change before the PR is opened. That hasn't been run
-  yet.
+- **Run WaterTAP's own test: done 2026-10-29 for the one-line fix.** This was on
+  board5, at 5909a60, with idaes-pse 2.13.0, Pyomo 6.10.1 and IPOPT 3.13.2.
+  - As shipped, `tests/test_asm1_flowsheet.py` passes (2 tests). It pins S_O 4.49e-4,
+    S_NO 10.14e-3 and S_NH 1.86e-3 at rel 1e-2.
+  - The candidate PR changes:
+    - line 216 to `fix(4.91e-4)`;
+    - the test's Treated and Sludge expectations to BSM1's Tables 6 and 8 (S_O 4.91e-4,
+      S_NO 10.4e-3, S_NH 1.73e-3, rel 1e-2, with the "slightly off" comments replaced
+      by the reference);
+    - the doc table in `docs/technical_reference/flowsheets/ASM1.rst`. It lists the
+      three fixed oxygen values in g/m³ but gives kilogram figures, and R5's is also
+      off by ten (0.00449). They become 1.72, 2.43 and 0.491.
+  - With the change, the test passes. With the new test on the old code, it fails, which
+    is the control. All 12 tests in `flowsheets/activated_sludge/` pass, and black
+    26.3.1 (their pin) is clean.
+  - The diff (3 files, +12/-14) is kept out of this repository, because its context
+    lines are WaterTAP's BSD-3-Clause-LBNL code. It goes up from a fork.
+  - Not run: the KLa variant through their test suite, and the docs build.
 - **Open the issue first** and let the maintainers choose between the two fixes: one
   line, or a KLa constraint like R3's and R4's.
 

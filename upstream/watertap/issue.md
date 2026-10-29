@@ -1,4 +1,4 @@
-<!-- DRAFT for watertap-org/watertap (bug report template). Not posted; reviewed before posting. -->
+<!-- Posted 2026-10-29 as https://github.com/watertap-org/watertap/issues/1892 after the maintainer read and approved this text. -->
 
 **Title:** ASM1_flowsheet: reactor 5's oxygen is fixed at 0.449 g/m³; BSM1's open loop gives 0.491, and effluent N moves 2.6-7%
 
