@@ -17,6 +17,13 @@ the report prints it, so its last digit is the precision the verdicts use.
   each weather file after 150 days at constant influent and 14 days of dry weather.
 - case dry, source app2-p33, app2-p34: Appendix 2, the same dry-weather summary from
   the FORTRAN implementation, to fewer digits: a second published answer.
+- case cl_dry, cl_rain, cl_storm, source app5-p53..p61: Appendix 5, closed loop (Matlab/
+  Simulink, 28 March 2008), days 7 to 14 of each weather file after 150 days at constant
+  influent and 14 days of dry weather. Block perf as for the open loop, plus TSS
+  violations where printed; block ctrl, the controller indices: SNO2_* and Qintr_* for the
+  nitrate loop (tank 2, manipulated variable Qintr), SO5_* and KLa5_* for the oxygen loop
+  (tank 5). Qintr_dstd and Qintr_dvar (likewise KLa5) are what Appendix 5 labels std(Qintr)
+  and var(Qintr); section 5.2 defines them on the changes du (see README).
 """
 import csv, re, sys
 
@@ -134,27 +141,56 @@ DYN = [  # (regex on one line, var, unit)
 ]
 
 
-def dynamic(lines, rows):
-    a = next(i for i, l in enumerate(lines) if 'DYNAMIC RESULTS FOR OPENLOOP' in l)
-    b = next(i for i, l in enumerate(lines) if i > a and 'CLOSEDLOOP' in l.replace(' ', '').upper()
-             and 'RESULTS' in l)
+# Appendix 5's controller indices: (regex on one line, var suffix, unit as a format of the variable's unit)
+CTRL = [
+    (r'Average value of error \(mean\(e\)\) = ' + NUM, 'err_mean', '{}'),
+    (r'Average value of absolute error \(mean\(\|e\|\)\) = ' + NUM, 'err_absmean', '{}'),
+    (r'Integral of absolute error \(IAE\) = ' + NUM, 'IAE', '({})*d'),
+    (r'Integral of square error \(ISE\) = ' + NUM, 'ISE', '({})^2*d'),
+    (r'Maximum absolute deviation from (?:nitrate|oxygen) setpoint \(max\(e\)\) = ' + NUM, 'err_max', '{}'),
+    (r'Standard deviation of error \(std\(e\)\) = ' + NUM, 'err_std', '{}'),
+    (r'Variance of error \(var\(e\)\) = ' + NUM, 'err_var', '({})^2'),
+]
+MV = [
+    (r'Maximum absolute variation of MV \(max-min\) = ' + NUM, 'range', '{}'),
+    (r'Maximum absolute variation of MV in one sample \(max delta\) = ' + NUM, 'maxdelta', '{}'),
+    (r'Average value of MV \(mean\((\w+)\)\) = ' + NUM, 'mean', '{}'),
+    (r'Standard deviation of MV \(std\((\w+)\)\) = ' + NUM, 'dstd', '{}'),
+    (r'Variance of MV \(var\((\w+)\)\) = ' + NUM, 'dvar', '({})^2'),
+]
+LOOPS = {'Nitrate controller for second anoxic reactor': ('SNO2', 'g N/m3', 'Qintr', 'm3/d'),
+         'Oxygen controller for last aerobic reactor': ('SO5', 'g (-COD)/m3', 'KLa5', '1/d')}
+
+
+def dynamic(lines, rows, closed=False):
+    """Appendix 4 (open loop) or, with closed, Appendix 5's dynamic results and controller indices."""
+    if not closed:
+        a = next(i for i, l in enumerate(lines) if 'DYNAMIC RESULTS FOR OPENLOOP' in l)
+        b = next(i for i, l in enumerate(lines) if i > a and 'CLOSEDLOOP' in l.replace(' ', '').upper()
+                 and 'RESULTS' in l)
+    else:
+        a = next(i for i, l in enumerate(lines) if 'DYNAMIC RESULTS FOR CLOSEDLOOP' in l)
+        b = len(lines)
+    pre, app = ('cl_', 'app5') if closed else ('', 'app4')
     case = None
     lim = None
+    loop = None
     for i in range(a, b):
         s = lines[i].strip()
         for w, c in (('DRYWEATHER FILE', 'dry'), ('RAINWEATHER FILE', 'rain'), ('STORMWEATHER FILE', 'storm')):
             if w in s and s.startswith('*'):
-                case = c
+                case = pre + c
+                loop = None
         if case is None:
             continue
-        src = f'app4-p{page_of(lines, i)}'
+        src = f'{app}-p{page_of(lines, i)}'
         for pat, var, unit in DYN:
             m = re.match(pat, s)
             if m:
                 rows.append((case, 'perf', var, m.group(1), unit, src))
-        m = re.match(r'The maximum effluent (total nitrogen|ammonia nitrogen) level', s)
+        m = re.match(r'The maximum effluent (total nitrogen|ammonia nitrogen|total suspended solids) level', s)
         if m:
-            lim = 'TN' if m.group(1).startswith('total') else 'SNH'
+            lim = {'total nitrogen': 'TN', 'ammonia nitrogen': 'SNH', 'total suspended solids': 'TSS'}[m.group(1)]
         m = re.match(r'during ' + NUM + r' days, i\.e\. ' + NUM + r'% of the operating time', s)
         if m and lim:
             rows.append((case, 'perf', f'{lim}_viol_days', m.group(1), 'd', src))
@@ -163,6 +199,21 @@ def dynamic(lines, rows):
         if m and lim:
             rows.append((case, 'perf', f'{lim}_viol_count', m.group(1), '-', src))
             lim = None
+        if not closed:
+            continue
+        if s in LOOPS:
+            loop = LOOPS[s]
+        if loop is None:
+            continue
+        cv, ucv, mv, umv = loop
+        for pat, suf, unit in CTRL:
+            m = re.match(pat, s)
+            if m:
+                rows.append((case, 'ctrl', f'{cv}_{suf}', m.group(1), unit.format(ucv), src))
+        for pat, suf, unit in MV:
+            m = re.match(pat, s)
+            if m and (m.lastindex == 1 or m.group(1) == mv):
+                rows.append((case, 'ctrl', f'{mv}_{suf}', m.group(m.lastindex), unit.format(umv), src))
 
 
 def app2(lines, rows):
@@ -224,6 +275,7 @@ def main():
     rows = []
     try:
         tables(lines, rows); steady(lines, rows); dynamic(lines, rows); app2(lines, rows)
+        dynamic(lines, rows, closed=True)
     except StopIteration:
         print('VOID: a section of the report was not found'); sys.exit(2)
     head = ('case', 'block', 'var', 'printed', 'unit', 'source')

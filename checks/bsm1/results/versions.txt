@@ -124,3 +124,27 @@ typing_extensions==4.16.0
 tzdata==2026.6
 watertap (git archive, see README)
 watertap-solvers==24.12.9
+## env for the closed loop (README, "Results: closed loop"): board5 (AMD Ryzen 5 PRO 5650U, x86-64), Ubuntu 24.04, Python 3.12.3, 2026-10-29
+# bsm2-python not installed; imported from git checkouts with run_bsm2python_cl.py --src: main 73caa8bde193c0dd8a8803dfcd67b546501c950e, pull request #8 head e929c48d747539594eb8f6f59a4c07ec97572396
+contourpy==1.4.0
+control==0.10.2
+cycler==0.12.1
+fonttools==4.68.0
+iniconfig==2.3.1
+kiwisolver==1.5.1
+llvmlite==0.50.0
+matplotlib==3.11.2
+numba==0.68.1
+numpy==2.5.4
+packaging==26.3
+pandas==3.1.0
+pillow==13.0.0
+pluggy==1.7.0
+Pygments==2.21.0
+pyparsing==3.3.3
+pytest==9.2.0
+python-dateutil==3.0.0
+scipy==1.18.1
+six==1.17.0
+tqdm==4.70.1
+tzdata==2026.6

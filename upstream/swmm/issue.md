@@ -44,7 +44,7 @@ swmm-toolkit builds the solver through its top-level CMakeLists (`add_subdirecto
   - With it, gcc and clang builds on x86-64 at `-O0` to `-O3`, with or without `-march=native`, all write the same `.out` bits, and gcc `-O2` on aarch64 Linux writes those bits too.
   - Those bits are also the suite's existing 2023 Linux benchmark, on 33 of 33 models compared.
   - It costs about 1% in run time: 1.5% on aarch64 and 0.9% on an M1, over every model at one thread, and nothing visible on x86-64 with `-march=native`. All of these were measured on shared machines, within their noise.
-- **A fix for undefined behaviour in `gage.c`**, the one difference the flag doesn't remove. A rain gage reading a one-point time series has no interval, so `dxMin` stays at `BIG`. `gage_validate` then converts `dxMin*SECperDAY` (8.64e14) to `int`, at line 251, which is out of range and undefined in C:
+- **A fix for an out-of-range conversion in `gage.c`**, the one difference the flag doesn't remove. A rain gage reading a one-point time series has no interval, so `dxMin` stays at `BIG`. `gage_validate` then converts `dxMin*SECperDAY` (8.64e14) to `int`, at line 251. That is out of range: undefined in ISO C (C17 6.3.1.4p1), and under Annex F, which gcc and clang on glibc advertise through `__STDC_IEC_559__`, the "invalid" exception with an unspecified value (F.4). Either way the result isn't portable:
   - x86-64 yields INT_MIN, so there's no warning;
   - aarch64 saturates to INT_MAX, so `catchment_as_outfall`'s report gains WARNING 09.
 

@@ -14,7 +14,8 @@ is kept verbatim, unchecked, in [thread/2026-10-27-initial.md](thread/2026-10-27
 | [landscape.md](landscape.md) | The projects, checked against their own repos and papers on 2026-10-27, each claim in the thread with a verdict, and what the thread missed |
 | [ideas.md](ideas.md) | Ways to contribute, upstream and in our repos, each with what it rests on, what would prove it wrong, and the first step |
 | [checks/](checks/) | Measurements behind the ideas, rerunnable, with verdict lines |
-| [upstream/](upstream/swmm/README.md) | Drafts for other projects (an issue and two patches for SWMM), not yet posted |
+| [upstream/](upstream/swmm/README.md) | Drafts for other projects (two issues and two patches for SWMM), not yet posted |
+| [rules/](rules/README.md) | The laws, standards and terms that bear on this work, checked 2026-10-29, with what each changes |
 | [thread/](thread/) | The conversations this started from, verbatim |
 
 ## What is here, and what is not
@@ -45,8 +46,13 @@ is kept verbatim, unchecked, in [thread/2026-10-27-initial.md](thread/2026-10-27
     implementation's departures from BSM1's equations are removed. Those departures
     are candidate fixes upstream.
   - The reference itself has two faults, both shown with numbers.
+  - In closed loop, bsm2-python's controllers didn't integrate. With the fix in its PR
+    #8, they reproduce the report's controller results within 10%.
 - **Statements about other projects** carry the date they were checked. Anything without
   a date is from memory and should be checked before anyone relies on it.
 
-MIT licensed ([LICENSE](LICENSE)). The patches in `upstream/swmm/` change SWMM, which is
-public domain (EPA) with MIT additions (the pyswmm fork).
+MIT licensed ([LICENSE](LICENSE)), except the material listed in
+[THIRD_PARTY.md](THIRD_PARTY.md): 24 values copied from bsm2-python (BSD-3-Clause,
+notice included there) and numbers cited from the BSM1 report. The patches in
+`upstream/swmm/` change SWMM, which is public domain (EPA) with MIT additions (the
+pyswmm fork).

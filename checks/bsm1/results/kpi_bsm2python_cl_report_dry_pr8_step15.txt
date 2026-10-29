@@ -1,0 +1,3 @@
+# python3 -I bsm1clkpi.py results/dyn_bsm2python_cl_report_dry_pr8_step15.csv cl_dry 21   (exit 2)
+# BSM1CL at the pull request's head, run_bsm2python_cl.py report INPUTS dry results/dyn_bsm2python_cl_report_dry_pr8_step15.csv - 15 1
+VOID: results/dyn_bsm2python_cl_report_dry_pr8_step15.csv: not a finite number from I_kla5 t = 2.26042, KLa5 t = 2.27083, u_kla5 t = 2.27083

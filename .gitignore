@@ -21,3 +21,10 @@ private/
 .DS_Store
 .vscode/
 *.swp
+# Third-party inputs that must never be committed: the BSM1 report (no licence; Lund
+# reserves all rights), its extracted text, and IWA's influent and sensor-noise files
+# (no terms stated). See THIRD_PARTY.md.
+*.pdf
+bsm1.txt
+Inf_*_2006.txt
+sennoise*

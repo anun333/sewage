@@ -2,15 +2,18 @@
 
 Benchmark Simulation Model No. 1 is the IWA task group's activated-sludge plant
 with a published reference answer: five reactors (two anoxic, three aerated),
-ASM1, a ten-layer settler, fixed flows and aeration in open loop. This check runs
-it in three open implementations and compares them with the report and with each
+ASM1, a ten-layer settler, fixed flows and aeration in open loop. In closed loop,
+two PI controllers set the oxygen in reactor 5 and the nitrate in reactor 2. This
+check runs the open loop in three open implementations and the closed loop in the
+one that has it (bsm2-python), and compares them with the report and with each
 other.
 
-Run on cfarm421 (AMD EPYC 7773X, Debian 13.7, glibc 2.41, Python 3.13.5) on
-2026-10-29 between 01:51 and 04:40 UTC. **CPU limit:** at most 16 single-threaded
-processes at once (`OMP_NUM_THREADS=1` and the like), all at `nice -n 19`, with a
-run notice posted while they ran. The comparison scripts are standard-library
-Python and run anywhere.
+The open loop ran on cfarm421 (AMD EPYC 7773X, Debian 13.7, glibc 2.41, Python
+3.13.5) on 2026-10-29 between 01:51 and 04:40 UTC. **CPU limit:** at most 16
+single-threaded processes at once (`OMP_NUM_THREADS=1` and the like), all at
+`nice -n 19`, with a run notice posted while they ran. The closed loop ran later
+that day on board5; see [its section](#results-closed-loop-bsm2-python).
+The comparison scripts are standard-library Python and run anywhere.
 
 Verdicts follow crnumerics: `IDENTICAL` (exit 0), `DIFFERS` (exit 1), `VOID`
 (exit 2: a row was missing or not a number, or a control did not fail).
@@ -35,7 +38,7 @@ Verdicts follow crnumerics: `IDENTICAL` (exit 0), `DIFFERS` (exit 1), `VOID`
   6 to 8 print the same numbers as the 2008 report, and so does Appendix 4's
   open loop, all 361 of its numbers. That 2018 version is what WaterTAP and
   bsm2-python cite as "Alex et al. (2018)".
-- **[reference.csv](reference.csv)**, 445 rows (`case, block, var, printed,
+- **[reference.csv](reference.csv)**, 694 rows (`case, block, var, printed,
   unit, source`). `printed` is the number as printed, so its last digit is the
   precision every verdict uses:
   - steady state, open loop, Tables 6 to 8 (pp. 15-16, three digits) and
@@ -47,7 +50,17 @@ Verdicts follow crnumerics: `IDENTICAL` (exit 0), `DIFFERS` (exit 1), `VOID`
     flow-weighted effluent averages, loads, IQ, EQ, sludge production, AE, PE,
     ME, OCI, 95th percentiles and limit violations;
   - Appendix 2 (pp. 33-34): the same dry-weather summary from the FORTRAN
-    implementation, to three or four digits. That makes a second published answer.
+    implementation, to three or four digits. That makes a second published answer;
+  - dynamic, closed loop, Appendix 5 (pp. 53-61; Matlab/Simulink, 28 March 2008),
+    cases `cl_dry`, `cl_rain` and `cl_storm`: days 7-14 of each file after 150
+    days at constant influent and 14 days of dry weather, with the same
+    performance rows as the open loop (block `perf`, plus TSS violations where
+    printed) and the controllers' indices (block `ctrl`, 24 per case): for each
+    loop the error's mean, mean absolute value, IAE, ISE, largest value, std and
+    variance, and for its manipulated variable the range, the largest change in
+    one sample, the mean, and the std and variance of the changes (see
+    [below](#two-findings-about-the-report)). Appendix 5's closed-loop steady
+    state (pp. 49-52) is not extracted.
 
   [refextract.py](refextract.py) rebuilds the file from `pdftotext -layout` of
   the 2008 PDF and gives IDENTICAL.
@@ -55,13 +68,19 @@ Verdicts follow crnumerics: `IDENTICAL` (exit 0), `DIFFERS` (exit 1), `VOID`
   `tests/bsm1_ol_test.py` lines 62-114 (BSD-3), holds the BSM2 group's Simulink
   BSM1 open loop after 200 days at constant influent (`bsm1_test_ol.slx`), at full
   precision: the effluent and the ten settler layers.
-  [simulink200.csv](simulink200.csv) copies them.
+  [simulink200.csv](simulink200.csv) copies them. Its licence notice (BSD-3-Clause, Copyright (c) 2025, FAU-EVT)
+  is in [THIRD_PARTY.md](../../THIRD_PARTY.md).
 - **Influent files.** The same IWA page hosts the three weather files, with no
   terms stated, at `http://iwa-mia.org/wp-content/uploads/2019/04/` + file name.
   They are not copied here. Their sha256 values:
   - `Inf_dry_2006.txt`: `2a3776651012d004835870dde73857acec36202efb86ba69f589d6b4fb7601e0`;
   - `Inf_rain_2006.txt`: `c84a4e49d8c0f9bea27a427f528cd00344575c19900c8813eeffb66b0d1f5dd7`;
-  - `Inf_strm_2006.txt`: `8e600c737710767da0116283bab5ba567c9b5114c5859faeb7383ed962b72c65`.
+  - `Inf_strm_2006.txt`: `8e600c737710767da0116283bab5ba567c9b5114c5859faeb7383ed962b72c65`;
+  - for the closed loop, the sensor noise `sennoise.zip`:
+    `17abad7e4047cb9f269378447c7978174b976d9854616c43d5f66d9d02b047d1`. It holds
+    `sennoise.asc` (`227f9cb43df8bf5dd4062fd9e63c32bb35e68b1ed254a925d84999012e14a609`):
+    time and 25 noise columns, every minute for 14 days, as the report's
+    section 7.3 describes.
 
   QSDsan ships the dry file as `qsdsan/data/sanunit_data/_inf_dry_2006.tsv`. It
   equals IWA's except one value in the last row (XND 11.814 against 11.81402).
@@ -111,13 +130,18 @@ Verdicts follow crnumerics: `IDENTICAL` (exit 0), `DIFFERS` (exit 1), `VOID`
    - Appendix 2's FORTRAN column gives an effluent flow of 18055.2 against
      Matlab's 18061.33. The flow is Q0 - Qw, so the FORTRAN figures were
      averaged differently.
+   - Section 5.1 limits KLa5 to 0-10 1/h (240 1/d), but Appendix 5's
+     dry-weather KLa5 spans 242.2831 1/d, which a KLa5 held within 0-240
+     cannot do. bsm2-python's limit is 360 1/d (`KLA5_MAX`).
+   - Appendix 3 gives the nitrate controller's Tt as 1.015 d, where Appendix 5
+     gives 0.015 d. bsm2-python uses 0.015.
 
 ## What was run
 
 | implementation | source | how it reaches the answer |
 | --- | --- | --- |
 | QSDsan + EXPOsan | github.com/QSD-Group/QSDsan `main` `bac88d8fca9d86a01dbfc5694cd4c0fe23f9a259` (2026-10-12, version 1.6.0); github.com/QSD-Group/EXPOsan `main` `84d50344abc089a07bebd38786a833d4fd235cc4` (2026-10-22, 1.6.0; installed with `--no-deps`, since it pins qsdsan==1.5.3); biosteam 2.54.0, thermosteam 0.54.2, scipy 1.18.1, numpy 2.5.4, numba 0.68.1 | `exposan.bsm1` as shipped: ASM1, five CSTRs, `FlatBottomCircularClarifier`. Integrated in time with scipy's BDF. Steady state: 1000 days at rtol = atol = 1e-8 from EXPOsan's default initial state. Dynamic: 300 days at constant influent, then 14 days dry and 14 days of the weather at rtol = atol = 1e-6 (one case again at 1e-8); variants with linear influent and with the internal recycle held constant (`-fixqa`, see below) |
-| WaterTAP | github.com/watertap-org/watertap `main` `5909a60409d25944f73d5b9293abf3a6adf21def` (2026-10-01, version 1.9.0.dev0, after the 1.8.0 release); idaes-pse 2.13.0, pyomo 6.10.1, IPOPT 3.13.2 from idaes-ext 3.4.2 (ubuntu2204 build; checksums matched) | WaterTAP has no BSM1 flowsheet with BSM1's settler. `watertap/flowsheets/activated_sludge/ASM1_flowsheet.py` is BSM1's reactors and flows with a separator for the clarifier (WaterTAP's `Clarifier` is a separator too, with no layers), solved as one steady state by IPOPT (watertap-solvers defaults: tol and constr_viol_tol 1e-8). Its BSM2 flowsheets have a different plant (other volumes, a primary clarifier, a digester) and were not run. No dynamic case |
+| WaterTAP | github.com/watertap-org/watertap `main` `5909a60409d25944f73d5b9293abf3a6adf21def` (2026-10-01, version 1.9.0.dev0, after the 1.8.0 release); idaes-pse 2.13.0, pyomo 6.10.1, IPOPT 3.13.2 from idaes-ext 3.4.2 (ubuntu2204 build; checksums matched); IPOPT used HSL's MA27 linear solver. HSL, a collection of Fortran codes for large-scale scientific computation. See http://www.hsl.rl.ac.uk | WaterTAP has no BSM1 flowsheet with BSM1's settler. `watertap/flowsheets/activated_sludge/ASM1_flowsheet.py` is BSM1's reactors and flows with a separator for the clarifier (WaterTAP's `Clarifier` is a separator too, with no layers), solved as one steady state by IPOPT (watertap-solvers defaults: tol and constr_viol_tol 1e-8). Its BSM2 flowsheets have a different plant (other volumes, a primary clarifier, a digester) and were not run. No dynamic case |
 | bsm2-python | github.com/fau-evt/bsm2-python `main` `73caa8bde193c0dd8a8803dfcd67b546501c950e` (2025-07-20; newer than PyPI's 0.0.16); numba 0.68.1, scipy 1.18.1 | `BSM1OL`: each step integrates every unit separately with scipy's `odeint` (default tolerances) over a fixed step, with the inputs held from the previous step. Steady state: 15-minute steps (as upstream's own steady-state test) for 1000 days from its default initial state. Dynamic: 1-minute steps (upstream's recommendation), 150 days at constant influent, 14 days dry, 14 days of the weather; again at 30- and 15-second steps |
 
 Every source went to the host as a `git archive` tarball and was installed with pip
@@ -140,8 +164,11 @@ The scripts:
 - [run_qsdsan.py](run_qsdsan.py), [run_watertap.py](run_watertap.py) and
   [run_bsm2python.py](run_bsm2python.py) write steady states as `case, block, var,
   value` rows and dynamic runs as 15-minute series;
+- [run_bsm2python_cl.py](run_bsm2python_cl.py) does the same for bsm2-python's
+  closed loop, with the controllers' signals as extra columns;
 - [bsm1kpi.py](bsm1kpi.py) turns a series into the report's indices for days
-  7-14 of the weather;
+  7-14 of the weather, and [bsm1clkpi.py](bsm1clkpi.py) adds the closed loop's
+  (aeration from the logged KLa values, and the controllers' indices);
 - [bsm1cmp.py](bsm1cmp.py) compares with the report or between results;
 - [kpitable.py](kpitable.py) tabulates indices;
 - [controls.py](controls.py) runs the planted faults;
@@ -149,7 +176,8 @@ The scripts:
   and [setup-envs.sh](setup-envs.sh) built the environments.
 
 The steady states and performance indices are in [results/](results/). The
-15-minute series (about 2.5 MB each) were archived privately with the logs.
+15-minute series (about 2.5 MB each, 3 MB in closed loop) are not in the repo.
+The open-loop ones were archived privately with the logs.
 
 ## Results: steady state
 
@@ -382,9 +410,318 @@ not reported. The tables below come from `kpitable.py` over
   Qr) instead of a constant 55338. `run_qsdsan.py` `fixed_recycle` holds it
   constant. The runs measuring its effect did not finish.
 
+## Results: closed loop (bsm2-python)
+
+Appendix 5 gives the closed loop. One PI controller holds reactor 5's oxygen at
+2 g/m3 by moving KLa5, and another holds reactor 2's nitrate at 1 g N/m3 by
+moving the internal recycle (Qintr, the Qa above). Each reads its tank through a
+sensor model with noise. The protocol is the open loop's: 150 days at constant
+influent, 14 days of dry weather and 14 days of the weather file, with indices
+over days 7-14 from 15-minute samples. Of the three implementations, only
+bsm2-python has this closed loop (`BSM1CL`). EXPOsan's `exposan/bsm1/README.rst`
+offers only an idealized oxygen target and lists PI control as future work, and
+WaterTAP has no dynamic BSM1 (both at the commits above).
+
+This part comes from our review of bsm2-python's pull request #8, "Preserve PI
+integral and anti-windup state between controller steps", which fixes its issue
+#7. The review is posted:
+https://github.com/fau-evt/bsm2-python/pull/8#pullrequestreview-5698022419.
+
+**What was run.** `BSM1CL` from `main` (`73caa8bde193c0dd8a8803dfcd67b546501c950e`,
+as in the open loop) and from the pull request's head
+(`e929c48d747539594eb8f6f59a4c07ec97572396`), with
+[run_bsm2python_cl.py](run_bsm2python_cl.py) at 1-minute steps, in two
+configurations:
+- **The report's** (`report`, the class `ReportCL`), for dry, rain and storm.
+  It keeps BSM1CL's own sensor, PID and actuator classes, gains, limits and
+  order of operations, and changes three settings to the report's:
+  - KLa3 = KLa4 = 240 1/d;
+  - the nitrate sensor's range is 0-20 g N/m3;
+  - the noise comes from columns 1 (oxygen) and 2 (nitrate) of `sennoise.asc`,
+    restarted with each 14-day file and off during the 150 days.
+
+  The influent is interpolated linearly, with SI diluted for rain and storm, as
+  in the open loop's linear runs.
+- **As shipped** (`shipped`), dry weather only: BSM1CL unchanged, each influent
+  sample held.
+
+The runs were made on board5 (AMD Ryzen 5 PRO 5650U, x86-64, Ubuntu 24.04,
+Python 3.12.3; packages in [results/versions.txt](results/versions.txt))
+on 2026-10-29 between 11:12 and 12:22 UTC. One single-threaded process ran at a
+time, on at most 4 of the machine's 12 threads. A 178-day run (256,321 steps)
+took 324-423 s in the report's configuration and 782-1014 s as shipped
+([results/runs_bsm2python_cl.txt](results/runs_bsm2python_cl.txt) has each
+run's line).
+
+Those eight runs were made with the review's own driver, which
+run_bsm2python_cl.py replaces. The script reproduces them byte for byte:
+- two were rerun at full length, the report's configuration (dry, the pull
+  request; 486 s) and as shipped (dry, main; 769 s), side by side;
+- so were five runs at 15-minute steps: the three [below](#15-minute-steps),
+  and both branches as shipped (14-19 s each).
+
+Each new series was identical to the original. The indices are
+[bsm1clkpi.py](bsm1clkpi.py)'s, in [results/](results/) as
+`kpi_bsm2python_cl_<configuration>_<weather>_<branch>.csv` (`pr8` is the pull
+request). The tables come from `kpitable.py`.
+
+Against Appendix 5's printed digits almost nothing agrees, as in the open loop:
+2 to 6 of 82 rows (85 for storm). So each cell is the value and its relative
+difference from Appendix 5.
+
+**Dry weather**, in the report's configuration and as shipped.
+
+| index | report (Matlab) | main | PR #8 | shipped, main | shipped, PR #8 |
+| --- | --- | --- | --- | --- | --- |
+| SO5_IAE | 0.58831 | 5.52429 (+8.4e+00) | 0.5612 (-4.6e-02) | 5.49319 (+8.3e+00) | 0.542834 (-7.7e-02) |
+| SO5_ISE | 0.083975 | 6.00686 (+7.1e+01) | 0.0757918 (-9.7e-02) | 5.43309 (+6.4e+01) | 0.0712613 (-1.5e-01) |
+| SO5_err_max | 0.39631 | 1.89016 (+3.8e+00) | 0.361805 (-8.7e-02) | 1.80252 (+3.5e+00) | 0.392568 (-9.4e-03) |
+| SO5_err_std | 0.10953 | 0.917953 (+7.4e+00) | 0.104053 (-5.0e-02) | 0.873414 (+7.0e+00) | 0.100895 (-7.9e-02) |
+| KLa5_mean | 144.1219 | 139.852 (-3.0e-02) | 144.306 (+1.3e-03) | 147.604 (+2.4e-02) | 160.099 (+1.1e-01) |
+| KLa5_dstd | 9.5682 | 6.70863 (-3.0e-01) | 11.7854 (+2.3e-01) | 6.55955 (-3.1e-01) | 11.6626 (+2.2e-01) |
+| SNO2_IAE | 1.4348 | 3.81622 (+1.7e+00) | 1.50406 (+4.8e-02) | 3.93284 (+1.7e+00) | 1.43921 (+3.1e-03) |
+| SNO2_ISE | 0.56897 | 2.87715 (+4.1e+00) | 0.598415 (+5.2e-02) | 2.79991 (+3.9e+00) | 0.593032 (+4.2e-02) |
+| SNO2_err_max | 0.91782 | 1.3589 (+4.8e-01) | 0.92096 (+3.4e-03) | 1.20572 (+3.1e-01) | 0.88998 (-3.0e-02) |
+| SNO2_err_std | 0.28509 | 0.63704 (+1.2e+00) | 0.292268 (+2.5e-02) | 0.625335 (+1.2e+00) | 0.29106 (+2.1e-02) |
+| Qintr_mean | 18610.0822 | 17476.8 (-6.1e-02) | 18575.8 (-1.8e-03) | 19343.9 (+3.9e-02) | 22348.9 (+2.0e-01) |
+| Qintr_dstd | 4078.4756 | 4064.07 (-3.5e-03) | 4258.44 (+4.4e-02) | 2323.82 (-4.3e-01) | 2611.92 (-3.6e-01) |
+| EQ | 6123.0182 | 6214.06 (+1.5e-02) | 6150.61 (+4.5e-03) | 6535.61 (+6.7e-02) | 6358.26 (+3.8e-02) |
+| SNH_e | 2.5392 | 2.65303 (+4.5e-02) | 2.55268 (+5.3e-03) | 3.58425 (+4.1e-01) | 3.27556 (+2.9e-01) |
+| TN_e | 16.9245 | 17.0936 (+1.0e-02) | 16.9337 (+5.4e-04) | 16.8995 (-1.5e-03) | 16.5429 (-2.3e-02) |
+| TSS_e | 13.0038 | 13.0044 (+4.4e-05) | 13.0105 (+5.2e-04) | 13.0301 (+2.0e-03) | 13.0384 (+2.7e-03) |
+| SP_disposal | 2440.6057 | 2441.28 (+2.8e-04) | 2446.64 (+2.5e-03) | 2440.32 (-1.2e-04) | 2447.44 (+2.8e-03) |
+| AE | 3698.3438 | 3672.28 (-7.0e-03) | 3698.67 (+8.7e-05) | 3259.67 (-1.2e-01) | 3333.69 (-9.9e-02) |
+| PE | 241.0305 | 236.725 (-1.8e-02) | 241.121 (+3.8e-04) | 244.194 (+1.3e-02) | 256.213 (+6.3e-02) |
+| OCI | 16382.4027 | 16355.4 (-1.6e-03) | 16413 (+1.9e-03) | 15945.4 (-2.7e-02) | 16067.1 (-1.9e-02) |
+| SNH_e95 | 7.3902 | 7.25785 (-1.8e-02) | 7.38143 (-1.2e-03) | 8.34749 (+1.3e-01) | 8.32771 (+1.3e-01) |
+| TN_e95 | 20.2693 | 20.4619 (+9.5e-03) | 20.256 (-6.6e-04) | 20.2636 (-2.8e-04) | 19.9216 (-1.7e-02) |
+| SNH_viol_days | 1.1979 | 1.38542 (+1.6e-01) | 1.20833 (+8.7e-03) | 2.91667 (+1.4e+00) | 2.07292 (+7.3e-01) |
+| TN_viol_days | 1.2813 | 1.33333 (+4.1e-02) | 1.26042 (-1.6e-02) | 1.10417 (-1.4e-01) | 0.96875 (-2.4e-01) |
+
+**Rain**, in the report's configuration.
+
+| index | report (Matlab) | main | PR #8 |
+| --- | --- | --- | --- |
+| SO5_IAE | 0.55672 | 4.73702 (+7.5e+00) | 0.531321 (-4.6e-02) |
+| SO5_ISE | 0.074733 | 4.92277 (+6.5e+01) | 0.0676463 (-9.5e-02) |
+| SO5_err_max | 0.38505 | 1.89016 (+3.9e+00) | 0.357173 (-7.2e-02) |
+| SO5_err_std | 0.10332 | 0.82759 (+7.0e+00) | 0.0983014 (-4.9e-02) |
+| KLa5_mean | 139.5768 | 139.482 (-6.8e-04) | 139.717 (+1.0e-03) |
+| KLa5_dstd | 9.2235 | 6.51566 (-2.9e-01) | 11.1153 (+2.1e-01) |
+| SNO2_IAE | 1.7349 | 4.2307 (+1.4e+00) | 1.79819 (+3.6e-02) |
+| SNO2_ISE | 0.79436 | 3.4239 (+3.3e+00) | 0.827644 (+4.2e-02) |
+| SNO2_err_max | 0.92134 | 1.38749 (+5.1e-01) | 0.926389 (+5.5e-03) |
+| SNO2_err_std | 0.33686 | 0.688616 (+1.0e+00) | 0.343853 (+2.1e-02) |
+| Qintr_mean | 29608.9372 | 19189.5 (-3.5e-01) | 29584.5 (-8.2e-04) |
+| Qintr_dstd | 4110.5486 | 3836.12 (-6.7e-02) | 4309.51 (+4.8e-02) |
+| EQ | 8184.7263 | 8405.36 (+2.7e-02) | 8222.68 (+4.6e-03) |
+| SNH_e | 3.226 | 3.294 (+2.1e-02) | 3.25779 (+9.9e-03) |
+| TN_e | 14.7465 | 15.42 (+4.6e-02) | 14.7718 (+1.7e-03) |
+| TSS_e | 16.1768 | 16.1566 (-1.2e-03) | 16.1674 (-5.8e-04) |
+| SP_disposal | 2357.5863 | 2356.73 (-3.6e-04) | 2367.66 (+4.3e-03) |
+| AE | 3671.3519 | 3670.09 (-3.4e-04) | 3671.48 (+3.4e-05) |
+| PE | 285.264 | 243.576 (-1.5e-01) | 285.156 (-3.8e-04) |
+| OCI | 15984.5473 | 15937.3 (-3.0e-03) | 16034.9 (+3.2e-03) |
+| SNH_e95 | 8.0395 | 7.91748 (-1.5e-02) | 8.07162 (+4.0e-03) |
+| TN_e95 | 19.1429 | 19.601 (+2.4e-02) | 19.1684 (+1.3e-03) |
+| SNH_viol_days | 1.8958 | 2.02083 (+6.6e-02) | 1.91667 (+1.1e-02) |
+| TN_viol_days | 0.77083 | 1.14583 (+4.9e-01) | 0.78125 (+1.4e-02) |
+
+**Storm**, in the report's configuration.
+
+| index | report (Matlab) | main | PR #8 |
+| --- | --- | --- | --- |
+| SO5_IAE | 0.56598 | 5.25856 (+8.3e+00) | 0.541671 (-4.3e-02) |
+| SO5_ISE | 0.078876 | 5.44305 (+6.8e+01) | 0.0716272 (-9.2e-02) |
+| SO5_err_max | 0.37924 | 1.89016 (+4.0e+00) | 0.358189 (-5.6e-02) |
+| SO5_err_std | 0.10615 | 0.880275 (+7.3e+00) | 0.101153 (-4.7e-02) |
+| KLa5_mean | 147.9338 | 142.296 (-3.8e-02) | 148.096 (+1.1e-03) |
+| KLa5_dstd | 9.3809 | 6.59016 (-3.0e-01) | 11.5873 (+2.4e-01) |
+| SNO2_IAE | 1.6785 | 3.99748 (+1.4e+00) | 1.73403 (+3.3e-02) |
+| SNO2_ISE | 0.78797 | 3.01996 (+2.8e+00) | 0.81081 (+2.9e-02) |
+| SNO2_err_max | 1.2014 | 1.33948 (+1.1e-01) | 1.18149 (-1.7e-02) |
+| SNO2_err_std | 0.33547 | 0.651953 (+9.4e-01) | 0.340327 (+1.4e-02) |
+| Qintr_mean | 24623.036 | 18880.1 (-2.3e-01) | 24544.9 (-3.2e-03) |
+| Qintr_dstd | 4141.7466 | 3908.32 (-5.6e-02) | 4330.23 (+4.6e-02) |
+| EQ | 7220.7241 | 7407.53 (+2.6e-02) | 7260.99 (+5.6e-03) |
+| SNH_e | 3.0622 | 3.22529 (+5.3e-02) | 3.09025 (+9.2e-03) |
+| TN_e | 15.8676 | 16.3437 (+3.0e-02) | 15.8832 (+9.8e-04) |
+| TSS_e | 15.2737 | 15.2728 (-5.8e-05) | 15.2666 (-4.7e-04) |
+| SP_disposal | 2605.4902 | 2596.47 (-3.5e-03) | 2614 (+3.3e-03) |
+| AE | 3720.9173 | 3686.76 (-9.2e-03) | 3721.12 (+5.4e-05) |
+| PE | 265.1984 | 242.338 (-8.6e-02) | 264.998 (-7.6e-04) |
+| OCI | 17253.5665 | 17151.4 (-5.9e-03) | 17296.1 (+2.5e-03) |
+| SNH_e95 | 7.8033 | 7.73958 (-8.2e-03) | 7.86416 (+7.8e-03) |
+| TN_e95 | 20.1257 | 20.6124 (+2.4e-02) | 20.1494 (+1.2e-03) |
+| SNH_viol_days | 1.8854 | 2.07292 (+9.9e-02) | 1.88542 (+8.8e-06) |
+| TN_viol_days | 1.0938 | 1.32292 (+2.1e-01) | 1.125 (+2.9e-02) |
+
+### What the tables show
+
+- **On main the controllers are proportional only.** `PID.output` sets the
+  integral to one step's increment instead of adding it
+  (`bsm2/aerationcontrol.py:124`), so nothing accumulates. In the report's
+  configuration:
+  - the oxygen ISE is 72, 66 and 69 times the report's (dry, rain, storm), and
+    the oxygen sits 0.05 to 0.14 g/m3 above its setpoint on average
+    (`SO5_err_mean`);
+  - the nitrate IAE is 2.7, 2.4 and 2.4 times the report's;
+  - the recycle doesn't follow wet weather. Mean Qintr is 19190 and 18880 m3/d
+    against the report's 29609 and 24623 for rain and storm, so PE is 15% and
+    8.6% low;
+  - EQ is 1.5%, 2.7% and 2.6% high.
+- **With the pull request**, the error indices of both loops (mean absolute
+  error, IAE, ISE, largest error, std and variance) are within 10% of Appendix 5
+  in all three weathers. The farthest are the oxygen ISE and variance, at -9.2%
+  to -9.7%. The mean errors are below 0.01 g/m3 in both, so their ratios mean
+  little. Mean KLa5 and mean Qintr are within 0.32%.
+  - EQ is +0.45%, +0.46% and +0.56%. AE and PE are within 0.08%, and OCI within
+    0.32%.
+  - The dry-weather EQ, +0.45%, is close to the open loop's +0.44% at the same
+    1-minute step, which converges to the report as the step shrinks (above).
+    The closed loop was not run at shorter steps, so that reading is likely but
+    not shown.
+  - Two things stay apart. The oxygen loop's errors are 4% to 10% smaller than
+    the report's. And KLa5 changes 21% to 24% more from sample to sample (the
+    std of its changes; Qintr's is 4.4% to 4.8% higher). Candidates, none
+    isolated:
+    - the 1-minute step;
+    - bsm2-python's first-order filter on Qintr (time constant 0.001 d,
+      `QINTRT`), where Appendix 5 names an actuator model only for KLa5;
+    - the sensor models during stabilization, where the report's 150 days use
+      ideal sensors.
+
+### BSM1CL as shipped
+
+Three of BSM1CL's settings differ from the report's closed loop, on main and on
+the pull request alike:
+- **KLa3 and KLa4 are 201.30 1/d** (`bsm1_cl.py:166-167`, `KLA3_INIT` and
+  `KLA4_INIT` in `bsm2/init/aerationcontrolinit_bsm1.py`), where the report has
+  240.
+- **Both sensors read one noise column** (`bsm1_cl.py:201,208`). It is the
+  package's `data/sensornoise.csv`, which is column 1 of `sennoise.asc` repeated
+  every 14 days, looked up at the simulation time (`bsm1_cl.py:198`). The report
+  uses columns 1 and 2, restarted with each file.
+- **The nitrate sensor's range is 0-10 g N/m3** (`aerationcontrolinit_bsm1.py:42`),
+  where section 5.1 and Table 14 have 0-20. The noise scales with the range, so
+  it is 0.25 g N/m3 instead of 0.5.
+
+It also holds each influent sample, as BSM1OL does.
+
+With the pull request the loops still come close to the report's indices
+(oxygen IAE -7.7%, nitrate IAE +0.3%), but the plant doesn't:
+- effluent ammonia is 3.28 against 2.54 g N/m3 (+29%), and the ammonia limit is
+  exceeded for 2.07 days against 1.20;
+- AE is 9.9% low. That gap is the arithmetic of KLa3 and KLa4: 2 × 1333 m3 ×
+  (240 - 201.30) 1/d × 8/1800 is 459 kWh/d less. KLa5 runs higher (mean 160.1
+  against 144.3 in the report's configuration), which gives 94 kWh/d back;
+- mean Qintr is 22349 m3/d (+20%).
+
+The higher ammonia fits the weaker aeration in reactors 3 and 4. But the three
+settings were not changed one at a time, so that part is not shown.
+
+The shipped runs took about twice as long. BSM1CL searches its 876,961-row
+noise table with `np.where` at every step (`bsm1_cl.py:198`). That is the likely
+reason; it was not profiled.
+
+### Two findings about the report
+
+1. **Its error indices leave out the sensor noise.** Section 5.2 defines the
+   error as e = Z_setpoint - Z_meas, the measured value, which is what the
+   controllers act on.
+   - With the pull request, the indices from the logged sensor signal are 1.9
+     to 6.4 times the report's. From the true concentration in the tank, they
+     are within 10% (the tables above). Dry weather, the report's configuration:
+
+     | index | report (Matlab) | main | PR #8 |
+     | --- | --- | --- | --- |
+     | SO5_IAE, sensor signal | 0.58831 | 5.65804 (+8.6e+00) | 1.5686 (+1.7e+00) |
+     | SO5_ISE, sensor signal | 0.083975 | 6.57729 (+7.7e+01) | 0.537257 (+5.4e+00) |
+     | SO5_err_max, sensor signal | 0.39631 | 2.30665 (+4.8e+00) | 0.862671 (+1.2e+00) |
+     | SO5_err_std, sensor signal | 0.10953 | 0.960773 (+7.8e+00) | 0.277 (+1.5e+00) |
+     | SNO2_IAE, sensor signal | 1.4348 | 4.48752 (+2.1e+00) | 3.21326 (+1.2e+00) |
+     | SNO2_ISE, sensor signal | 0.56897 | 4.41795 (+6.8e+00) | 2.27677 (+3.0e+00) |
+     | SNO2_err_max, sensor signal | 0.91782 | 2.37698 (+1.6e+00) | 1.71123 (+8.6e-01) |
+     | SNO2_err_std, sensor signal | 0.28509 | 0.787612 (+1.8e+00) | 0.569557 (+1.0e+00) |
+     | KLa5: std of u, not of du | 9.5682 | 30.8976 (+2.2e+00) | 60.6044 (+5.3e+00) |
+     | Qintr: std of u, not of du | 4078.4756 | 6814.31 (+6.7e-01) | 10590.9 (+1.6e+00) |
+
+   - Rain and storm are the same (`SO5_meas_*` and `SNO2_meas_*` in the results
+     files). With the pull request, the oxygen ISE from the signal is 0.528 and
+     0.533, against the report's 0.0747 and 0.0789.
+   - Our runs log only the true concentration and the noisy signal. A rough
+     rebuild of a noise-free but delayed sensor reading (the signal less the
+     known noise) lands about as close to the report as the true concentration
+     does. So which of the two the report's code used is open; leaving out the
+     noise is what matters. bsm1clkpi.py uses the true concentration.
+2. **Its "standard deviation of MV" is the std of the changes.** Appendix 5
+   labels the figure std(Qintr) and std(KLa5). But section 5.2 defines the index
+   as the variance of the manipulated variable's variations, Δu = u(t + dt) -
+   u(t).
+   - The numbers agree with section 5.2. In the table above, the std of u itself
+     is 1.7 to 6.3 times the report's. With the pull request, the std of Δu is
+     +4.4% (Qintr) and +23% (KLa5).
+   - reference.csv names these rows `Qintr_dstd`, `Qintr_dvar`, `KLa5_dstd` and
+     `KLa5_dvar`.
+
+The variances are also the population form. Each printed variance of an error
+equals ISE/7 - mean(e)² to its printed digits, in all six loops. For dry
+nitrate, that is 0.0812769 against the printed 0.081276; the n - 1 form gives
+0.081398. bsm1clkpi.py uses the population form for errors and changes alike,
+and a control holds it to that.
+
+### 15-minute steps
+
+BSM1CL warns that steps longer than a minute will "most probably fail". These
+runs used the report's configuration and dry weather at 15-minute steps, with 1
+day of stabilization instead of 150 to keep them short:
+- **The pull request's head gives NaN.** The oxygen controller's integral
+  overflows to -inf at t = 2.26 d, 3.26 days into the run, and KLa5 is NaN from
+  the next sample, t = 2.27 d
+  ([results/kpi_bsm2python_cl_report_dry_pr8_step15.txt](results/kpi_bsm2python_cl_report_dry_pr8_step15.txt)).
+  - The tracking term adds (u - v)·dt/Tt to the integral at each step,
+    explicitly. The oxygen loop's Tt is 0.001 d (1.44 min), so at 15 minutes
+    dt/Tt is 10.4.
+  - So each step overshoots the limit 9.4 times as far as the last, the other
+    way, and the integral grows without bound.
+  - This update is stable only for dt < 2·Tt: 2.88 minutes for the oxygen loop
+    and 43.2 for the nitrate loop (Tt 0.015 d).
+- **main stays finite**, because its integral starts again each step. But the
+  loop chatters between its limits: over days 21-28 KLa5 spans 359.995 of its
+  0-360 1/d, and the oxygen IAE is 14.9 against the report's 0.588.
+- **The guard our review suggested** keeps the integral bounded at any step. It
+  changes nothing while dt ≤ Tt (at 1-minute steps dt/Tt is 0.69 for the oxygen
+  loop). It replaces line 128 of `bsm2/aerationcontrol.py` at the pull request's
+  head:
+
+  ```diff
+  -            self.aw = (self.prev_lim - self.prev_signal) / self.t_t * (dt_arr[1] - dt_arr[0])
+  +            self.aw = (self.prev_lim - self.prev_signal) * min((dt_arr[1] - dt_arr[0]) / self.t_t, 1.0)
+  ```
+
+  With it the same run stays finite, but chatters like main's: KLa5 spans
+  359.998 and the oxygen IAE is 14.2. Fifteen-minute steps are too coarse for
+  these loops either way, and the guard only removes the NaN.
+
+The two finite runs' indices are
+[results/kpi_bsm2python_cl_report_dry_main_step15.csv](results/kpi_bsm2python_cl_report_dry_main_step15.csv)
+and
+[results/kpi_bsm2python_cl_report_dry_pr8guard_step15.csv](results/kpi_bsm2python_cl_report_dry_pr8guard_step15.csv).
+
+### What the closed loop does not show
+
+- **Steps under a minute.** None were run, so how much of what remains with the
+  pull request is step error is not known.
+- **The shipped settings one at a time**, and rain and storm as shipped.
+- **15-minute steps after 150 days** of stabilization: only 1 day was run.
+- **Appendix 5's closed-loop steady state** (pp. 49-52).
+- **bsm2-python's other controlled plants** (BSM1PS, BSM2CL), and the pull
+  request's own tests. The review covers them; they are not part of this check.
+
 ## Candidates for upstream
 
-Nothing has been posted. Each of these would need its text agreed first.
+Only our review of bsm2-python's pull request #8 has been posted (see the
+closed loop). Each of these would need its text agreed first.
 
 - **WaterTAP** (an issue, then a small PR):
   - `ASM1_flowsheet.py` holds reactor 5's oxygen at 4.49e-4 kg/m3 as
@@ -422,7 +759,13 @@ Nothing has been posted. Each of these would need its text agreed first.
   - Separately, influent is held constant between samples, while Simulink
     interpolates. Over days 7-14 that moves EQ by 0.2% and effluent ammonia by
     0.4% (dry weather).
-  - The only open issue (#7) is about the PID controller.
+  - The only open issue (#7) is the PID bug that pull request #8 fixes; our
+    review of that pull request is posted.
+  - `BSM1CL` differs from the report's closed loop in three settings: KLa3 and
+    KLa4 at 201.30, one noise column for both sensors, and a nitrate sensor
+    range of 0-10 (see the closed loop). The review offered to open an issue
+    for them.
+  - The 15-minute guard was suggested in the review, as not blocking.
 - **The IWA task group** (no public tracker; a note to the BSM authors):
   - the hosted rain and storm files keep SI at 30 where the published results
     need it diluted;
@@ -435,7 +778,8 @@ Nothing has been posted. Each of these would need its text agreed first.
 ```sh
 # the reference: the report's text and the IWA influent files, each in its own empty directory
 curl -sSLO https://www2.iea.lth.se/publications/Reports/LTH-IEA-7229.pdf && pdftotext -layout LTH-IEA-7229.pdf bsm1.txt
-for f in Inf_dry_2006.txt Inf_rain_2006.txt Inf_strm_2006.txt; do curl -sSLO http://iwa-mia.org/wp-content/uploads/2019/04/$f; done
+for f in Inf_dry_2006.txt Inf_rain_2006.txt Inf_strm_2006.txt sennoise.zip; do curl -sSLO http://iwa-mia.org/wp-content/uploads/2019/04/$f; done
+unzip sennoise.zip                                # sennoise.asc, for the closed loop
 python3 -I checks/bsm1/refextract.py bsm1.txt checks/bsm1/reference.csv     # IDENTICAL
 
 # on a host: sources as git archive tarballs under src/, influent files under inputs/
@@ -450,6 +794,13 @@ env/qsd/bin/python -I run_qsdsan.py dyn inputs storm linear-fixqa diluted result
 env/wt/bin/python -I run_watertap.py results/ss_watertap.csv
 python3 -I bsm1kpi.py results/dyn_bsm2python_linear_dry.csv dry 21 results/kpi_bsm2python_linear_dry.csv
 
+# closed loop: env/bsm2 has main installed; --src imports a checkout instead, here the pull
+# request's head (git fetch https://github.com/fau-evt/bsm2-python pull/8/head); inputs/ also holds sennoise.asc
+env/bsm2/bin/python -I run_bsm2python_cl.py report inputs dry results/dyn_bsm2python_cl_report_dry_pr8.csv - --src bsm2-python-pr8/src
+env/bsm2/bin/python -I run_bsm2python_cl.py shipped inputs dry results/dyn_bsm2python_cl_shipped_dry_main.csv -
+env/bsm2/bin/python -I run_bsm2python_cl.py report inputs dry results/dyn_bsm2python_cl_report_dry_main_step15.csv - 15 1
+python3 -I bsm1clkpi.py results/dyn_bsm2python_cl_report_dry_pr8.csv cl_dry 21 results/kpi_bsm2python_cl_report_dry_pr8.csv
+
 # comparisons (standard library only)
 python3 -I bsm1cmp.py ref reference.csv results/ss_bsm2python.csv                 # Appendix 4
 python3 -I bsm1cmp.py ref reference.csv results/ss_bsm2python.csv --source t      # Tables 6-8
@@ -458,6 +809,9 @@ python3 -I bsm1cmp.py ref reference.csv results/kpi_bsm2python_linear_dry.csv --
 python3 -I bsm1cmp.py pair results/ss_bsm2python.csv results/ss_qsdsan_bsm1coef.csv --rtol 1e-7
 python3 -I bsm1cmp.py pair simulink200.csv results/ss_bsm2python.csv --common
 python3 -I kpitable.py dry linear=results/kpi_bsm2python_linear_dry.csv
+python3 -I bsm1cmp.py ref reference.csv results/kpi_bsm2python_cl_report_dry_pr8.csv --case cl_dry --source app5
+python3 -I kpitable.py cl_dry main=results/kpi_bsm2python_cl_report_dry_main.csv "PR #8=results/kpi_bsm2python_cl_report_dry_pr8.csv"
+python3 -I kpitable.py cl_dry --alt "PR #8=results/kpi_bsm2python_cl_report_dry_pr8.csv"   # sensor signal, std of u
 python3 -I controls.py results/ss_bsm2python.csv Inf_dry_2006.txt bsm1.txt         # the planted faults
 ```
 
@@ -465,7 +819,7 @@ python3 -I controls.py results/ss_bsm2python.csv Inf_dry_2006.txt bsm1.txt      
 
 [controls.py](controls.py) plants one fault per check and passes only if the
 clean run gives its expected verdict and the planted run is caught, naming the
-row where the check names rows. All 6 were caught (IDENTICAL):
+row where the check names rows. All 9 were caught (IDENTICAL):
 
 - `bsm1cmp.py ref` with the report's own Appendix 4 values as a result:
   - clean, IDENTICAL;
@@ -482,7 +836,21 @@ row where the check names rows. All 6 were caught (IDENTICAL):
   - with one SNH sample raised by 1 g/m3, DIFFERS.
 - `refextract.py`:
   - reference.csv rebuilt from the report, IDENTICAL;
-  - with the last digit of rain EQ changed, DIFFERS.
+  - with the last digit of rain EQ changed, DIFFERS;
+  - with the last digit of the closed loop's dry-weather oxygen ISE changed,
+    DIFFERS.
+- `bsm1cmp.py ref` for the closed loop, with Appendix 5's own dry-weather
+  rows as a result:
+  - clean, IDENTICAL;
+  - with the oxygen IAE raised one printed unit, DIFFERS, naming that row.
+- `bsm1clkpi.py` on a series whose indices were worked out by hand: the oxygen
+  alternating 2 ∓ 0.1 and the nitrate 1 ∓ 0.2, KLa5 and Qintr as ramps, KLa3 and
+  KLa4 at 240.
+  - The answers are IAE 0.7, ISE 0.07 and std 0.1 for oxygen (and 1.4, 0.28,
+    0.2 for nitrate), a std of the changes of 0 for both ramps, and AE
+    3933.0905556. All are IDENTICAL. The n - 1 std would give 0.1000745, and
+    a copy of bsm1clkpi.py changed to n - 1 fails this control.
+  - With one oxygen sample moved by 0.5, DIFFERS, naming the IAE.
 
 Two more checks against answers the code did not make:
 - IQ for rain and storm, with diluted SI, gives the report's figures to the
@@ -495,11 +863,13 @@ Two more checks against answers the code did not make:
 - **The 2008 Simulink model itself.** It is not public, so how it interpolated
   the influent, its solver and its tolerances, and where its 100 days started,
   are inferred, not read.
-- **Closed loop.** The report's PI controllers, sensors and noise were not run.
+- **Closed loop outside bsm2-python.** QSDsan and WaterTAP were not run in
+  closed loop. For bsm2-python's, see
+  [what the closed loop does not show](#what-the-closed-loop-does-not-show).
 - **WaterTAP's dynamics.** It has no dynamic BSM1 and no layered settler.
   Its BSM2 flowsheets were not compared.
-- **bsm2-python's BSM2.** Its BSM2 and closed-loop BSM1 were not run, and
-  neither was QSDsan's ASM2d or PFR variant of `exposan.bsm1`.
+- **bsm2-python's BSM2.** Its BSM2 was not run, and neither was QSDsan's
+  ASM2d or PFR variant of `exposan.bsm1`.
 - **A QSDsan restart oddity, not explained.** Splitting a QSDsan steady-state
   run into legs, calling `System.simulate` again without resetting the state,
   gave states 1% away from a single run after 2 days. The runs here are single

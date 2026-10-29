@@ -39,8 +39,11 @@ pilot.
      - bsm2-python's rain file doesn't load.
    - The reference has faults of its own: the hosted rain and storm files keep SI
      undiluted, and Appendix 4's steady state isn't quite steady.
-   - Dynamic runs are done for bsm2-python and one QSDsan case. Nothing drafted or
-     posted yet.
+   - Dynamic runs are done for bsm2-python and one QSDsan case.
+   - **Closed loop (bsm2-python):** its PI controller didn't integrate. With the fix in
+     PR #8, every controller index comes within 10% of the report and EQ within 0.6%.
+     Our review there is posted (2026-10-29).
+   - Issues for the other projects aren't drafted or posted yet.
 3. **Small contributions to learn each community:** a fix in the
    [pyswmm ecosystem](#u2), a review of the errata in [mWater's new sanitation asset
    standard](#u4), and [PHES-ODM's licence conflict](#u5).

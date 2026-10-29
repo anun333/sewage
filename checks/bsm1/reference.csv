@@ -444,3 +444,252 @@ dry,perf,AE,3341,kWh/d,app2-p34
 dry,perf,PE,388.2,kWh/d,app2-p34
 dry,perf,ME,240,kWh/d,app2-p34
 dry,perf,OCI,16150,-,app2-p34
+cl_dry,perf,Qe,18057.8774,m3/d,app5-p53
+cl_dry,perf,SI_e,30,g COD/m3,app5-p53
+cl_dry,perf,SS_e,0.88177,g COD/m3,app5-p53
+cl_dry,perf,XI_e,4.5728,g COD/m3,app5-p53
+cl_dry,perf,XS_e,0.20084,g COD/m3,app5-p53
+cl_dry,perf,XBH_e,10.2314,g COD/m3,app5-p53
+cl_dry,perf,XBA_e,0.57803,g COD/m3,app5-p53
+cl_dry,perf,XP_e,1.7553,g COD/m3,app5-p53
+cl_dry,perf,SO_e,1.9881,g O2/m3,app5-p53
+cl_dry,perf,SNO_e,12.4199,g N/m3,app5-p53
+cl_dry,perf,SNH_e,2.5392,g N/m3,app5-p53
+cl_dry,perf,SND_e,0.70651,g N/m3,app5-p53
+cl_dry,perf,XND_e,0.01442,g N/m3,app5-p53
+cl_dry,perf,SALK_e,4.0409,mol/m3,app5-p53
+cl_dry,perf,TSS_e,13.0038,g SS/m3,app5-p53
+cl_dry,perf,TKN_e,4.5046,g N/m3,app5-p53
+cl_dry,perf,TN_e,16.9245,g N/m3,app5-p53
+cl_dry,perf,COD_e,48.2201,g COD/m3,app5-p53
+cl_dry,perf,BOD5_e,2.7568,g/m3,app5-p53
+cl_dry,perf,SI_load,541.7363,kg/d (kmol/d for SALK),app5-p53
+cl_dry,perf,SS_load,15.923,kg/d (kmol/d for SALK),app5-p53
+cl_dry,perf,XI_load,82.5745,kg/d (kmol/d for SALK),app5-p53
+cl_dry,perf,XS_load,3.6267,kg/d (kmol/d for SALK),app5-p53
+cl_dry,perf,XBH_load,184.7574,kg/d (kmol/d for SALK),app5-p53
+cl_dry,perf,XBA_load,10.438,kg/d (kmol/d for SALK),app5-p53
+cl_dry,perf,XP_load,31.6976,kg/d (kmol/d for SALK),app5-p54
+cl_dry,perf,SO_load,35.9017,kg/d (kmol/d for SALK),app5-p54
+cl_dry,perf,SNO_load,224.2771,kg/d (kmol/d for SALK),app5-p54
+cl_dry,perf,SNH_load,45.8525,kg/d (kmol/d for SALK),app5-p54
+cl_dry,perf,SND_load,12.7581,kg/d (kmol/d for SALK),app5-p54
+cl_dry,perf,XND_load,0.26039,kg/d (kmol/d for SALK),app5-p54
+cl_dry,perf,SALK_load,72.9708,kg/d (kmol/d for SALK),app5-p54
+cl_dry,perf,TSS_load,234.8206,kg/d (kmol/d for SALK),app5-p54
+cl_dry,perf,TKN_load,81.3429,kg N/d,app5-p54
+cl_dry,perf,TN_load,305.6201,kg N/d,app5-p54
+cl_dry,perf,COD_load,870.7534,kg COD/d,app5-p54
+cl_dry,perf,BOD5_load,49.7823,kg/d,app5-p54
+cl_dry,perf,IQ,52081.3952,kg PU/d,app5-p54
+cl_dry,perf,EQ,6123.0182,kg PU/d,app5-p54
+cl_dry,perf,SP_disposal_total,17084.2397,kg SS,app5-p54
+cl_dry,perf,SP_disposal,2440.6057,kg SS/d,app5-p54
+cl_dry,perf,SP_effluent_total,1643.7439,kg SS,app5-p54
+cl_dry,perf,SP_effluent,234.8206,kg SS/d,app5-p54
+cl_dry,perf,SP_total_total,18727.9836,kg SS,app5-p54
+cl_dry,perf,SP_total,2675.4262,kg SS/d,app5-p54
+cl_dry,perf,AE,3698.3438,kWh/d,app5-p54
+cl_dry,perf,PE,241.0305,kWh/d,app5-p54
+cl_dry,perf,ME,240,kWh/d,app5-p54
+cl_dry,perf,OCI,16382.4027,-,app5-p54
+cl_dry,perf,SNH_e95,7.3902,g N/m3,app5-p54
+cl_dry,perf,TN_e95,20.2693,g N/m3,app5-p54
+cl_dry,perf,TSS_e95,15.7663,g SS/m3,app5-p54
+cl_dry,perf,TN_viol_days,1.2813,d,app5-p54
+cl_dry,perf,TN_viol_pct,18.3036,%,app5-p54
+cl_dry,perf,TN_viol_count,7,-,app5-p54
+cl_dry,perf,SNH_viol_days,1.1979,d,app5-p54
+cl_dry,perf,SNH_viol_pct,17.1131,%,app5-p54
+cl_dry,perf,SNH_viol_count,5,-,app5-p54
+cl_dry,ctrl,SNO2_err_mean,-0.0021211,g N/m3,app5-p55
+cl_dry,ctrl,SNO2_err_absmean,0.20497,g N/m3,app5-p55
+cl_dry,ctrl,SNO2_IAE,1.4348,(g N/m3)*d,app5-p55
+cl_dry,ctrl,SNO2_ISE,0.56897,(g N/m3)^2*d,app5-p55
+cl_dry,ctrl,SNO2_err_max,0.91782,g N/m3,app5-p55
+cl_dry,ctrl,SNO2_err_std,0.28509,g N/m3,app5-p55
+cl_dry,ctrl,SNO2_err_var,0.081276,(g N/m3)^2,app5-p55
+cl_dry,ctrl,Qintr_range,45734.3965,m3/d,app5-p55
+cl_dry,ctrl,Qintr_maxdelta,18918.9397,m3/d,app5-p55
+cl_dry,ctrl,Qintr_mean,18610.0822,m3/d,app5-p55
+cl_dry,ctrl,Qintr_dstd,4078.4756,m3/d,app5-p55
+cl_dry,ctrl,Qintr_dvar,16633963.2296,(m3/d)^2,app5-p55
+cl_dry,ctrl,SO5_err_mean,-0.00039763,g (-COD)/m3,app5-p55
+cl_dry,ctrl,SO5_err_absmean,0.084044,g (-COD)/m3,app5-p55
+cl_dry,ctrl,SO5_IAE,0.58831,(g (-COD)/m3)*d,app5-p55
+cl_dry,ctrl,SO5_ISE,0.083975,(g (-COD)/m3)^2*d,app5-p55
+cl_dry,ctrl,SO5_err_max,0.39631,g (-COD)/m3,app5-p55
+cl_dry,ctrl,SO5_err_std,0.10953,g (-COD)/m3,app5-p55
+cl_dry,ctrl,SO5_err_var,0.011996,(g (-COD)/m3)^2,app5-p55
+cl_dry,ctrl,KLa5_range,242.2831,1/d,app5-p55
+cl_dry,ctrl,KLa5_maxdelta,47.8828,1/d,app5-p55
+cl_dry,ctrl,KLa5_mean,144.1219,1/d,app5-p55
+cl_dry,ctrl,KLa5_dstd,9.5682,1/d,app5-p55
+cl_dry,ctrl,KLa5_dvar,91.5507,(1/d)^2,app5-p55
+cl_rain,perf,Qe,23806.8789,m3/d,app5-p56
+cl_rain,perf,SI_e,22.8353,g COD/m3,app5-p56
+cl_rain,perf,SS_e,1.0294,g COD/m3,app5-p56
+cl_rain,perf,XI_e,5.6285,g COD/m3,app5-p56
+cl_rain,perf,XS_e,0.31107,g COD/m3,app5-p56
+cl_rain,perf,XBH_e,12.8824,g COD/m3,app5-p56
+cl_rain,perf,XBA_e,0.68536,g COD/m3,app5-p56
+cl_rain,perf,XP_e,2.0617,g COD/m3,app5-p56
+cl_rain,perf,SO_e,1.9918,g O2/m3,app5-p56
+cl_rain,perf,SNO_e,9.1649,g N/m3,app5-p56
+cl_rain,perf,SNH_e,3.226,g N/m3,app5-p56
+cl_rain,perf,SND_e,0.78728,g N/m3,app5-p56
+cl_rain,perf,XND_e,0.021515,g N/m3,app5-p56
+cl_rain,perf,SALK_e,4.8606,mol/m3,app5-p56
+cl_rain,perf,TSS_e,16.1768,g SS/m3,app5-p56
+cl_rain,perf,TKN_e,5.5816,g N/m3,app5-p56
+cl_rain,perf,TN_e,14.7465,g N/m3,app5-p56
+cl_rain,perf,COD_e,45.4337,g COD/m3,app5-p56
+cl_rain,perf,BOD5_e,3.4557,g/m3,app5-p56
+cl_rain,perf,SI_load,543.6382,kg/d (kmol/d for SALK),app5-p56
+cl_rain,perf,SS_load,24.5064,kg/d (kmol/d for SALK),app5-p56
+cl_rain,perf,XI_load,133.9972,kg/d (kmol/d for SALK),app5-p56
+cl_rain,perf,XS_load,7.4056,kg/d (kmol/d for SALK),app5-p56
+cl_rain,perf,XBH_load,306.6892,kg/d (kmol/d for SALK),app5-p56
+cl_rain,perf,XBA_load,16.3163,kg/d (kmol/d for SALK),app5-p56
+cl_rain,perf,XP_load,49.0825,kg/d (kmol/d for SALK),app5-p56
+cl_rain,perf,SO_load,47.4177,kg/d (kmol/d for SALK),app5-p56
+cl_rain,perf,SNO_load,218.1877,kg/d (kmol/d for SALK),app5-p56
+cl_rain,perf,SNH_load,76.8013,kg/d (kmol/d for SALK),app5-p56
+cl_rain,perf,SND_load,18.7426,kg/d (kmol/d for SALK),app5-p56
+cl_rain,perf,XND_load,0.5122,kg/d (kmol/d for SALK),app5-p56
+cl_rain,perf,SALK_load,115.7154,kg/d (kmol/d for SALK),app5-p56
+cl_rain,perf,TSS_load,385.118,kg/d (kmol/d for SALK),app5-p56
+cl_rain,perf,TKN_load,132.8813,kg N/d,app5-p56
+cl_rain,perf,TN_load,351.069,kg N/d,app5-p56
+cl_rain,perf,COD_load,1081.6353,kg COD/d,app5-p56
+cl_rain,perf,BOD5_load,82.2692,kg/d,app5-p56
+cl_rain,perf,IQ,52081.3952,kg PU/d,app5-p56
+cl_rain,perf,EQ,8184.7263,kg PU/d,app5-p56
+cl_rain,perf,SP_disposal_total,16503.104,kg SS,app5-p56
+cl_rain,perf,SP_disposal,2357.5863,kg SS/d,app5-p56
+cl_rain,perf,SP_effluent_total,2695.8261,kg SS,app5-p56
+cl_rain,perf,SP_effluent,385.118,kg SS/d,app5-p56
+cl_rain,perf,SP_total_total,19198.9302,kg SS,app5-p56
+cl_rain,perf,SP_total,2742.7043,kg SS/d,app5-p56
+cl_rain,perf,AE,3671.3519,kWh/d,app5-p57
+cl_rain,perf,PE,285.264,kWh/d,app5-p57
+cl_rain,perf,ME,240,kWh/d,app5-p57
+cl_rain,perf,OCI,15984.5473,-,app5-p57
+cl_rain,perf,SNH_e95,8.0395,g N/m3,app5-p57
+cl_rain,perf,TN_e95,19.1429,g N/m3,app5-p57
+cl_rain,perf,TSS_e95,21.6967,g SS/m3,app5-p57
+cl_rain,perf,TN_viol_days,0.77083,d,app5-p57
+cl_rain,perf,TN_viol_pct,11.0119,%,app5-p57
+cl_rain,perf,TN_viol_count,5,-,app5-p57
+cl_rain,perf,SNH_viol_days,1.8958,d,app5-p57
+cl_rain,perf,SNH_viol_pct,27.0833,%,app5-p57
+cl_rain,perf,SNH_viol_count,8,-,app5-p57
+cl_rain,ctrl,SNO2_err_mean,0.002672,g N/m3,app5-p57
+cl_rain,ctrl,SNO2_err_absmean,0.24784,g N/m3,app5-p57
+cl_rain,ctrl,SNO2_IAE,1.7349,(g N/m3)*d,app5-p57
+cl_rain,ctrl,SNO2_ISE,0.79436,(g N/m3)^2*d,app5-p57
+cl_rain,ctrl,SNO2_err_max,0.92134,g N/m3,app5-p57
+cl_rain,ctrl,SNO2_err_std,0.33686,g N/m3,app5-p57
+cl_rain,ctrl,SNO2_err_var,0.11347,(g N/m3)^2,app5-p57
+cl_rain,ctrl,Qintr_range,84374.4066,m3/d,app5-p57
+cl_rain,ctrl,Qintr_maxdelta,18678.4397,m3/d,app5-p58
+cl_rain,ctrl,Qintr_mean,29608.9372,m3/d,app5-p58
+cl_rain,ctrl,Qintr_dstd,4110.5486,m3/d,app5-p58
+cl_rain,ctrl,Qintr_dvar,16896609.8904,(m3/d)^2,app5-p58
+cl_rain,ctrl,SO5_err_mean,-0.00046529,g (-COD)/m3,app5-p58
+cl_rain,ctrl,SO5_err_absmean,0.079532,g (-COD)/m3,app5-p58
+cl_rain,ctrl,SO5_IAE,0.55672,(g (-COD)/m3)*d,app5-p58
+cl_rain,ctrl,SO5_ISE,0.074733,(g (-COD)/m3)^2*d,app5-p58
+cl_rain,ctrl,SO5_err_max,0.38505,g (-COD)/m3,app5-p58
+cl_rain,ctrl,SO5_err_std,0.10332,g (-COD)/m3,app5-p58
+cl_rain,ctrl,SO5_err_var,0.010676,(g (-COD)/m3)^2,app5-p58
+cl_rain,ctrl,KLa5_range,227.3181,1/d,app5-p58
+cl_rain,ctrl,KLa5_maxdelta,47.8828,1/d,app5-p58
+cl_rain,ctrl,KLa5_mean,139.5768,1/d,app5-p58
+cl_rain,ctrl,KLa5_dstd,9.2235,1/d,app5-p58
+cl_rain,ctrl,KLa5_dvar,85.0722,(1/d)^2,app5-p58
+cl_storm,perf,Qe,20654.9629,m3/d,app5-p59
+cl_storm,perf,SI_e,26.2982,g COD/m3,app5-p59
+cl_storm,perf,SS_e,0.9995,g COD/m3,app5-p59
+cl_storm,perf,XI_e,5.6341,g COD/m3,app5-p59
+cl_storm,perf,XS_e,0.28755,g COD/m3,app5-p59
+cl_storm,perf,XBH_e,11.9051,g COD/m3,app5-p59
+cl_storm,perf,XBA_e,0.63091,g COD/m3,app5-p59
+cl_storm,perf,XP_e,1.9072,g COD/m3,app5-p59
+cl_storm,perf,SO_e,1.9905,g O2/m3,app5-p59
+cl_storm,perf,SNO_e,10.553,g N/m3,app5-p59
+cl_storm,perf,SNH_e,3.0622,g N/m3,app5-p59
+cl_storm,perf,SND_e,0.77656,g N/m3,app5-p59
+cl_storm,perf,XND_e,0.02043,g N/m3,app5-p59
+cl_storm,perf,SALK_e,4.4897,mol/m3,app5-p59
+cl_storm,perf,TSS_e,15.2737,g SS/m3,app5-p59
+cl_storm,perf,TKN_e,5.3146,g N/m3,app5-p59
+cl_storm,perf,TN_e,15.8676,g N/m3,app5-p59
+cl_storm,perf,COD_e,47.6626,g COD/m3,app5-p59
+cl_storm,perf,BOD5_e,3.205,g/m3,app5-p59
+cl_storm,perf,SI_load,543.1883,kg/d (kmol/d for SALK),app5-p59
+cl_storm,perf,SS_load,20.6447,kg/d (kmol/d for SALK),app5-p59
+cl_storm,perf,XI_load,116.372,kg/d (kmol/d for SALK),app5-p59
+cl_storm,perf,XS_load,5.9394,kg/d (kmol/d for SALK),app5-p59
+cl_storm,perf,XBH_load,245.8993,kg/d (kmol/d for SALK),app5-p59
+cl_storm,perf,XBA_load,13.0314,kg/d (kmol/d for SALK),app5-p59
+cl_storm,perf,XP_load,39.3935,kg/d (kmol/d for SALK),app5-p59
+cl_storm,perf,SO_load,41.1136,kg/d (kmol/d for SALK),app5-p59
+cl_storm,perf,SNO_load,217.9728,kg/d (kmol/d for SALK),app5-p59
+cl_storm,perf,SNH_load,63.2503,kg/d (kmol/d for SALK),app5-p59
+cl_storm,perf,SND_load,16.0398,kg/d (kmol/d for SALK),app5-p59
+cl_storm,perf,XND_load,0.42198,kg/d (kmol/d for SALK),app5-p59
+cl_storm,perf,SALK_load,92.7345,kg/d (kmol/d for SALK),app5-p59
+cl_storm,perf,TSS_load,315.4767,kg/d (kmol/d for SALK),app5-p59
+cl_storm,perf,TKN_load,109.7725,kg N/d,app5-p59
+cl_storm,perf,TN_load,327.7453,kg N/d,app5-p59
+cl_storm,perf,COD_load,984.4686,kg COD/d,app5-p59
+cl_storm,perf,BOD5_load,66.2001,kg/d,app5-p59
+cl_storm,perf,IQ,54061.497,kg PU/d,app5-p59
+cl_storm,perf,EQ,7220.7241,kg PU/d,app5-p59
+cl_storm,perf,SP_disposal_total,18238.4311,kg SS,app5-p59
+cl_storm,perf,SP_disposal,2605.4902,kg SS/d,app5-p59
+cl_storm,perf,SP_effluent_total,2208.337,kg SS,app5-p59
+cl_storm,perf,SP_effluent,315.4767,kg SS/d,app5-p59
+cl_storm,perf,SP_total_total,20446.7681,kg SS,app5-p59
+cl_storm,perf,SP_total,2920.9669,kg SS/d,app5-p59
+cl_storm,perf,AE,3720.9173,kWh/d,app5-p60
+cl_storm,perf,PE,265.1984,kWh/d,app5-p60
+cl_storm,perf,ME,240,kWh/d,app5-p60
+cl_storm,perf,OCI,17253.5665,-,app5-p60
+cl_storm,perf,SNH_e95,7.8033,g N/m3,app5-p60
+cl_storm,perf,TN_e95,20.1257,g N/m3,app5-p60
+cl_storm,perf,TSS_e95,20.7886,g SS/m3,app5-p60
+cl_storm,perf,TN_viol_days,1.0938,d,app5-p60
+cl_storm,perf,TN_viol_pct,15.625,%,app5-p60
+cl_storm,perf,TN_viol_count,7,-,app5-p60
+cl_storm,perf,SNH_viol_days,1.8854,d,app5-p60
+cl_storm,perf,SNH_viol_pct,26.9345,%,app5-p60
+cl_storm,perf,SNH_viol_count,7,-,app5-p60
+cl_storm,perf,TSS_viol_days,0.020833,d,app5-p60
+cl_storm,perf,TSS_viol_pct,0.29762,%,app5-p60
+cl_storm,perf,TSS_viol_count,2,-,app5-p60
+cl_storm,ctrl,SNO2_err_mean,0.0051026,g N/m3,app5-p60
+cl_storm,ctrl,SNO2_err_absmean,0.23979,g N/m3,app5-p60
+cl_storm,ctrl,SNO2_IAE,1.6785,(g N/m3)*d,app5-p60
+cl_storm,ctrl,SNO2_ISE,0.78797,(g N/m3)^2*d,app5-p60
+cl_storm,ctrl,SNO2_err_max,1.2014,g N/m3,app5-p60
+cl_storm,ctrl,SNO2_err_std,0.33547,g N/m3,app5-p60
+cl_storm,ctrl,SNO2_err_var,0.11254,(g N/m3)^2,app5-p60
+cl_storm,ctrl,Qintr_range,83663.6739,m3/d,app5-p61
+cl_storm,ctrl,Qintr_maxdelta,18489.0489,m3/d,app5-p61
+cl_storm,ctrl,Qintr_mean,24623.036,m3/d,app5-p61
+cl_storm,ctrl,Qintr_dstd,4141.7466,m3/d,app5-p61
+cl_storm,ctrl,Qintr_dvar,17154064.5203,(m3/d)^2,app5-p61
+cl_storm,ctrl,SO5_err_mean,-0.00038723,g (-COD)/m3,app5-p61
+cl_storm,ctrl,SO5_err_absmean,0.080854,g (-COD)/m3,app5-p61
+cl_storm,ctrl,SO5_IAE,0.56598,(g (-COD)/m3)*d,app5-p61
+cl_storm,ctrl,SO5_ISE,0.078876,(g (-COD)/m3)^2*d,app5-p61
+cl_storm,ctrl,SO5_err_max,0.37924,g (-COD)/m3,app5-p61
+cl_storm,ctrl,SO5_err_std,0.10615,g (-COD)/m3,app5-p61
+cl_storm,ctrl,SO5_err_var,0.011268,(g (-COD)/m3)^2,app5-p61
+cl_storm,ctrl,KLa5_range,244.5373,1/d,app5-p61
+cl_storm,ctrl,KLa5_maxdelta,47.8829,1/d,app5-p61
+cl_storm,ctrl,KLa5_mean,147.9338,1/d,app5-p61
+cl_storm,ctrl,KLa5_dstd,9.3809,1/d,app5-p61
+cl_storm,ctrl,KLa5_dvar,88.0009,(1/d)^2,app5-p61

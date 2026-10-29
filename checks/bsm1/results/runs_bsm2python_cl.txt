@@ -1,0 +1,22 @@
+# BSM1CL runs: each run's summary line (steps, run time, bsm2-python's own IQ, EQ, AE, PE, ME over the last 7
+# days, and the PID integral states at the end). Branch first: main is 73caa8b, pr8 the head of pull request #8
+# (e929c48), pr8guard that head with the guard of README "15-minute steps".
+# The eight runs behind the results, 2026-10-29 11:12-12:22 UTC, one at a time, with the review's driver:
+main bsm1cl report dry step 1 min: 256321 steps, 418 s; own IQ 52068.2688 EQ 6195.8399 AE 3672.09 PE 236.57 ME 240.00; final integrals kla5 0.6862 qintr -85.8514
+pr8 bsm1cl report dry step 1 min: 256321 steps, 423 s; own IQ 52068.2688 EQ 6128.8815 AE 3697.37 PE 240.95 ME 240.00; final integrals kla5 19.52 qintr -2042.19
+main bsm1cl shipped dry step 1 min: 256321 steps, 782 s; own IQ 52081.3952 EQ 6497.6176 AE 3261.11 PE 244.42 ME 240.00; final integrals kla5 4.827 qintr 40.7751
+pr8 bsm1cl shipped dry step 1 min: 256321 steps, 1014 s; own IQ 52081.3952 EQ 6318.2886 AE 3334.49 PE 256.37 ME 240.00; final integrals kla5 29.71 qintr 557.23
+main bsm1cl report rain step 1 min: 256321 steps, 363 s; own IQ 52066.3728 EQ 8379.8669 AE 3669.92 PE 243.47 ME 240.00; final integrals kla5 1.141 qintr -83.5905
+pr8 bsm1cl report rain step 1 min: 256321 steps, 375 s; own IQ 52066.3728 EQ 8200.1604 AE 3670.21 PE 285.02 ME 240.00; final integrals kla5 22.91 qintr -2095.71
+main bsm1cl report storm step 1 min: 256321 steps, 329 s; own IQ 54047.8065 EQ 7384.9478 AE 3686.58 PE 242.16 ME 240.00; final integrals kla5 1.291 qintr -77.6491
+pr8 bsm1cl report storm step 1 min: 256321 steps, 324 s; own IQ 54047.8065 EQ 7228.5349 AE 3719.85 PE 264.85 ME 240.00; final integrals kla5 24.23 qintr -1664.41
+# Reruns with run_bsm2python_cl.py, 2026-10-29 13:10-13:26 UTC; each series byte-identical to the original.
+# Full length (these two side by side):
+pr8 bsm2-python BSM1CL report dry: 256321 steps of 1 min, 486 s; own IQ 52068.2688 EQ 6128.8815 AE 3697.37; final integrals KLa5 19.52 Qintr -2042.19
+main bsm2-python BSM1CL shipped dry: 256321 steps of 1 min, 769 s; own IQ 52081.3952 EQ 6497.6176 AE 3261.11; final integrals KLa5 4.827 Qintr 40.7751
+# 15-minute steps, 1 day of stabilization (STEP_MIN 15, STAB_DAYS 1):
+main bsm2-python BSM1CL report dry: 2785 steps of 15 min, 15 s; own IQ 52081.3952 EQ 5816.7920 AE 3910.13; final integrals KLa5 260.4 Qintr 1408.97
+pr8 bsm2-python BSM1CL report dry: 2785 steps of 15 min, 14 s; own IQ 52081.3952 EQ 5919.1091 AE nan; final integrals KLa5 nan Qintr 1282.93
+main bsm2-python BSM1CL shipped dry: 2785 steps of 15 min, 18 s; own IQ 52081.3952 EQ 7429.1811 AE 3451.60; final integrals KLa5 260.4 Qintr 2062.13
+pr8 bsm2-python BSM1CL shipped dry: 2785 steps of 15 min, 17 s; own IQ 52081.3952 EQ 6445.9568 AE nan; final integrals KLa5 nan Qintr -2346.36
+pr8guard bsm2-python BSM1CL report dry: 2785 steps of 15 min, 19 s; own IQ 52081.3952 EQ 5871.5230 AE 3920.08; final integrals KLa5 189 Qintr 5297.1

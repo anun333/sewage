@@ -5,7 +5,7 @@
 A rain gage that reads a time series with a single point has no recording interval to check. The bug:
 
 - **No interval.** `table_validate` leaves the series' `dxMin` at `BIG`, which is 1e10 days.
-- **The cast.** `gage_validate` (gage.c:251) then evaluates `(int)(floor(dxMin*SECperDAY + 0.5))`, converting 8.64e14 to `int`. That is out of range, so the conversion is undefined behaviour (C11 6.3.1.4).
+- **The cast.** `gage_validate` (gage.c:251) then evaluates `(int)(floor(dxMin*SECperDAY + 0.5))`, converting 8.64e14 to `int`. That is out of range. ISO C leaves the conversion undefined (C17 6.3.1.4p1). Under Annex F, which gcc and clang on glibc claim through `__STDC_IEC_559__`, it raises "invalid" and gives an unspecified value (F.4). So both CPUs below are within the standard, and the result isn't portable.
 - **Different results by CPU:**
   - x86-64 (`cvttsd2si`) yields INT_MIN, so neither interval check fires.
   - aarch64 (`fcvtzs`) saturates to INT_MAX, so `rainInterval < gageInterval` holds and the report gains `WARNING 09: time series interval greater than recording interval for Rain Gage 1`.
