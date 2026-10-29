@@ -9,6 +9,13 @@ Both issues are posted (2026-10-29). Each draft is read and approved in full bef
 
 The evidence is in [checks/wntr/](../../checks/wntr/README.md).
 
+**Offers to build the fixes**, posted 2026-10-29 after approval:
+- [#584](https://github.com/USEPA/WNTR/issues/584#issuecomment-6502234562): a clear
+  error from `toolkit.py` when no bundled EPANET matches the platform, or EPANET built
+  from source in the sdist;
+- [#585](https://github.com/USEPA/WNTR/issues/585#issuecomment-6502235336): evaluator
+  ordering by a creation serial number, checked by repeated runs and their test suite.
+
 ## Before a PR
 
 - **WNTR's PR template requires an AI disclosure section.** It covers the tools used
