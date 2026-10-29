@@ -120,7 +120,14 @@ pilot.
   permit leaves open; it can only show where profiles disagree.
 - **What would prove it wrong.** N2 finds no arithmetic trouble. Or operators say the
   spreadsheet already gets these right, and nobody will change tools for edge cases.
-  Excel's own ROUND and GEOMEAN are unchecked and may already behave well.
+  **Partly answered 2026-10-29 for LibreOffice Calc** ([checks/dmr_calc.py](checks/dmr_calc.py)):
+  - its floating point does behave: `ROUND` gets every tie right half-up, and its
+    comparisons call every on-limit geometric mean equal to the limit;
+  - its `ROUND` is half away from zero, so wherever a permit follows EPA's half-even
+    examples, half of all ties print the wrong digit. The risk is in the rule, not the
+    arithmetic, which is exactly what N1's profiles are for.
+  
+  Excel is still unchecked.
 - **First step.** Write the EPA example profile and the one state whose rule text has
   been read (Tennessee, 0400-40-05-.02), then Pennsylvania's and Montana's from their
   published instructions. Then write the first twenty test vectors, EPA's worked examples
