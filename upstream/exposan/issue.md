@@ -1,4 +1,4 @@
-<!-- DRAFT for QSD-Group/EXPOsan (bugs--errors--warnings template). Not posted; reviewed before posting. -->
+<!-- Posted 2026-10-29 as https://github.com/QSD-Group/EXPOsan/issues/80 after the maintainer read and approved this text. -->
 
 **Title:** bsm1: steady state differs from the BSM1 reference by up to 0.7%, because of the exact stoichiometric constants and alkalinity weights; with BSM1's rounded constants it matches to 1e-8
 

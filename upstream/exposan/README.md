@@ -4,7 +4,7 @@ Each draft is read and approved in full before it goes out.
 
 | File | What |
 | --- | --- |
-| [issue.md](issue.md) | `exposan.bsm1`'s steady state stands up to 0.7% from BSM1, from the exact constants 20/7 and 32/7 and the exact alkalinity weights. With BSM1's 2.86 and 4.57 it matches bsm2-python to 1e-8, all but alkalinity, whose remaining shift the weights predict exactly. Two dynamic-only differences are also noted: the recycle follows the influent, and the clarifier holds solubles in one volume |
+| [issue.md](issue.md) | **Posted 2026-10-29 as [#80](https://github.com/QSD-Group/EXPOsan/issues/80).** `exposan.bsm1`'s steady state stands up to 0.7% from BSM1, from the exact constants 20/7 and 32/7 and the exact alkalinity weights. With BSM1's 2.86 and 4.57 it matches bsm2-python to 1e-8, all but alkalinity, whose remaining shift the weights predict exactly. Two dynamic-only differences are also noted: the recycle follows the influent, and the clarifier holds solubles in one volume |
 
 The evidence is in [checks/bsm1/](../../checks/bsm1/README.md).
 
