@@ -1,0 +1,12 @@
+# network (path under NETS) and its git blob sha1; wntrrun.py refuses a file whose blob hash differs
+# wntr/: github.com/USEPA/WNTR, tag 1.5.0 (388958845c3209ace9a5bd1b105097977eec2d67), examples/networks/
+# epanet/: github.com/OpenWaterAnalytics/EPANET, dev at 57d8bd8ad60e89b57f2a1ac591f05c8e13589866, example-networks/
+wntr/Net1.inp fb114141f6fda79f7a827835c06af1a5eadf686d
+wntr/Net2.inp 6645947b161a90a18f312539d4ff5ac3aee12c4a
+wntr/Net3.inp 1bfc21bc17d22c265727833885e1232e06012752
+wntr/Net6.inp 4d97f8f6bf062d1d380483d405bd6b1f0aef7c1a
+wntr/ky4.inp 16276261d58dc526f00537d5c04248becb2fac28
+wntr/ky10.inp dd61ce9a304e6c9d677e3b454b9af21b8ff67713
+epanet/Net1.inp 4df5bbf7fa48d56d0c2aebd2575ef93dcfa4d9e8
+epanet/Net2.inp 9f53e62f69e3edc3196221f1cac1ff5c5436c76b
+epanet/Net3.inp 3be1e96731612b1612b3f4e2143d2e1505310293

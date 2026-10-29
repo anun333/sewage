@@ -1,0 +1,32 @@
+artifact wntr-1.5.0-cp312-cp312-manylinux2014_x86_64.whl sha256 2e941cd1641da48a96627e5bd43c8727a09dd770418dccac41f2c8d5f505be1d
+install exit 0 in 19 s
+python 3.12.3
+host Linux 7.0.0-42-generic x86_64
+libc ldd (Ubuntu GLIBC 2.39-0ubuntu8.9) 2.39
+cpu AMD Ryzen 5 PRO 5650U with Radeon Graphics
+cpu has fma: 1
+CFLAGS='' CXXFLAGS=''
+lib wntr/epanet/libepanet/linux-x64/libepanet20.so sha256 f33bafb7b01f09f9 fma 0 machine 'Advanced Micro Devices X86-64' compiler 'GCC: (GNU) 4.4.7 20120313 (Red Hat 4.4.7-17)'
+lib wntr/epanet/libepanet/linux-x64/libepanet22.so sha256 3a49fa2eb1aecdf4 fma 0 machine 'Advanced Micro Devices X86-64' compiler 'GCC: (Ubuntu 7.4.0-1ubuntu1~18.04.1) 7.4.0'
+lib wntr/epanet/libepanet/linux-x64/libepanet2.so sha256 7dcd417ed3898cf6 fma 0 machine 'Advanced Micro Devices X86-64' compiler 'GCC: (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0'
+lib wntr/epanet/libepanet/linux-x64/libepanetmsx.so sha256 9518e2c9d98f567c fma 0 machine 'Advanced Micro Devices X86-64' compiler 'GCC: (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0'
+lib wntr/sim/aml/_evaluator.cpython-312-x86_64-linux-gnu.so sha256 76a6dc6e131be69c fma 0 machine 'Advanced Micro Devices X86-64' compiler 'GCC: (GNU) 14.2.1 20250110 (Red Hat 14.2.1-7)'
+lib wntr/sim/network_isolation/_network_isolation.cpython-312-x86_64-linux-gnu.so sha256 cd8a97b8d0164c52 fma 0 machine 'Advanced Micro Devices X86-64' compiler 'GCC: (GNU) 14.2.1 20250110 (Red Hat 14.2.1-7)'
+epanet library libepanet/linux-x64/libepanet22.so
+epanet ENgetversion 20200
+contourpy==1.4.0
+cycler==0.12.1
+fonttools==4.68.0
+kiwisolver==1.5.1
+matplotlib==3.11.2
+networkx==3.7
+numpy==2.5.4
+packaging==26.3
+pandas==3.1.0
+pillow==13.0.0
+pyparsing==3.3.3
+python-dateutil==3.0.0
+scipy==1.18.1
+six==1.17.0
+tzdata==2026.6
+wntr @ file://WORK/dl-wheel-1.5.0-x86_64/wntr-1.5.0-cp312-cp312-manylinux2014_x86_64.whl#sha256=2e941cd1641da48a96627e5bd43c8727a09dd770418dccac41f2c8d5f505be1d

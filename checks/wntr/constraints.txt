@@ -1,0 +1,18 @@
+# What `pip install wntr==1.5.0` resolved to on 2026-10-29 (Python 3.12, x86-64). wntrjob.sh passes this
+# file with -c on every host, so both platforms get the same dependency versions. The isolated build
+# environment of an sdist install is not constrained (pip picks the latest setuptools and numpy, as for a user).
+contourpy==1.4.0
+cycler==0.12.1
+fonttools==4.68.0
+kiwisolver==1.5.1
+matplotlib==3.11.2
+networkx==3.7
+numpy==2.5.4
+packaging==26.3
+pandas==3.1.0
+pillow==13.0.0
+pyparsing==3.3.3
+python-dateutil==3.0.0
+scipy==1.18.1
+six==1.17.0
+tzdata==2026.6

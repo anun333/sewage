@@ -1,0 +1,18 @@
+control 1: want IDENTICAL, got IDENTICAL: caught
+    IDENTICAL
+control 2: want DIFFERS, got DIFFERS: caught
+    wntr/Net3 wntr         node.pressure          DIFFERS 1/16393 values; max_abs 7.11e-15 at 103 t=3600s (38.76352907 vs 38.76352907); max_rel 1.83e-16 at 103 t=3600s (38.76352907 vs 38.76352907); max_ulp 1; allclose(rtol=0.01, atol=1e-06) PASS
+    DIFFERS
+control 3: want DIFFERS, got DIFFERS: caught
+    wntr/Net1 epanet       DIFFERS (node.head)
+    DIFFERS
+control 4: want VOID, got VOID: caught
+    wntr/Net1 wntr         link.flowrate          VOID ([Errno 2] No such file or directory: 'WORK/controls-scratch/B/wntr-Net1/wntr/link.flowrate.f64')
+    VOID
+control 5: want VOID, got VOID: caught
+    wntr/Net1 epanet       VOID (items in one file only: node.demand)
+    VOID
+control 6: want VOID, got VOID: caught
+    wntr/Net1 wntr         VOID (raised on B)
+    VOID
+controls: 6 of 6 caught

@@ -1,0 +1,166 @@
+epanet/Net1 wntr       link.flowrate        distinct A 5/5, B 3/3
+    within A: 10/10 pairs differ, max_abs 6.1e-16, max_rel 9.14e-13, 0/10 pairs fail allclose (up to 0 values, 0 elements)
+    within B: 3/3 pairs differ, max_abs 5.49e-16, max_rel 9.81e-13, 0/3 pairs fail allclose (up to 0 values, 0 elements)
+    A vs B:   15/15 pairs differ, max_abs 7.03e-16, max_rel 1.77e-12, 0/15 pairs fail allclose (up to 0 values, 0 elements)
+epanet/Net1 wntr       link.velocity        distinct A 5/5, B 3/3
+    within A: 10/10 pairs differ, max_abs 1.65e-14, max_rel 9.15e-13, 0/10 pairs fail allclose (up to 0 values, 0 elements)
+    within B: 3/3 pairs differ, max_abs 1.4e-14, max_rel 9.81e-13, 0/3 pairs fail allclose (up to 0 values, 0 elements)
+    A vs B:   15/15 pairs differ, max_abs 2.04e-14, max_rel 1.77e-12, 0/15 pairs fail allclose (up to 0 values, 0 elements)
+epanet/Net1 wntr       node.demand          distinct A 5/5, B 3/3
+    within A: 10/10 pairs differ, max_abs 1.11e-16, max_rel 2.07e-14, 0/10 pairs fail allclose (up to 0 values, 0 elements)
+    within B: 3/3 pairs differ, max_abs 1.11e-16, max_rel 5.43e-15, 0/3 pairs fail allclose (up to 0 values, 0 elements)
+    A vs B:   15/15 pairs differ, max_abs 2.22e-16, max_rel 1.99e-14, 0/15 pairs fail allclose (up to 0 values, 0 elements)
+epanet/Net1 wntr       node.head            distinct A 5/5, B 3/3
+    within A: 10/10 pairs differ, max_abs 1.14e-13, max_rel 3.82e-16, 0/10 pairs fail allclose (up to 0 values, 0 elements)
+    within B: 3/3 pairs differ, max_abs 5.68e-14, max_rel 1.94e-16, 0/3 pairs fail allclose (up to 0 values, 0 elements)
+    A vs B:   15/15 pairs differ, max_abs 1.14e-13, max_rel 3.85e-16, 0/15 pairs fail allclose (up to 0 values, 0 elements)
+epanet/Net1 wntr       node.pressure        distinct A 5/5, B 3/3
+    within A: 10/10 pairs differ, max_abs 1.14e-13, max_rel 1.35e-15, 0/10 pairs fail allclose (up to 0 values, 0 elements)
+    within B: 3/3 pairs differ, max_abs 5.68e-14, max_rel 7.34e-16, 0/3 pairs fail allclose (up to 0 values, 0 elements)
+    A vs B:   15/15 pairs differ, max_abs 1.14e-13, max_rel 1.44e-15, 0/15 pairs fail allclose (up to 0 values, 0 elements)
+epanet/Net2 wntr       link.flowrate        distinct A 5/5, B 3/3
+    within A: 10/10 pairs differ, max_abs 7.56e-15, max_rel 1.47e-10, 0/10 pairs fail allclose (up to 0 values, 0 elements)
+    within B: 3/3 pairs differ, max_abs 8.61e-15, max_rel 2.34e-10, 0/3 pairs fail allclose (up to 0 values, 0 elements)
+    A vs B:   15/15 pairs differ, max_abs 8.58e-15, max_rel 2.33e-10, 0/15 pairs fail allclose (up to 0 values, 0 elements)
+epanet/Net2 wntr       link.velocity        distinct A 5/5, B 3/3
+    within A: 10/10 pairs differ, max_abs 2.33e-13, max_rel 1.47e-10, 0/10 pairs fail allclose (up to 0 values, 0 elements)
+    within B: 3/3 pairs differ, max_abs 2.66e-13, max_rel 2.34e-10, 0/3 pairs fail allclose (up to 0 values, 0 elements)
+    A vs B:   15/15 pairs differ, max_abs 2.65e-13, max_rel 2.33e-10, 0/15 pairs fail allclose (up to 0 values, 0 elements)
+epanet/Net2 wntr       node.demand          distinct A 5/5, B 3/3
+    within A: 10/10 pairs differ, max_abs 1.14e-16, max_rel 5.13e-15, 0/10 pairs fail allclose (up to 0 values, 0 elements)
+    within B: 3/3 pairs differ, max_abs 8.33e-17, max_rel 6.1e-15, 0/3 pairs fail allclose (up to 0 values, 0 elements)
+    A vs B:   15/15 pairs differ, max_abs 1.14e-16, max_rel 6.1e-15, 0/15 pairs fail allclose (up to 0 values, 0 elements)
+epanet/Net2 wntr       node.head            distinct A 5/5, B 3/3
+    within A: 10/10 pairs differ, max_abs 2.84e-14, max_rel 3.19e-16, 0/10 pairs fail allclose (up to 0 values, 0 elements)
+    within B: 3/3 pairs differ, max_abs 2.84e-14, max_rel 3.12e-16, 0/3 pairs fail allclose (up to 0 values, 0 elements)
+    A vs B:   15/15 pairs differ, max_abs 4.26e-14, max_rel 4.49e-16, 0/15 pairs fail allclose (up to 0 values, 0 elements)
+epanet/Net2 wntr       node.pressure        distinct A 5/5, B 3/3
+    within A: 10/10 pairs differ, max_abs 2.84e-14, max_rel 1.08e-15, 0/10 pairs fail allclose (up to 0 values, 0 elements)
+    within B: 3/3 pairs differ, max_abs 2.84e-14, max_rel 6.97e-16, 0/3 pairs fail allclose (up to 0 values, 0 elements)
+    A vs B:   15/15 pairs differ, max_abs 4.26e-14, max_rel 1.09e-15, 0/15 pairs fail allclose (up to 0 values, 0 elements)
+epanet/Net3 wntr       link.flowrate        distinct A 5/5, B 3/3
+    within A: 10/10 pairs differ, max_abs 8.02e-15, max_rel 2.43e-11, 0/10 pairs fail allclose (up to 0 values, 0 elements)
+    within B: 3/3 pairs differ, max_abs 4.54e-15, max_rel 1.27e-11, 0/3 pairs fail allclose (up to 0 values, 0 elements)
+    A vs B:   15/15 pairs differ, max_abs 9.32e-15, max_rel 2.43e-11, 0/15 pairs fail allclose (up to 0 values, 0 elements)
+epanet/Net3 wntr       link.velocity        distinct A 5/5, B 3/3
+    within A: 10/10 pairs differ, max_abs 1.56e-13, max_rel 2.43e-11, 0/10 pairs fail allclose (up to 0 values, 0 elements)
+    within B: 3/3 pairs differ, max_abs 8.95e-14, max_rel 1.27e-11, 0/3 pairs fail allclose (up to 0 values, 0 elements)
+    A vs B:   15/15 pairs differ, max_abs 1.82e-13, max_rel 2.43e-11, 0/15 pairs fail allclose (up to 0 values, 0 elements)
+epanet/Net3 wntr       node.demand          distinct A 5/5, B 3/3
+    within A: 10/10 pairs differ, max_abs 1.11e-15, max_rel 1.32e-12, 0/10 pairs fail allclose (up to 0 values, 0 elements)
+    within B: 3/3 pairs differ, max_abs 9.65e-16, max_rel 1.3e-12, 0/3 pairs fail allclose (up to 0 values, 0 elements)
+    A vs B:   15/15 pairs differ, max_abs 1.33e-15, max_rel 1.57e-12, 0/15 pairs fail allclose (up to 0 values, 0 elements)
+epanet/Net3 wntr       node.head            distinct A 5/5, B 3/3
+    within A: 10/10 pairs differ, max_abs 2.13e-14, max_rel 4.06e-16, 0/10 pairs fail allclose (up to 0 values, 0 elements)
+    within B: 3/3 pairs differ, max_abs 2.13e-14, max_rel 4.44e-16, 0/3 pairs fail allclose (up to 0 values, 0 elements)
+    A vs B:   15/15 pairs differ, max_abs 2.13e-14, max_rel 4.43e-16, 0/15 pairs fail allclose (up to 0 values, 0 elements)
+epanet/Net3 wntr       node.pressure        distinct A 5/5, B 3/3
+    within A: 10/10 pairs differ, max_abs 2.13e-14, max_rel 1.98e-14, 0/10 pairs fail allclose (up to 0 values, 0 elements)
+    within B: 3/3 pairs differ, max_abs 2.13e-14, max_rel 3.37e-14, 0/3 pairs fail allclose (up to 0 values, 0 elements)
+    A vs B:   15/15 pairs differ, max_abs 2.13e-14, max_rel 3.37e-14, 0/15 pairs fail allclose (up to 0 values, 0 elements)
+wntr/Net1 wntr         link.flowrate        distinct A 5/5, B 3/3
+    within A: 10/10 pairs differ, max_abs 6.66e-16, max_rel 7.86e-13, 0/10 pairs fail allclose (up to 0 values, 0 elements)
+    within B: 3/3 pairs differ, max_abs 5.19e-16, max_rel 1.03e-12, 0/3 pairs fail allclose (up to 0 values, 0 elements)
+    A vs B:   15/15 pairs differ, max_abs 7.77e-16, max_rel 1.76e-12, 0/15 pairs fail allclose (up to 0 values, 0 elements)
+wntr/Net1 wntr         link.velocity        distinct A 5/5, B 3/3
+    within A: 10/10 pairs differ, max_abs 1.45e-14, max_rel 7.86e-13, 0/10 pairs fail allclose (up to 0 values, 0 elements)
+    within B: 3/3 pairs differ, max_abs 1.36e-14, max_rel 1.03e-12, 0/3 pairs fail allclose (up to 0 values, 0 elements)
+    A vs B:   15/15 pairs differ, max_abs 2.02e-14, max_rel 1.76e-12, 0/15 pairs fail allclose (up to 0 values, 0 elements)
+wntr/Net1 wntr         node.demand          distinct A 5/5, B 3/3
+    within A: 10/10 pairs differ, max_abs 1.11e-16, max_rel 7.25e-15, 0/10 pairs fail allclose (up to 0 values, 0 elements)
+    within B: 3/3 pairs differ, max_abs 6.94e-17, max_rel 1.45e-14, 0/3 pairs fail allclose (up to 0 values, 0 elements)
+    A vs B:   15/15 pairs differ, max_abs 1.11e-16, max_rel 1.5e-14, 0/15 pairs fail allclose (up to 0 values, 0 elements)
+wntr/Net1 wntr         node.head            distinct A 5/5, B 3/3
+    within A: 10/10 pairs differ, max_abs 1.14e-13, max_rel 3.87e-16, 0/10 pairs fail allclose (up to 0 values, 0 elements)
+    within B: 3/3 pairs differ, max_abs 1.14e-13, max_rel 3.82e-16, 0/3 pairs fail allclose (up to 0 values, 0 elements)
+    A vs B:   15/15 pairs differ, max_abs 1.14e-13, max_rel 3.87e-16, 0/15 pairs fail allclose (up to 0 values, 0 elements)
+wntr/Net1 wntr         node.pressure        distinct A 5/5, B 3/3
+    within A: 10/10 pairs differ, max_abs 1.14e-13, max_rel 1.47e-15, 0/10 pairs fail allclose (up to 0 values, 0 elements)
+    within B: 3/3 pairs differ, max_abs 1.14e-13, max_rel 1.35e-15, 0/3 pairs fail allclose (up to 0 values, 0 elements)
+    A vs B:   15/15 pairs differ, max_abs 1.14e-13, max_rel 1.47e-15, 0/15 pairs fail allclose (up to 0 values, 0 elements)
+wntr/Net2 wntr         link.flowrate        distinct A 5/5, B 3/3
+    within A: 10/10 pairs differ, max_abs 7.69e-15, max_rel 1.34e-10, 0/10 pairs fail allclose (up to 0 values, 0 elements)
+    within B: 3/3 pairs differ, max_abs 5.67e-15, max_rel 1.2e-10, 0/3 pairs fail allclose (up to 0 values, 0 elements)
+    A vs B:   15/15 pairs differ, max_abs 7.56e-15, max_rel 1.32e-10, 0/15 pairs fail allclose (up to 0 values, 0 elements)
+wntr/Net2 wntr         link.velocity        distinct A 5/5, B 3/3
+    within A: 10/10 pairs differ, max_abs 2.37e-13, max_rel 1.34e-10, 0/10 pairs fail allclose (up to 0 values, 0 elements)
+    within B: 3/3 pairs differ, max_abs 1.75e-13, max_rel 1.2e-10, 0/3 pairs fail allclose (up to 0 values, 0 elements)
+    A vs B:   15/15 pairs differ, max_abs 2.33e-13, max_rel 1.32e-10, 0/15 pairs fail allclose (up to 0 values, 0 elements)
+wntr/Net2 wntr         node.demand          distinct A 5/5, B 3/3
+    within A: 10/10 pairs differ, max_abs 5.9e-17, max_rel 4.2e-15, 0/10 pairs fail allclose (up to 0 values, 0 elements)
+    within B: 3/3 pairs differ, max_abs 7.63e-17, max_rel 3.21e-15, 0/3 pairs fail allclose (up to 0 values, 0 elements)
+    A vs B:   15/15 pairs differ, max_abs 7.98e-17, max_rel 3.35e-15, 0/15 pairs fail allclose (up to 0 values, 0 elements)
+wntr/Net2 wntr         node.head            distinct A 5/5, B 3/3
+    within A: 10/10 pairs differ, max_abs 4.26e-14, max_rel 4.77e-16, 0/10 pairs fail allclose (up to 0 values, 0 elements)
+    within B: 3/3 pairs differ, max_abs 2.84e-14, max_rel 3.17e-16, 0/3 pairs fail allclose (up to 0 values, 0 elements)
+    A vs B:   15/15 pairs differ, max_abs 4.26e-14, max_rel 4.77e-16, 0/15 pairs fail allclose (up to 0 values, 0 elements)
+wntr/Net2 wntr         node.pressure        distinct A 5/5, B 3/3
+    within A: 10/10 pairs differ, max_abs 4.26e-14, max_rel 1.39e-15, 0/10 pairs fail allclose (up to 0 values, 0 elements)
+    within B: 3/3 pairs differ, max_abs 2.84e-14, max_rel 6.92e-16, 0/3 pairs fail allclose (up to 0 values, 0 elements)
+    A vs B:   15/15 pairs differ, max_abs 4.26e-14, max_rel 1.14e-15, 0/15 pairs fail allclose (up to 0 values, 0 elements)
+wntr/Net3 wntr         link.flowrate        distinct A 5/5, B 3/3
+    within A: 10/10 pairs differ, max_abs 9.58e-15, max_rel 7.66e-10, 0/10 pairs fail allclose (up to 0 values, 0 elements)
+    within B: 3/3 pairs differ, max_abs 9.64e-15, max_rel 4.59e-10, 0/3 pairs fail allclose (up to 0 values, 0 elements)
+    A vs B:   15/15 pairs differ, max_abs 1.01e-14, max_rel 7.57e-10, 0/15 pairs fail allclose (up to 0 values, 0 elements)
+wntr/Net3 wntr         link.velocity        distinct A 5/5, B 3/3
+    within A: 10/10 pairs differ, max_abs 1.89e-13, max_rel 7.66e-10, 0/10 pairs fail allclose (up to 0 values, 0 elements)
+    within B: 3/3 pairs differ, max_abs 1.9e-13, max_rel 4.59e-10, 0/3 pairs fail allclose (up to 0 values, 0 elements)
+    A vs B:   15/15 pairs differ, max_abs 1.99e-13, max_rel 7.57e-10, 0/15 pairs fail allclose (up to 0 values, 0 elements)
+wntr/Net3 wntr         node.demand          distinct A 5/5, B 3/3
+    within A: 10/10 pairs differ, max_abs 1.9e-15, max_rel 7.56e-12, 0/10 pairs fail allclose (up to 0 values, 0 elements)
+    within B: 3/3 pairs differ, max_abs 1.24e-15, max_rel 4.85e-12, 0/3 pairs fail allclose (up to 0 values, 0 elements)
+    A vs B:   15/15 pairs differ, max_abs 1.99e-15, max_rel 7.91e-12, 0/15 pairs fail allclose (up to 0 values, 0 elements)
+wntr/Net3 wntr         node.head            distinct A 5/5, B 3/3
+    within A: 10/10 pairs differ, max_abs 2.84e-14, max_rel 6.28e-16, 0/10 pairs fail allclose (up to 0 values, 0 elements)
+    within B: 3/3 pairs differ, max_abs 2.84e-14, max_rel 6.45e-16, 0/3 pairs fail allclose (up to 0 values, 0 elements)
+    A vs B:   15/15 pairs differ, max_abs 2.84e-14, max_rel 6.46e-16, 0/15 pairs fail allclose (up to 0 values, 0 elements)
+wntr/Net3 wntr         node.pressure        distinct A 5/5, B 3/3
+    within A: 10/10 pairs differ, max_abs 2.84e-14, max_rel 7.76e-14, 0/10 pairs fail allclose (up to 0 values, 0 elements)
+    within B: 3/3 pairs differ, max_abs 2.84e-14, max_rel 7.76e-14, 0/3 pairs fail allclose (up to 0 values, 0 elements)
+    A vs B:   15/15 pairs differ, max_abs 2.84e-14, max_rel 1.16e-13, 0/15 pairs fail allclose (up to 0 values, 0 elements)
+wntr/Net6 wntr         link.flowrate        distinct A 5/5, B 3/3
+    within A: 10/10 pairs differ, max_abs 0.715, max_rel 2, 10/10 pairs fail allclose (up to 28113 values, 1834 elements; worst LINK-2994 t=126000s (0.192067899 vs 0))
+    within B: 3/3 pairs differ, max_abs 0.343, max_rel 2, 3/3 pairs fail allclose (up to 6435 values, 990 elements; worst LINK-2934 t=316800s (0.03111126066 vs 0))
+    A vs B:   15/15 pairs differ, max_abs 0.715, max_rel 2, 15/15 pairs fail allclose (up to 28907 values, 1834 elements; worst LINK-2994 t=126000s (0.192067899 vs 0))
+wntr/Net6 wntr         link.status          distinct A 5/5, B 3/3
+    within A: 10/10 pairs differ, max_abs 2, max_rel 1, 10/10 pairs fail allclose (up to 32 values, 10 elements; worst LINK-1843 t=86400s (1 vs 0))
+    within B: 3/3 pairs differ, max_abs 1, max_rel 1, 3/3 pairs fail allclose (up to 6 values, 2 elements; worst PUMP-3863 t=280800s (1 vs 0))
+    A vs B:   14/15 pairs differ, max_abs 2, max_rel 1, 14/15 pairs fail allclose (up to 32 values, 10 elements; worst LINK-1843 t=86400s (1 vs 0))
+wntr/Net6 wntr         link.velocity        distinct A 5/5, B 3/3
+    within A: 10/10 pairs differ, max_abs 2.46, max_rel 1, 10/10 pairs fail allclose (up to 29272 values, 1855 elements; worst LINK-1843 t=86400s (0.8138732854 vs 0))
+    within B: 3/3 pairs differ, max_abs 2.37, max_rel 1, 3/3 pairs fail allclose (up to 6753 values, 1059 elements; worst LINK-3187 t=316800s (0.6139885821 vs 0))
+    A vs B:   15/15 pairs differ, max_abs 2.46, max_rel 1, 15/15 pairs fail allclose (up to 30127 values, 1857 elements; worst LINK-1843 t=86400s (0.8138732854 vs 0))
+wntr/Net6 wntr         node.demand          distinct A 5/5, B 3/3
+    within A: 10/10 pairs differ, max_abs 0.647, max_rel 1.98, 10/10 pairs fail allclose (up to 657 values, 22 elements; worst TANK-3351 t=295200s (0.1044832426 vs 0))
+    within B: 3/3 pairs differ, max_abs 0.343, max_rel 1.97, 3/3 pairs fail allclose (up to 158 values, 17 elements; worst TANK-3344 t=259200s (-0.166481867 vs 0.01192717572))
+    A vs B:   15/15 pairs differ, max_abs 0.647, max_rel 1.99, 15/15 pairs fail allclose (up to 674 values, 22 elements; worst TANK-3350 t=205200s (0.08071089175 vs 0.001003702619))
+wntr/Net6 wntr         node.head            distinct A 5/5, B 3/3
+    within A: 10/10 pairs differ, max_abs 20.5, max_rel 0.112, 9/10 pairs fail allclose (up to 902 values, 851 elements; worst JUNCTION-0 t=176400s (73.58550241 vs 66.8691073))
+    within B: 3/3 pairs differ, max_abs 1.96, max_rel 0.0118, 3/3 pairs fail allclose (up to 7 values, 6 elements; worst JUNCTION-2894 t=295200s (163.9102003 vs 165.8698093))
+    A vs B:   15/15 pairs differ, max_abs 20.5, max_rel 0.112, 13/15 pairs fail allclose (up to 884 values, 829 elements; worst JUNCTION-1100 t=86400s (68.09133173 vs 60.45468309))
+wntr/Net6 wntr         node.pressure        distinct A 5/5, B 3/3
+    within A: 10/10 pairs differ, max_abs 20.5, max_rel 0.882, 10/10 pairs fail allclose (up to 2282 values, 1142 elements; worst JUNCTION-1100 t=86400s (8.655331726 vs 1.018683092))
+    within B: 3/3 pairs differ, max_abs 1.96, max_rel 0.0569, 3/3 pairs fail allclose (up to 401 values, 120 elements; worst TANK-3344 t=277200s (8.443864936 vs 8.942531755))
+    A vs B:   15/15 pairs differ, max_abs 20.5, max_rel 0.882, 14/15 pairs fail allclose (up to 2359 values, 1143 elements; worst JUNCTION-1100 t=86400s (8.655331726 vs 1.018683092))
+wntr/ky10 wntr         IDENTICAL in all 8 runs (8 variables)
+wntr/ky4 wntr          link.flowrate        distinct A 5/5, B 3/3
+    within A: 10/10 pairs differ, max_abs 1.1e-13, max_rel 1.7e-08, 0/10 pairs fail allclose (up to 0 values, 0 elements)
+    within B: 3/3 pairs differ, max_abs 3.49e-14, max_rel 1.43e-08, 0/3 pairs fail allclose (up to 0 values, 0 elements)
+    A vs B:   15/15 pairs differ, max_abs 1.1e-13, max_rel 1.78e-08, 0/15 pairs fail allclose (up to 0 values, 0 elements)
+wntr/ky4 wntr          link.velocity        distinct A 5/5, B 3/3
+    within A: 10/10 pairs differ, max_abs 3.4e-12, max_rel 1.7e-08, 0/10 pairs fail allclose (up to 0 values, 0 elements)
+    within B: 3/3 pairs differ, max_abs 1.08e-12, max_rel 1.43e-08, 0/3 pairs fail allclose (up to 0 values, 0 elements)
+    A vs B:   15/15 pairs differ, max_abs 3.39e-12, max_rel 1.78e-08, 0/15 pairs fail allclose (up to 0 values, 0 elements)
+wntr/ky4 wntr          node.demand          distinct A 5/5, B 3/3
+    within A: 10/10 pairs differ, max_abs 4.23e-16, max_rel 9.51e-15, 0/10 pairs fail allclose (up to 0 values, 0 elements)
+    within B: 3/3 pairs differ, max_abs 5.27e-16, max_rel 1.18e-14, 0/3 pairs fail allclose (up to 0 values, 0 elements)
+    A vs B:   15/15 pairs differ, max_abs 4.86e-16, max_rel 1.09e-14, 0/15 pairs fail allclose (up to 0 values, 0 elements)
+wntr/ky4 wntr          node.head            distinct A 5/5, B 3/3
+    within A: 10/10 pairs differ, max_abs 5.68e-14, max_rel 2.56e-16, 0/10 pairs fail allclose (up to 0 values, 0 elements)
+    within B: 3/3 pairs differ, max_abs 5.68e-14, max_rel 2.31e-16, 0/3 pairs fail allclose (up to 0 values, 0 elements)
+    A vs B:   15/15 pairs differ, max_abs 5.68e-14, max_rel 2.56e-16, 0/15 pairs fail allclose (up to 0 values, 0 elements)
+wntr/ky4 wntr          node.pressure        distinct A 5/5, B 3/3
+    within A: 10/10 pairs differ, max_abs 5.68e-14, max_rel 1.9e-15, 0/10 pairs fail allclose (up to 0 values, 0 elements)
+    within B: 3/3 pairs differ, max_abs 5.68e-14, max_rel 1.58e-15, 0/3 pairs fail allclose (up to 0 values, 0 elements)
+    A vs B:   15/15 pairs differ, max_abs 5.68e-14, max_rel 1.9e-15, 0/15 pairs fail allclose (up to 0 values, 0 elements)
+DIFFERS

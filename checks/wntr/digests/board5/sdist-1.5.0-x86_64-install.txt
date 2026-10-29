@@ -1,0 +1,39 @@
+artifact wntr-1.5.0.tar.gz sha256 244c53bedc11ac242f355b66923d102f9ef1db9510fbfd918c40c039028bd6bb
+install exit 0 in 30 s
+python 3.12.3
+host Linux 7.0.0-42-generic x86_64
+libc ldd (Ubuntu GLIBC 2.39-0ubuntu8.9) 2.39
+cpu AMD Ryzen 5 PRO 5650U with Radeon Graphics
+cpu has fma: 1
+CFLAGS='' CXXFLAGS=''
+c++ c++ (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0
+pip: Successfully installed numpy-2.5.4 setuptools-84.2.1
+pip: Successfully installed contourpy-1.4.0 cycler-0.12.1 fonttools-4.68.0 kiwisolver-1.5.1 matplotlib-3.11.2 networkx-3.7 numpy-2.5.4 packaging-26.3 pandas-3.1.0 pillow-13.0.0 pyparsing-3.3.3 python-dateutil-3.0.0 scipy-1.18.1 six-1.17.0 tzdata-2026.6 wntr-1.5.0
+compile: x86_64-linux-gnu-g++ -fno-strict-overflow -Wsign-compare -DNDEBUG -g -O2 -Wall -fPIC -IBUILDENV/overlay/lib/python3.12/site-packages/numpy/_core/include -I./wntr/sim/aml -IWORK/venv-sdist-1.5.0-x86_64/include -I/usr/include/python3.12 -c ./wntr/sim/aml/evaluator.cpp -o build/temp.linux-x86_64-cpython-312/wntr/sim/aml/evaluator.o
+compile: x86_64-linux-gnu-g++ -fno-strict-overflow -Wsign-compare -DNDEBUG -g -O2 -Wall -fPIC -IBUILDENV/overlay/lib/python3.12/site-packages/numpy/_core/include -I./wntr/sim/aml -IWORK/venv-sdist-1.5.0-x86_64/include -I/usr/include/python3.12 -c ./wntr/sim/aml/evaluator_wrap.cpp -o build/temp.linux-x86_64-cpython-312/wntr/sim/aml/evaluator_wrap.o
+compile: x86_64-linux-gnu-g++ -fno-strict-overflow -Wsign-compare -DNDEBUG -g -O2 -Wall -fPIC -IBUILDENV/overlay/lib/python3.12/site-packages/numpy/_core/include -I./wntr/sim/network_isolation -IWORK/venv-sdist-1.5.0-x86_64/include -I/usr/include/python3.12 -c ./wntr/sim/network_isolation/network_isolation.cpp -o build/temp.linux-x86_64-cpython-312/wntr/sim/network_isolation/network_isolation.o
+compile: x86_64-linux-gnu-g++ -fno-strict-overflow -Wsign-compare -DNDEBUG -g -O2 -Wall -fPIC -IBUILDENV/overlay/lib/python3.12/site-packages/numpy/_core/include -I./wntr/sim/network_isolation -IWORK/venv-sdist-1.5.0-x86_64/include -I/usr/include/python3.12 -c ./wntr/sim/network_isolation/network_isolation_wrap.cpp -o build/temp.linux-x86_64-cpython-312/wntr/sim/network_isolation/network_isolation_wrap.o
+lib wntr/epanet/libepanet/linux-x64/libepanet20.so sha256 f33bafb7b01f09f9 fma 0 machine 'Advanced Micro Devices X86-64' compiler 'GCC: (GNU) 4.4.7 20120313 (Red Hat 4.4.7-17)'
+lib wntr/epanet/libepanet/linux-x64/libepanet22.so sha256 3a49fa2eb1aecdf4 fma 0 machine 'Advanced Micro Devices X86-64' compiler 'GCC: (Ubuntu 7.4.0-1ubuntu1~18.04.1) 7.4.0'
+lib wntr/epanet/libepanet/linux-x64/libepanet2.so sha256 7dcd417ed3898cf6 fma 0 machine 'Advanced Micro Devices X86-64' compiler 'GCC: (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0'
+lib wntr/epanet/libepanet/linux-x64/libepanetmsx.so sha256 9518e2c9d98f567c fma 0 machine 'Advanced Micro Devices X86-64' compiler 'GCC: (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0'
+lib wntr/sim/aml/_evaluator.cpython-312-x86_64-linux-gnu.so sha256 70734e80b4da0661 fma 0 machine 'Advanced Micro Devices X86-64' compiler 'GCC: (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0'
+lib wntr/sim/network_isolation/_network_isolation.cpython-312-x86_64-linux-gnu.so sha256 b59747c26450ec5b fma 0 machine 'Advanced Micro Devices X86-64' compiler 'GCC: (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0'
+epanet library libepanet/linux-x64/libepanet22.so
+epanet ENgetversion 20200
+contourpy==1.4.0
+cycler==0.12.1
+fonttools==4.68.0
+kiwisolver==1.5.1
+matplotlib==3.11.2
+networkx==3.7
+numpy==2.5.4
+packaging==26.3
+pandas==3.1.0
+pillow==13.0.0
+pyparsing==3.3.3
+python-dateutil==3.0.0
+scipy==1.18.1
+six==1.17.0
+tzdata==2026.6
+wntr @ file://WORK/dl-sdist-1.5.0-x86_64/wntr-1.5.0.tar.gz#sha256=244c53bedc11ac242f355b66923d102f9ef1db9510fbfd918c40c039028bd6bb
