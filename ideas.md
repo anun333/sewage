@@ -34,7 +34,7 @@ pilot.
    - Once each implementation's departures from BSM1's equations are removed, all
      three converged answers agree within 2e-7.
    - Each departure is a candidate fix:
-     - WaterTAP holds reactor 5's oxygen at 0.449 g/m3, apparently a typo for 0.491;
+     - WaterTAP holds reactor 5's oxygen at 0.449 g/m3, where BSM1's open loop gives 0.491;
      - EXPOsan uses exact constants where BSM1 specifies rounded ones;
      - bsm2-python's rain file doesn't load.
    - The reference has faults of its own: the hosted rain and storm files keep SI

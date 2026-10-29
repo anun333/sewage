@@ -4,7 +4,7 @@
 WaterTAP has no BSM1 flowsheet with BSM1's settler. The nearest is
 watertap/flowsheets/activated_sludge/ASM1_flowsheet.py: BSM1's five reactors
 and flows, ASM1, and a clarifier that is a separator with fixed split
-fractions, solved as one steady state by IPOPT. Three cases go to OUT.csv:
+fractions, solved as one steady state by IPOPT. Four cases go to OUT.csv:
 
   ss_shipped   build_flowsheet() as shipped: reactor 5's oxygen fixed at
                4.49e-4 kg/m3, split fractions rounded to 5 decimals.
@@ -15,6 +15,9 @@ fractions, solved as one steady state by IPOPT. Three cases go to OUT.csv:
                steady state (Qe*TSSe / (Qf*TSSf), TSSe 12.4969, TSSf 3269.8246;
                Appendix 4, p. 41): what WaterTAP's ASM1 reactors give when the
                settler is replaced by the answer it should reach.
+  ss_r5fix     a fresh build_flowsheet() with reactor 5's oxygen fixed at
+               4.91e-4 kg/m3 instead of 4.49e-4: the report's open-loop 0.491
+               g/m3 (Table 6), the one-line alternative to aerating it.
 
 WaterTAP gives no settler layers; underflow is the Sludge product, effluent
 the Treated product and input_as the inlet of R1.
@@ -84,6 +87,16 @@ def set_exact(m, solver):
     return fx
 
 
+def r5fix(solver):
+    m, res = build_flowsheet()
+    pyo.assert_optimal_termination(res)
+    m.fs.R5.outlet.conc_mass_comp[:, 'S_O'].fix(4.91e-4)
+    assert degrees_of_freedom(m) == 0
+    res = solver.solve(m)
+    pyo.assert_optimal_termination(res)
+    return m
+
+
 def main(out):
     m, res = build_flowsheet()
     pyo.assert_optimal_termination(res)
@@ -93,6 +106,7 @@ def main(out):
     rows += collect(m, 'ss_kla5')
     fx = set_exact(m, solver)
     rows += collect(m, 'ss_exact')
+    rows += collect(r5fix(solver), 'ss_r5fix')
     with open(out, 'w', newline='') as f:
         w = csv.writer(f, lineterminator='\n'); w.writerow(['case', 'block', 'var', 'value'])
         for r in rows:

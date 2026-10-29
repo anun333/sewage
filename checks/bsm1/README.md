@@ -191,6 +191,7 @@ from simulink200.csv (effluent and settler, full precision).
 | QSDsan as shipped, 1000 d | 86 of 108 | 21 of 126 | 2.7e-3 (effluent SNO) |
 | QSDsan with the report's 2.86 and 4.57 | 104 of 108 | 69 of 126 | 2.9e-4 (SALK) |
 | WaterTAP as shipped | 35 of 98 | 9 of 115 | 8.5e-2 (SO) |
+| WaterTAP, reactor 5 held at 0.491 g/m3 (board5, 2026-10-29) | 86 of 98 | 20 of 115 | 8.4e-4 (effluent XP) |
 | WaterTAP, reactor 5 at KLa 3.5 1/h | 87 of 98 | 16 of 115 | 8.4e-4 (effluent XP) |
 | WaterTAP, KLa 3.5 1/h, exact flows and the report's settler split | 97 of 98 | 73 of 115 | 1.9e-7 |
 
@@ -262,8 +263,14 @@ Once the model differences below are removed, they meet within 1e-7.
        2 g/m3 (the report's Appendix 4, "DOsetpoint=2mg/l").
      - Reactors 3 and 4 start at 1.72e-3 and 2.43e-3 (lines 214-215), the
        report's Table 6 values, before lines 313-316 switch them to KLa
-       10 1/h. So 0.449 looks like Table 6's 0.491 with two digits swapped.
-       That is a guess; fixing R5 at 4.91e-4 instead was not run.
+       10 1/h.
+     - Where 0.449 comes from isn't stated. It is not a transposition of 0.491;
+       an earlier version of this README guessed that, wrongly. The same four
+       lines, R5 at 4.49e-4 included, appear in WaterTAP's BSM2, METAB-BSM1 and
+       ASM2d flowsheets (checked 2026-10-29).
+     - Fixing R5 at 4.91e-4 instead (`run_watertap.py` case `ss_r5fix`, run on
+       board5 2026-10-29) agrees with Tables 6-8 on 86 of 98 rows, against 87
+       for KLa 3.5 1/h and 35 as shipped.
 
      The test file accepts the result: `test_asm1_flowsheet.py` lines 79-89 and
      123-133 accept S_O 0.449 ("slightly off, but probably due to differences
@@ -727,7 +734,7 @@ closed loop). Each of these would need its text agreed first.
   - `ASM1_flowsheet.py` holds reactor 5's oxygen at 4.49e-4 kg/m3 as
     "controlled" (line 312). That value is neither BSM1's open loop (KLa
     3.5 1/h, giving 0.491 g/m3) nor its closed-loop setpoint (2 g/m3), and
-    looks like the report's 0.491 with two digits swapped. Its test accepts
+    its source isn't stated. Its test accepts
     effluent nitrate and ammonia 2.6% and 7.3% from the report as "slightly off
     in last significant digit".
   - Which fix is right is the maintainers' call. Either add the KLa constraint
