@@ -86,6 +86,17 @@ path, but that was not traced.
 - `repro-diff` (repeat, threads 1/4, ftz, cpu=Nehalem) on user1 and
   events_example: **IDENTICAL**. On Example1 and user3: **DIFFERS**, under
   `cpu` only.
+- **Since then** (crnumerics
+  [`beeb69d`](https://github.com/anun333/crnumerics/commit/beeb69d), 2026-10-29),
+  `repro-scan` flags x86-64 calls into glibc maths that picks FMA or
+  non-FMA code by CPU (`libm-cpu`), and a CLEAN verdict names the fused
+  multiply-adds it found. On swmm-toolkit 0.17.0's published wheels (see
+  [Published wheels](#published-wheels-2026-10-29)) it prints **FLAGGED**
+  for the x86-64 wheel, for 11 such calls in `libswmm5.so`. It prints
+  **CLEAN** for the aarch64 wheel, naming its 555 fused multiply-adds (552 in
+  `libswmm5.so`, 3 in `libswmm-output.so`). Its
+  [tools/README.md](https://github.com/anun333/crnumerics/blob/beeb69d/tools/README.md)
+  has the output. The from-source builds above were not rescanned.
 
 ## Upstream's guard
 

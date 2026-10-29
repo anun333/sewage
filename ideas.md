@@ -172,6 +172,9 @@ pilot.
   and has never named FMA or libm as the cause.
 - **For crnumerics:** `repro-scan` rated every `libswmm5.so` CLEAN and listed the FMAs
   only as info. That's worth feeding back, since the results move by percent.
+  Fed back: since crnumerics `beeb69d` (2026-10-29) it flags glibc's CPU-dependent
+  maths on x86-64 and names the FMAs in a CLEAN verdict
+  ([checks/swmm](checks/swmm/README.md)).
 
 **On cfarm** (cfarm421 EPYC 7773X Debian 13; cfarm424 Neoverse-N1 Debian 13; cfarm104
 M1 macOS 26.5; about 0.5 core-hours, every host cleaned afterwards):
@@ -360,7 +363,7 @@ any hosted service, by fieldmesh's reasoning.
 | --- | --- | --- |
 | DMR averages and rounding | **The method, not the libraries** | The inputs are decimal, so the cure is decimal arithmetic (Python's `decimal`). crsum would give the correctly rounded sum of the binary approximations, which is the wrong quantity. The verdicts, controls and planted bugs are what N1's suite needs |
 | Geometric means at a limit | **Its thesis, not its code** | The float formula's side of the limit depends on the C library's `log` and `exp`, so two machines can disagree: crnumerics' subject exactly. The cure is exact integer arithmetic. Run on aarch64 glibc and macOS: the counts depended on Python's summation, not the libm ([checks/](checks/README.md)) |
-| SWMM and EPANET | **Yes, measured** | CORE-MATH removed glibc's dispatch effect on SWMM's results (U1). `repro-diff` caught that effect under its older-CPU condition. `repro-scan` rated the libraries CLEAN while their results moved by percent, a finding for crnumerics itself |
+| SWMM and EPANET | **Yes, measured** | CORE-MATH removed glibc's dispatch effect on SWMM's results (U1). `repro-diff` caught that effect under its older-CPU condition. `repro-scan` rated the libraries CLEAN while their results moved by percent, a finding for crnumerics itself. It now flags glibc's CPU-dependent maths and names FMAs in a CLEAN verdict (`beeb69d`) |
 | Sensor nodes | **Speculative** | If fieldmesh's Q20 lets a node send a flow total it computed during an outage, crfix's integer-only, same-bits arithmetic would let the gateway reproduce that total exactly |
 | Monte Carlo on SWMM or RDII | **Speculative** | crdist's same-draws-everywhere sampling, if anyone runs uncertainty studies and needs them reproducible |
 | crlin, ival | **No fit found** | EPANET's solve is sparse, not dense, and flow from head is monotone, so its enclosure is just the two endpoints |
