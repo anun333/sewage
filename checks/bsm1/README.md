@@ -248,8 +248,9 @@ Once the model differences below are removed, they meet within 1e-7.
      ammonium are 1/14.0067 per g N. BSM1's equations divide by 14, and its
      inputs (EXPOsan writes 7 mol/m3 as 7*12 = 84 g C/m3) use 12. So every
      alkalinity change is 14/14.0067 · 12.0107/12 = 1.000413 times BSM1's.
-     That gives effluent SALK 4.12439 against 4.12558: the predicted shift,
-     0.0011866, is the observed 0.0011868.
+     That gives effluent SALK 4.12439 against 4.12558. The predicted shift,
+     (7 - 4.12558)(f - 1) = 0.0011868 with f = 1.000413, is the observed
+     0.0011868 to every digit shown.
 
   QSDsan's clarifier also keeps solubles in one mixed volume
   (`qsdsan/unit_operations/dynamic/_clarifier.py:553`) where BSM1 has ten
