@@ -21,14 +21,26 @@ pilot.
    - **`-ffp-contract=off` plus a correctly rounded libm (CORE-MATH) gives the same
      `.out` bits on x86-64 Linux, aarch64 Linux and macOS** for every model.
    - One report line still differs on ARM, from undefined behaviour in SWMM's C code.
+   - **It reaches users (2026-10-29).** pyswmm's published aarch64 wheel (swmm-toolkit
+     0.17.0) is built with FMA and disagrees with the x86-64 wheel on 10 of 34 models.
+     The difference is past tolerance on 3: user5's 400.6 against 450.9 cfs again.
    - **Drafted, not posted:** an issue and two patches for the pyswmm fork, in
      [upstream/swmm/](upstream/swmm/README.md). One patch is the build flag, which costs
      about 1%; the other is the UB fix. Both were tested on all three platforms, and
      with them every file matches, reports included (macOS needs CORE-MATH as well).
      Not posted yet.
-2. **[U6](#u6): BSM1 checked across its open implementations.** QSDsan, WaterTAP and
-   bsm2-python against the IWA's published reference, the crnumerics method applied to
-   treatment models. Differences become issues or PRs upstream. About 3 GB.
+2. **[U6](#u6): BSM1 checked across its open implementations. Steady state done
+   2026-10-29 ([checks/bsm1/](checks/bsm1/README.md)).**
+   - Once each implementation's departures from BSM1's equations are removed, all
+     three converged answers agree within 2e-7.
+   - Each departure is a candidate fix:
+     - WaterTAP holds reactor 5's oxygen at 0.449 g/m3, apparently a typo for 0.491;
+     - EXPOsan uses exact constants where BSM1 specifies rounded ones;
+     - bsm2-python's rain file doesn't load.
+   - The reference has faults of its own: the hosted rain and storm files keep SI
+     undiluted, and Appendix 4's steady state isn't quite steady.
+   - Dynamic runs are done for bsm2-python and one QSDsan case. Nothing drafted or
+     posted yet.
 3. **Small contributions to learn each community:** a fix in the
    [pyswmm ecosystem](#u2), a review of the errata in [mWater's new sanitation asset
    standard](#u4), and [PHES-ODM's licence conflict](#u5).
@@ -231,8 +243,12 @@ Before opening a PR, run `pr-toolbox landing` and `check` on it, which never com
 - **Rests on.** All three are open and active, or were recently (bsm2-python went quiet
   in mid-2025). QSDsan merges outside fixes; an ASM2d fix landed 2026-10-12. WaterTAP has
   two open BSM2 bugs (#1851, #1876).
-- **Unchecked.** Whether the reference values (the BSM1 technical report, Alex et al.,
-  2008) are freely downloadable, and which version each implementation follows.
+- **Checked 2026-10-29** ([checks/bsm1/](checks/bsm1/README.md)). The report is a free
+  download with no licence stated, so only its numbers are copied. bsm2-python
+  matches converged Simulink to 1e-8. QSDsan and WaterTAP match it once their
+  departures from BSM1 are removed (constants and alkalinity; reactor 5's oxygen
+  and the separator's split). The dynamic comparison is complete for bsm2-python
+  (first order in its step) and covers one run for QSDsan.
 - **What would prove it pointless.** All three agree with the reference to the stated
   tolerance. Then the result is a short note to each project saying so, which is worth
   having too.

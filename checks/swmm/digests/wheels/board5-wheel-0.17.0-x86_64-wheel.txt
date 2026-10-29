@@ -1,0 +1,11 @@
+wheel swmm_toolkit-0.17.0-cp39-abi3-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl sha256 28737dd539d383a6d8ea2000fc372825b1e25bdaef076bd01fab816ebe62c06e
+python 3.12.3
+host Linux 7.0.0-42-generic x86_64
+libc ldd (Ubuntu GLIBC 2.39-0ubuntu8.9) 2.39
+cpu AMD Ryzen 5 PRO 5650U with Radeon Graphics
+cpu has fma: 1
+lib lib/python3.12/site-packages/swmm_toolkit.libs/libgomp-870cb1d0.so.1.0.0 sha256 4dae993cb6da9101 fma 0
+lib lib/python3.12/site-packages/swmm/toolkit/libswmm5.so sha256 0881c08c8321bdb6 fma 0
+lib lib/python3.12/site-packages/swmm/toolkit/libswmm-output.so sha256 7a5cd66f1b1fce52 fma 0
+lib lib/python3.12/site-packages/swmm/toolkit/_output.abi3.so sha256 a0347d785b89e6b9 fma 0
+lib lib/python3.12/site-packages/swmm/toolkit/_solver.abi3.so sha256 91760b61d1c187a4 fma 0

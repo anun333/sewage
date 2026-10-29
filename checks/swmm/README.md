@@ -455,6 +455,74 @@ NOTICE=~/bin/notice NCORES=4 SWMM_CPUS=48-51 SWMM_TIME_CPU=49 SWMM_JOBS=4 nice -
 PATH=$PATH:/opt/homebrew/bin NOTICE=~/bin/notice NCORES=2 SWMM_JOBS=2 nice -n 19 sh patch-job.sh darwin > results/job.log 2>&1  # cfarm104, models.txt without gate_control_2
 ```
 
+## Published wheels (2026-10-29)
+
+Everything above built SWMM from source. pyswmm users don't: `pip install pyswmm`
+brings in swmm-toolkit's prebuilt wheel. swmm-toolkit 0.17.0 (PyPI, 2026-02-26)
+ships the fork's SWMM at `ebbce382`, 10 commits before `6c81201`. Its wheels are
+built natively by cibuildwheel on `ubuntu-24.04`, `ubuntu-24.04-arm`,
+`windows-2025`, `macos-15-intel` and `macos-15` (`.github/workflows/build_wheel.yml`), and nothing
+in swmm-toolkit's CMake or `pyproject.toml` turns contraction off.
+
+[wheeljob.sh](wheeljob.sh) installs a wheel from PyPI into a venv, records its
+sha256, counts the FMA instructions in the libraries it ships, and runs the 34
+models at one thread through the wheel's own solver (`swmm.toolkit.solver.swmm_run`).
+board5 ran it with the x86-64 wheel, under the same 4-CPU lock as everything else.
+cfarm424 ran it with the aarch64 wheel on 2026-10-29, 11:53-11:54Z, nice 19, one
+process, with a run notice. As a reference, board5 also built `ebbce382` from
+source with gcc `-O2 -ffp-contract=off`.
+
+| | x86-64 wheel | aarch64 wheel |
+| --- | --- | --- |
+| wheel sha256 | `28737dd5...` | `f0d5026a...` |
+| FMA instructions in `libswmm5.so` | 0 | 552 |
+| against `ebbce382` from source, `-ffp-contract=off` | **IDENTICAL**, all 34 (`.out` and `.rpt`) | 10 models differ |
+
+The aarch64 wheel against the x86-64 one:
+- **`.out` differs on 7 models**; 3 fail nrtest-swmm's `allclose` (rtol 0.01,
+  atol 1e-6):
+  - **user5:** 2,344 elements. LIB_2's flow at period 32 is 400.57 cfs on x86-64
+    and 450.88 on aarch64, the same pair the from-source builds gave. Link 647
+    holds 22,226 against 24,101 ft³ at period 176.
+  - **user1:** 17 elements; node 05yD77's depth at period 88 is 1.011 against
+    0.981 ft.
+  - **Example1:** 3 elements; link 15's flow at period 5 is 3.526 against 3.502.
+  - bioretention, porous_pavement and user3 differ within the tolerance (the
+    first two only in values below 1e-17).
+  - gate_control_2 differs too; its 492 MB `.out` was deleted after hashing, so
+    it wasn't decoded.
+- **`.rpt` differs on 6 models**, which fail nrtest's exact report comparison:
+  Example1, Example3, Example4, catchment_as_outfall (the `gage.c` warning),
+  user1 and user5.
+
+So a pyswmm user's results on user5 depend on whether they run on x86-64 or on
+ARM Linux, by 50 cfs (13%) in that flow, with nothing to tell them. The x86-64 wheel gives
+the answer of a build without contraction. The aarch64 wheel gives the answer this
+README measured for aarch64's default build.
+
+**The fix reaches the wheels.** swmm-toolkit builds the solver with
+`add_subdirectory(swmm-solver)`, which reads the solver's top-level
+`CMakeLists.txt`. So `0002-build`'s top-level `add_compile_options` would apply to
+the wheel builds once swmm-toolkit updates its submodule. That is read from the
+CMake files and was not built. On aarch64, `-ffp-contract=off` gave x86-64's
+`.out` bits for `6c81201` ([Patches](#patches-2026-10-27)); the same build of
+`ebbce382` was not run.
+
+- **Not run:** the macOS wheels (cfarm104 didn't answer ssh or ping on
+  2026-10-29), the Windows wheel, and the musllinux wheels (a different C library's
+  maths).
+- **Files.**
+  - Digests and each wheel's record are in [digests/wheels/](digests/wheels/).
+  - cfarm424's log was archived privately.
+
+```sh
+# WORK/src/suite/public is swmm-nrtestsuite public/ at e609fdb
+nice -n 19 sh wheeljob.sh WORK 0.17.0       # writes WORK/runs/wheel-0.17.0-PLATFORM/{digests.txt,wheel.txt}
+python3 -I swmmrun.py digcmp digests/wheels/board5-wheel-0.17.0-x86_64.txt digests/wheels/cfarm424-wheel-0.17.0-aarch64.txt
+# decoding: both runs' folders under one RUNS directory, then
+python3 -I swmmrun.py cmp RUNS wheel-0.17.0-manylinux2014_x86_64 wheel-0.17.0-manylinux2014_aarch64 --skip-missing MODEL...
+```
+
 ## What these do not show
 
 - **Windows.** MSVC was not run. The `/fp:fast` explanation for win64's

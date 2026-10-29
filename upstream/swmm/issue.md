@@ -26,10 +26,17 @@ This looks like what #203 ran into in 2018. A rebuild there failed the regressio
 | | x86-64 Linux | aarch64 Linux | macOS (M1) |
 | --- | --- | --- | --- |
 | default build | same bits (gcc emits no FMA for baseline x86-64) | 10 models differ; 3 fail `allclose` | 10 models differ; 3 fail `allclose` |
-| `-ffp-contract=off` | same bits | same bits | 5 differ (Apple's libm) |
+| `-ffp-contract=off` | same bits | same bits | 5 differ: 4 from Apple's libm, 1 from the `gage.c` bug below |
 | `-ffp-contract=off`, maths calls answered by a correctly rounded libm (CORE-MATH) | same bits | same bits | same bits |
 
 The FMA builds disagree with each other too: aarch64 gcc and Apple clang differ on 6 models. So there isn't one "ARM answer" to keep as a benchmark.
+
+**This reaches pyswmm users through the published wheels.**
+- The aarch64 wheel of swmm-toolkit 0.17.0 has 552 FMA instructions in `libswmm5.so`; the x86-64 wheel has none.
+- Run on the 34 models, the two wheels disagree on 10, and 3 fail `allclose`. On user5, LIB_2's flow at period 32 is again 400.6 cfs on x86-64 against 450.9 on ARM Linux.
+- The x86-64 wheel matches a `-ffp-contract=off` build of the same commit (`ebbce382`) bit for bit.
+
+swmm-toolkit builds the solver through its top-level CMakeLists (`add_subdirectory(swmm-solver)`), so the build change below would reach the wheels once the submodule is updated.
 
 **What I'd propose: two small PRs, which I can open if you want them.**
 

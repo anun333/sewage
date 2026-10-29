@@ -1,0 +1,11 @@
+wheel swmm_toolkit-0.17.0-cp39-abi3-manylinux2014_aarch64.manylinux_2_17_aarch64.manylinux_2_28_aarch64.whl sha256 f0d5026a98f14db88a79cf790b74877b6822f71e7a548b6618b55ce4a1b0f23e
+python 3.13.5
+host Linux 6.12.94+deb13-arm64 aarch64
+libc ldd (Debian GLIBC 2.41-12+deb13u4) 2.41
+cpu 0xd0c
+cpu has fma: 1
+lib lib/python3.13/site-packages/swmm/toolkit/_output.abi3.so sha256 1ebdd438afd66208 fma 0
+lib lib/python3.13/site-packages/swmm/toolkit/_solver.abi3.so sha256 34c313c980435cb1 fma 0
+lib lib/python3.13/site-packages/swmm/toolkit/libswmm-output.so sha256 e0df49a72b602fce fma 3
+lib lib/python3.13/site-packages/swmm/toolkit/libswmm5.so sha256 32287a1ff2d56da4 fma 552
+lib lib/python3.13/site-packages/swmm_toolkit.libs/libgomp-947d5fa1.so.1.0.0 sha256 dc3231f8fd4cadc4 fma 0

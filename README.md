@@ -38,6 +38,13 @@ is kept verbatim, unchecked, in [thread/2026-10-27-initial.md](thread/2026-10-27
   - `-ffp-contract=off` plus CORE-MATH gives the same `.out` bits on x86-64 Linux,
     aarch64 Linux and macOS (run on cfarm).
   - One report line differs on ARM, because of undefined behaviour in SWMM's C code.
+- **A second, run on cfarm 2026-10-29:** do the open implementations of the BSM1
+  treatment benchmark give its published answer
+  ([checks/bsm1/](checks/bsm1/README.md), [ideas U6](ideas.md#u6))?
+  - At steady state they agree with each other within 2e-7, once each
+    implementation's departures from BSM1's equations are removed. Those departures
+    are candidate fixes upstream.
+  - The reference itself has two faults, both shown with numbers.
 - **Statements about other projects** carry the date they were checked. Anything without
   a date is from memory and should be checked before anyone relies on it.
 
