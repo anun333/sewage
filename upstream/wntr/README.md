@@ -1,11 +1,11 @@
 # upstream/wntr: drafts for USEPA/WNTR
 
-Not posted. Each draft is read and approved in full before it goes out.
+Both issues are posted (2026-10-29). Each draft is read and approved in full before it goes out.
 
 | File | What |
 | --- | --- |
-| [issue-aarch64.md](issue-aarch64.md) | On aarch64 Linux, `pip install wntr` succeeds, but `EpanetSimulator` fails: `toolkit.py` loads the x86-64 `libepanet22.so` on every Linux. Same message as #471, different cause |
-| [issue-ordering.md](issue-ordering.md) | `WNTRSimulator` results change from run to run, because the evaluator orders variables and constraints by memory address. On Net6, pump status and metres of pressure change between runs |
+| [issue-aarch64.md](issue-aarch64.md) | **Posted as [#584](https://github.com/USEPA/WNTR/issues/584).** On aarch64 Linux, `pip install wntr` succeeds, but `EpanetSimulator` fails: `toolkit.py` loads the x86-64 `libepanet22.so` on every Linux. Same message as #471, different cause |
+| [issue-ordering.md](issue-ordering.md) | **Posted as [#585](https://github.com/USEPA/WNTR/issues/585).** `WNTRSimulator` results change from run to run, because the evaluator orders variables and constraints by memory address. On Net6, pump status and metres of pressure change between runs |
 
 The evidence is in [checks/wntr/](../../checks/wntr/README.md).
 

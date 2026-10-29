@@ -1,4 +1,4 @@
-<!-- DRAFT for USEPA/WNTR (bug-report template). Not posted; reviewed before posting. -->
+<!-- Posted 2026-10-29 as https://github.com/USEPA/WNTR/issues/585 after the maintainer read and approved this text. -->
 
 **Title:** WNTRSimulator results change from run to run: the evaluator orders variables and constraints by memory address
 

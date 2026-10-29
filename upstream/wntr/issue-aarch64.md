@@ -1,4 +1,4 @@
-<!-- DRAFT for USEPA/WNTR (bug-report template). Not posted; reviewed before posting. -->
+<!-- Posted 2026-10-29 as https://github.com/USEPA/WNTR/issues/584 after the maintainer read and approved this text. -->
 
 **Title:** Linux aarch64: `pip install wntr` succeeds, but EpanetSimulator fails because the x86-64 libepanet22.so is loaded on every Linux
 
