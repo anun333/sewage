@@ -1,4 +1,4 @@
-<!-- DRAFT for edgi-govdata-archiving/ECHO_modules (no issue templates). Not posted; reviewed before posting. -->
+<!-- Posted 2026-10-29 as https://github.com/edgi-govdata-archiving/ECHO_modules/issues/140 after the maintainer read and approved this text. -->
 
 **Title:** LICENSE is GPL-3.0, but the README says 3-Clause BSD and links to wayback's LICENSE
 

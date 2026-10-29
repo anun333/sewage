@@ -1,6 +1,6 @@
-# upstream/phes-odm
+# upstream/phes-odm (PHES-ODM/PHES-ODM, formerly Big-Life-Lab/PHES-ODM)
 
-Not posted. Each draft is read and approved in full before it goes out.
+Posted 2026-10-29 as [#296](https://github.com/PHES-ODM/PHES-ODM/issues/296). Each draft is read and approved in full before it goes out.
 
 | File | What |
 | --- | --- |

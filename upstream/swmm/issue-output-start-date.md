@@ -1,4 +1,4 @@
-<!-- DRAFT for pyswmm/Stormwater-Management-Model. Not posted; reviewed before posting. -->
+<!-- Posted 2026-10-29 as https://github.com/pyswmm/Stormwater-Management-Model/issues/432 after the maintainer read and approved this text. -->
 
 **Title:** The `.out` header's start date is one report step early in about a third of runs where REPORT_START is a whole number of steps after START
 

@@ -1,6 +1,6 @@
 # upstream/echo-modules
 
-Not posted. Each draft is read and approved in full before it goes out.
+Posted 2026-10-29 as [#140](https://github.com/edgi-govdata-archiving/ECHO_modules/issues/140). Each draft is read and approved in full before it goes out.
 
 | File | What |
 | --- | --- |

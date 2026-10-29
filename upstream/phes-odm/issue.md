@@ -1,4 +1,4 @@
-<!-- DRAFT for Big-Life-Lab/PHES-ODM (plain issue; the templates are for new parts). Not posted; reviewed before posting. -->
+<!-- Posted 2026-10-29 as https://github.com/PHES-ODM/PHES-ODM/issues/296 after the maintainer read and approved this text. -->
 
 **Title:** LICENSE says `cc-by-4.0` but holds CC BY-SA 4.0's legal text, while the README says CC BY 4.0
 
