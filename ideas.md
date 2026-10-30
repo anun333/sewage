@@ -49,8 +49,9 @@ pilot.
    - **Posted 2026-10-29:** WaterTAP's reactor-5 oxygen
      (watertap-org/watertap#1892; a one-line fix is tested and ready if they want it)
      and EXPOsan's constants and atomic weights (QSD-Group/EXPOsan#80).
-   - **Not drafted yet:** bsm2-python's rain file, and a note to the BSM authors about
-     the reference's two faults.
+   - **Drafted, not posted:** bsm2-python's rain file, which doesn't load
+     ([upstream/bsm2-python/](upstream/bsm2-python/README.md)), and a note to the
+     BSM authors about the reference's two faults ([upstream/bsm/](upstream/bsm/README.md)).
 3. **WNTR on two ISAs, checked 2026-10-29 ([checks/wntr/](checks/wntr/README.md)).**
    - On aarch64 Linux, `pip install wntr` succeeds but `EpanetSimulator` can't run:
      WNTR loads its x86-64 EPANET library on every Linux.
@@ -60,9 +61,12 @@ pilot.
 4. **Reviews of open PRs, posted 2026-10-29** as review comments. They recommend
    merging USEPA SWMM #239, #234 and #237 and bsm2-python #8, and recommend changes to
    USEPA SWMM #226 and EPANET #916 (the latter after building and running it).
-5. **Small contributions to learn each community:** a fix in the
-   [pyswmm ecosystem](#u2) and a review of the errata in [mWater's new sanitation
-   asset standard](#u4) are still to do. The licence questions are posted:
+5. **Small contributions to learn each community:** a review of the unit errata in
+   [mWater's new sanitation asset standard](#u4) is drafted (three points its own
+   verification missed). In the [pyswmm ecosystem](#u2), the transect-roughness
+   reports turn out to describe documented HEC-2 behaviour, which calls for a comment
+   rather than a fix; checking them found a real bug with the last transect, and a
+   tested one-line fix. The licence questions are posted:
    PHES-ODM/PHES-ODM#296 ([U5](#u5)) and edgi-govdata-archiving/ECHO_modules#140 ([N2](#n2)).
 6. **[N2](#n2): screen plants in EPA's public data, contributed to EDGI's ECHO tools.**
    This is any state or the whole country, not one. It says whether plants fail on
@@ -73,6 +77,32 @@ pilot.
 7. **Parked for want of a pilot:** the [lift-station watch](#o1), [bench sheets](#n3)
    and the [fiscal sustainability plan builder](#o7). Each needs a utility willing to
    run it.
+
+## Phase 2: builds (from 2026-10-30)
+
+Phase 1 found faults and reported them. Phase 2 builds: fixes for other projects
+first, then tools that carry one project's method into another. The rules don't
+change: compute runs on cfarm, every build has a control that must fail, and nothing
+goes out until the maintainer has read it.
+
+- **Fixes built and tested, ready to offer as PRs** ([upstream/](upstream/README.md)):
+  - WNTR [#585](https://github.com/USEPA/WNTR/issues/585) (the evaluator numbered by
+    creation, so runs repeat) and [#584](https://github.com/USEPA/WNTR/issues/584) (an
+    error that names the CPU), tested on x86-64 and aarch64;
+  - SWMM's build flag and `gage.c` fix (tested 2026-10-27);
+  - WaterTAP's reactor-5 oxygen (#1892);
+  - ECHO_modules' README licence paragraph, which its maintainer invited.
+- **Methods carried across projects:**
+  - crnumerics' `repro-scan` and `repro-diff` on each project's own build, as a CI
+    step a project could keep. SWMM and WNTR come first, since both showed the effects.
+    This waits until a maintainer wants it.
+  - The BSM1 comparison ([checks/bsm1/](checks/bsm1/README.md)) as a regression test
+    across implementations: each one's steady state against the report, with its
+    known departures written down. It would go to whichever project wants it.
+  - crmvec's crpreload in place of our own CORE-MATH shim in
+    [checks/swmm/](checks/swmm/README.md).
+- **Our own libraries, once something needs them:** [N1](#n1)'s exact DMR
+  arithmetic, [U3](#u3)'s level-to-flow tables and [U5](#u5)'s RDII fit.
 
 ## Lessons carried in from our own repos
 
@@ -236,6 +266,15 @@ and merge outside PRs within days. Approachable open issues as of 2026-10-27:
 
 Before opening a PR, run `pr-toolbox landing` and `check` on it, which never comment.
 
+**Checked 2026-10-30: the SWMM fork's #419 and #420.** They aren't the small C fix
+they looked like. A zero on a transect's NC line means "no change from previous NC
+line", as the SWMM 5.2 manual documents (HEC-2 practice), and the engine does that;
+a zero with nothing to inherit already gives Error 227. So a comment fits better than
+a fix. The check did turn up a real bug: the last transect is never read when
+`[TRANSECTS]` ends the file. A one-line fix is tested and leaves the suite unchanged
+([checks/swmm/transect/](checks/swmm/transect/README.md),
+[upstream/swmm/](upstream/swmm/README.md)). Both are drafted, not posted.
+
 <a id="u3"></a>
 ### U3. Level to flow for flumes and weirs
 
@@ -260,6 +299,12 @@ Before opening a PR, run `pr-toolbox landing` and `check` on it, which never com
   building and campus models that speak Brick describe their own lift stations.
 - **First step.** Read REVIEW-NEEDED.md and check each erratum. Propose nothing until
   the check is done.
+- **Checked 2026-10-30.** mWater's own verification report already lists most unit
+  defects (S6-S11). Three more, against NIST SP 811 and exact arithmetic: the metric
+  water-column units carry conventional values under a 4 °C label; the acre-foot's
+  correct value is 1233.482 with the international foot the tables use, not the
+  survey-foot 1233.489 the report gives; `hp` = 746 is the electric horsepower. An
+  issue is drafted in [upstream/mwater/](upstream/mwater/README.md).
 
 <a id="u6"></a>
 ### U6. BSM1 across its open implementations
@@ -282,8 +327,8 @@ Before opening a PR, run `pr-toolbox landing` and `check` on it, which never com
   and the separator's split). The dynamic comparison is complete for bsm2-python
   (first order in its step) and covers one run for QSDsan.
 - **Posted 2026-10-29:** watertap-org/watertap#1892 and QSD-Group/EXPOsan#80, and a
-  review of bsm2-python's PI fix (#8). Not drafted: bsm2-python's rain file, and a
-  note to the BSM authors.
+  review of bsm2-python's PI fix (#8). Drafted: bsm2-python's rain file and a note to the
+  BSM authors.
 - **What would prove it pointless.** All three agree with the reference to the stated
   tolerance. Then the result is a short note to each project saying so, which is worth
   having too.

@@ -32,7 +32,20 @@ Posted 2026-10-29 as review comments, not as approvals or change requests.
 
 ## Ready, not sent
 
+- **ECHO_modules:** the README fix its maintainer invited in #140
+  ([echo-modules/pr-readme.md](echo-modules/pr-readme.md)).
+- **bsm2-python:** an issue about its BSM1 rain influent file, which doesn't load
+  ([bsm2-python/issue-rain-influent.md](bsm2-python/issue-rain-influent.md)).
+- **mWater asset standards:** three additions to the unit errata mWater is considering,
+  with exact values ([mwater/issue-units.md](mwater/issue-units.md)).
+- **The BSM1 authors:** a note on the reference's two faults and five smaller slips
+  ([bsm/note-to-authors.md](bsm/note-to-authors.md)); no recipient chosen yet.
+- **WNTR:** both fixes we offered on #584 and #585, built and tested on x86-64 and
+  aarch64, with PR texts ([wntr/pr-584.md](wntr/pr-584.md), [wntr/pr-585.md](wntr/pr-585.md)).
 - **SWMM:** two patches, the build flag and the `gage.c` fix, with PR texts
   ([swmm/](swmm/README.md)). They go up if the fork's maintainers want them after #431.
+  Also a comment for #419 and #420 (the zero roughness they report is documented
+  behaviour) and an issue for a bug found while checking them, with a tested one-line
+  fix ([swmm/issue-last-transect.md](swmm/issue-last-transect.md)).
 - **WaterTAP:** a one-line fix for #1892 with its test values, tested; it goes up if the
   maintainers choose that fix ([watertap/](watertap/README.md)).
