@@ -1,0 +1,15 @@
+# SWMM on Windows, GitHub Actions (.github/workflows/swmm-windows.yml), 2026-10-30
+# pyswmm/Stormwater-Management-Model develop at 6c81201; swmm-nrtestsuite public/ at e609fdb; 34 models, 1 thread
+# windows: windows-2022 (Windows Server 2022 10.0.20348, ucrtbase 10.0.20348.5756), MSVC 19.44.35229.0, VS 2022 x64 Release
+#   main: FloatingPointModel Fast (/fp:fast, upstream's Release); patched: 0001 + 0002, FloatingPointModel Precise
+#   patched-cr: patched + CORE-MATH (crnumerics beeb69d core-math/, clang 20.1.8) and crlibm_shim.c linked into swmm5.dll;
+#     swmm5.dll imports none of acos asin atan cos exp log log10 pow sin tan from the C runtime; canary = pow * (1 + 2^-20)
+# linux (control): ubuntu-24.04, gcc 13.3.0, glibc 2.39, -O2, built as board5's gcc-O2-t1
+# runs: 41107977753 (AMD EPYC 7763), 41108732626 (Intel Xeon Platinum 8573C), 41109294719 (AMD EPYC 9V74; these files)
+ci-linux-gcc-O2-t1 vs board5 gcc-O2-t1: IDENTICAL (the control)
+win-main (/fp:fast) vs linux gcc -O2: DIFFERS, 14 models; nrtest allclose fails on Example1 (.rpt), user1, user3, user5
+win-patched (/fp:precise) vs linux gcc -O2: DIFFERS, 6 models (Example1, Example3 .rpt, gate_control_2, user1, user3 1 ulp, user5); allclose fails on Example1, user1, user5
+win-main vs win-patched: DIFFERS, the 14
+win-patched-cr vs board5 gcc-O2-nocontract-cr-t1 (Linux + CORE-MATH shim): IDENTICAL, 34/34 (.out and masked .rpt)
+win-patched-canary vs win-patched-cr: Example1 and user1 both differ (the preload control)
+win-main and win-patched, three runs on three CPUs: IDENTICAL each time

@@ -44,7 +44,8 @@ Posted 2026-10-29 as review comments, not as approvals or change requests.
   aarch64, with PR texts ([wntr/pr-584.md](wntr/pr-584.md), [wntr/pr-585.md](wntr/pr-585.md)).
 - **SWMM:** two patches, the build flag and the `gage.c` fix, with PR texts
   ([swmm/](swmm/README.md)). They go up if the fork's maintainers want them after #431.
-  Also a comment for #419 and #420 (the zero roughness they report is documented
+  The build patch's MSVC half is now tested on Windows, with a follow-up comment for
+  #431 ([swmm/comment-431-windows.md](swmm/comment-431-windows.md)). Also a comment for #419 and #420 (the zero roughness they report is documented
   behaviour) and an issue for a bug found while checking them, with a tested one-line
   fix ([swmm/issue-last-transect.md](swmm/issue-last-transect.md)).
 - **WaterTAP:** a one-line fix for #1892 with its test values, tested; it goes up if the

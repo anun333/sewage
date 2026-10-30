@@ -568,13 +568,54 @@ reference. Digests:
 NOTICE=true NCORES=4 SWMM_CPUS=0-3 nice -n 19 sh crpreload-job.sh
 ```
 
+## Windows (2026-10-30)
+
+MSVC, run on GitHub's Windows runners by
+[.github/workflows/swmm-windows.yml](../../.github/workflows/swmm-windows.yml), started
+by hand. Visual Studio 2022 (MSVC 19.44), x64, Release, as the fork's own CI builds it:
+Release brings `/fp:fast`, `/GL` and `/LTCG`. A Linux job in the same run builds
+`gcc -O2`, as board5's reference was built, and must match board5's digests: it does.
+All 34 models ran in every configuration. Digests and a summary:
+[digests/windows/](digests/windows/summary.txt).
+
+| Windows build | vs Linux gcc -O2 (glibc) | vs board5's CORE-MATH reference |
+| --- | --- | --- |
+| `main`, `/fp:fast` | DIFFERS, 14 models; `allclose` fails on user1, user3 (226 elements, rel 1.97) and user5, and on Example1's `.rpt` | |
+| patched (0001 + 0002), `/fp:precise` | DIFFERS, 6 models: the libm ones (Example1, Example3's `.rpt`, gate_control_2, user1, user3 by 1 ulp, user5); `allclose` fails on Example1, user1 and user5 | DIFFERS, those 6 + user4 |
+| patched + CORE-MATH | | **IDENTICAL, 34/34, `.out` and `.rpt`** |
+
+- **`/fp:fast` is a cause of its own.** It changes 14 models against the same code at
+  `/fp:precise`. user3's failure is all `/fp:fast`: at `/fp:precise`, user3 differs from
+  Linux by one value, 1 ulp.
+- **What's left at `/fp:precise` is the C runtime's maths.** The same models differ on
+  Linux between glibc and CORE-MATH.
+- **CORE-MATH on Windows.** Windows has no `LD_PRELOAD`. So `crlibm_shim.c` and
+  CORE-MATH's ten functions, built with clang-cl 20 (MSVC lacks `__int128`), go into a
+  static library passed to `swmm5.dll`'s link ahead of the C runtime.
+  - **Controls:** the DLL imports none of those functions from the C runtime, and the
+    canary (`pow` wrong by 2^-20) changes Example1 and user1.
+  - **Result:** the Windows run then matches board5's Linux CORE-MATH run in every file.
+- **Repeatable.** Three runs landed on three CPUs (AMD EPYC 7763, Intel Xeon Platinum
+  8573C, AMD EPYC 9V74), and both Windows builds gave the same digests each time. All
+  three have FMA, so this says nothing about Windows' maths on a CPU without it.
+
+So with the two patches and a correctly rounded libm, SWMM's `.out` files are the same
+bits on x86-64 Linux, aarch64 Linux, macOS on Apple silicon and Windows x64. The `.rpt`
+files match too, on every platform checked.
+
+```sh
+gh workflow run swmm-windows.yml --repo anun333/sewage    # then: gh run download RUN_ID
+```
+
 ## What these do not show
 
-- **Windows.** MSVC was not run. The `/fp:fast` explanation for win64's
-  differences is a hypothesis, and code changes between the benchmarks'
-  commits are mixed in with platform effects.
-- **CORE-MATH on Windows.** It made glibc on x86-64 and aarch64 and macOS's
-  libm agree in every `.out` (cfarm). MSVC's CRT was not tried.
+- **Windows beyond one toolchain.** One MSVC (19.44, VS 2022) and one UCRT
+  (Windows Server 2022) were run, on CPUs with FMA, x64 only. Windows on ARM, MinGW and
+  older Visual Studio versions were not. Before VS 2022, `/fp:precise` could contract,
+  per Microsoft.
+- **Upstream's own Windows benchmark.** It was not rebuilt, so how much of win64's
+  difference in the suite's benchmarks is `/fp:fast` and how much is code changes
+  between commits is still not separated.
 - **The report on aarch64.** The catchment_as_outfall warning above differs
   on aarch64 whatever the floating-point settings. Only a source change
   (clamping `gageInterval`) would make `.rpt` files match across ISAs.

@@ -20,6 +20,7 @@ gcc and clang contract `a*b + c` into a single fused multiply-add wherever the t
 | x86-64, gcc 13.3 and clang 18, `-O3 -march=native` | 9 models differ from `-O2` | all 34 identical to `-O2` |
 | aarch64 Linux (Neoverse-N1), gcc 14.2, default `-O2` | 10 models differ from x86-64 | all 34 identical to x86-64, `.rpt` included (with the gage.c PR) |
 | macOS (M1), Apple clang 21, default `-O2` | 10 models differ | 4 differ: Apple's libm, which no flag changes |
+| Windows x64, MSVC 19.44 (VS 2022), Release | 14 models differ from `/fp:precise`; against Linux `-O2`, `allclose` fails on user1, user3 and user5 | 28 of 34 identical to Linux `-O2`; the other 6 are the C runtime's maths, and user3 passes |
 
 The patch takes `libswmm5`'s FMA instructions from 429 to 0 on aarch64 and from 460 to 0 on macOS. The option lands after the user's own flags on the compile line, so it wins over an explicit `-ffp-contract=fast`.
 
@@ -33,7 +34,7 @@ The patch takes `libswmm5`'s FMA instructions from 429 to 0 on aarch64 and from 
 
 These are shared machines, and the per-model spread was larger than the differences, so read this as "about 1%, at most". On x86-64 without `-march`, gcc emits no FMA, and the patch changes no instruction that matters.
 
-Not tested: MSVC.
+**Windows** was tested on GitHub's runners (Windows Server 2022, three runs on three CPUs, the same bits each time). The 6 models that still differ at `/fp:precise` are the ones where results depend on the C runtime's maths functions: they differ the same way on Linux between glibc and a correctly rounded libm. With those calls answered by CORE-MATH, a correctly rounded libm linked into `swmm5.dll`, all 34 `.out` and `.rpt` files are identical to Linux's with CORE-MATH. That's not part of this PR, but it shows nothing else in the Windows build moves the results. The workflow: https://github.com/anun333/sewage/blob/main/.github/workflows/swmm-windows.yml.
 
 I dedicate my changes in this PR to the public domain under CC0 1.0 (https://creativecommons.org/publicdomain/zero/1.0/), so they can go on to USEPA's repository unchanged; you can also take them under this repository's MIT terms. For CONTRIBUTORS: `N: anun333`, `L: Public Domain`, `D: build flags for reproducible results`.
 
