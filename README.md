@@ -14,16 +14,17 @@ is kept verbatim, unchecked, in [thread/2026-10-27-initial.md](thread/2026-10-27
 | [landscape.md](landscape.md) | The projects, checked against their own repos and papers on 2026-10-27, each claim in the thread with a verdict, and what the thread missed |
 | [ideas.md](ideas.md) | Ways to contribute, upstream and in our repos, each with what it rests on, what would prove it wrong, and the first step |
 | [checks/](checks/) | Measurements behind the ideas, rerunnable, with verdict lines |
-| [upstream/](upstream/swmm/README.md) | Drafts for other projects, not yet posted: two issues and two patches for SWMM ([swmm/](upstream/swmm/README.md); both issues posted, as pyswmm/Stormwater-Management-Model#431 and #432), an issue for WaterTAP ([watertap/](upstream/watertap/README.md), posted as watertap-org/watertap#1892), an issue for EXPOsan ([exposan/](upstream/exposan/README.md), posted as QSD-Group/EXPOsan#80), two issues for WNTR ([wntr/](upstream/wntr/README.md), posted as USEPA/WNTR#584 and #585), and licence questions to PHES-ODM ([#296](https://github.com/PHES-ODM/PHES-ODM/issues/296)) and ECHO_modules ([#140](https://github.com/edgi-govdata-archiving/ECHO_modules/issues/140)) |
+| [upstream/](upstream/README.md) | What has gone to other projects and its state: eight issues (SWMM, WaterTAP, EXPOsan, WNTR, and licence questions to PHES-ODM and ECHO_modules), six PR reviews (SWMM, EPANET, bsm2-python), and the patches ready if maintainers want them |
 | [rules/](rules/README.md) | The laws, standards and terms that bear on this work, checked 2026-10-29, with what each changes |
 | [thread/](thread/) | The conversations this started from, verbatim |
 
 ## What is here, and what is not
 
-- **Nothing has been built yet.** This is a survey and a list of ideas. The direction,
-  as of 2026-10-27, is to contribute to existing projects first, with no idea depending
-  on a pilot utility ([ideas.md](ideas.md#the-short-version)).
-- **Two measurements**, run 2026-10-27 ([checks/](checks/README.md)):
+- **No software of our own yet.** This is a survey, checks of other projects' code,
+  and contributions to them. The direction, as of 2026-10-27, is to contribute to
+  existing projects first, with no idea depending on a pilot utility
+  ([ideas.md](ideas.md#the-short-version)).
+- **Two measurements of DMR arithmetic**, run 2026-10-27 ([checks/](checks/README.md)):
   - **Rounding.** When an average of decimal lab values lands exactly on a rounding tie,
     rounding the binary64 value reports the wrong digit in 41–46% of ties. That
     includes EPA's own worked example 1.15 → 1.2, which comes out 1.1.
@@ -31,6 +32,9 @@ is kept verbatim, unchecked, in [thread/2026-10-27-initial.md](thread/2026-10-27
     ulps above an exact bacteria limit: `[4, 10000]` against 200 gives
     `200.0000000000001`.
   - **The fix.** Exact decimal and integer arithmetic get both right.
+  - **In a spreadsheet** (LibreOffice Calc, 2026-10-29), `ROUND` rounds ties half away
+    from zero, so it disagrees with EPA's half-even examples on about half of all
+    ties. Calc's comparisons forgive the geometric mean's few-ulp error.
 - **One experiment, run on board5 2026-10-27:** does EPA SWMM give the same bits
   everywhere ([checks/swmm/](checks/swmm/README.md), [ideas U1](ideas.md#u1))?
   - Thread count doesn't change its results.
@@ -48,6 +52,12 @@ is kept verbatim, unchecked, in [thread/2026-10-27-initial.md](thread/2026-10-27
   - The reference itself has two faults, both shown with numbers.
   - In closed loop, bsm2-python's controllers didn't integrate. With the fix in its PR
     #8, they reproduce the report's controller results within 10%.
+- **A third, run on board5 and cfarm 2026-10-29:** does WNTR, the water-network
+  package, give the same results on x86-64 and aarch64 Linux
+  ([checks/wntr/](checks/wntr/README.md))?
+  - On aarch64 it installs but can't run EPANET: it loads the x86-64 library.
+  - Its own simulator isn't repeatable on one machine, because its equations are
+    ordered by memory address.
 - **Statements about other projects** carry the date they were checked. Anything without
   a date is from memory and should be checked before anyone relies on it.
 

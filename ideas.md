@@ -2,9 +2,10 @@
 
 Each idea says what it rests on (a link into [landscape.md](landscape.md) or a check), what
 would prove it wrong, and the first step. **N** ideas are new work of our own, **U** are
-contributions to other people's projects, and **O** extend our own repos. Nothing here has
-been posted: nothing outward-facing (an issue, a PR, an email to a utility) goes out
-without review first.
+contributions to other people's projects, and **O** extend our own repos. Nothing
+outward-facing (an issue, a PR, a review, an email) goes out until the maintainer has read
+its full text. What has gone out is listed under each idea and in
+[upstream/](upstream/README.md).
 
 ## The short version
 
@@ -24,12 +25,13 @@ pilot.
    - **It reaches users (2026-10-29).** pyswmm's published aarch64 wheel (swmm-toolkit
      0.17.0) is built with FMA and disagrees with the x86-64 wheel on 10 of 34 models.
      The difference is past tolerance on 3: user5's 400.6 against 450.9 cfs again.
-   - **Issue posted 2026-10-29** as pyswmm/Stormwater-Management-Model#431.
-   - **Still drafts,** in [upstream/swmm/](upstream/swmm/README.md):
-     - two patches: the build flag, which costs about 1%, and the `gage.c` fix. Both
-       were tested on all three platforms, and with them every file matches, reports
-       included (macOS needs CORE-MATH as well);
-     - a second issue, about the `.out` header's start date.
+   - **Posted 2026-10-29:** pyswmm/Stormwater-Management-Model#431 (these results)
+     and #432 (the `.out` header's start date is one report step early in about a
+     third of runs whose report start falls on a step).
+   - **Ready, not posted:** two patches in [upstream/swmm/](upstream/swmm/README.md),
+     the build flag (about 1% slower) and the `gage.c` fix. Both were tested on all
+     three platforms, and with them every file matches, reports included (macOS needs
+     CORE-MATH as well). They go up as PRs if the fork's maintainers want them.
 2. **[U6](#u6): BSM1 checked across its open implementations. Steady state done
    2026-10-29 ([checks/bsm1/](checks/bsm1/README.md)).**
    - Once each implementation's departures from BSM1's equations are removed, all
@@ -44,15 +46,31 @@ pilot.
    - **Closed loop (bsm2-python):** its PI controller didn't integrate. With the fix in
      PR #8, every controller index comes within 10% of the report and EQ within 0.6%.
      Our review there is posted (2026-10-29).
-   - Issues for the other projects aren't drafted or posted yet.
-3. **Small contributions to learn each community:** a fix in the
-   [pyswmm ecosystem](#u2), a review of the errata in [mWater's new sanitation asset
-   standard](#u4), and [PHES-ODM's licence conflict](#u5).
-4. **[N2](#n2): screen plants in EPA's public data, contributed to EDGI's ECHO tools.**
+   - **Posted 2026-10-29:** WaterTAP's reactor-5 oxygen
+     (watertap-org/watertap#1892; a one-line fix is tested and ready if they want it)
+     and EXPOsan's constants and atomic weights (QSD-Group/EXPOsan#80).
+   - **Not drafted yet:** bsm2-python's rain file, and a note to the BSM authors about
+     the reference's two faults.
+3. **WNTR on two ISAs, checked 2026-10-29 ([checks/wntr/](checks/wntr/README.md)).**
+   - On aarch64 Linux, `pip install wntr` succeeds but `EpanetSimulator` can't run:
+     WNTR loads its x86-64 EPANET library on every Linux.
+   - `WNTRSimulator` isn't repeatable even on one machine, because its equations are
+     ordered by memory address. On Net6 runs differ by metres of pressure.
+   - **Posted 2026-10-29** as USEPA/WNTR#584 and #585, each with an offer to build the fix.
+4. **Reviews of open PRs, posted 2026-10-29** as review comments. They recommend
+   merging USEPA SWMM #239, #234 and #237 and bsm2-python #8, and recommend changes to
+   USEPA SWMM #226 and EPANET #916 (the latter after building and running it).
+5. **Small contributions to learn each community:** a fix in the
+   [pyswmm ecosystem](#u2) and a review of the errata in [mWater's new sanitation
+   asset standard](#u4) are still to do. The licence questions are posted:
+   PHES-ODM/PHES-ODM#296 ([U5](#u5)) and edgi-govdata-archiving/ECHO_modules#140 ([N2](#n2)).
+6. **[N2](#n2): screen plants in EPA's public data, contributed to EDGI's ECHO tools.**
    This is any state or the whole country, not one. It says whether plants fail on
    arithmetic, paperwork or treatment, which decides whether [N1](#n1), DMR statistics
-   with every state's rules written down, is worth building.
-5. **Parked for want of a pilot:** the [lift-station watch](#o1), [bench sheets](#n3)
+   with every state's rules written down, is worth building. ECHO_modules answered #140
+   on 2026-10-29: it is GPL v3, like the rest of EDGI's software, so a screen
+   contributed there is GPL v3.
+7. **Parked for want of a pilot:** the [lift-station watch](#o1), [bench sheets](#n3)
    and the [fiscal sustainability plan builder](#o7). Each needs a utility willing to
    run it.
 
@@ -92,8 +110,8 @@ pilot.
   treatment (no tool fixes that; capital does) or on DMRs never sent (a people problem),
   with nothing pointing at wrong arithmetic.
 - **First step.** Read [EDGI's ECHO_modules](https://github.com/edgi-govdata-archiving/ECHO_modules)
-  (GPL-3.0) and its open issues. The screen should be a contribution there if it fits,
-  and our own script only if it doesn't.
+  (GPL-3.0, confirmed by its maintainer in #140) and its open issues. The screen
+  should be a contribution there if it fits, and our own script only if it doesn't.
 
 <a id="n1"></a>
 ### N1. DMR statistics with the rules written down
@@ -263,6 +281,9 @@ Before opening a PR, run `pr-toolbox landing` and `check` on it, which never com
   departures from BSM1 are removed (constants and alkalinity; reactor 5's oxygen
   and the separator's split). The dynamic comparison is complete for bsm2-python
   (first order in its step) and covers one run for QSDsan.
+- **Posted 2026-10-29:** watertap-org/watertap#1892 and QSD-Group/EXPOsan#80, and a
+  review of bsm2-python's PI fix (#8). Not drafted: bsm2-python's rain file, and a
+  note to the BSM authors.
 - **What would prove it pointless.** All three agree with the reference to the stated
   tolerance. Then the result is a short note to each project saying so, which is worth
   having too.
@@ -273,7 +294,7 @@ Before opening a PR, run `pr-toolbox landing` and `check` on it, which never com
 
 - **PHES-ODM's licence conflict.** Its README says CC BY 4.0 while its LICENSE is CC
   BY-SA 4.0. It entered long-term maintenance in September 2026, so a clear issue
-  saves them time.
+  saves them time. Posted 2026-10-29 as PHES-ODM/PHES-ODM#296.
 - **WaterTAP's BSM2 bugs.** #1851 (the digester makes no methane) and #1876 (the
   flowsheet is unstable) are numerics problems in the most-used open treatment model.
   They're hard, but they matter.
