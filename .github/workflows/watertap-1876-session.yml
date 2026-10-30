@@ -1,0 +1,70 @@
+# watertap-org/watertap#1876, third step. At b5c7ce154 (main, 2026-09-25) WaterTAP's
+# "Tests (py3.13/win64)" job passed test_BSM2_electroNP_no_bioP and its "pytest (user
+# mode) (py3.13/win64)" job failed it, with the same package versions. The jobs differ
+# in which tests run before it. On four Windows runners, at that commit and with that
+# job's package versions (checks/watertap/constraints-1876-sep25.txt), each job runs:
+#   alone   the electroNP test by itself
+#   fresh   checks/watertap/run1876.py, main() in a fresh process
+#   full    the user-mode job's command, pytest --pyargs watertap
+# If "full" fails where "alone" and "fresh" pass on the same runner, earlier tests
+# change something the flowsheet depends on. Run by hand only:
+#   gh workflow run watertap-1876-session.yml
+name: WaterTAP 1876 session
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+env:
+  WATERTAP_COMMIT: b5c7ce1540a5ff768622ef25b9e977ef82c8ee89
+
+jobs:
+  runs:
+    name: windows ${{ matrix.rep }}
+    runs-on: windows-2022
+    timeout-minutes: 120
+    strategy:
+      fail-fast: false
+      matrix:
+        rep: [1, 2, 3, 4]
+    defaults:
+      run:
+        shell: bash -el {0}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: conda-incubator/setup-miniconda@v3
+        with:
+          activate-environment: watertap
+          python-version: "3.13"
+          channels: conda-forge
+          conda-remove-defaults: "true"
+      - name: WaterTAP at the commit, with the failing job's versions
+        run: |
+          mkdir -p out
+          conda install --quiet --yes pip setuptools wheel > out/conda.log 2>&1
+          pip install "watertap @ https://github.com/watertap-org/watertap/archive/${WATERTAP_COMMIT}.zip" pytest \
+            -c checks/watertap/constraints-1876-sep25.txt > out/pip.log 2>&1 || { tail -40 out/pip.log; exit 1; }
+          pip list > out/pip-list.txt
+          idaes get-extensions --extra petsc --verbose > out/idaes-ext.log 2>&1
+          powershell -NoProfile -Command "(Get-CimInstance Win32_Processor).Name" | tee out/cpu.txt
+      - name: alone
+        run: |
+          pytest --pyargs watertap.flowsheets.electroNP.tests.test_BSM2_electroNP_no_bioP -p no:cacheprovider -q -rfE \
+            > out/alone.log 2>&1; echo "alone exit $?" | tee out/alone-exit.txt; tail -3 out/alone.log
+      - name: fresh
+        run: |
+          python -I checks/watertap/run1876.py out/fresh 0 || true
+      - name: full
+        run: |
+          pytest --pyargs watertap -p no:cacheprovider -q -rfE --junitxml=out/full.xml > out/full.log 2>&1
+          echo "full exit $?" | tee out/full-exit.txt
+          tail -3 out/full.log
+          grep -E "electroNP_no_bioP" out/full.log | tail -5 || true
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: session-${{ matrix.rep }}
+          retention-days: 14
+          path: out/
