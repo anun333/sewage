@@ -1,0 +1,38 @@
+From ca8b177ff78429657d55443c3e27426d411325fc Mon Sep 17 00:00:00 2001
+From: anun333 <anun333@posteo.net>
+Date: Fri, 30 Oct 2026 12:35:30 -0500
+Subject: [PATCH] input: read the last transect when [TRANSECTS] is the file's
+ last section
+
+input_readData() finishes each transect when it reaches the next NC line,
+and the last one when it reaches the next section heading. When [TRANSECTS]
+is the last section of an input file, nothing follows it, so the last
+transect is never validated: its roughness and geometry tables stay empty,
+and the conduit that uses it fails with ERROR 113 (invalid roughness) and
+ERROR 119 (invalid cross section), which point at the conduit rather than
+the transect. Finish it after the read loop too. Files written by the GUI
+put other sections after [TRANSECTS], so they are unaffected.
+---
+ src/solver/input.c | 6 ++++++
+ 1 file changed, 6 insertions(+)
+
+diff --git a/src/solver/input.c b/src/solver/input.c
+index c0f7a0d..9375b9f 100644
+--- a/src/solver/input.c
++++ b/src/solver/input.c
+@@ -241,6 +241,12 @@ int input_readData()
+         if (errsum > MAXERRS) break;
+     }   /* End of while */
+ 
++    // --- SPECIAL CASE FOR TRANSECTS
++    //     finish processing the last set of transect data
++    //     when [TRANSECTS] is the file's last section
++    if ( sect == s_TRANSECT )
++        transect_validate(Nobjects[TRANSECT]-1);
++
+     // --- check for errors
+     if (errsum > 0)  ErrorCode = ERR_INPUT;
+     return ErrorCode;
+-- 
+2.43.0
+

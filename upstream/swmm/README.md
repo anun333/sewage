@@ -9,6 +9,8 @@ is reviewed before it goes ([ideas U1](../../ideas.md#u1)).
 | [pr-build.md](pr-build.md), [0002-build-*.patch](0002-build-no-fused-multiply-adds-and-fp-precise-instead-.patch) | `-ffp-contract=off` for gcc and clang, and `/fp:precise` for MSVC Release |
 | [pr-gage.md](pr-gage.md), [0001-gage-*.patch](0001-gage-don-t-convert-a-one-point-rain-series-interval-.patch) | The out-of-range `double`-to-`int` conversion at `gage.c:251` (undefined in ISO C, an unspecified value under Annex F) |
 | [issue-output-start-date.md](issue-output-start-date.md) | **Posted as [#432](https://github.com/pyswmm/Stormwater-Management-Model/issues/432).** A second issue: the `.out` header's start date is one report step early in about a third of runs whose REPORT_START is a whole number of steps after START (`output.c`); found while reviewing USEPA #237 |
+| [comment-transect-zero.md](comment-transect-zero.md) | A comment for #420 (and a pointer on #419): the zero-roughness behaviour is documented HEC-2 practice ("use 0 if no change from previous NC line"); what the engine does, checked; and where SWMM's Help text disagrees for overbanks. Not posted |
+| [issue-last-transect.md](issue-last-transect.md), [0003-input-*.patch](0003-input-read-the-last-transect-when-TRANSECTS-is-the-fi.patch) | Found while checking #419/#420: the last transect is never read when `[TRANSECTS]` is the file's last section, and its conduit fails with ERROR 113 and 119. A one-line fix, tested: the 34 suite models are unchanged ([checks/swmm/transect/](../../checks/swmm/transect/README.md)). Not posted |
 
 The patches are against `develop` at `6c81201`. Their commits are authored as anun333
 <anun333@posteo.net>.

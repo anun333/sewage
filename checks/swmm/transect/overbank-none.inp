@@ -1,0 +1,64 @@
+;; T1 has overbanks 0.05; T2's NC line is 0.02 0.02 0.02 (no separate overbank)
+[TITLE]
+transect roughness test
+
+[OPTIONS]
+FLOW_UNITS           CFS
+INFILTRATION         HORTON
+FLOW_ROUTING         DYNWAVE
+START_DATE           01/01/2020
+START_TIME           00:00:00
+REPORT_START_DATE    01/01/2020
+REPORT_START_TIME    00:00:00
+END_DATE             01/01/2020
+END_TIME             06:00:00
+DRY_STEP             01:00:00
+WET_STEP             00:05:00
+ROUTING_STEP         0:00:05
+REPORT_STEP          00:05:00
+
+[JUNCTIONS]
+;;Name  Elev    MaxDepth  InitDepth  SurDepth  Aponded
+J1      240     20        0          0         0
+J2      230     20        0          0         0
+
+[OUTFALLS]
+;;Name  Elev    Type
+O1      200     FREE
+
+[CONDUITS]
+;;Name  From  To   Length  Roughness  InOffset  OutOffset
+C1      J1    J2   400     0.01       0         0
+C2      J2    O1   400     0.01       0         0
+
+[XSECTIONS]
+;;Link  Shape      Transect
+C1      IRREGULAR  T1         0  0  0  1
+C2      IRREGULAR  T2         0  0  0  1
+
+[INFLOWS]
+;;Node  Constituent  TimeSeries  Type  Mfactor  Sfactor  Baseline
+J1      FLOW         ""          FLOW  1.0      1.0      5
+
+[TRANSECTS]
+;;Transect Data in HEC-2 format
+;
+NC 0.05 0.05 0.01
+X1 T1 9 0.0 0.0 0.0 0.0 0.0 0.0 0.0
+GR 0.6 0 0.5 0 0 0 0 0 0.6 30
+GR 0 60 0 60 0.5 60 0.6 60
+;
+NC 0.02 0.02 0.02
+X1 T2 38 0.0 0.0 0.0 0.0 0.0 0.0 0.0
+GR 221.741 111 221.741 116 221.683 121 221.939 126 221.948 131
+GR 221.573 136 220.963 141 220.963 146 220.496 151 220.494 161
+GR 220.445 166 219.976 171 219.77 176 219.048 181 219.048 191
+GR 219.339 196 219.339 206 218.665 221 218.672 226 218.672 231
+GR 218.696 236 218.745 241 218.857 246 219.051 251 219.051 266
+GR 219.543 271 219.671 276 220.216 281 219.958 286 220.699 291
+GR 220.699 296 221.05 301 221.713 306 221.713 316 221.934 321
+GR 221.729 326 222.211 331 222.348 336
+
+[REPORT]
+NODES ALL
+LINKS ALL

@@ -74,6 +74,20 @@ changes in them are MIT licensed and also dedicated to the public domain under C
 (https://creativecommons.org/publicdomain/zero/1.0/), so the pyswmm fork and US EPA can
 each take them on their own terms.
 
+## upstream/wntr/
+
+The patches change WNTR: Copyright 2024 National Technology & Engineering Solutions of
+Sandia, LLC (NTESS), distributed under the Revised BSD License
+(https://github.com/USEPA/WNTR/blob/main/LICENSE.md). The unchanged context lines remain
+under that licence. Our changes in them are offered to WNTR under its Revised BSD
+License, as its pull request template asks, and are MIT licensed here.
+
+## checks/swmm/transect/
+
+Transect T2's station and elevation data in the `.inp` models are the example posted in
+pyswmm/Stormwater-Management-Model#420 by its reporter, copied so that the report's
+behaviour can be rerun. The rest of each model is ours.
+
 ## AI assistance
 
 Much of the text, code and analysis here was produced with an AI assistant (Claude, by
