@@ -193,11 +193,13 @@ MASK = re.compile(r"^\s*(Analysis begun on|Analysis ended on|Total elapsed time"
 
 
 def masked_rpt_bytes(path):
-    """The .rpt with the masked lines replaced, as bytes (for digests)."""
+    """The .rpt with the masked lines replaced, as bytes (for digests). Line
+    endings are read as \\n, so a Windows report (\\r\\n) digests like a Linux one."""
     with open(path, "rb") as f:
         lines = f.read().split(b"\n")
     out = []
     for x in lines:
+        x = x[:-1] if x.endswith(b"\r") else x
         s = x.decode("latin-1")
         out.append(b"<masked>" if MASK.match(s) else x)
     return b"\n".join(out)

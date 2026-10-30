@@ -1,0 +1,153 @@
+# EPA SWMM on Windows: does MSVC's build give the bits a Linux build gives, and what do
+# the two patches in upstream/swmm/ (the build flags, /fp:fast -> /fp:precise, and the
+# gage.c fix) change there? See checks/swmm/README.md, "Windows".
+#
+# Builds the pyswmm fork's develop at SWMM_COMMIT with Visual Studio 2022, x64, Release,
+# as its own CI does (Release brings /fp:fast, /GL and /LTCG), once as it is and once
+# with patches 0001 and 0002; runs the swmm-nrtestsuite models at one thread with
+# checks/swmm/swmmrun.py. A Linux job builds gcc -O2 as board5's reference was built.
+# The compare job checks the Linux build against board5's digests (the control: it must
+# be IDENTICAL) and decodes every Windows run against it and against each other.
+# Run by hand only: gh workflow run swmm-windows.yml
+name: SWMM on Windows
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+env:
+  SWMM_REPO: https://github.com/pyswmm/Stormwater-Management-Model
+  SWMM_COMMIT: 6c8120158957c8a5a5c9e39f435f0a31f63b5b8a
+  SUITE_REPO: https://github.com/pyswmm/swmm-nrtestsuite
+  SUITE_COMMIT: e609fdbb47db410ee95a8c0353f21e4a7d890b58
+  OMP_NUM_THREADS: 1
+
+jobs:
+  windows:
+    runs-on: windows-2022
+    defaults:
+      run:
+        shell: bash
+    steps:
+      - name: Keep LF line endings (the patches and the sources must match)
+        run: git config --global core.autocrlf false
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Sources
+        run: |
+          git -c core.autocrlf=false clone -q "$SWMM_REPO" src/main
+          git -C src/main -c advice.detachedHead=false checkout -q "$SWMM_COMMIT"
+          git -c core.autocrlf=false clone -q "$SUITE_REPO" src/suite
+          git -C src/suite -c advice.detachedHead=false checkout -q "$SUITE_COMMIT"
+          cp -r src/main src/patched
+          git -C src/patched apply "$GITHUB_WORKSPACE"/upstream/swmm/0001-*.patch "$GITHUB_WORKSPACE"/upstream/swmm/0002-*.patch
+          git -C src/patched diff --stat
+      - name: Build main and patched (Visual Studio 2022, x64, Release)
+        run: |
+          mkdir -p logs
+          for b in main patched; do
+            cmake -S src/$b -B build/$b -G "Visual Studio 17 2022" -A x64 > logs/configure-$b.log 2>&1
+            cmake --build build/$b --config Release > logs/build-$b.log 2>&1
+            cmake --install build/$b --config Release --prefix inst/$b > logs/install-$b.log 2>&1
+            ls inst/$b/bin
+          done
+          grep -h "CMAKE_C_COMPILER_VERSION\|CMAKE_C_FLAGS_RELEASE:" build/main/CMakeCache.txt | tee logs/compiler.txt || true
+          for b in main patched; do
+            echo "$b: $(grep -o -h 'FloatingPointModel>[A-Za-z]*' build/$b/src/solver/swmm5.vcxproj | sort | uniq -c | tr '\n' ' ')"
+          done | tee logs/fp-flags.txt
+      - name: Machine
+        shell: pwsh
+        run: |
+          "cpu: " + (Get-CimInstance Win32_Processor).Name | Tee-Object -FilePath logs/machine.txt
+          "os: " + (Get-CimInstance Win32_OperatingSystem).Caption + " " + (Get-CimInstance Win32_OperatingSystem).Version | Tee-Object -FilePath logs/machine.txt -Append
+          "ucrtbase.dll: " + (Get-Item C:\Windows\System32\ucrtbase.dll).VersionInfo.FileVersion | Tee-Object -FilePath logs/machine.txt -Append
+      - name: Run the models
+        run: |
+          models=$(grep -v '^#' checks/swmm/models.txt | tr -d '\r')
+          for b in main patched; do
+            python -I checks/swmm/swmmrun.py run inst/$b/bin/runswmm.exe src/suite/public runs win-$b-t1 1 \
+              --drop-out-over 50 $models | tee logs/run-$b.log || echo "swmmrun exit $? ($b)" | tee -a logs/run-$b.log
+          done
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: windows
+          retention-days: 14
+          path: |
+            logs/
+            runs/**/digests.txt
+            runs/**/meta.json
+            runs/**/*.out
+            runs/**/*.rpt
+
+  linux:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - name: Sources
+        run: |
+          git clone -q "$SWMM_REPO" src/main
+          git -C src/main -c advice.detachedHead=false checkout -q "$SWMM_COMMIT"
+          git clone -q "$SUITE_REPO" src/suite
+          git -C src/suite -c advice.detachedHead=false checkout -q "$SUITE_COMMIT"
+      - name: Build gcc -O2, as board5's reference
+        run: |
+          mkdir -p logs
+          SWMM_CPUS=0-3 sh checks/swmm/build.sh src/main build/main gcc g++ "-O2" > logs/build-linux.log 2>&1
+          { gcc --version | head -1; ldd --version | head -1; grep -m1 'model name' /proc/cpuinfo; } | tee logs/machine-linux.txt
+      - name: Run the models
+        run: |
+          python3 -I checks/swmm/swmmrun.py run build/main/bin/runswmm src/suite/public runs linux-gcc-O2-t1 1 \
+            --drop-out-over 50 $(grep -v '^#' checks/swmm/models.txt) | tee logs/run-linux.log || echo "swmmrun exit $?" | tee -a logs/run-linux.log
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: linux
+          retention-days: 14
+          path: |
+            logs/
+            runs/**/digests.txt
+            runs/**/meta.json
+            runs/**/*.out
+            runs/**/*.rpt
+
+  compare:
+    needs: [windows, linux]
+    if: always()
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
+        with:
+          path: art
+      - name: Compare
+        run: |
+          mkdir -p runs report
+          cp -r art/windows/runs/* art/linux/runs/* runs/
+          M=$(grep -v '^#' checks/swmm/models.txt)
+          S=checks/swmm/swmmrun.py; D=checks/swmm/digests/board5
+          cmpd() { python3 -I $S digcmp "$2" "$3" > report/$1.txt 2>&1 || true; echo "$1: $(tail -1 report/$1.txt)"; }
+          {
+            echo "## Control: this Linux build against board5's gcc-O2-t1"
+            cmpd linux-vs-board5 $D/gcc-O2-t1.txt runs/linux-gcc-O2-t1/digests.txt
+            echo "## Windows against Linux and each other (digests)"
+            cmpd win-main-vs-linux runs/linux-gcc-O2-t1/digests.txt runs/win-main-t1/digests.txt
+            cmpd win-patched-vs-linux runs/linux-gcc-O2-t1/digests.txt runs/win-patched-t1/digests.txt
+            cmpd win-main-vs-patched runs/win-main-t1/digests.txt runs/win-patched-t1/digests.txt
+            cmpd win-patched-vs-board5-cr $D/gcc-O2-nocontract-cr-t1.txt runs/win-patched-t1/digests.txt
+          } | tee report/summary.md
+          for p in "win-main-t1 linux-gcc-O2-t1" "win-patched-t1 linux-gcc-O2-t1" "win-main-t1 win-patched-t1"; do
+            set -- $p
+            python3 -I $S cmp runs $2 $1 --skip-missing $M > report/cmp-$1-vs-$2.txt 2>&1 || true
+          done
+          cat report/summary.md >> "$GITHUB_STEP_SUMMARY"
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: report
+          retention-days: 14
+          path: report/
