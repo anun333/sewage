@@ -1,0 +1,157 @@
+From f96035f74f05ca9321888578843ce1eaa64adaa3 Mon Sep 17 00:00:00 2001
+From: anun333 <anun333@posteo.net>
+Date: Fri, 30 Oct 2026 14:04:25 -0500
+Subject: [PATCH] METAB model_evaluation: append rows with pd.concat, so they
+ hold numbers
+
+get_eff_fr, get_ch4_fr, get_h2_fr, get_r1_ex_biogas_fr and
+get_mass_flowrate build fr_dict with one-element lists, which suits
+pd.DataFrame(fr_dict) but not df.loc[len(df)] = fr_dict: that stores each
+list itself as the cell, and the columns become object dtype. pandas
+3.1 warns about it (Pandas4Warning), which fails the five
+*_w_existing_df tests under filterwarnings = error. Append with
+pd.concat instead, and check in the tests that the appended row is
+float64 rather than comparing it with a list.
+
+Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>
+---
+ watertap/flowsheets/METAB/model_evaluation.py | 10 +++---
+ .../METAB/tests/test_model_evaluation.py      | 33 +++++++++++--------
+ 2 files changed, 24 insertions(+), 19 deletions(-)
+
+diff --git a/watertap/flowsheets/METAB/model_evaluation.py b/watertap/flowsheets/METAB/model_evaluation.py
+index 95bfa18b..86652dae 100644
+--- a/watertap/flowsheets/METAB/model_evaluation.py
++++ b/watertap/flowsheets/METAB/model_evaluation.py
+@@ -91,7 +91,7 @@ def get_eff_fr(case=None, df=None):
+         if df is None:
+             df = pd.DataFrame(fr_dict)
+         else:
+-            df.loc[len(df)] = fr_dict
++            df = pd.concat([df, pd.DataFrame(fr_dict)], ignore_index=True)
+     return df
+ 
+ 
+@@ -133,7 +133,7 @@ def get_ch4_fr(case=None, df=None):
+         if df is None:
+             df = pd.DataFrame(fr_dict)
+         else:
+-            df.loc[len(df)] = fr_dict
++            df = pd.concat([df, pd.DataFrame(fr_dict)], ignore_index=True)
+     return df
+ 
+ 
+@@ -174,7 +174,7 @@ def get_h2_fr(case=None, df=None):
+         if df is None:
+             df = pd.DataFrame(fr_dict)
+         else:
+-            df.loc[len(df)] = fr_dict
++            df = pd.concat([df, pd.DataFrame(fr_dict)], ignore_index=True)
+     return df
+ 
+ 
+@@ -216,7 +216,7 @@ def get_r1_ex_biogas_fr(case=None, df=None):
+         if df is None:
+             df = pd.DataFrame(fr_dict)
+         else:
+-            df.loc[len(df)] = fr_dict
++            df = pd.concat([df, pd.DataFrame(fr_dict)], ignore_index=True)
+     return df
+ 
+ 
+@@ -249,7 +249,7 @@ def get_mass_flowrate(case=None, df=None, stream=None):
+     if df is None:
+         df = pd.DataFrame(fr_dict)
+     else:
+-        df.loc[len(df)] = fr_dict
++        df = pd.concat([df, pd.DataFrame(fr_dict)], ignore_index=True)
+ 
+     df = df.loc[:, (df != 0).any(axis=0)]
+ 
+diff --git a/watertap/flowsheets/METAB/tests/test_model_evaluation.py b/watertap/flowsheets/METAB/tests/test_model_evaluation.py
+index 931e4273..e850c473 100644
+--- a/watertap/flowsheets/METAB/tests/test_model_evaluation.py
++++ b/watertap/flowsheets/METAB/tests/test_model_evaluation.py
+@@ -112,12 +112,13 @@ def test_get_eff_fr_w_existing_df(mock_case):
+     df = get_eff_fr(case=mock_case)
+     df = get_eff_fr(case=mock_case, df=df)
+     assert df.shape == (2, 3)
++    assert (df.dtypes == "float64").all()
+     assert df.iloc[0]["H2O"] == 100.0
+     assert df.iloc[0]["CO2"] == 25.0
+     assert df.iloc[0]["CH4"] == 50.0
+-    assert df.iloc[1]["H2O"] == [100.0]
+-    assert df.iloc[1]["CO2"] == [25.0]
+-    assert df.iloc[1]["CH4"] == [50.0]
++    assert df.iloc[1]["H2O"] == 100.0
++    assert df.iloc[1]["CO2"] == 25.0
++    assert df.iloc[1]["CH4"] == 50.0
+ 
+ 
+ def test_get_ch4_fr_no_case(capsys):
+@@ -141,12 +142,13 @@ def test_get_ch4_fr_w_existing_df(mock_case):
+     df = get_ch4_fr(case=mock_case)
+     df = get_ch4_fr(case=mock_case, df=df)
+     assert df.shape == (2, 3)
++    assert (df.dtypes == "float64").all()
+     assert df.iloc[0]["H2O"] == 10.0
+     assert df.iloc[0]["CH4"] == 75.0
+     assert df.iloc[0]["CO2"] == 15.0
+-    assert df.iloc[1]["H2O"] == [10.0]
+-    assert df.iloc[1]["CH4"] == [75.0]
+-    assert df.iloc[1]["CO2"] == [15.0]
++    assert df.iloc[1]["H2O"] == 10.0
++    assert df.iloc[1]["CH4"] == 75.0
++    assert df.iloc[1]["CO2"] == 15.0
+ 
+ 
+ def test_get_h2_fr_no_case(capsys):
+@@ -170,12 +172,13 @@ def test_get_h2_fr_w_existing_df(mock_case):
+     df = get_h2_fr(case=mock_case)
+     df = get_h2_fr(case=mock_case, df=df)
+     assert df.shape == (2, 3)
++    assert (df.dtypes == "float64").all()
+     assert df.iloc[0]["H2O"] == 1.0
+     assert df.iloc[0]["CH4"] == 20.0
+     assert df.iloc[0]["CO2"] == 10.0
+-    assert df.iloc[1]["H2O"] == [1.0]
+-    assert df.iloc[1]["CH4"] == [20.0]
+-    assert df.iloc[1]["CO2"] == [10.0]
++    assert df.iloc[1]["H2O"] == 1.0
++    assert df.iloc[1]["CH4"] == 20.0
++    assert df.iloc[1]["CO2"] == 10.0
+ 
+ 
+ def test_get_r1_ex_biogas_fr_no_case(capsys):
+@@ -199,12 +202,13 @@ def test_get_r1_ex_biogas_fr_w_existing_df(mock_case):
+     df = get_r1_ex_biogas_fr(case=mock_case)
+     df = get_r1_ex_biogas_fr(case=mock_case, df=df)
+     assert df.shape == (2, 3)
++    assert (df.dtypes == "float64").all()
+     assert df.iloc[0]["H2O"] == 200.0
+     assert df.iloc[0]["CH4"] == 80.0
+     assert df.iloc[0]["CO2"] == 40.0
+-    assert df.iloc[1]["H2O"] == [200.0]
+-    assert df.iloc[1]["CH4"] == [80.0]
+-    assert df.iloc[1]["CO2"] == [40.0]
++    assert df.iloc[1]["H2O"] == 200.0
++    assert df.iloc[1]["CH4"] == 80.0
++    assert df.iloc[1]["CO2"] == 40.0
+ 
+ 
+ @pytest.fixture
+@@ -242,8 +246,9 @@ def test_get_mass_flowrate_w_existing_df(mock_stream):
+     df = get_mass_flowrate(stream=mock_stream)
+     df = get_mass_flowrate(stream=mock_stream, df=df)
+     assert df.shape == (2, 4)
+-    assert df.iloc[1]["H2O"] == [100.0]
+-    assert df.iloc[1]["Volumetric Flowrate"] == [10.0]
++    assert (df.dtypes == "float64").all()
++    assert df.iloc[1]["H2O"] == 100.0
++    assert df.iloc[1]["Volumetric Flowrate"] == 10.0
+ 
+ 
+ @pytest.fixture
+-- 
+2.43.0
+

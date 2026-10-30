@@ -1,0 +1,70 @@
+# WaterTAP's METAB model_evaluation helpers append rows that hold one-element lists, and
+# pandas 3.1 warns about it, which fails five tests in WaterTAP's CI since 2026-10-22.
+# This tests upstream/watertap/0001-*.patch (pd.concat, and float64 checks in the tests)
+# against WaterTAP at WATERTAP_COMMIT, with pandas 3.1.0 and 2.3.3:
+#   base code, base tests, pandas 3.1.0     5 must fail (WaterTAP's CI failure)
+#   base code, new tests, pandas 2.3.3      5 must fail (the new check, without a warning)
+#   patched, pandas 3.1.0 and 2.3.3         all must pass
+# Each runs test_model_evaluation.py from the source tree, so WaterTAP's pytest.ini
+# (filterwarnings = error) applies. Run by hand only: gh workflow run watertap-metab.yml
+name: WaterTAP METAB pandas
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+env:
+  WATERTAP_COMMIT: 1ddf41f0674d9cdb0dd765e801ccd908b475d48e
+
+jobs:
+  tests:
+    name: ${{ matrix.case }} pandas ${{ matrix.pandas }}
+    runs-on: ubuntu-24.04
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - {case: base, pandas: "3.1.0", expect: "5 failed"}
+          - {case: base-code-new-tests, pandas: "2.3.3", expect: "5 failed"}
+          - {case: patched, pandas: "3.1.0", expect: "0 failed"}
+          - {case: patched, pandas: "2.3.3", expect: "0 failed"}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: WaterTAP at the commit, with the case applied
+        run: |
+          git clone -q https://github.com/watertap-org/watertap.git wt
+          git -C wt -c advice.detachedHead=false checkout -q "$WATERTAP_COMMIT"
+          P="$GITHUB_WORKSPACE/upstream/watertap/0001-METAB-model_evaluation-append-rows-with-pd.concat.patch"
+          case "${{ matrix.case }}" in
+            patched) git -C wt apply "$P" ;;
+            base-code-new-tests) git -C wt apply --include='*/tests/*' "$P" ;;
+          esac
+          git -C wt diff --stat
+          pip install -q -e ./wt pytest pytest-cov "pandas==${{ matrix.pandas }}" > pip.log 2>&1 || { tail -30 pip.log; exit 1; }
+          python -c "import pandas; print('pandas', pandas.__version__)"
+      - name: Test
+        run: |
+          cd wt
+          set +e
+          python -m pytest -p no:cacheprovider -q -rfE watertap/flowsheets/METAB/tests/test_model_evaluation.py > ../pytest.log 2>&1
+          echo "pytest exit $?"
+          cd ..
+          tail -12 pytest.log
+          summary=$(tail -1 pytest.log)
+          echo "summary: $summary; expected: ${{ matrix.expect }}"
+          case "${{ matrix.expect }}" in
+            "0 failed") echo "$summary" | grep -q "failed" && { echo "VERDICT: unexpected failures"; exit 1; } ;;
+            *) echo "$summary" | grep -q "${{ matrix.expect }}" || { echo "VERDICT: expected ${{ matrix.expect }}"; exit 1; } ;;
+          esac
+          echo "VERDICT: as expected"
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: metab-${{ matrix.case }}-pandas${{ matrix.pandas }}
+          retention-days: 14
+          path: pytest.log
