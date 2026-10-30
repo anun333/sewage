@@ -757,12 +757,16 @@ closed loop). Each of these would need its text agreed first.
   - The dynamic differences (internal recycle, the soluble clarifier; see the
     dynamic section) belong in the same issue. No open issue in QSDsan or EXPOsan
     covers any of this.
-- **bsm2-python** (an issue, possibly with a fixed file):
+- **bsm2-python** (an issue, possibly with a fixed file; drafted in
+  [upstream/bsm2-python/](../../upstream/bsm2-python/issue-rain-influent.md)):
   - `src/bsm2_python/data/raininfluent.csv` does not load. Rows 998, 1000 and
     1001 hold `30.044.50`, `27.446.67` and `26.880.33`.
-  - The whole flow column is in thousands (21.477 for 21477), every value
-    including time is rounded to 2 decimals, and nothing in the package reads
-    the file.
+  - The whole flow column is written with a dot as the thousands separator
+    (`21.477` for 21477; the three rows above are IWA's 30044.5, 27446.67 and
+    26880.33 written the same way), so it would load 1000 times too small.
+    Every value including time is rounded to 2 decimals, and nothing in the
+    package reads the file. `dryinfluent.csv` matches IWA's dry file to 1e-8
+    (checked 2026-10-30).
   - The repository also has no storm file.
   - Separately, influent is held constant between samples, while Simulink
     interpolates. Over days 7-14 that moves EQ by 0.2% and effluent ammonia by
