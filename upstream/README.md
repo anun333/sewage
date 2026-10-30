@@ -64,6 +64,7 @@ Posted 2026-10-29 as review comments, not as approvals or change requests.
 | [USEPA/Stormwater-Management-Model#226](https://github.com/USEPA/Stormwater-Management-Model/pull/226) | Changes |
 | [OpenWaterAnalytics/EPANET#916](https://github.com/OpenWaterAnalytics/EPANET/pull/916) | Changes, after building and running it |
 | [fau-evt/bsm2-python#8](https://github.com/fau-evt/bsm2-python/pull/8) | Merge |
+| [USEPA/WNTR#586](https://github.com/USEPA/WNTR/pull/586#pullrequestreview-5719468594) (posted 2026-10-30) | Confirms the fix (the one we offered on #585) on x86-64 and aarch64, with one suggestion |
 
 ## Ready, not sent
 
@@ -77,8 +78,8 @@ Posted 2026-10-29 as review comments, not as approvals or change requests.
   ([bsm/note-to-authors.md](bsm/note-to-authors.md)); no recipient chosen yet.
 - **WNTR:** the fix we offered on #584, built and tested on x86-64 and aarch64, with its
   PR text ([wntr/pr-584.md](wntr/pr-584.md)). Our fix for #585 isn't needed: #586 makes the
-  same change, so a review of it with our measurements takes its place
-  ([wntr/review-586.md](wntr/review-586.md)). WNTR's maintainers were active on
+  same change, so we reviewed it instead, with our measurements (posted 2026-10-30,
+  [wntr/review-586.md](wntr/review-586.md)). WNTR's maintainers were active on
   2026-10-30 (#587).
 - **SWMM:** two patches, the build flag and the `gage.c` fix, with PR texts
   ([swmm/](swmm/README.md)). They go up if the fork's maintainers want them after #431.
