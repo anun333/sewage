@@ -1,0 +1,121 @@
+{
+  "_about": "Per-project settings for upstream/inventory.py. 'match' is a substring of the repo's origin URL. 'layers' place a path (first match wins). 'together' are pairs: when a changed path matches 'when', the paths matching 'check' should be looked at too, with the reason. 'tests' and 'docs' are path patterns. 'pr_template' is what the project's PR template asks for.",
+  "projects": [
+    {
+      "name": "EPA SWMM (pyswmm fork)",
+      "match": "Stormwater-Management-Model",
+      "layers": [
+        ["solver: input parsing", "^src/solver/(input|keywords|project)\\.c$"],
+        ["solver: hydraulics", "^src/solver/(dynwave|flowrout|kinwave|routing|link|node|xsect|transect|street|inlet|culvert|roadway|forcmain|dwflow)\\.c$"],
+        ["solver: hydrology", "^src/solver/(runoff|subcatch|gage|climate|snow|infil|gwater|lid|lidproc|rdii|surfqual)\\.c$"],
+        ["solver: quality and treatment", "^src/solver/(qualrout|treatmnt|landuse|massbal)\\.c$"],
+        ["solver: output and report", "^src/solver/(output|report|statsrpt|stats)\\.c$"],
+        ["solver: public API", "^src/solver/include/|^src/solver/swmm5\\.[ch]$|toolkit"],
+        ["solver: shared headers", "^src/solver/.*\\.h$"],
+        ["solver: other", "^src/solver/"],
+        ["output library", "^src/outfile/"],
+        ["command-line runner", "^src/run/"],
+        ["build", "CMakeLists\\.txt$|^cmake/"],
+        ["tests", "^tests/"],
+        ["CI", "^\\.github/|^ci-tools/"],
+        ["other", ""]
+      ],
+      "together": [
+        ["^src/solver/error\\.h$", "^src/solver/(error\\.c|text\\.h)$", "error codes need their message text"],
+        ["^src/solver/(input|keywords)\\.c$", "^src/solver/(keywords\\.c|text\\.h|enums\\.h)$", "input sections and keywords are listed in several places"],
+        ["^src/solver/include/", "^src/solver/swmm5\\.c$", "the public API is declared in include/ and defined in swmm5.c; swmm-toolkit wraps it in another repository"],
+        ["^src/solver/(report|statsrpt)\\.c$", "^tests/", "report text is compared by the regression tests"],
+        ["CMakeLists\\.txt$", "CMakeLists\\.txt$", "build settings live in the top-level and per-target files"]
+      ],
+      "tests": "^tests/",
+      "docs": "^docs/|\\.md$",
+      "pr_template": "none found; CONTRIBUTORS lists contributors with a licence line"
+    },
+    {
+      "name": "WNTR",
+      "match": "WNTR",
+      "layers": [
+        ["simulation: algebraic modelling (C++ and SWIG)", "^wntr/sim/aml/"],
+        ["simulation: network isolation (C++)", "^wntr/sim/network_isolation/"],
+        ["simulation: Python", "^wntr/sim/"],
+        ["EPANET toolkit and I/O", "^wntr/epanet/"],
+        ["network model", "^wntr/network/"],
+        ["metrics", "^wntr/metrics/"],
+        ["morph, scenario, graphics, GIS", "^wntr/(morph|scenario|graphics|gis)/"],
+        ["tests", "^wntr/tests/"],
+        ["documentation", "^documentation/"],
+        ["build and packaging", "^setup\\.py$|^pyproject\\.toml$|^MANIFEST\\.in$"],
+        ["CI", "^\\.github/"],
+        ["other", ""]
+      ],
+      "together": [
+        ["^wntr/sim/aml/evaluator\\.(hpp|cpp)$", "^wntr/sim/aml/(evaluator\\.i|evaluator_wrap\\.cpp|evaluator\\.py)$", "the SWIG interface, its generated wrapper and proxy module come from evaluator.hpp"],
+        ["^wntr/sim/network_isolation/network_isolation\\.(hpp|cpp)$", "^wntr/sim/network_isolation/(network_isolation\\.i|network_isolation_wrap\\.cpp|network_isolation\\.py)$", "SWIG wrapper"],
+        ["^wntr/epanet/toolkit\\.py$", "^wntr/epanet/msx/toolkit\\.py$", "the MSX toolkit loads EPANET libraries the same way"],
+        ["^wntr/epanet/libepanet/", "^MANIFEST\\.in$|^setup\\.py$", "bundled libraries are listed for packaging"],
+        ["^wntr/", "^documentation/whatsnew/", "release notes, written at release by the maintainers"]
+      ],
+      "tests": "^wntr/tests/",
+      "docs": "^documentation/",
+      "pr_template": ".github/PULL_REQUEST_TEMPLATE.md: Summary; Tests and Documentation; AI Disclosure (checkboxes); Acknowledgement (Revised BSD; AI-generated code reviewed)"
+    },
+    {
+      "name": "WaterTAP",
+      "match": "watertap",
+      "layers": [
+        ["flowsheets", "^watertap/flowsheets/"],
+        ["unit models", "^watertap/unit_models/"],
+        ["property models", "^watertap/property_models/"],
+        ["costing", "^watertap/costing/"],
+        ["core", "^watertap/core/"],
+        ["tools and UI", "^watertap/(tools|ui)/"],
+        ["documentation", "^docs/"],
+        ["CI", "^\\.github/"],
+        ["other", ""]
+      ],
+      "together": [
+        ["^watertap/flowsheets/([^/]+)/[^/]+\\.py$", "^watertap/flowsheets/\\1/tests/", "the flowsheet's tests pin its results"],
+        ["^watertap/flowsheets/", "^docs/technical_reference/flowsheets/", "flowsheet documentation"],
+        ["^watertap/unit_models/[^/]+\\.py$", "^docs/technical_reference/unit_models/", "unit model documentation"]
+      ],
+      "tests": "/tests/",
+      "docs": "^docs/",
+      "pr_template": ".github/PULL_REQUEST_TEMPLATE.md: Fixes/Resolves; Summary/Motivation; Changes proposed; Legal Acknowledgement"
+    },
+    {
+      "name": "ECHO_modules",
+      "match": "ECHO_modules",
+      "layers": [
+        ["package", "^ECHO_modules/"],
+        ["tests", "^tests/"],
+        ["notebooks", "\\.ipynb$"],
+        ["packaging", "^pyproject\\.toml$|^requirements\\.txt$|^dist/"],
+        ["other", ""]
+      ],
+      "together": [
+        ["^README\\.md$", "^pyproject\\.toml$|^LICENSE", "the README's licence statement should agree with LICENSE and the package metadata"]
+      ],
+      "tests": "^tests/",
+      "docs": "^README\\.md$",
+      "pr_template": "none"
+    },
+    {
+      "name": "bsm2-python",
+      "match": "bsm2-python",
+      "layers": [
+        ["models", "^src/bsm2_python/(bsm|asm|adm|primclar|settler|thickener|dewatering|storage|reginfluent|plantperformance|evaluation|controller)"],
+        ["data", "^src/bsm2_python/data/"],
+        ["package", "^src/bsm2_python/"],
+        ["tests", "^tests/"],
+        ["documentation", "^docs/"],
+        ["other", ""]
+      ],
+      "together": [
+        ["^src/bsm2_python/data/", "^tests/|^src/bsm2_python/.*\\.py$", "who loads the data file, and which tests use it"]
+      ],
+      "tests": "^tests/",
+      "docs": "^docs/|\\.md$",
+      "pr_template": "none"
+    }
+  ]
+}

@@ -23,6 +23,7 @@ is posted; each PR text is ready for review.
 
 | File | What |
 | --- | --- |
+| [review-586.md](review-586.md) | **#585's fix was opened by someone else as [#586](https://github.com/USEPA/WNTR/pull/586) on 2026-10-30, the same design.** A review of it instead of our PR: independent x86-64 and aarch64 confirmation, the per-row allocation cost and its fix, the SWIG 4.0.2 check, and why its CI failures are unrelated. Not posted |
 | [pr-585.md](pr-585.md), [585-0001-*.patch](585-0001-Order-the-evaluator-s-variables-and-constraints-by-c.patch) | Variables and constraints numbered by creation, each Jacobian row sorted by column. With it, four runs of every network are bit-identical on x86-64 and aarch64 (on `main`, all 41 result variables vary). Test suite: 471 passed against `main`'s 470 (the new test, which fails on `main`). `set_structure()` costs 16% more per call, about 0.25% of a run; Net3, where both take the same path, runs in the same time. SWIG 4.0.2 reproduces the committed wrapper from `main`, and from the fix adds only `serial` accessors |
 | [pr-584.md](pr-584.md), [584-0001-*.patch](584-0001-Name-the-CPU-when-the-Linux-EPANET-library-cannot-lo.patch) | On Linux, a `NotImplementedError` naming the CPU before an EPANET library is loaded on anything but x86-64. On aarch64, all 71 EPANET test failures now say why; x86-64 is unchanged (EPANET results bit-identical, 471 tests passed). One sentence in the installation requirements |
 

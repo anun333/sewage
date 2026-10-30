@@ -4,6 +4,37 @@ What has gone to other projects, and what is ready but not sent. Each text was r
 full and approved by the maintainer before it went out, and each carries a line saying an
 AI assistant drafted it.
 
+## Before anything goes out: the change's context
+
+[inventory.py](inventory.py) lists the context of one intended change, so that it's proposed
+with all of it in view, with a control on each check so that a "none" is a real none. Per-project
+settings are in [inventory-profiles.json](inventory-profiles.json):
+- **I:** where the changed files sit in the project;
+- **F:** the functions changed, and their callers two levels up, across C, C++, SWIG and Python;
+- **T:** what the project changes together;
+- **S:** shared state other files use;
+- **P:** parallel paths, the same strings and names elsewhere;
+- **N:** tests next door;
+- **O:** other open PRs on the same files and functions;
+- **L:** open issues that name them;
+- **M:** recent history and its authors;
+- **C:** whether our draft's `file:line` references and names exist where it says.
+
+The output for each ready change is saved beside its draft (`inventory-*.md`).
+
+```sh
+python3 -I upstream/inventory.py CLONE BRANCH --base origin/main --gh OWNER/REPO --draft upstream/PROJECT/DRAFT.md
+```
+
+It has already changed two plans:
+- **#585.** Its check O found that someone else opened the same fix as USEPA/WNTR#586 on
+  2026-10-30, so we review that PR instead of opening our own.
+- **#584.** It found #558, a maintainer's PR on the same file. The two merge cleanly
+  there, and the PR text now says so.
+
+Its check P reproduces, unaided, the gap first found by hand in #584 (the MSX loader beside
+`toolkit.py`).
+
 ## Issues
 
 | Thread | Posted | Subject | State (checked 2026-10-30) |
