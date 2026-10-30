@@ -3,7 +3,10 @@
 # machine: 650 iterations, optimal, on Linux; 410 iterations, only "Solved To Acceptable
 # Level", on Windows. This samples Windows runners (one CPU each) and, on each, forces
 # OpenBLAS's kernel choice with OPENBLAS_CORETYPE, to see whether the CPU decides the
-# path. It also lists the DLLs IDAES's ipopt.exe loads. Run by hand only:
+# path. It also lists the DLLs IDAES's ipopt.exe loads. Second run (2026-10-30): ipopt.exe
+# links reference BLAS, so OPENBLAS_CORETYPE was dropped; twenty runners are sampled to
+# catch one with another CPU (WaterTAP's September failures shared an image version with a
+# pass, so the image alone doesn't decide). Run by hand only:
 #   gh workflow run watertap-1876-cpu.yml
 name: WaterTAP 1876 CPU
 
@@ -24,7 +27,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        rep: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+        rep: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20]
     defaults:
       run:
         shell: bash
@@ -42,12 +45,10 @@ jobs:
           echo "idaes bin: $B" | tee out/idaes-bin.txt
           ls "$B" >> out/idaes-bin.txt 2>&1 || true
           "/c/Program Files/LLVM/bin/llvm-objdump" -p "$B/ipopt.exe" 2>/dev/null | grep -i "DLL Name" | tee out/ipopt-dlls.txt || true
-      - name: Runs (default, then OPENBLAS_CORETYPE forced)
+      - name: Run
         run: |
+          echo "image: $ImageOS $ImageVersion" | tee out/image.txt
           python -I checks/watertap/run1876.py out/default 0
-          for t in Haswell SkylakeX Zen Sandybridge Prescott; do
-            OPENBLAS_CORETYPE=$t python -I checks/watertap/run1876.py out/coretype-$t 0
-          done
       - uses: actions/upload-artifact@v4
         if: always()
         with:
