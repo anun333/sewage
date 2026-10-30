@@ -1,0 +1,55 @@
+# watertap-org/watertap#1876, fourth step: IDAES's DiagnosticsToolbox on the flowsheet's
+# solution (Linux, AMD Windows) and last iterate (Intel Windows): which variables sit at or
+# near their bounds, and which constraints keep large residuals. checks/watertap/diag1876.py.
+# Six Windows runners, to catch an Intel one (about one in three), and one Linux.
+# Run by hand only: gh workflow run watertap-1876-diag.yml
+name: WaterTAP 1876 diagnostics
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+env:
+  WATERTAP_COMMIT: 1ddf41f0674d9cdb0dd765e801ccd908b475d48e
+
+jobs:
+  diag:
+    name: ${{ matrix.os }} ${{ matrix.rep }}
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 60
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - {os: windows-2022, rep: 1}
+          - {os: windows-2022, rep: 2}
+          - {os: windows-2022, rep: 3}
+          - {os: windows-2022, rep: 4}
+          - {os: windows-2022, rep: 5}
+          - {os: windows-2022, rep: 6}
+          - {os: ubuntu-22.04, rep: 1}
+    defaults:
+      run:
+        shell: bash
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: WaterTAP and IDAES's solvers
+        run: |
+          mkdir -p out
+          python -m pip install -q "watertap @ git+https://github.com/watertap-org/watertap@${WATERTAP_COMMIT}" > out/pip.log 2>&1
+          idaes get-extensions --verbose > out/idaes-ext.log 2>&1
+      - name: Diagnostics
+        run: |
+          python -I checks/watertap/diag1876.py > out/diag.log 2>&1 || echo "exit $?" >> out/diag.log
+          head -1 out/diag.log; grep -E "CLOSING SOLVE" out/diag.log || true
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: diag-${{ matrix.os }}-${{ matrix.rep }}
+          retention-days: 14
+          path: out/
