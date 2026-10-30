@@ -1,0 +1,42 @@
+# watertap-org/watertap#1876, fifth step: checks/watertap/diag1876.py on Linux at the
+# commit that changed the flowsheet's operating conditions (865012cd7, 2026-09-03, feed
+# X_PAO 500 -> 51.5 g/m3) and at its parent, to see whether the washout of nitrate and
+# autotrophs (S_NO3, X_AUT at their zero bound in every stream) came with it.
+# Run by hand only: gh workflow run watertap-1876-history.yml
+name: WaterTAP 1876 history
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  diag:
+    name: ${{ matrix.commit }}
+    runs-on: ubuntu-22.04
+    timeout-minutes: 60
+    strategy:
+      fail-fast: false
+      matrix:
+        commit: [143a94b6ec2563c414510a55209e405ff7881a82, 865012cd7c8edd0a74f58e8add6081c3e2a0de0a]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: WaterTAP at the commit
+        run: |
+          mkdir -p out
+          python -m pip install -q "watertap @ git+https://github.com/watertap-org/watertap@${{ matrix.commit }}" > out/pip.log 2>&1
+          idaes get-extensions --verbose > out/idaes-ext.log 2>&1
+      - name: Diagnostics
+        run: |
+          python -I checks/watertap/diag1876.py > out/diag.log 2>&1 || echo "exit $?" >> out/diag.log
+          grep -E "CLOSING SOLVE|Number of Iterations|EXIT:" out/diag.log | tail -3 || true
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: history-${{ matrix.commit }}
+          retention-days: 14
+          path: out/
