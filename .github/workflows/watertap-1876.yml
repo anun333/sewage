@@ -1,0 +1,53 @@
+# watertap-org/watertap#1876: does the BSM2 electroNP (no bio-P) flowsheet fail on some
+# runs because of the Python hash seed, or because of the machine? See
+# checks/watertap/run1876.py. Each job runs the flowsheet in fresh processes with
+# PYTHONHASHSEED 0-9, then 0 and 1 again, on one runner (one CPU). Failures that vary
+# within a job point to the seed; failures that vary only between jobs or dispatches
+# point to the machine. WaterTAP is installed at WATERTAP_COMMIT with IDAES's solver
+# binaries, as WaterTAP's own CI gets them. Run by hand only:
+#   gh workflow run watertap-1876.yml
+name: WaterTAP 1876
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+env:
+  WATERTAP_COMMIT: 1ddf41f0674d9cdb0dd765e801ccd908b475d48e
+
+jobs:
+  runs:
+    name: ${{ matrix.os }} py${{ matrix.python }}
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 150
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [windows-2022, ubuntu-22.04]
+        python: ["3.12", "3.13"]
+    defaults:
+      run:
+        shell: bash
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python }}
+      - name: WaterTAP and IDAES's solvers
+        run: |
+          mkdir -p out
+          python -m pip install -q "watertap @ git+https://github.com/watertap-org/watertap@${WATERTAP_COMMIT}" > out/pip.log 2>&1
+          idaes get-extensions --verbose > out/idaes-ext.log 2>&1
+          pip freeze > out/pip-freeze.txt
+          grep -i -A8 "Build Versions" out/idaes-ext.log || true
+      - name: Twelve runs
+        run: |
+          python -I checks/watertap/run1876.py out/runs 0 1 2 3 4 5 6 7 8 9 0 1
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: runs-${{ matrix.os }}-py${{ matrix.python }}
+          retention-days: 14
+          path: out/
