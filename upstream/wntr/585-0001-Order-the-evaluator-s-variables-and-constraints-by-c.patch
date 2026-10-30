@@ -1,0 +1,299 @@
+From 726780eee89630c2604390791854761d3b2b781d Mon Sep 17 00:00:00 2001
+From: anun333 <anun333@posteo.net>
+Date: Fri, 30 Oct 2026 11:47:48 -0500
+Subject: [PATCH] Order the evaluator's variables and constraints by creation,
+ not address
+
+The evaluator kept its variables and constraints in std::set<T*>, ordered
+by pointer, and numbered them in that order, so the Jacobian's rows and
+columns followed heap addresses and changed from run to run (#585). Give
+each Var, Constraint and IfElseConstraint a creation serial and order the
+sets by it. Sort each row's Jacobian terms by column too: they stay in
+maps keyed by Var* (their types are part of the SWIG wrapper), which order
+by address.
+
+Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>
+---
+ wntr/sim/aml/evaluator.cpp | 66 +++++++++++++++++++++++++++++---------
+ wntr/sim/aml/evaluator.hpp | 25 ++++++++++++---
+ wntr/tests/test_aml.py     | 27 ++++++++++++++++
+ 3 files changed, 98 insertions(+), 20 deletions(-)
+
+diff --git a/wntr/sim/aml/evaluator.cpp b/wntr/sim/aml/evaluator.cpp
+index 516a7a99..9058e205 100644
+--- a/wntr/sim/aml/evaluator.cpp
++++ b/wntr/sim/aml/evaluator.cpp
+@@ -1,6 +1,20 @@
++#include <algorithm>
++#include <utility>
+ #include "evaluator.hpp"
+ 
+ 
++// A constraint's Jacobian terms are kept in maps keyed by Var*, which order
++// them by address. set_structure() sorts them by column index instead.
++typedef std::pair<int, std::vector<int>*> JacTerm;
++typedef std::pair<int, std::vector<std::vector<int> >*> IfElseJacTerm;
++
++template <class T>
++bool column_less(const T& a, const T& b)
++{
++  return a.first < b.first;
++}
++
++
+ void Constraint::add_leaf(Leaf* leaf)
+ {
+   leaves.push_back(leaf);
+@@ -237,19 +251,19 @@ Evaluator::~Evaluator()
+       remove_structure();
+     }
+   
+-  std::set<Constraint*>::iterator con_iter;
++  std::set<Constraint*, SerialLess<Constraint> >::iterator con_iter;
+   for (con_iter = con_set.begin(); con_iter != con_set.end(); ++con_iter)
+     {
+       delete (*con_iter);
+     }
+ 
+-  std::set<IfElseConstraint*>::iterator if_else_con_iter;
++  std::set<IfElseConstraint*, SerialLess<IfElseConstraint> >::iterator if_else_con_iter;
+   for (if_else_con_iter = if_else_con_set.begin(); if_else_con_iter != if_else_con_set.end(); ++if_else_con_iter)
+     {
+       delete (*if_else_con_iter);
+     }
+ 
+-  std::set<Var*>::iterator var_iter;
++  std::set<Var*, SerialLess<Var> >::iterator var_iter;
+   for (var_iter = var_set.begin(); var_iter != var_set.end(); ++var_iter)
+     {
+       delete (*var_iter);
+@@ -276,6 +290,8 @@ Var* Evaluator::add_var(double value)
+       remove_structure();
+     }
+   Var* v = new Var(value);
++  v->serial = next_serial;
++  ++next_serial;
+   var_set.insert(v);
+   return v;
+ }
+@@ -312,6 +328,8 @@ Constraint* Evaluator::add_constraint()
+       remove_structure();
+     }
+   Constraint* c = new Constraint();
++  c->serial = next_serial;
++  ++next_serial;
+   con_set.insert(c);
+   return c;
+ }
+@@ -324,6 +342,8 @@ IfElseConstraint* Evaluator::add_if_else_constraint()
+       remove_structure();
+     }
+   IfElseConstraint* c = new IfElseConstraint();
++  c->serial = next_serial;
++  ++next_serial;
+   if_else_con_set.insert(c);
+   return c;
+ }
+@@ -409,7 +429,7 @@ void Evaluator::set_structure()
+   //******************************************
+   // Variables
+   //******************************************
+-  std::set<Var*>::iterator var_iter;
++  std::set<Var*, SerialLess<Var> >::iterator var_iter;
+   int ndx = 0;
+   for (var_iter = var_set.begin(); var_iter != var_set.end(); ++var_iter)
+     {
+@@ -423,7 +443,8 @@ void Evaluator::set_structure()
+   //******************************************
+   row_nnz.push_back(0);
+   ndx = 0;
+-  std::set<Constraint*>::iterator con_iter;
++  std::vector<JacTerm> row;
++  std::set<Constraint*, SerialLess<Constraint> >::iterator con_iter;
+   for (con_iter = con_set.begin(); con_iter != con_set.end(); ++con_iter)
+     {
+       Constraint* con = *con_iter;
+@@ -433,13 +454,19 @@ void Evaluator::set_structure()
+       if (con->fn_rpn.size() > max_rpn_size)
+ 	max_rpn_size = con->fn_rpn.size();
+       row_nnz.push_back(row_nnz[ndx] + con->jac_rpn.size());
++      row.clear();
+       std::map<Var*, std::vector<int> >::iterator jac_rpn_iter;
+       for (jac_rpn_iter = con->jac_rpn.begin(); jac_rpn_iter != con->jac_rpn.end(); ++jac_rpn_iter)
+ 	{
+-	  col_ndx.push_back(jac_rpn_iter->first->index);
+-	  jac_rpn.push_back(jac_rpn_iter->second);
+-	  if (jac_rpn_iter->second.size() > max_rpn_size)
+-	    max_rpn_size = jac_rpn_iter->second.size();
++	  row.push_back(JacTerm(jac_rpn_iter->first->index, &(jac_rpn_iter->second)));
++	}
++      std::sort(row.begin(), row.end(), column_less<JacTerm>);
++      for (std::vector<JacTerm>::iterator term = row.begin(); term != row.end(); ++term)
++	{
++	  col_ndx.push_back(term->first);
++	  jac_rpn.push_back(*(term->second));
++	  if (term->second->size() > max_rpn_size)
++	    max_rpn_size = term->second->size();
+ 	}
+       ++ndx;
+     }
+@@ -447,7 +474,8 @@ void Evaluator::set_structure()
+   //******************************************
+   // IfElseConstraints
+   //******************************************
+-  std::set<IfElseConstraint*>::iterator if_else_con_iter;
++  std::vector<IfElseJacTerm> if_else_row;
++  std::set<IfElseConstraint*, SerialLess<IfElseConstraint> >::iterator if_else_con_iter;
+   int _n_conditions = 0;
+   for (if_else_con_iter = if_else_con_set.begin(); if_else_con_iter != if_else_con_set.end(); ++if_else_con_iter)
+     {
+@@ -457,6 +485,12 @@ void Evaluator::set_structure()
+       _n_conditions = con->condition_rpn.size();
+       n_conditions.push_back(_n_conditions);
+       row_nnz.push_back(row_nnz[ndx] + con->jac_rpn.size()); // every vector in con->jac_rpn should be the same size
++      if_else_row.clear();
++      for (std::map<Var*, std::vector<std::vector<int> > >::iterator jac_rpn_iter=con->jac_rpn.begin(); jac_rpn_iter!=con->jac_rpn.end(); ++jac_rpn_iter)
++	{
++	  if_else_row.push_back(IfElseJacTerm(jac_rpn_iter->first->index, &(jac_rpn_iter->second)));
++	}
++      std::sort(if_else_row.begin(), if_else_row.end(), column_less<IfElseJacTerm>);
+       for (int i=0; i<_n_conditions; ++i)
+ 	{
+ 	  if_else_condition_rpn.push_back(con->condition_rpn[i]);
+@@ -465,19 +499,19 @@ void Evaluator::set_structure()
+ 	  if_else_fn_rpn.push_back(con->fn_rpn[i]);
+ 	  if (con->fn_rpn[i].size() > max_rpn_size)
+ 	    max_rpn_size = con->fn_rpn[i].size();
+-	  for (std::map<Var*, std::vector<std::vector<int> > >::iterator jac_rpn_iter=con->jac_rpn.begin(); jac_rpn_iter!=con->jac_rpn.end(); ++jac_rpn_iter)
++	  for (std::vector<IfElseJacTerm>::iterator term = if_else_row.begin(); term != if_else_row.end(); ++term)
+ 	    {
+-	      if (((int) jac_rpn_iter->second.size()) != _n_conditions)
++	      if (((int) term->second->size()) != _n_conditions)
+ 		{
+ 		  throw StructureException("The number of vectors in jac_rpn must be equal to the number of conditions for an IfElseConstraint.");
+ 		}
+ 	      if (i==0)
+ 		{
+-		  col_ndx.push_back(jac_rpn_iter->first->index);
++		  col_ndx.push_back(term->first);
+ 		}
+-	      if_else_jac_rpn.push_back(jac_rpn_iter->second[i]);
+-	      if (jac_rpn_iter->second[i].size() > max_rpn_size)
+-		max_rpn_size = jac_rpn_iter->second[i].size();
++	      if_else_jac_rpn.push_back((*(term->second))[i]);
++	      if ((*(term->second))[i].size() > max_rpn_size)
++		max_rpn_size = (*(term->second))[i].size();
+ 	    }
+ 	}
+       ++ndx;
+diff --git a/wntr/sim/aml/evaluator.hpp b/wntr/sim/aml/evaluator.hpp
+index 0adabf7f..74565e52 100644
+--- a/wntr/sim/aml/evaluator.hpp
++++ b/wntr/sim/aml/evaluator.hpp
+@@ -1,3 +1,4 @@
++#include <cstddef>
+ #include <vector>
+ #include <iostream>
+ #include <set>
+@@ -60,6 +61,7 @@ public:
+   ~Var(){}
+ 
+   int index;
++  size_t serial;  // creation order, set by Evaluator::add_var
+ };
+ 
+ 
+@@ -96,6 +98,7 @@ public:
+   std::vector<Leaf*> leaves;
+ 
+   int index;
++  size_t serial;  // creation order, set by Evaluator::add_constraint
+ };
+ 
+ 
+@@ -122,13 +125,26 @@ public:
+   std::vector<Leaf*> leaves;
+ 
+   int index;
++  size_t serial;  // creation order, set by Evaluator::add_if_else_constraint
++};
++
++
++// Orders pointers by creation rather than by address, so that variables and
++// constraints are numbered the same way in every run.
++template <class T>
++struct SerialLess
++{
++  bool operator()(const T* a, const T* b) const
++  {
++    return a->serial < b->serial;
++  }
+ };
+ 
+ 
+ class Evaluator
+ {
+ public:
+-  Evaluator(){is_structure_set = false;}
++  Evaluator(){is_structure_set = false; next_serial = 0;}
+   ~Evaluator();
+ 
+   int nnz;
+@@ -157,12 +173,13 @@ public:
+ 
+ private:
+   bool is_structure_set;
++  size_t next_serial;
+   
+-  std::set<Var*> var_set;
++  std::set<Var*, SerialLess<Var> > var_set;
+   std::set<Param*> param_set;
+   std::set<Float*> float_set;
+-  std::set<Constraint*> con_set;
+-  std::set<IfElseConstraint*> if_else_con_set;
++  std::set<Constraint*, SerialLess<Constraint> > con_set;
++  std::set<IfElseConstraint*, SerialLess<IfElseConstraint> > if_else_con_set;
+ 
+   std::vector<Var*> var_vector;
+   std::vector<std::vector<Leaf*> > leaves;
+diff --git a/wntr/tests/test_aml.py b/wntr/tests/test_aml.py
+index 9d4a51fb..b8f2268d 100644
+--- a/wntr/tests/test_aml.py
++++ b/wntr/tests/test_aml.py
+@@ -361,6 +361,33 @@ class TestCSRJacobian(unittest.TestCase):
+                 self.assertTrue(true_jac[c][v] == A[c.index, v.index])
+ 
+ 
++class TestStructureOrder(unittest.TestCase):
++    def test_creation_order(self):
++        # Variables and constraints are numbered in the order they were
++        # created, not by memory address, so the Jacobian is laid out the same
++        # way in every run (#585). Removing constraints frees their objects,
++        # and the ones created next can reuse those lower addresses.
++        m = aml.Model()
++        for i in range(50):
++            setattr(m, 'x{}'.format(i), aml.Var(1.0))
++            setattr(m, 'c{}'.format(i), aml.Constraint(getattr(m, 'x{}'.format(i)) - i))
++        for i in range(25):
++            delattr(m, 'c{}'.format(i))
++        for i in range(50, 75):
++            setattr(m, 'x{}'.format(i), aml.Var(1.0))
++            setattr(m, 'c{}'.format(i), aml.Constraint(getattr(m, 'x{}'.format(i)) - i))
++        m.y = aml.Var(1.0)
++        m.mix = aml.Constraint(m.x70 + m.x30 + m.y + m.x60 + m.x40)
++        m.set_structure()
++
++        self.assertEqual([c.index for c in m.cons()], list(range(51)))
++        self.assertEqual([v.index for v in m.vars()], list(range(51)))
++        A = m.evaluate_jacobian()
++        self.assertTrue(A.has_sorted_indices)
++        self.assertEqual(list(A[m.mix.index].indices),
++                         sorted(v.index for v in [m.x70, m.x30, m.y, m.x60, m.x40]))
++
++
+ class TestExceptions(unittest.TestCase):
+     def test_structure_exception(self):
+         m = aml.Model()
+-- 
+2.43.0
+

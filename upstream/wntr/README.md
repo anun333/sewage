@@ -16,6 +16,27 @@ The evidence is in [checks/wntr/](../../checks/wntr/README.md).
 - [#585](https://github.com/USEPA/WNTR/issues/585#issuecomment-6502235336): evaluator
   ordering by a creation serial number, checked by repeated runs and their test suite.
 
+## The fixes, built and tested (2026-10-30)
+
+Both offers were taken up as builds before any reply, on the maintainer's go. Neither
+is posted; each PR text is ready for review.
+
+| File | What |
+| --- | --- |
+| [pr-585.md](pr-585.md), [585-0001-*.patch](585-0001-Order-the-evaluator-s-variables-and-constraints-by-c.patch) | Variables and constraints numbered by creation, each Jacobian row sorted by column. With it, four runs of every network are bit-identical on x86-64 and aarch64 (on `main`, all 41 result variables vary). Test suite: 471 passed against `main`'s 470 (the new test, which fails on `main`). `set_structure()` costs 16% more per call, about 0.25% of a run; Net3, where both take the same path, runs in the same time. SWIG 4.0.2 reproduces the committed wrapper from `main`, and from the fix adds only `serial` accessors |
+| [pr-584.md](pr-584.md), [584-0001-*.patch](584-0001-Name-the-CPU-when-the-Linux-EPANET-library-cannot-lo.patch) | On Linux, a `NotImplementedError` naming the CPU before an EPANET library is loaded on anything but x86-64. On aarch64, all 71 EPANET test failures now say why; x86-64 is unchanged (EPANET results bit-identical, 471 tests passed). One sentence in the installation requirements |
+
+The scripts, run on cfarm421 (x86-64) and cfarm424 (aarch64), all Debian 13:
+- [fixcheck.sh](fixcheck.sh): builds `main` and both branches, compilers and C++
+  standards, CI's test selection, the controls, repeat runs of every network and the
+  comparisons (with [checks/wntr/](../../checks/wntr/README.md)'s `wntrrun.py` and
+  `wntrcmp.py`);
+- [perfcheck.sh](perfcheck.sh): run time and `set_structure()` time, trees alternating
+  on one core;
+- [swigcheck.sh](swigcheck.sh): the wrapper regenerated with SWIG 4.0.2;
+- [v2check.sh](v2check.sh): the same tests for a revised branch, compared with the
+  first.
+
 ## Before a PR
 
 - **WNTR's PR template requires an AI disclosure section.** It covers the tools used
