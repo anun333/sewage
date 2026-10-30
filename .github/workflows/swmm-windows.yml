@@ -117,6 +117,8 @@ jobs:
           git clone -q --filter=blob:none "$CR_REPO" src/crnumerics
           git -C src/crnumerics -c advice.detachedHead=false checkout -q "$CR_COMMIT"
       - name: CORE-MATH and the shim (clang-cl)
+        env:
+          MSYS_NO_PATHCONV: "1"  # Git Bash would turn clang-cl's /c into C:\\
         run: |
           mkdir -p logs cr
           export PATH="/c/Program Files/LLVM/bin:$PATH"
