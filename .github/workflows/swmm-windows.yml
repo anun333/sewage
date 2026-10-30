@@ -7,7 +7,9 @@
 # with patches 0001 and 0002; runs the swmm-nrtestsuite models at one thread with
 # checks/swmm/swmmrun.py. A Linux job builds gcc -O2 as board5's reference was built.
 # The compare job checks the Linux build against board5's digests (the control: it must
-# be IDENTICAL) and decodes every Windows run against it and against each other.
+# be IDENTICAL) and decodes every Windows run against it and against each other. The
+# windows-cr job adds the patched build with CORE-MATH linked in, against board5's
+# CORE-MATH reference.
 # Run by hand only: gh workflow run swmm-windows.yml
 name: SWMM on Windows
 
@@ -84,6 +86,84 @@ jobs:
             runs/**/*.out
             runs/**/*.rpt
 
+  windows-cr:
+    # The patched build again, with SWMM's libm calls answered by CORE-MATH, linked into
+    # swmm5.dll (Windows has no LD_PRELOAD): checks/swmm/crlibm_shim.c and CORE-MATH's ten
+    # functions from crnumerics' core-math/ at CR_COMMIT, compiled with clang-cl (MSVC
+    # can't: CORE-MATH needs __int128) and passed to the DLL's link before the C runtime.
+    # Checks: the DLL imports none of those functions from the C runtime, and the canary
+    # (pow wrong by 2^-20) changes Example1 and user1.
+    runs-on: windows-2022
+    env:
+      CR_REPO: https://github.com/anun333/crnumerics
+      CR_COMMIT: beeb69da9074aae9dc9dc383e2012286ebb3a8d5
+    defaults:
+      run:
+        shell: bash
+    steps:
+      - name: Keep LF line endings (the patches and the sources must match)
+        run: git config --global core.autocrlf false
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Sources
+        run: |
+          git clone -q "$SWMM_REPO" src/patched
+          git -C src/patched -c advice.detachedHead=false checkout -q "$SWMM_COMMIT"
+          git -C src/patched apply "$GITHUB_WORKSPACE"/upstream/swmm/0001-*.patch "$GITHUB_WORKSPACE"/upstream/swmm/0002-*.patch
+          git clone -q "$SUITE_REPO" src/suite
+          git -C src/suite -c advice.detachedHead=false checkout -q "$SUITE_COMMIT"
+          git clone -q --filter=blob:none "$CR_REPO" src/crnumerics
+          git -C src/crnumerics -c advice.detachedHead=false checkout -q "$CR_COMMIT"
+      - name: CORE-MATH and the shim (clang-cl)
+        run: |
+          mkdir -p logs cr
+          export PATH="/c/Program Files/LLVM/bin:$PATH"
+          clang-cl --version | head -1 | tee logs/clang.txt
+          CM=src/crnumerics/core-math
+          F="/c /O2 /clang:-fno-builtin /clang:-ffp-contract=off"
+          for f in acos.c asin.c atan.c cos.c exp.c sin.c tan.c log/log.c log10/log10.c pow/pow.c; do
+            clang-cl $F -I"$CM/$(dirname $f)" "$CM/$f" /Fo"cr/$(basename $f .c).obj" >> logs/cr-compile.log 2>&1
+          done
+          clang-cl $F checks/swmm/crlibm_shim.c /Focr-shim.obj >> logs/cr-compile.log 2>&1
+          clang-cl $F /DSHIM_CANARY checks/swmm/crlibm_shim.c /Focr-canary.obj >> logs/cr-compile.log 2>&1
+          llvm-lib /out:crmath.lib cr/*.obj cr-shim.obj
+          llvm-lib /out:crmath-canary.lib cr/*.obj cr-canary.obj
+          llvm-nm crmath.lib | grep -E " T (acos|asin|atan|cos|exp|log|log10|pow|sin|tan)$" | sort | tee logs/cr-exports.txt
+      - name: Build patched with CORE-MATH, and its canary
+        run: |
+          export PATH="/c/Program Files/LLVM/bin:$PATH"
+          for v in cr canary; do
+            lib=crmath.lib; [ $v = canary ] && lib=crmath-canary.lib
+            cmake -S src/patched -B build/$v -G "Visual Studio 17 2022" -A x64 \
+              -DCMAKE_SHARED_LINKER_FLAGS="$(cygpath -m "$PWD/$lib")" > logs/configure-$v.log 2>&1
+            cmake --build build/$v --config Release > logs/build-$v.log 2>&1
+            cmake --install build/$v --config Release --prefix inst/$v > logs/install-$v.log 2>&1
+            # the DLL must not import these from the C runtime
+            llvm-readobj --coff-imports inst/$v/bin/swmm5.dll > logs/imports-$v.txt
+            n=$(grep -c -E "Symbol: (acos|asin|atan|cos|exp|log|log10|pow|sin|tan) " logs/imports-$v.txt || true)
+            echo "$v: libm functions imported from the C runtime: $n" | tee -a logs/imports-summary.txt
+          done
+      - name: Run the models
+        run: |
+          models=$(grep -v '^#' checks/swmm/models.txt | tr -d '\r')
+          python -I checks/swmm/swmmrun.py run inst/cr/bin/runswmm.exe src/suite/public runs win-patched-cr-t1 1 \
+            --drop-out-over 50 $models | tee logs/run-cr.log || echo "swmmrun exit $?" | tee -a logs/run-cr.log
+          python -I checks/swmm/swmmrun.py run inst/canary/bin/runswmm.exe src/suite/public runs win-patched-canary-t1 1 \
+            examples/Example1.inp user/user1.inp | tee logs/run-canary.log || echo "swmmrun exit $?" | tee -a logs/run-canary.log
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: windows-cr
+          retention-days: 14
+          path: |
+            logs/
+            runs/**/digests.txt
+            runs/**/meta.json
+            runs/**/*.out
+            runs/**/*.rpt
+
   linux:
     runs-on: ubuntu-24.04
     steps:
@@ -116,7 +196,7 @@ jobs:
             runs/**/*.rpt
 
   compare:
-    needs: [windows, linux]
+    needs: [windows, windows-cr, linux]
     if: always()
     runs-on: ubuntu-24.04
     steps:
@@ -128,6 +208,7 @@ jobs:
         run: |
           mkdir -p runs report
           cp -r art/windows/runs/* art/linux/runs/* runs/
+          cp -r art/windows-cr/runs/* runs/ || true
           M=$(grep -v '^#' checks/swmm/models.txt)
           S=checks/swmm/swmmrun.py; D=checks/swmm/digests/board5
           cmpd() { python3 -I $S digcmp "$2" "$3" > report/$1.txt 2>&1 || true; echo "$1: $(tail -1 report/$1.txt)"; }
@@ -139,8 +220,12 @@ jobs:
             cmpd win-patched-vs-linux runs/linux-gcc-O2-t1/digests.txt runs/win-patched-t1/digests.txt
             cmpd win-main-vs-patched runs/win-main-t1/digests.txt runs/win-patched-t1/digests.txt
             cmpd win-patched-vs-board5-cr $D/gcc-O2-nocontract-cr-t1.txt runs/win-patched-t1/digests.txt
+            echo "## Windows with CORE-MATH against board5's CORE-MATH reference"
+            cmpd win-cr-vs-board5-cr $D/gcc-O2-nocontract-cr-t1.txt runs/win-patched-cr-t1/digests.txt
+            echo "## The canary (pow wrong by 2^-20) must differ from the CORE-MATH run"
+            cmpd win-canary-vs-cr runs/win-patched-cr-t1/digests.txt runs/win-patched-canary-t1/digests.txt
           } | tee report/summary.md
-          for p in "win-main-t1 linux-gcc-O2-t1" "win-patched-t1 linux-gcc-O2-t1" "win-main-t1 win-patched-t1"; do
+          for p in "win-main-t1 linux-gcc-O2-t1" "win-patched-t1 linux-gcc-O2-t1" "win-main-t1 win-patched-t1" "win-patched-cr-t1 win-patched-t1"; do
             set -- $p
             python3 -I $S cmp runs $2 $1 --skip-missing $M > report/cmp-$1-vs-$2.txt 2>&1 || true
           done
