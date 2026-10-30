@@ -6,7 +6,9 @@
 # path. It also lists the DLLs IDAES's ipopt.exe loads. Second run (2026-10-30): ipopt.exe
 # links reference BLAS, so OPENBLAS_CORETYPE was dropped; twenty runners are sampled to
 # catch one with another CPU (WaterTAP's September failures shared an image version with a
-# pass, so the image alone doesn't decide). Run by hand only:
+# pass, so the image alone doesn't decide). Result: Intel runners fail (3000 iterations,
+# CI's exact end state), AMD runners pass. Third run: Windows and Linux, fifteen each, to
+# see whether Linux splits by CPU too. Run by hand only:
 #   gh workflow run watertap-1876-cpu.yml
 name: WaterTAP 1876 CPU
 
@@ -21,13 +23,14 @@ env:
 
 jobs:
   runs:
-    name: windows ${{ matrix.rep }}
-    runs-on: windows-2022
+    name: ${{ matrix.os }} ${{ matrix.rep }}
+    runs-on: ${{ matrix.os }}
     timeout-minutes: 60
     strategy:
       fail-fast: false
       matrix:
-        rep: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20]
+        os: [windows-2022, ubuntu-22.04]
+        rep: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
     defaults:
       run:
         shell: bash
@@ -44,7 +47,11 @@ jobs:
           B=$(idaes bin-directory 2>/dev/null | tail -1 | tr -d '\r')
           echo "idaes bin: $B" | tee out/idaes-bin.txt
           ls "$B" >> out/idaes-bin.txt 2>&1 || true
-          "/c/Program Files/LLVM/bin/llvm-objdump" -p "$B/ipopt.exe" 2>/dev/null | grep -i "DLL Name" | tee out/ipopt-dlls.txt || true
+          if [ "$RUNNER_OS" = Windows ]; then
+            "/c/Program Files/LLVM/bin/llvm-objdump" -p "$B/ipopt.exe" 2>/dev/null | grep -i "DLL Name" | tee out/ipopt-dlls.txt || true
+          else
+            ldd "$B/ipopt" 2>/dev/null | tee out/ipopt-dlls.txt || true
+          fi
       - name: Run
         run: |
           echo "image: $ImageOS $ImageVersion" | tee out/image.txt
@@ -52,6 +59,6 @@ jobs:
       - uses: actions/upload-artifact@v4
         if: always()
         with:
-          name: cpu-${{ matrix.rep }}
+          name: cpu-${{ matrix.os }}-${{ matrix.rep }}
           retention-days: 14
           path: out/
