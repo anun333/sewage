@@ -35,11 +35,44 @@ at WaterTAP `1ddf41f` (2026-10-30):
 | `OPENBLAS_CORETYPE` forced to five kernels | | no effect: `ipopt.exe` links reference `libblas.dll`, not OpenBLAS |
 
 So in a fresh process the flowsheet doesn't depend on the hash seed, the Python version or
-these CPUs. On Windows it converges only to IPOPT's acceptable tolerance, so it has little
-margin. Workflows: [watertap-1876.yml](../../.github/workflows/watertap-1876.yml),
-[watertap-1876-cpu.yml](../../.github/workflows/watertap-1876-cpu.yml),
-[watertap-1876-session.yml](../../.github/workflows/watertap-1876-session.yml) (the
-failing commit, alone against the full test session; in progress).
+those AMD CPUs.
+
+**The cause: the CPU vendor, on Windows only.** Sampling more runners at `1ddf41f`
+([watertap-1876-cpu.yml](../../.github/workflows/watertap-1876-cpu.yml)):
+
+| runners | closing solve |
+| --- | --- |
+| Windows, Intel Xeon Platinum 8573C and 8370C (9) | fails exactly as in WaterTAP's CI: 3000 iterations, NLP error `3.2791577558896899e-09` / `9.9785802011532694e+07` to the last digit |
+| Windows, AMD EPYC 7763, 9V45 and 9V74 (44) | passes, "Solved To Acceptable Level" after 410 iterations, all bit-identical |
+| Linux, AMD (15) and Intel (3) | "Optimal Solution Found" in 650 iterations, all bit-identical |
+
+- **Leftover state from earlier tests is ruled out.** At the failing commit `b5c7ce154`,
+  with that CI job's own package versions (`constraints-1876-sep25.txt`), the test passed
+  alone, fresh and in the full user-mode session on four AMD runners
+  ([watertap-1876-session.yml](../../.github/workflows/watertap-1876-session.yml)).
+- **The image doesn't decide it either:** WaterTAP's failures shared an image version
+  with a pass.
+- **So it is the Windows build of the solvers.** `ipopt.exe` links `msvcrt.dll`, MinGW's
+  runtime and reference BLAS, and gives different arithmetic on Intel than on AMD here.
+  Which function, exactly, was not traced.
+
+**Where the margin went.** At the parent of `865012cd7` (2026-09-03, "Update operating
+conditions": feed `X_PAO` 500 to 51.5262 g/m³), all 28 Windows runners, 2 of them Intel,
+give "Optimal Solution Found" in 200 iterations, bit-identical. Since that commit, AMD
+reaches only "acceptable" and Intel fails. On Linux the solve was optimal before (632
+iterations) and after (650).
+
+**Why it's fragile** ([diag1876.py](diag1876.py), IDAES's DiagnosticsToolbox;
+[watertap-1876-diag.yml](../../.github/workflows/watertap-1876-diag.yml),
+[watertap-1876-history.yml](../../.github/workflows/watertap-1876-history.yml)):
+- **At the Intel failure,** the equations are met (violation 3e-9), but dual infeasibility
+  (3.3e3 scaled) and complementarity (25) stay large: the iterates sit against bounds.
+- **In every solution, before and after `865012cd7`,** about 244 variables are at or near
+  their bounds. They include `S_NO3` and `X_AUT` at about zero in all 55 state blocks
+  (nitrifiers washed out), and the Jacobian condition number is about 3.4e13.
+
+A comment for #1876 is drafted in
+[upstream/watertap/comment-1876.md](../../upstream/watertap/comment-1876.md).
 
 ## METAB `model_evaluation`: appended rows hold lists
 
