@@ -1,0 +1,56 @@
+# watertap-org/watertap#1876, second step. The first (watertap-1876.yml) found the
+# flowsheet's closing solve identical across hash seeds and Python versions on one
+# machine: 650 iterations, optimal, on Linux; 410 iterations, only "Solved To Acceptable
+# Level", on Windows. This samples Windows runners (one CPU each) and, on each, forces
+# OpenBLAS's kernel choice with OPENBLAS_CORETYPE, to see whether the CPU decides the
+# path. It also lists the DLLs IDAES's ipopt.exe loads. Run by hand only:
+#   gh workflow run watertap-1876-cpu.yml
+name: WaterTAP 1876 CPU
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+env:
+  WATERTAP_COMMIT: 1ddf41f0674d9cdb0dd765e801ccd908b475d48e
+
+jobs:
+  runs:
+    name: windows ${{ matrix.rep }}
+    runs-on: windows-2022
+    timeout-minutes: 60
+    strategy:
+      fail-fast: false
+      matrix:
+        rep: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+    defaults:
+      run:
+        shell: bash
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: WaterTAP and IDAES's solvers
+        run: |
+          mkdir -p out
+          python -m pip install -q "watertap @ git+https://github.com/watertap-org/watertap@${WATERTAP_COMMIT}" > out/pip.log 2>&1
+          idaes get-extensions --verbose > out/idaes-ext.log 2>&1
+          B=$(idaes bin-directory 2>/dev/null | tail -1 | tr -d '\r')
+          echo "idaes bin: $B" | tee out/idaes-bin.txt
+          ls "$B" >> out/idaes-bin.txt 2>&1 || true
+          "/c/Program Files/LLVM/bin/llvm-objdump" -p "$B/ipopt.exe" 2>/dev/null | grep -i "DLL Name" | tee out/ipopt-dlls.txt || true
+      - name: Runs (default, then OPENBLAS_CORETYPE forced)
+        run: |
+          python -I checks/watertap/run1876.py out/default 0
+          for t in Haswell SkylakeX Zen Sandybridge Prescott; do
+            OPENBLAS_CORETYPE=$t python -I checks/watertap/run1876.py out/coretype-$t 0
+          done
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: cpu-${{ matrix.rep }}
+          retention-days: 14
+          path: out/
