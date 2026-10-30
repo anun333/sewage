@@ -1,4 +1,4 @@
-From 843eb445e2743a2c63b69d846c0b99502ca80ae8 Mon Sep 17 00:00:00 2001
+From d3fc35476b398c9de5d7a507529ab1ba37a81724 Mon Sep 17 00:00:00 2001
 From: anun333 <anun333@posteo.net>
 Date: Fri, 30 Oct 2026 11:49:03 -0500
 Subject: [PATCH] Name the CPU when the Linux EPANET library cannot load
@@ -12,24 +12,20 @@ works. Note the supported CPUs in the installation requirements.
 
 Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>
 ---
- documentation/installation.rst    |  7 +++++--
+ documentation/installation.rst    |  3 +++
  wntr/epanet/msx/toolkit.py        |  3 ++-
  wntr/epanet/toolkit.py            | 18 ++++++++++++++++++
  wntr/tests/test_epanet_toolkit.py | 18 ++++++++++++++++++
- 4 files changed, 43 insertions(+), 3 deletions(-)
+ 4 files changed, 41 insertions(+), 1 deletion(-)
 
 diff --git a/documentation/installation.rst b/documentation/installation.rst
-index 159f7dc4..cfdcc0b8 100644
+index 6fba2260..cc68ebe1 100644
 --- a/documentation/installation.rst
 +++ b/documentation/installation.rst
-@@ -255,8 +255,11 @@ To test WNTR, developers can run software tests locally using the following comm
- Requirements
- -------------
+@@ -257,6 +257,9 @@ Requirements
  
--Requirements for WNTR include 64-bit Python (tested on versions 3.10, 3.11, 3.12, and 3.13) along with several Python packages. 
--Users should have experience using Python (https://www.python.org/), including the installation of additional Python packages. 
-+Requirements for WNTR include 64-bit Python (tested on versions 3.10, 3.11, 3.12, and 3.13) along with several Python packages.
-+Users should have experience using Python (https://www.python.org/), including the installation of additional Python packages.
+ Requirements for WNTR include 64-bit Python (tested on versions 3.11, 3.12, and 3.13) along with several Python packages. 
+ Users should have experience using Python (https://www.python.org/), including the installation of additional Python packages. 
 +The EPANET libraries included with WNTR, which the EpanetSimulator uses, are built for x86-64 on Linux and Windows,
 +and for both Intel and Apple silicon on macOS.
 +On Linux on other processors (aarch64, for example), the WNTRSimulator can be used but the EpanetSimulator cannot.

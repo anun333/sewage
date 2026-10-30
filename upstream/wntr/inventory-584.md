@@ -1,6 +1,6 @@
-# Change inventory: 843eb445e2 against main (merge base 11eec7d5bf)
+# Change inventory: d3fc35476b against origin/main (merge base 3edc06c7c4)
 
-Project profile: WNTR. 4 files changed, 43 lines added, 3 removed.
+Project profile: WNTR. 4 files changed, 41 lines added, 1 removed.
 PR template: .github/PULL_REQUEST_TEMPLATE.md: Summary; Tests and Documentation; AI Disclosure (checkboxes); Acknowledgement (Revised BSD; AI-generated code reviewed).
 
 ## I. Where it sits
@@ -68,7 +68,7 @@ Control: 113 test files at head; the diff changes 1 of them.
 
 ## O. Other open PRs changing the same files, and the same functions
 
-Control: 9 open PRs read.
+Control: 8 open PRs read.
 
 - #558 (dbhart, updated 2026-05-15): Update: add enums to toolkit to enable clean error messages. Same files: `wntr/epanet/toolkit.py`, `wntr/tests/test_epanet_toolkit.py`; same functions: none seen.
 
@@ -84,9 +84,10 @@ Folders too common to count (more than 10 open issues and PRs name them): `epane
 
 ## M. Recent history of the changed files (365 days on the base)
 
-Control: 5 commits on `main` touched these 3 files in 365 days.
+Control: 6 commits on `origin/main` touched these 3 files in 365 days.
 
-- Who: David Hart (3), Kirk Bonney (2).
+- Who: David Hart (3), Kirk Bonney (2), Katherine Klise (1).
+- 3edc06c7 2026-10-30 Katherine Klise: Fix documentation print statement (#587)
 - 10b734d4 2026-06-08 Kirk Bonney: Release workflows & cleanup (#560)
 - f78bf99c 2026-03-13 Kirk Bonney: Fix pkg_resources deprecation and CI build failures (#552)
 - aa358024 2025-11-21 David Hart: Eliminate relative paths in msx library
@@ -96,5 +97,5 @@ Control: 5 commits on `main` touched these 3 files in 365 days.
 ## C. Our draft's references
 
 
-Control: the planted name `zz_no_such_name_qq` is not found, as it must be. 4 path references (0 not found); 12 backticked names, 1 not found at head: `OSError`.
+Control: the planted name `zz_no_such_name_qq` is not found, as it must be. 5 path references (0 not found); 12 backticked names, 1 not found at head: `OSError`.
 Names not found may be fine (a PR's new names, other projects', prose in backticks): read each.
