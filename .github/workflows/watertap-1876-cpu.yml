@@ -14,12 +14,22 @@ name: WaterTAP 1876 CPU
 
 on:
   workflow_dispatch:
+    inputs:
+      commit:
+        description: WaterTAP commit
+        default: 1ddf41f0674d9cdb0dd765e801ccd908b475d48e
+      oses:
+        description: runner images, as a JSON list
+        default: '["windows-2022", "ubuntu-22.04"]'
+      reps:
+        description: runners per image, as a JSON list of numbers
+        default: '[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]'
 
 permissions:
   contents: read
 
 env:
-  WATERTAP_COMMIT: 1ddf41f0674d9cdb0dd765e801ccd908b475d48e
+  WATERTAP_COMMIT: ${{ inputs.commit }}
 
 jobs:
   runs:
@@ -29,8 +39,8 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        os: [windows-2022, ubuntu-22.04]
-        rep: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
+        os: ${{ fromJSON(inputs.oses) }}
+        rep: ${{ fromJSON(inputs.reps) }}
     defaults:
       run:
         shell: bash
