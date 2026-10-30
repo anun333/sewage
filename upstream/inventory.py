@@ -19,7 +19,7 @@ so that a "none" is a real none:
      the same job done somewhere else.
   N. Tests next door: test files that use the changed functions, classes or files.
   O. Other open PRs changing the same files, and the same functions (--gh).
-  L. Open issues that name the changed functions or files (--gh).
+  L. Open issues that name the changed functions, files or folders (--gh).
   M. Recent history of the changed files, and who wrote it.
   C. Our draft's claims (--draft): every path:line reference and every backticked name or path
      exists at the commit it is about.
@@ -41,6 +41,8 @@ COMMON = {"i", "j", "k", "n", "m", "x", "y", "z", "s", "r", "t", "v", "c", "f", 
           "result", "results", "res", "value", "val", "data", "df", "self", "ndx", "index", "name", "args", "kwargs", "msg",
           "out", "ret", "tmp", "line", "lines", "text", "key", "item", "items", "row", "col", "count", "size", "len"}
 GENERIC_FUNCS = {"main", "run", "get", "set", "__init__", "init", "solve", "build", "initialize", "evaluate", "update", "close", "open"}
+GENERIC_DIRS = {"src", "lib", "include", "test", "tests", "core", "common", "util", "utils", "docs", "documentation", "doc",
+                "examples", "scripts", "solver", "python", "cpp"}
 
 
 def git(repo: Path, *args: str, check: bool = False) -> str:
@@ -307,14 +309,20 @@ def main() -> int:
     # O and L need GitHub.
     if a.gh:
         print("\n## O. Other open PRs changing the same files, and the same functions\n")
-        prs = json.loads(subprocess.run(["gh", "pr", "list", "--repo", a.gh, "--state", "open", "--limit", "100",
-                                         "--json", "number,title,author,updatedAt"], capture_output=True, text=True).stdout or "[]")
+        r = subprocess.run(["gh", "pr", "list", "--repo", a.gh, "--state", "open", "--limit", "100",
+                            "--json", "number,title,author,updatedAt"], capture_output=True, text=True)
+        prs = json.loads(r.stdout or "[]") if r.returncode == 0 else []
         print(f"Control: {len(prs)} open PRs read.\n")
-        overlap = 0
+        if r.returncode != 0:
+            print("**Incomplete: the open PRs couldn't be listed, so a \"None\" below proves nothing. Run it again.**\n")
+        overlap = unread = 0
         for pr in prs:
-            pf = json.loads(subprocess.run(["gh", "api", f"repos/{a.gh}/pulls/{pr['number']}/files", "--paginate"],
-                                           capture_output=True, text=True).stdout or "[]")
-            same = [x for x in pf if x.get("filename") in files]
+            rf = subprocess.run(["gh", "api", f"repos/{a.gh}/pulls/{pr['number']}/files", "--paginate"],
+                                capture_output=True, text=True)
+            if rf.returncode != 0:
+                unread += 1
+                continue
+            same = [x for x in json.loads(rf.stdout or "[]") if x.get("filename") in files]
             if not same:
                 continue
             overlap += 1
@@ -324,20 +332,39 @@ def main() -> int:
                   f"Same files: {', '.join('`%s`' % x['filename'] for x in same)}; same functions: {', '.join(fns) or 'none seen'}.")
         if not overlap:
             print("- None changes the same files.")
-        print("\n## L. Open issues that name the changed functions or files\n")
-        terms = [n for n in sorted({e["name"] for e in changed.values()}) if n not in GENERIC_FUNCS and len(n) > 6][:6] + \
-                [Path(f).name for f in files if not tests_re.search(f)][:4]
+        if unread:
+            print(f"\n**Incomplete: the files of {unread} of {len(prs)} PRs couldn't be read. Run it again.**")
+        print("\n## L. Open issues that name the changed functions, files or folders\n")
+        # An issue often names only the part of the project ("the METAB flowsheet"), so the
+        # changed files' own folders are searched too, unless generic or the top-level package.
+        top = {f.split("/")[0] for f in files}
+        folders = sorted({d for d in (Path(f).parent.name for f in files if not tests_re.search(f))
+                          if d and d not in top and d.lower() not in GENERIC_DIRS})
+        terms = list(dict.fromkeys(
+            [n for n in sorted({e["name"] for e in changed.values()}) if n not in GENERIC_FUNCS and len(n) > 6][:6] +
+            [Path(f).name for f in files if not tests_re.search(f)][:4] + folders[:3]))
         seen: dict[int, str] = {}
         answered = 0
+        common: list[str] = []
         for t in terms:
-            r = subprocess.run(["gh", "search", "issues", "--repo", a.gh, "--state", "open", "--limit", "10",
+            r = subprocess.run(["gh", "search", "issues", "--repo", a.gh, "--state", "open", "--limit", "11",
                                 "--json", "number,title,isPullRequest", t], capture_output=True, text=True)
             if r.returncode == 0:
                 answered += 1
-                for it in json.loads(r.stdout or "[]"):
+                found = json.loads(r.stdout or "[]")
+                if t in folders and len(found) > 10:
+                    common.append(t)
+                    continue
+                for it in found[:10]:
                     if not it.get("isPullRequest"):
                         seen.setdefault(it["number"], it["title"])
         print(f"Control: {answered} of {len(terms)} searches answered ({', '.join(f'`{t}`' for t in terms)}).\n")
+        if answered < len(terms):
+            print("**Incomplete: not every search answered (GitHub allows 30 searches a minute), so a \"None\" "
+                  "below proves nothing. Run it again.**\n")
+        if common:
+            print(f"Folders too common to count (more than 10 open issues and PRs name them): "
+                  f"{', '.join(f'`{t}`' for t in common)}.\n")
         for n_, t in sorted(seen.items()):
             print(f"- #{n_}: {t[:100]}")
         if not seen:

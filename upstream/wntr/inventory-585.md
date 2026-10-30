@@ -82,15 +82,17 @@ Control: 113 test files at head; the diff changes 1 of them.
 
 ## O. Other open PRs changing the same files, and the same functions
 
-Control: 8 open PRs read.
+Control: 9 open PRs read.
 
 - #586 (monocongo, updated 2026-10-30): fix: order AML evaluator variables and constraints by creation serial. Same files: `wntr/sim/aml/evaluator.cpp`, `wntr/sim/aml/evaluator.hpp`, `wntr/tests/test_aml.py`; same functions: none seen.
 - #582 (marekl11, updated 2026-10-27): Fix two crashes: unknown AT keyword in INP controls and zero line-sear. Same files: `wntr/tests/test_aml.py`; same functions: none seen.
 
-## L. Open issues that name the changed functions or files
+## L. Open issues that name the changed functions, files or folders
 
-Control: 8 of 8 searches answered (`add_constraint`, `add_if_else_constraint`, `add_var`, `column_less`, `set_structure`, `test_creation_order`, `evaluator.cpp`, `evaluator.hpp`).
+Control: 9 of 9 searches answered (`add_constraint`, `add_if_else_constraint`, `add_var`, `column_less`, `set_structure`, `test_creation_order`, `evaluator.cpp`, `evaluator.hpp`, `aml`).
 
+- #439: Tank Leak Hydraulic Solver Bug
+- #584: Linux aarch64: `pip install wntr` succeeds, but EpanetSimulator fails because the x86-64 libepanet22
 - #585: WNTRSimulator results change from run to run: the evaluator orders variables and constraints by memo
 
 ## M. Recent history of the changed files (365 days on the base)

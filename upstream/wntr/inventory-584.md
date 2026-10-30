@@ -68,15 +68,18 @@ Control: 113 test files at head; the diff changes 1 of them.
 
 ## O. Other open PRs changing the same files, and the same functions
 
-Control: 8 open PRs read.
+Control: 9 open PRs read.
 
 - #558 (dbhart, updated 2026-05-15): Update: add enums to toolkit to enable clean error messages. Same files: `wntr/epanet/toolkit.py`, `wntr/tests/test_epanet_toolkit.py`; same functions: none seen.
 
-## L. Open issues that name the changed functions or files
+## L. Open issues that name the changed functions, files or folders
 
-Control: 5 of 5 searches answered (`_check_linux_machine`, `test_non_x86_64_raises`, `installation.rst`, `toolkit.py`, `toolkit.py`).
+Control: 6 of 6 searches answered (`_check_linux_machine`, `test_non_x86_64_raises`, `installation.rst`, `toolkit.py`, `epanet`, `msx`).
+
+Folders too common to count (more than 10 open issues and PRs name them): `epanet`.
 
 - #75: GPV Setting
+- #501: Issue with MSXepanet class
 - #584: Linux aarch64: `pip install wntr` succeeds, but EpanetSimulator fails because the x86-64 libepanet22
 
 ## M. Recent history of the changed files (365 days on the base)

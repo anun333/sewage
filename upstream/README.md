@@ -16,7 +16,7 @@ settings are in [inventory-profiles.json](inventory-profiles.json):
 - **P:** parallel paths, the same strings and names elsewhere;
 - **N:** tests next door;
 - **O:** other open PRs on the same files and functions;
-- **L:** open issues that name them;
+- **L:** open issues that name them, or the folder they sit in;
 - **M:** recent history and its authors;
 - **C:** whether our draft's `file:line` references and names exist where it says.
 
@@ -26,11 +26,15 @@ The output for each ready change is saved beside its draft (`inventory-*.md`).
 python3 -I upstream/inventory.py CLONE BRANCH --base origin/main --gh OWNER/REPO --draft upstream/PROJECT/DRAFT.md
 ```
 
-It has already changed two plans:
+It has changed three plans:
 - **#585.** Its check O found that someone else opened the same fix as USEPA/WNTR#586 on
   2026-10-30, so we review that PR instead of opening our own.
 - **#584.** It found #558, a maintainer's PR on the same file. The two merge cleanly
   there, and the PR text now says so.
+- **METAB.** Its first version missed WaterTAP's own issue for these failures, #1889,
+  which names only the folder ("the METAB flowsheet"). Check L now searches the changed
+  files' folders too, and checks L and O say when GitHub didn't answer, so an empty list
+  can't be mistaken for a clean one. The PR text now says "Fixes #1889".
 
 Its check P reproduces, unaided, the gap first found by hand in #584 (the MSX loader beside
 `toolkit.py`).
@@ -41,7 +45,7 @@ Its check P reproduces, unaided, the gap first found by hand in #584 (the MSX lo
 | --- | --- | --- | --- |
 | [pyswmm/Stormwater-Management-Model#431](https://github.com/pyswmm/Stormwater-Management-Model/issues/431) | 2026-10-29 | Results change with FMA contraction and the C library's maths ([swmm/](swmm/README.md)) | No reply |
 | [pyswmm/Stormwater-Management-Model#432](https://github.com/pyswmm/Stormwater-Management-Model/issues/432) | 2026-10-29 | The `.out` header's start date is one report step early ([swmm/](swmm/README.md)) | No reply |
-| [watertap-org/watertap#1892](https://github.com/watertap-org/watertap/issues/1892) | 2026-10-29 | Reactor 5's oxygen is fixed at 0.449 g/m³ ([watertap/](watertap/README.md)) | No reply |
+| [watertap-org/watertap#1892](https://github.com/watertap-org/watertap/issues/1892) | 2026-10-29 | Reactor 5's oxygen is fixed at 0.449 g/m³ ([watertap/](watertap/README.md)) | Triaged 2026-10-29: three developers assigned, labelled Priority:Normal; no comment yet |
 | [QSD-Group/EXPOsan#80](https://github.com/QSD-Group/EXPOsan/issues/80) | 2026-10-29 | BSM1 steady state off by up to 0.7% from exact constants and atomic weights ([exposan/](exposan/README.md)) | No reply |
 | [USEPA/WNTR#584](https://github.com/USEPA/WNTR/issues/584) | 2026-10-29 | aarch64 Linux loads the x86-64 EPANET library ([wntr/](wntr/README.md)) | No reply; our offer to build the fix is the one comment |
 | [USEPA/WNTR#585](https://github.com/USEPA/WNTR/issues/585) | 2026-10-29 | `WNTRSimulator` results change from run to run ([wntr/](wntr/README.md)) | No reply; our offer to build the fix is the one comment |
@@ -71,8 +75,11 @@ Posted 2026-10-29 as review comments, not as approvals or change requests.
   with exact values ([mwater/issue-units.md](mwater/issue-units.md)).
 - **The BSM1 authors:** a note on the reference's two faults and five smaller slips
   ([bsm/note-to-authors.md](bsm/note-to-authors.md)); no recipient chosen yet.
-- **WNTR:** both fixes we offered on #584 and #585, built and tested on x86-64 and
-  aarch64, with PR texts ([wntr/pr-584.md](wntr/pr-584.md), [wntr/pr-585.md](wntr/pr-585.md)).
+- **WNTR:** the fix we offered on #584, built and tested on x86-64 and aarch64, with its
+  PR text ([wntr/pr-584.md](wntr/pr-584.md)). Our fix for #585 isn't needed: #586 makes the
+  same change, so a review of it with our measurements takes its place
+  ([wntr/review-586.md](wntr/review-586.md)). WNTR's maintainers were active on
+  2026-10-30 (#587).
 - **SWMM:** two patches, the build flag and the `gage.c` fix, with PR texts
   ([swmm/](swmm/README.md)). They go up if the fork's maintainers want them after #431.
   The build patch's MSVC half is now tested on Windows, with a follow-up comment for
@@ -80,4 +87,7 @@ Posted 2026-10-29 as review comments, not as approvals or change requests.
   behaviour) and an issue for a bug found while checking them, with a tested one-line
   fix ([swmm/issue-last-transect.md](swmm/issue-last-transect.md)).
 - **WaterTAP:** a one-line fix for #1892 with its test values, tested; it goes up if the
-  maintainers choose that fix ([watertap/](watertap/README.md)).
+  maintainers choose that fix ([watertap/](watertap/README.md)). A comment for #1876 that
+  traces its Windows failures to the runner's CPU vendor
+  ([watertap/comment-1876.md](watertap/comment-1876.md)), and a fix for the METAB tests
+  that fail CI under pandas 3.1 ([watertap/pr-metab-concat.md](watertap/pr-metab-concat.md)).

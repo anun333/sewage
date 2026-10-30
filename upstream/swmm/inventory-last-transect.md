@@ -58,7 +58,7 @@ Control: 3 open PRs read.
 
 - #407 (lrntct, updated 2025-03-16): Set the branch feature-2dflood up to date with the main branch. Same files: `src/solver/input.c`; same functions: input_readData.
 
-## L. Open issues that name the changed functions or files
+## L. Open issues that name the changed functions, files or folders
 
 Control: 2 of 2 searches answered (`input_readData`, `input.c`).
 

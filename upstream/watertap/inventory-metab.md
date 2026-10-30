@@ -70,11 +70,15 @@ Control: 29 open PRs read.
 
 - None changes the same files.
 
-## L. Open issues that name the changed functions or files
+## L. Open issues that name the changed functions, files or folders
 
-Control: 7 of 7 searches answered (`get_ch4_fr`, `get_eff_fr`, `get_h2_fr`, `get_mass_flowrate`, `get_r1_ex_biogas_fr`, `test_get_ch4_fr_w_existing_df`, `model_evaluation.py`).
+Control: 8 of 8 searches answered (`get_ch4_fr`, `get_eff_fr`, `get_h2_fr`, `get_mass_flowrate`, `get_r1_ex_biogas_fr`, `test_get_ch4_fr_w_existing_df`, `model_evaluation.py`, `METAB`).
 
-- None.
+- #507: Refine METAB Use Case Analysis
+- #569: Add Jupyter Notebook for METAB example of UI's API
+- #1800: Update ZO unit model cost documentation
+- #1889: METAB Test Failures
+- #1892: ASM1_flowsheet: reactor 5's oxygen is fixed at 0.449 g/m³; BSM1's open loop gives 0.491, and effluen
 
 ## M. Recent history of the changed files (365 days on the base)
 

@@ -80,7 +80,8 @@ Since 2026-10-22, five tests in
 `watertap/flowsheets/METAB/tests/test_model_evaluation.py` fail WaterTAP's CI wherever
 pip installs pandas 3.1.0. That's Python 3.11 to 3.13, on Linux and Windows, in PRs and
 on `main`: 114 of the 116 failed test jobs on those versions show it. Python 3.10 gets
-pandas 2.3.3.
+pandas 2.3.3. WaterTAP tracks the failures as
+[#1889](https://github.com/watertap-org/watertap/issues/1889).
 
 The cause is a real bug, which pandas 3.1 now warns about.
 - **Where.** The helpers build `fr_dict` with one-element lists. `df.loc[len(df)] =

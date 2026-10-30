@@ -60,9 +60,9 @@ Control: 3 open PRs read.
 
 - #407 (lrntct, updated 2025-03-16): Set the branch feature-2dflood up to date with the main branch. Same files: `CMakeLists.txt`, `src/solver/CMakeLists.txt`, `src/solver/gage.c`; same functions: none seen.
 
-## L. Open issues that name the changed functions or files
+## L. Open issues that name the changed functions, files or folders
 
-Control: 4 of 4 searches answered (`gage_validate`, `CMakeLists.txt`, `CMakeLists.txt`, `gage.c`).
+Control: 3 of 3 searches answered (`gage_validate`, `CMakeLists.txt`, `gage.c`).
 
 - #431: Results change with FMA contraction and the C library's maths; a build flag makes them reproducible
 

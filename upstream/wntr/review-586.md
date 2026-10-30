@@ -1,4 +1,4 @@
-<!-- Draft, not posted. A review comment on USEPA/WNTR#586 (monocongo, opened 2026-10-30, "fix: order AML evaluator variables and constraints by creation serial"), which implements the design proposed in #585. Our own branch (pr-585.md) is the same design and is not to be opened. Evidence: upstream/wntr/fixcheck.sh, perfcheck.sh, swigcheck.sh runs on cfarm421 and cfarm424, 2026-10-30; #586's CI logs (jobs 124248739600 and the Windows 3.11 coverage job). Found by upstream/inventory.py's check O. -->
+<!-- Draft, not posted. A review comment on USEPA/WNTR#586 (monocongo, opened 2026-10-30, "fix: order AML evaluator variables and constraints by creation serial"), which implements the design proposed in #585. Our own branch (pr-585.md) is the same design and is not to be opened. Evidence: upstream/wntr/fixcheck.sh, perfcheck.sh, swigcheck.sh runs on cfarm421 and cfarm424, 2026-10-30; #586's CI logs at e582d20f5b (all ten failed jobs read 2026-10-30: quick test 124248739600; coverage 124248743417 and eight more, all gis.rst), #587's quick test 124288370123 (kaklise's gis.rst fix, opened 2026-10-30 20:12, passes all 18 doc files), and #582/#583's quick tests re-run 2026-10-27 (gis.rst; pandas 3.1.0 was released 2026-10-22). Found by upstream/inventory.py's check O. -->
 
 **Review comment on #586 (COMMENT):**
 
@@ -18,7 +18,7 @@ Thanks for picking this up. I filed #585 and had built the same change (creation
 So a later regeneration would expose `serial` to Python, unless `evaluator.i` says `%ignore` or `%immutable`.
 
 **The CI failures look unrelated to the change:**
-- **Quick test (3.13, Ubuntu):** the unit tests passed (467). The run aborted in the documentation doctests, in `advancedsim.rst`'s threaded `EpanetSimulator` runs (`Fatal Python error: Aborted` inside `ENopen`/`ENsolveH`), which this PR doesn't touch.
-- **Run Coverage (3.11, Windows):** the one unit-test failure is `test_Net6_thread_performance`, a timing assertion ("WNTR threading took 1s longer than sequential"). The doc failure is `gis.rst`.
+- **Run Coverage, the nine failing jobs (Python 3.11 to 3.13):** the unit tests pass in each (471), except one timing assertion on Windows 3.11, `test_Net6_thread_performance` ("WNTR threading took 1s longer than sequential"). Each fails one doctest, `gis.rst`: with pandas 3.1.0, which these jobs install, the floats in list cells print at display precision. The Python 3.10 jobs get pandas 2.3.3 and pass. #587 fixes it, and #582 and #583 failed the same way when re-run on 27 October.
+- **Quick test (3.13, Ubuntu):** the unit tests passed (467). The run aborted in the documentation doctests, in `advancedsim.rst`'s threaded `EpanetSimulator` runs (`Fatal Python error: Aborted` with threads in `ENopen`, `ENsolveH` and the INP writer). That path doesn't use the evaluator, and the same doctest passed in #587's quick test, so it looks intermittent.
 
 Drafted with an AI assistant (Claude), which also ran the builds and checks reported here; I read it before posting.
