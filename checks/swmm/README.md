@@ -534,6 +534,40 @@ python3 -I swmmrun.py digcmp digests/wheels/board5-wheel-0.17.0-x86_64.txt diges
 python3 -I swmmrun.py cmp RUNS wheel-0.17.0-manylinux2014_x86_64 wheel-0.17.0-manylinux2014_aarch64 --skip-missing MODEL...
 ```
 
+## crpreload in place of the shim (2026-10-30)
+
+`crlibm_shim.c` answers the 11 libm functions SWMM calls. crmvec's crpreload
+([github.com/anun333/crmvec](https://github.com/anun333/crmvec), since 0.9.0 on x86-64
+and 0.11.0 on aarch64) answers CORE-MATH's 76 under their C library names, and is
+maintained and checked against CORE-MATH on its own. Both return correctly rounded
+results, and a correctly rounded result is unique, so SWMM must give the same bits with
+either. [crpreload-job.sh](crpreload-job.sh) checks that with crmvec v0.12.2:
+- it builds crpreload and SWMM `6c81201` twice (`-O2 -ffp-contract=off`; patched `-O2`);
+- every libm function `libswmm5` imports (`acos asin atan cos exp log log10 pow sin
+  sincos tan`) is one crpreload exports, and `LD_DEBUG=bindings` shows Example1's eight
+  bound to `libcrpreload.so`;
+- it compares every run with board5's shim reference,
+  [gcc-O2-nocontract-cr-t1](digests/board5/gcc-O2-nocontract-cr-t1.txt).
+
+| host | no preload (the control) | + crpreload | patched + crpreload |
+| --- | --- | --- | --- |
+| cfarm421 (x86-64) | DIFFERS, the 6 models glibc and CORE-MATH disagree on | **IDENTICAL**, 34/34 | **IDENTICAL**, 34/34 |
+| cfarm424 (aarch64) | DIFFERS, those 6 + catchment_as_outfall's `.rpt` | DIFFERS, catchment_as_outfall's `.rpt` only (the `gage.c` cast); all 34 `.out` identical | **IDENTICAL**, 34/34 |
+
+This is the shim's own result, with every run predicted before it ran. So on Linux,
+crpreload can stand in for the shim: `--preload libcrpreload.so` in place of
+`crshim.sh`'s library. macOS still needs the darwin shim until crpreload's macOS port
+has run on a Mac (cfarm104 was unreachable). The shim stays for that, and as the
+reference. Digests:
+[digests/cfarm421/](digests/cfarm421/) and [digests/cfarm424/](digests/cfarm424/),
+`crp-*.txt`.
+
+```sh
+# a work folder holding src/base, src/patched (git archive), src/suite/public, crmvec/ (v0.12.2),
+# ref/cr-ref.txt (= digests/board5/gcc-O2-nocontract-cr-t1.txt), build.sh swmmrun.py swmmcmp.py models.txt transect/
+NOTICE=true NCORES=4 SWMM_CPUS=0-3 nice -n 19 sh crpreload-job.sh
+```
+
 ## What these do not show
 
 - **Windows.** MSVC was not run. The `/fp:fast` explanation for win64's

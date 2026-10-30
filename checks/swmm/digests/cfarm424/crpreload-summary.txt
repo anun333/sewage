@@ -1,0 +1,11 @@
+crpreload: crmvec v0.12.2, libcrpreload.so sha256 d0b5bb96a4cfb4b9, 108 symbols exported
+build base: gcc -O2 -ffp-contract=off; libswmm5.so sha256 5b47d0dd7aa84b10
+build patched: gcc -O2; libswmm5.so sha256 3da883beea3a015a
+libm imports of base's libswmm5, all answered by crpreload: acos asin atan cos exp log log10 pow sin sincos tan
+libm imports of patched's libswmm5, all answered by crpreload: acos asin atan cos exp log log10 pow sin sincos tan
+bindings (Example1, base + crpreload): 8 of 8 libm symbols libswmm5 uses bound to libcrpreload.so: cos exp log log10 pow sin sincos tan 
+base-glibc-t1 vs board5 gcc-O2-nocontract-cr-t1 (the shim): DIFFERS examples/Example1.inp(.out,.rpt) examples/Example3.inp(.rpt) update_v5111/catchment_as_outfall.inp(.rpt) update_v5111/gate_control_2.inp(.out) user/user3.inp(.out) user/user4.inp(.out) user/user5.inp(.out,.rpt)
+base-crp-t1 vs board5 gcc-O2-nocontract-cr-t1 (the shim): DIFFERS update_v5111/catchment_as_outfall.inp(.rpt)
+patched-crp-t1 vs board5 gcc-O2-nocontract-cr-t1 (the shim): IDENTICAL
+transect roughness (transect/check.sh): exit 2, VOID: inherit did not run cleanly
+done in 150 s

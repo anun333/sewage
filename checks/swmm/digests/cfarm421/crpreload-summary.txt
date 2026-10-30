@@ -1,0 +1,11 @@
+crpreload: crmvec v0.12.2, libcrpreload.so sha256 29fc78ccaa8488a4, 108 symbols exported
+build base: gcc -O2 -ffp-contract=off; libswmm5.so sha256 5c0d08bc07584c5f
+build patched: gcc -O2; libswmm5.so sha256 047514fefb5c3b24
+libm imports of base's libswmm5, all answered by crpreload: acos asin atan cos exp log log10 pow sin sincos tan
+libm imports of patched's libswmm5, all answered by crpreload: acos asin atan cos exp log log10 pow sin sincos tan
+bindings (Example1, base + crpreload): 8 of 8 libm symbols libswmm5 uses bound to libcrpreload.so: cos exp log log10 pow sin sincos tan 
+base-glibc-t1 vs board5 gcc-O2-nocontract-cr-t1 (the shim): DIFFERS examples/Example1.inp(.out,.rpt) examples/Example3.inp(.rpt) update_v5111/gate_control_2.inp(.out) user/user3.inp(.out) user/user4.inp(.out) user/user5.inp(.out,.rpt)
+base-crp-t1 vs board5 gcc-O2-nocontract-cr-t1 (the shim): IDENTICAL
+patched-crp-t1 vs board5 gcc-O2-nocontract-cr-t1 (the shim): IDENTICAL
+transect roughness (transect/check.sh): exit 0, transects-last is explicit: no; errors: ERROR 113: invalid roughness for Conduit C2.;ERROR 119: invalid cross section for Link C2.;
+done in 111 s
