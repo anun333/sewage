@@ -54,7 +54,11 @@ Its check P reproduces, unaided, the gap first found by hand in #584 (the MSX lo
 
 ## Reviews
 
-Posted 2026-10-29 as review comments, not as approvals or change requests.
+Posted 2026-10-29 as review comments, not as approvals or change requests. The six
+reviews of 2026-10-29 left out the AI disclosure line, so each got a short comment about
+an hour later: "For transparency, since the review above doesn't say so: it was drafted
+with an AI assistant (Claude), which also ran the builds and checks it reports. I read it
+before posting." The review of #586 carries the line itself.
 
 | PR | Recommends |
 | --- | --- |
@@ -79,6 +83,13 @@ Posted 2026-10-29 as review comments, not as approvals or change requests.
 | [watertap-org/watertap#1893](https://github.com/watertap-org/watertap/pull/1893) | 2026-10-31 | Fixes #1889: the METAB `model_evaluation` helpers append rows with `pd.concat`, so they hold numbers, which ends five CI failures under pandas 3.1 ([watertap/pr-metab-concat.md](watertap/pr-metab-concat.md)) | Open; its CI waits for a maintainer to approve the run (first PR from this account) |
 | [edgi-govdata-archiving/ECHO_modules#141](https://github.com/edgi-govdata-archiving/ECHO_modules/pull/141) | 2026-10-31 | Closes #140, as its maintainer invited: the README's licence paragraph says GPL v3 in EDGI's own wording and links to this repository's LICENSE ([echo-modules/pr-readme.md](echo-modules/pr-readme.md)) | Open |
 | [USEPA/WNTR#589](https://github.com/USEPA/WNTR/pull/589) | 2026-10-31 | Fixes #584: on Linux on anything but x86-64, a `NotImplementedError` naming the CPU instead of a misleading `OSError`, tested on x86-64 and aarch64 ([wntr/pr-584.md](wntr/pr-584.md)) | Open; its CI waits for a maintainer to approve the run |
+
+## Also on upstream timelines
+
+Six of this repo's commit messages named upstream threads as `owner/repo#N`, so GitHub put
+"anun333 referenced this" entries, linking here, on WNTR #584 and #586, WaterTAP #1876
+and #1892, SWMM #431 (pyswmm) and EXPOsan #80 (2026-10-29 and 30). They can't be removed
+without rewriting history. Since 2026-10-30, commit messages write "WNTR PR 586" instead.
 
 ## Ready, not sent
 

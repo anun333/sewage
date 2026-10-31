@@ -91,7 +91,8 @@ goes out until the maintainer has read it.
     [#584](https://github.com/USEPA/WNTR/issues/584) (an error that names the CPU; open
     as #589 since 2026-10-31), tested on x86-64 and aarch64;
   - SWMM's build flag and `gage.c` fix (tested 2026-10-27);
-  - WaterTAP's reactor-5 oxygen (#1892);
+  - WaterTAP's reactor-5 oxygen (#1892), and its METAB tests under pandas 3.1 (open as
+    #1893 since 2026-10-31);
   - ECHO_modules' README licence paragraph, which its maintainer invited (open as #141
     since 2026-10-31).
 - **Methods carried across projects:**

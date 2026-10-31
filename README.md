@@ -14,7 +14,7 @@ is kept verbatim, unchecked, in [thread/2026-10-27-initial.md](thread/2026-10-27
 | [landscape.md](landscape.md) | The projects, checked against their own repos and papers on 2026-10-27, each claim in the thread with a verdict, and what the thread missed |
 | [ideas.md](ideas.md) | Ways to contribute, upstream and in our repos, each with what it rests on, what would prove it wrong, and the first step |
 | [checks/](checks/) | Measurements behind the ideas, rerunnable, with verdict lines |
-| [upstream/](upstream/README.md) | What has gone to other projects and its state: eight issues (SWMM, WaterTAP, EXPOsan, WNTR, and licence questions to PHES-ODM and ECHO_modules), six PR reviews (SWMM, EPANET, bsm2-python), and the patches ready if maintainers want them |
+| [upstream/](upstream/README.md) | What has gone to other projects and its state: eight issues (SWMM, WaterTAP, EXPOsan, WNTR, and licence questions to PHES-ODM and ECHO_modules), seven PR reviews (SWMM, EPANET, bsm2-python, WNTR), a diagnosis on WaterTAP #1876, three PRs (WaterTAP, WNTR, ECHO_modules), and the patches ready if maintainers want them |
 | [rules/](rules/README.md) | The laws, standards and terms that bear on this work, checked 2026-10-29, with what each changes |
 | [thread/](thread/) | The conversations this started from, verbatim |
 
@@ -58,6 +58,13 @@ is kept verbatim, unchecked, in [thread/2026-10-27-initial.md](thread/2026-10-27
   - On aarch64 it installs but can't run EPANET: it loads the x86-64 library.
   - Its own simulator isn't repeatable on one machine, because its equations are
     ordered by memory address.
+- **A fourth, on GitHub's runners 2026-10-30:** why WaterTAP's BSM2 electroNP
+  flowsheet fails "at random" on Windows, and why five METAB tests fail its CI
+  ([checks/watertap/](checks/watertap/README.md)).
+  - The Windows failures follow the runner's CPU: Intel fails and AMD passes, every
+    time, since a feed change left the solve with no margin.
+  - The METAB failures are a real bug that pandas 3.1 now warns about: appended rows
+    hold lists, not numbers.
 - **Statements about other projects** carry the date they were checked. Anything without
   a date is from memory and should be checked before anyone relies on it.
 
