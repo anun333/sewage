@@ -71,22 +71,17 @@ Posted 2026-10-29 as review comments, not as approvals or change requests.
 | PR | Opened | Change | State |
 | --- | --- | --- | --- |
 | [watertap-org/watertap#1893](https://github.com/watertap-org/watertap/pull/1893) | 2026-10-31 | Fixes #1889: the METAB `model_evaluation` helpers append rows with `pd.concat`, so they hold numbers, which ends five CI failures under pandas 3.1 ([watertap/pr-metab-concat.md](watertap/pr-metab-concat.md)) | Open; its CI waits for a maintainer to approve the run (first PR from this account) |
+| [edgi-govdata-archiving/ECHO_modules#141](https://github.com/edgi-govdata-archiving/ECHO_modules/pull/141) | 2026-10-31 | Closes #140, as its maintainer invited: the README's licence paragraph says GPL v3 in EDGI's own wording and links to this repository's LICENSE ([echo-modules/pr-readme.md](echo-modules/pr-readme.md)) | Open |
+| [USEPA/WNTR#589](https://github.com/USEPA/WNTR/pull/589) | 2026-10-31 | Fixes #584: on Linux on anything but x86-64, a `NotImplementedError` naming the CPU instead of a misleading `OSError`, tested on x86-64 and aarch64 ([wntr/pr-584.md](wntr/pr-584.md)) | Open; its CI waits for a maintainer to approve the run |
 
 ## Ready, not sent
 
-- **ECHO_modules:** the README fix its maintainer invited in #140
-  ([echo-modules/pr-readme.md](echo-modules/pr-readme.md)).
 - **bsm2-python:** an issue about its BSM1 rain influent file, which doesn't load
   ([bsm2-python/issue-rain-influent.md](bsm2-python/issue-rain-influent.md)).
 - **mWater asset standards:** three additions to the unit errata mWater is considering,
   with exact values ([mwater/issue-units.md](mwater/issue-units.md)).
 - **The BSM1 authors:** a note on the reference's two faults and five smaller slips
   ([bsm/note-to-authors.md](bsm/note-to-authors.md)); no recipient chosen yet.
-- **WNTR:** the fix we offered on #584, built and tested on x86-64 and aarch64, with its
-  PR text ([wntr/pr-584.md](wntr/pr-584.md)). Our fix for #585 isn't needed: #586 makes the
-  same change, so we reviewed it instead, with our measurements (posted 2026-10-30,
-  [wntr/review-586.md](wntr/review-586.md)). WNTR's maintainers were active on
-  2026-10-30 (#587).
 - **SWMM:** two patches, the build flag and the `gage.c` fix, with PR texts
   ([swmm/](swmm/README.md)). They go up if the fork's maintainers want them after #431.
   The build patch's MSVC half is now tested on Windows, with a follow-up comment for

@@ -87,11 +87,13 @@ goes out until the maintainer has read it.
 
 - **Fixes built and tested, ready to offer as PRs** ([upstream/](upstream/README.md)):
   - WNTR [#585](https://github.com/USEPA/WNTR/issues/585) (the evaluator numbered by
-    creation, so runs repeat) and [#584](https://github.com/USEPA/WNTR/issues/584) (an
-    error that names the CPU), tested on x86-64 and aarch64;
+    creation, so runs repeat; #586 makes the same change, so we reviewed it) and
+    [#584](https://github.com/USEPA/WNTR/issues/584) (an error that names the CPU; open
+    as #589 since 2026-10-31), tested on x86-64 and aarch64;
   - SWMM's build flag and `gage.c` fix (tested 2026-10-27);
   - WaterTAP's reactor-5 oxygen (#1892);
-  - ECHO_modules' README licence paragraph, which its maintainer invited.
+  - ECHO_modules' README licence paragraph, which its maintainer invited (open as #141
+    since 2026-10-31).
 - **Methods carried across projects:**
   - crnumerics' `repro-scan` and `repro-diff` on each project's own build, as a CI
     step a project could keep. SWMM and WNTR come first, since both showed the effects.

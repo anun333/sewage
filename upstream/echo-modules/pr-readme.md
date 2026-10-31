@@ -1,4 +1,4 @@
-<!-- Draft, not posted. A maintainer answered #140 on 2026-10-29 ("The actual license is GPL v3 ... Please feel free to update the readme!"). Opening it needs a fork, anun333/ECHO_modules, from main at fc2ddd9. No open PR touches README.md (checked 2026-10-30: #28, #32, #33). -->
+<!-- POSTED 2026-10-31 as edgi-govdata-archiving/ECHO_modules#141 (https://github.com/edgi-govdata-archiving/ECHO_modules/pull/141), from anun333/ECHO_modules branch readme-gpl-v3 at b292b08324 on main fc2ddd9, after the full text was approved; title and body read back identical, and GitHub links it to #140. Just before opening: main unmoved, #140 unchanged, still no open PR on README.md. Was: Draft, not posted. A maintainer answered #140 on 2026-10-29 ("The actual license is GPL v3 ... Please feel free to update the readme!"). No open PR touches README.md (checked 2026-10-30: #28, #32, #33). -->
 
 **Title:** README: the licence is GPL v3 (closes #140)
 
