@@ -1,4 +1,4 @@
-<!-- Draft, not posted. A comment on watertap-org/watertap#1876. Evidence: checks/watertap/README.md "#1876"; workflows watertap-1876*.yml in anun333/sewage, runs 41111593097, 41112937032, 41114515417, 41119049846, 41119769250, 41120600926, 41121805857, 41122509497, 41123021921 (2026-10-30). -->
+<!-- POSTED 2026-10-31 as comment 6545228017 on watertap-org/watertap#1876 (https://github.com/watertap-org/watertap/issues/1876#issuecomment-6545228017), after the full text was approved; read back identical. Just before posting: #1876 had no comments, WaterTAP main still 1ddf41f; #1872 (MarcusHolly, for #1851) changes this flowsheet's digester initialisation and one expected value in its test, keeps the skip, last commit 2026-10-07. Our sewage commit f0b83f4 had already put a 'referenced' event on #1876 on 2026-10-30. Was: Draft, not posted. A comment on watertap-org/watertap#1876. Evidence: checks/watertap/README.md "#1876"; workflows watertap-1876*.yml in anun333/sewage, runs 41111593097, 41112937032, 41114515417, 41119049846, 41119769250, 41120600926, 41121805857, 41122509497, 41123021921 (2026-10-30). -->
 
 **Comment on #1876:**
 

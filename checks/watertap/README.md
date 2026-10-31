@@ -71,8 +71,8 @@ iterations) and after (650).
   their bounds. They include `S_NO3` and `X_AUT` at about zero in all 55 state blocks
   (nitrifiers washed out), and the Jacobian condition number is about 3.4e13.
 
-A comment for #1876 is drafted in
-[upstream/watertap/comment-1876.md](../../upstream/watertap/comment-1876.md).
+Posted to #1876 on 2026-10-31 ([the comment](https://github.com/watertap-org/watertap/issues/1876#issuecomment-6545228017);
+text in [upstream/watertap/comment-1876.md](../../upstream/watertap/comment-1876.md)).
 
 ## METAB `model_evaluation`: appended rows hold lists
 

@@ -350,7 +350,7 @@ a fix. The check did turn up a real bug: the last transect is never read when
     alone.
   - **#1876 is diagnosed.** On Windows, Intel runners fail and AMD runners pass, every
     time, since `865012cd7` changed the feed. The solution washes out the nitrifiers,
-    which leaves the solve no margin. A comment is drafted.
+    which leaves the solve no margin. Posted to #1876 on 2026-10-31.
   - **Found along the way:** pandas 3.1 has failed five METAB tests in WaterTAP's CI
     since 2026-10-22, from a real bug. WaterTAP tracks it as #1889; our tested fix
     is open as #1893 (2026-10-31).

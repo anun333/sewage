@@ -66,6 +66,12 @@ Posted 2026-10-29 as review comments, not as approvals or change requests.
 | [fau-evt/bsm2-python#8](https://github.com/fau-evt/bsm2-python/pull/8) | Merge |
 | [USEPA/WNTR#586](https://github.com/USEPA/WNTR/pull/586#pullrequestreview-5719468594) (posted 2026-10-30) | Confirms the fix (the one we offered on #585) on x86-64 and aarch64, with one suggestion |
 
+## Comments
+
+| Thread | Posted | Says | State |
+| --- | --- | --- | --- |
+| [watertap-org/watertap#1876](https://github.com/watertap-org/watertap/issues/1876#issuecomment-6545228017) | 2026-10-31 | Its "random" Windows failures follow the runner's CPU: Intel fails and AMD passes, every time, since `865012cd7`; the solution has nitrifiers washed out, so the solve has no margin ([watertap/comment-1876.md](watertap/comment-1876.md)) | Posted |
+
 ## Pull requests
 
 | PR | Opened | Change | State |
@@ -89,7 +95,5 @@ Posted 2026-10-29 as review comments, not as approvals or change requests.
   behaviour) and an issue for a bug found while checking them, with a tested one-line
   fix ([swmm/issue-last-transect.md](swmm/issue-last-transect.md)).
 - **WaterTAP:** a one-line fix for #1892 with its test values, tested; it goes up if the
-  maintainers choose that fix ([watertap/](watertap/README.md)). A comment for #1876 that
-  traces its Windows failures to the runner's CPU vendor
-  ([watertap/comment-1876.md](watertap/comment-1876.md)). The METAB fix is open as #1893
-  (above).
+  maintainers choose that fix ([watertap/](watertap/README.md)). The #1876 comment and the
+  METAB fix (#1893) have gone out (above).
