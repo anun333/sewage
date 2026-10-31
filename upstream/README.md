@@ -66,6 +66,12 @@ Posted 2026-10-29 as review comments, not as approvals or change requests.
 | [fau-evt/bsm2-python#8](https://github.com/fau-evt/bsm2-python/pull/8) | Merge |
 | [USEPA/WNTR#586](https://github.com/USEPA/WNTR/pull/586#pullrequestreview-5719468594) (posted 2026-10-30) | Confirms the fix (the one we offered on #585) on x86-64 and aarch64, with one suggestion |
 
+## Pull requests
+
+| PR | Opened | Change | State |
+| --- | --- | --- | --- |
+| [watertap-org/watertap#1893](https://github.com/watertap-org/watertap/pull/1893) | 2026-10-31 | Fixes #1889: the METAB `model_evaluation` helpers append rows with `pd.concat`, so they hold numbers, which ends five CI failures under pandas 3.1 ([watertap/pr-metab-concat.md](watertap/pr-metab-concat.md)) | Open; its CI waits for a maintainer to approve the run (first PR from this account) |
+
 ## Ready, not sent
 
 - **ECHO_modules:** the README fix its maintainer invited in #140
@@ -90,5 +96,5 @@ Posted 2026-10-29 as review comments, not as approvals or change requests.
 - **WaterTAP:** a one-line fix for #1892 with its test values, tested; it goes up if the
   maintainers choose that fix ([watertap/](watertap/README.md)). A comment for #1876 that
   traces its Windows failures to the runner's CPU vendor
-  ([watertap/comment-1876.md](watertap/comment-1876.md)), and a fix for the METAB tests
-  that fail CI under pandas 3.1 ([watertap/pr-metab-concat.md](watertap/pr-metab-concat.md)).
+  ([watertap/comment-1876.md](watertap/comment-1876.md)). The METAB fix is open as #1893
+  (above).

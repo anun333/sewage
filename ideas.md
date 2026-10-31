@@ -350,8 +350,8 @@ a fix. The check did turn up a real bug: the last transect is never read when
     time, since `865012cd7` changed the feed. The solution washes out the nitrifiers,
     which leaves the solve no margin. A comment is drafted.
   - **Found along the way:** pandas 3.1 has failed five METAB tests in WaterTAP's CI
-    since 2026-10-22, from a real bug. WaterTAP tracks it as #1889, with no fix yet; a
-    tested fix is drafted.
+    since 2026-10-22, from a real bug. WaterTAP tracks it as #1889; our tested fix
+    is open as #1893 (2026-10-31).
 - **Open RDII analysis.** EPA's SSOAP is deprecated and nothing open replaces it. An
   RTK unit-hydrograph fit on pyswmm and swmmio would fill it. It's medium-sized and
   ties to [O1](#o1)'s inflow from wet-well cycles.

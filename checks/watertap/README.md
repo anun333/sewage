@@ -99,3 +99,5 @@ appends with `pd.concat` and checks the dtype in the tests.
 | `main` | the patch's | 2.3.3 | 5 failed on the new dtype check, with no warning |
 | patched | the patch's | 3.1.0 | 20 passed |
 | patched | the patch's | 2.3.3 | 20 passed |
+
+Opened as [#1893](https://github.com/watertap-org/watertap/pull/1893) on 2026-10-31.
