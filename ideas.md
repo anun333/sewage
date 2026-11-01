@@ -146,6 +146,60 @@ goes out until the maintainer has read it.
 - **First step.** Read [EDGI's ECHO_modules](https://github.com/edgi-govdata-archiving/ECHO_modules)
   (GPL-3.0, confirmed by its maintainer in #140) and its open issues. The screen
   should be a contribution there if it fits, and our own script only if it doesn't.
+- **Started 2026-11-01, paused the same day.** The first step is done; no code yet.
+  - **ECHO_modules** (main `fc2ddd9`, 2025-12-19; one active maintainer) is a set of
+    notebook helpers. Its `DataSet` presets read materialised views from EDGI's server at
+    Stony Brook, which wants a token from a GitHub login, or from Delta tables. EDGI's
+    [ECHO-Pipeline](https://github.com/edgi-govdata-archiving/ECHO-Pipeline) (GPL-3.0)
+    builds those views as joins of EPA's own tables with ECHO Exporter. So a screen written
+    against EPA's column names runs on either source. Its DMR views cover FY2020 and FY2022
+    only. Open issues on NPDES data: #123 (no Registry ID in the effluent and water-quality
+    views), #130 (more tables), #40 (FY2022 DMR charts).
+  - **A gap found.** EPA's quarterly history (`NPDES_QNCR_HISTORY`) has a sixth count,
+    `NUMD8090Q`: DMR values not received in the quarter. The quarterly view in
+    ECHO-Pipeline's main (`WATER_QUARTERLY_VIOLATIONS_MVIEW`) selects only `HLRNC`,
+    `NUME90Q`, `NUMCVDT`, `NUMSVCD` and `NUMPSCH`. So ECHO_modules' "CWA Violations" can't
+    count missing DMRs, one of the kinds this screen sorts by. It would be a one-line change
+    there. Nobody has asked for it.
+  - **EPA's files** (fetched 2026-11-01 17:14Z to cfarm421, read there, then removed):
+    - per state and fiscal year:
+      `echo.epa.gov/files/echodownloads/NPDES_by_state_year/{ST}_FY{YYYY}_NPDES_DMRS_LIMITS.zip`.
+      Tennessee's are 8.7–9.8 MB zipped for FY2023–FY2026, with a DMR CSV of about 115 MB
+      per year;
+    - per state: `{ST}_NPDES_EFF_VIOLATIONS.zip` (Tennessee's is 33 MB);
+    - nationally: permits, facilities, quarterly history, and schedule and single-event
+      violations, in `npdes_downloads.zip` (359 MB).
+  - **Identifying plants.** POTWs are `FACILITY_TYPE_INDICATOR = 'POTW'` in `ICIS_PERMITS`,
+    which also gives design flow and major or minor. Nothing in these files marks a lagoon.
+    Lagoons need another source (CWNS, untested) or the permit name.
+  - **Tennessee, FY2025, one read:**
+    - 314,146 DMR values;
+    - 3,437 effluent violations (E90);
+    - 8,387 values not received: 5,089 D90 (a limited value) and 3,298 D80 (a monitored
+      value).
+
+    Alamo's E. coli daily maximum for March 2025, an E90 at 157%, is 2419.6. That is the
+    top of the common Quanti-Tray count range (from memory), so it is likely a censored
+    ">2419.6", not a measured count.
+  - **The screen as planned.** For each POTW, FY2023–FY2025, grouped by design flow
+    (under 0.1, 0.1–1, 1–10 and 10 MGD or more) and by major or minor:
+    - effluent violations by parameter group;
+    - values not received (D80, D90);
+    - SNC quarters by kind (`HLRNC` E or X for effluent, D or W for non-receipt, S or T
+      for schedules);
+    - single-event violations (overflows and bypasses, by their codes);
+    - for N1, signs of reporting errors in the DMR values themselves:
+      - an average above the maximum for the same period;
+      - a loading that differs from concentration × flow × 8.34 by a unit factor;
+      - exceedances near a power of ten;
+      - E90s whose value rounds to the limit at the limit's precision
+        ([dmr_rounding.py](checks/dmr_rounding.py)'s question, on real data).
+
+    Standard library only, run on cfarm.
+  - **Next.** Write the screen in `checks/echo/`. Its controls are a planted unit error
+    and a planted value at the rounding edge, and the screen must catch both. Show the
+    ECHO_modules maintainer what it finds before offering it, and ask whether the missing
+    count is wanted.
 
 <a id="n1"></a>
 ### N1. DMR statistics with the rules written down
@@ -290,6 +344,50 @@ a fix. The check did turn up a real bug: the last transect is never read when
 - **Rests on.** The ISO 9826 and ASTM D1941 standards are paywalled. The USBR *Water
   Measurement Manual* is a US-government work and may carry the tables (unchecked).
 - **Where it could also live.** As a computed variable in EnviroDIY's ModularSensors.
+- **Checked 2026-11-01: the gap is real for flumes and for uncertainty, and mostly not
+  for sharp-crested weirs.**
+  - **The tables are free.** The USBR *Water Measurement Manual* (3rd ed., 1997, revised
+    2001) is a free PDF from usbr.gov with no copyright notice. A few figures are credited
+    to others, so take its numbers, not its figures. What it covers:
+    - Parshall flumes, 1 in to 50 ft: C and n for Q = C·ha^n in Table 8-6 (read
+      2026-11-01), free-flow rating tables A8-7 to A8-20, and the submergence limits (50%
+      for 1 to 3 in, up to 80% for 8 to 50 ft).
+    - Submerged Parshall flumes: charts only. USBR's companion note (Wahl, 2009) turns
+      those for 1 to 50 ft into equations. Below 1 ft the charts would need digitising.
+    - Sharp-crested weirs (chapter 7): Kindsvater-Carter rectangular, Kindsvater-Shen
+      V-notch, the standard contracted and suppressed weirs, the 90° V-notch and the
+      Cipolletti, with rating tables.
+    - Uncertainty (chapters 3 and 5): systematic error (such as the gauge zero) is kept
+      apart from random error. A 0.01 ft head error is 5% of flow on a 90° V-notch at
+      0.20 ft head, and 12% on a 6-in Parshall flume at low heads. Nothing carries error
+      into a monthly total.
+  - **Other public sources:**
+    - USGS TWRI 3-A14 (1983) has Parshall ratings and the H, HS and HL flume tables.
+    - EPA's NPDES inspection manual (Appendix O, 2017) uses a different Parshall form
+      for 1 to 8 ft than the manual's simplified Table 8-6, so a library has to choose one
+      and say which.
+    - Palmer-Bowlus flumes have no standard rating: ratings come from the maker or from
+      long-throated theory.
+  - **Code:**
+    - `fluids` (MIT, maintained) has V-notch and rectangular weirs with cited sources: SI
+      only, with no Cipolletti, flumes, submergence or uncertainty.
+    - R's `weirs` (USGS author) covers broad-crested and dam-type weirs.
+    - SWMM's weirs take coefficients the user sets.
+    - ModularSensors has nothing on weirs or flumes beyond a calculated variable the user
+      writes.
+    - No maintained, tested library turns flume head into flow.
+    - The two small repos found with Parshall code have wrong coefficients (read
+      2026-11-01):
+      - HydroClaude gives the 3-in flume C = 2.06, which is the 6-in value; the 3-in value
+        is 0.992.
+      - vul-os/kerf's SI table gives 0.36 and 0.43 of the manual's flow for 1-in and 6-in
+        flumes at 0.1 m head.
+
+      Neither is reported.
+  - **So U3 would be** flume ratings (Table 8-6 and the A8 tables, Wahl's submergence
+    equations, the TWRI H-flume tables), free-flow and submergence limit checks, and head
+    error carried into flow and a monthly total, systematic and random apart. That last
+    part is the one nobody has. Weirs could build on `fluids` rather than repeat it.
 
 <a id="u4"></a>
 ### U4. Review mWater's sanitation asset standard, then take sewers to Brick

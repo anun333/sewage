@@ -18,8 +18,8 @@ The evidence is in [checks/wntr/](../../checks/wntr/README.md).
 
 ## The fixes, built and tested (2026-10-30)
 
-Both offers were taken up as builds before any reply, on the maintainer's go. Neither
-is posted; each PR text is ready for review.
+Both offers were taken up as builds before any reply, on the maintainer's go. #585's
+went in as a review of #586, which makes the same change; #584's is open as #589.
 
 | File | What |
 | --- | --- |
