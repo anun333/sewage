@@ -1,4 +1,4 @@
-<!-- Draft, not posted. Checked 2026-10-30 against mWater/asset-standards main at c676752 (water/units.csv, sanitation/units.csv, VERIFICATION-REPORT.md S6-S11, REVIEW-NEEDED.md) and NIST SP 811 (2008 edition, Appendix B; sha256 788dd8f0...). Exact values computed with rational arithmetic from the definitions (ft = 0.3048 m, US survey ft = 1200/3937 m, US gal = 231 in³ = 3.785411784 L, lb = 0.45359237 kg, g_n = 9.80665 m/s², water at 4 °C = 999.972 kg/m³). -->
+<!-- POSTED 2026-10-31 as mWater/asset-standards#1 (https://github.com/mWater/asset-standards/issues/1), the repository's first issue, after the full text was approved; title and body read back identical. Was: Draft, not posted. Checked 2026-10-30 against mWater/asset-standards main at c676752 (water/units.csv, sanitation/units.csv, VERIFICATION-REPORT.md S6-S11, REVIEW-NEEDED.md) and NIST SP 811 (2008 edition, Appendix B; sha256 788dd8f0...). Exact values computed with rational arithmetic from the definitions (ft = 0.3048 m, US survey ft = 1200/3937 m, US gal = 231 in³ = 3.785411784 L, lb = 0.45359237 kg, g_n = 9.80665 m/s², water at 4 °C = 999.972 kg/m³). Rechecked 2026-10-31: main still c676752, no issues or PRs, issues enabled; every 'now' value matches both CSVs; exact values recomputed. Point 1 now says how it differs from S11; the table heading is reworded. -->
 
 **Title:** Table 2 (units): three more points for the erratum (water-column pressures, the acre-foot's basis, horsepower)
 
@@ -8,6 +8,7 @@
 - The tables give "meters of water (4 °C)" = 9806.65 and "centimeters of water (4 °C)" = 98.0665. These are the conventional units (ρ = 1000 kg/m³ × g_n). NIST SP 811 lists "centimeter of water (4 ºC)" as 9.806 38 E+01 Pa and "centimeter of water, conventional (cmH2O)" as 9.806 65 E+01.
 - "feet of water (39.2 °F)" = 2988.98 and "inches of water (39.2 °F)" = 249.082 are SP 811's values at 39.2 °F, which is 4 °C. The conventional values are 2989.067 and 249.0889.
 - So within one table, a foot of water is 2988.98/0.3048 = 9806.36 Pa per metre and a metre of water is 9806.65 Pa. They differ by 2.9e-5. The fix is either to relabel the two metric rows "conventional", or to use 9806.38 and 98.0638.
+- This is separate from S11, which is about the `System` column marking these rows SI. Here the names say 4 °C while the values are the conventional ones.
 
 **2. The acre-foot's correct value depends on which foot the table uses.**
 - S8 says the correct figure is 1233.489 m³. That is the acre-foot based on the U.S. survey foot: SP 811 lists "acre foot (based on U.S. survey foot)" as 1.233 489 E+03 m³.
@@ -20,7 +21,7 @@
 - The tables call 746 "horsepower; System: US". For pump and motor nameplates, where "hp" usually means 550 ft·lbf/s, that is 0.04% high.
 - Relabelling the row "horsepower (electric)", or using 745.6999, would remove the ambiguity.
 
-**Exact values for the rows S6, S7, S9 and the points above concern** (base unit as in Table 2; "now" is as published in water / sanitation):
+**Exact values for the rows in S6 to S9 and the three points above** (base unit as in Table 2; "now" is as published in water / sanitation):
 
 | Unit | Now | Exact | Note |
 | --- | --- | --- | --- |

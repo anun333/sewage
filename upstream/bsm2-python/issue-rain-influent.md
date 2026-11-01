@@ -1,4 +1,4 @@
-<!-- Draft, not posted. Checked 2026-10-30 against fau-evt/bsm2-python main at 73caa8b (unchanged since 2025-09-09) and IWA's Inf_rain_2006.txt and Inf_dry_2006.txt (sha256 c84a4e49... and 2a377665..., as in checks/bsm1/README.md). -->
+<!-- POSTED 2026-10-31 as fau-evt/bsm2-python#9 (https://github.com/fau-evt/bsm2-python/issues/9), after the full text was approved; title and body read back identical. Was: Draft, not posted. Checked 2026-10-30 against fau-evt/bsm2-python main at 73caa8b (unchanged since 2025-09-09) and IWA's Inf_rain_2006.txt and Inf_dry_2006.txt (sha256 c84a4e49... and 2a377665..., as in checks/bsm1/README.md). Rechecked 2026-10-31: main still 73caa8b, only issues #7 and #8; IWA files' sha256 unchanged; rows 998/1000/1001, 1344/1344 flows, SI dilution and the dry file's 1e-8 recomputed; nothing in the package names either CSV. The row intervals are 0.01 and 0.02 d (was '0.01 to 0.03', wrong). -->
 
 **Title:** `data/raininfluent.csv` doesn't load: its flow column is written with thousands separators (`30.044.50` for 30044.5)
 
@@ -13,7 +13,7 @@
   ```
 
 - **The other flows would load 1000 times too small.** The flow column (Q, the 16th) is written with a dot as the thousands separator. IWA's `Inf_rain_2006.txt` has 21477 m³/d at t = 0, and this file has `21.477`; `dryinfluent.csv` has 21477. The three rows above are IWA's 30044.5, 27446.66667 and 26880.33333, written the same way with two decimals. All 1,344 flows follow this pattern.
-- **Every value is rounded to 2 decimals, time included.** IWA's 15-minute samples (t = 0.010416667, 0.020833333, ...) become 0.01, 0.02, ..., so the intervals between rows vary from 0.01 to 0.03 d. With `timestep=None`, `bsm_base.py` takes its steps from these differences.
+- **Every value is rounded to 2 decimals, time included.** IWA's 15-minute samples (t = 0.010416667, 0.020833333, ...) become 0.01, 0.02, ..., so the intervals between rows vary between 0.01 and 0.02 d. With `timestep=None`, `bsm_base.py` takes its steps from these differences.
 - **SI is right here, and worth keeping.** This file dilutes SI with the rain flow (30·Q_dry/Q_rain, to its 2 decimals), while IWA's hosted `Inf_rain_2006.txt` keeps SI at 30 g/m³. The BSM1 report's rain results need it diluted: its influent quality index is the same for dry and rain weather, as a pure dilution gives, and its effluent SI for rain is 22.8388, below 30.
 - **Nothing in the package or its tests reads this file** (nor `dryinfluent.csv`), so the tests can't catch it. There's no storm-weather file.
 

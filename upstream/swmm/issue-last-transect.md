@@ -1,4 +1,4 @@
-<!-- Draft, not posted. Found 2026-10-30 while checking #419/#420; fix and evidence: upstream/swmm/0003-input-read-the-last-transect-when-TRANSECTS-is-the-fi.patch, checks/swmm/transect/ (check.sh, fixcheck.sh), run on cfarm424 (Debian 13 aarch64, gcc 14.2). -->
+<!-- POSTED 2026-10-31 as pyswmm/Stormwater-Management-Model#433 (https://github.com/pyswmm/Stormwater-Management-Model/issues/433), after the full text was approved; title and body read back identical. Was: Draft, not posted. Found 2026-10-30 while checking #419/#420; fix and evidence: upstream/swmm/0003-input-read-the-last-transect-when-TRANSECTS-is-the-fi.patch, checks/swmm/transect/ (check.sh, fixcheck.sh), run on cfarm424 (Debian 13 aarch64, gcc 14.2). Rechecked 2026-10-31: develop still 6c81201, input.c:213 unchanged and the patch's context (line 242) intact; USEPA develop (07c371f8a0) has the same code; no issue on transects since #419/#420 in either repo; swmm-nrtestsuite still e609fdb. -->
 
 **Title:** The last transect is never read when `[TRANSECTS]` is the input file's last section (ERROR 113 and 119 on its conduit)
 

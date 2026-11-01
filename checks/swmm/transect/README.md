@@ -31,5 +31,5 @@ sh checks/swmm/transect/check.sh BUILD/bin/runswmm OUTDIR      # any SWMM build
 sh checks/swmm/transect/fixcheck.sh WORK                        # after crpreload-job.sh in WORK
 ```
 
-The drafts for the fork, a comment on #420 and an issue for the last transect, are in
+The texts sent to the fork, a comment on #420 and issue #433 for the last transect (both 2026-10-31), are in
 [upstream/swmm/](../../../upstream/swmm/README.md).

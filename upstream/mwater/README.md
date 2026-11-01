@@ -4,4 +4,4 @@
 
 | File | What |
 | --- | --- |
-| [issue-units.md](issue-units.md) | Table 2 (units): `m H₂O`/`cm H₂O` labelled 4 °C but conventional; the acre-foot's correct value depends on the foot (1233.482 with the international foot the tables use, not S8's survey-foot 1233.489); `hp` = 746 is the electric horsepower. With exact values for every defective row. Not posted |
+| [issue-units.md](issue-units.md) | Table 2 (units): `m H₂O`/`cm H₂O` labelled 4 °C but conventional; the acre-foot's correct value depends on the foot (1233.482 with the international foot the tables use, not S8's survey-foot 1233.489); `hp` = 746 is the electric horsepower. With exact values for every defective row. **Posted 2026-10-31 as [#1](https://github.com/mWater/asset-standards/issues/1)**, the repository's first issue |

@@ -51,6 +51,9 @@ Its check P reproduces, unaided, the gap first found by hand in #584 (the MSX lo
 | [USEPA/WNTR#585](https://github.com/USEPA/WNTR/issues/585) | 2026-10-29 | `WNTRSimulator` results change from run to run ([wntr/](wntr/README.md)) | No reply; our offer to build the fix is the one comment |
 | [PHES-ODM/PHES-ODM#296](https://github.com/PHES-ODM/PHES-ODM/issues/296) | 2026-10-29 | LICENSE file against README ([phes-odm/](phes-odm/README.md)) | No reply |
 | [edgi-govdata-archiving/ECHO_modules#140](https://github.com/edgi-govdata-archiving/ECHO_modules/issues/140) | 2026-10-29 | LICENSE (GPL-3.0) against README (BSD-3) ([echo-modules/](echo-modules/README.md)) | **Answered** 2026-10-29 by a maintainer: GPL v3 is the licence, and a README fix is welcome |
+| [pyswmm/Stormwater-Management-Model#433](https://github.com/pyswmm/Stormwater-Management-Model/issues/433) | 2026-10-31 | The last transect is never read when `[TRANSECTS]` is the file's last section; a one-line fix ([swmm/](swmm/README.md)) | Posted |
+| [fau-evt/bsm2-python#9](https://github.com/fau-evt/bsm2-python/issues/9) | 2026-10-31 | `data/raininfluent.csv` doesn't load, and its flows are written with thousands separators ([bsm2-python/](bsm2-python/README.md)) | Posted |
+| [mWater/asset-standards#1](https://github.com/mWater/asset-standards/issues/1) | 2026-10-31 | Three more points for the Table 2 units erratum, with exact values ([mwater/](mwater/README.md)) | Posted |
 
 ## Reviews
 
@@ -75,6 +78,8 @@ before posting." The review of #586 carries the line itself.
 | Thread | Posted | Says | State |
 | --- | --- | --- | --- |
 | [watertap-org/watertap#1876](https://github.com/watertap-org/watertap/issues/1876#issuecomment-6545228017) | 2026-10-31 | Its "random" Windows failures follow the runner's CPU: Intel fails and AMD passes, every time, since `865012cd7`; the solution has nitrifiers washed out, so the solve has no margin ([watertap/comment-1876.md](watertap/comment-1876.md)) | Posted |
+| [pyswmm/Stormwater-Management-Model#431](https://github.com/pyswmm/Stormwater-Management-Model/issues/431#issuecomment-6550507709) | 2026-10-31 | The Windows follow-up: `/fp:fast` alone moves 14 models; with CORE-MATH, Windows matches Linux in all 34 files ([swmm/comment-431-windows.md](swmm/comment-431-windows.md)) | Posted |
+| [pyswmm/Stormwater-Management-Model#420](https://github.com/pyswmm/Stormwater-Management-Model/issues/420#issuecomment-6550507409), with a pointer on [#419](https://github.com/pyswmm/Stormwater-Management-Model/issues/419#issuecomment-6550507542) | 2026-10-31 | The zero roughness they report is documented HEC-2 behaviour; what the engine does; the overbank case where the Help text disagrees ([swmm/comment-transect-zero.md](swmm/comment-transect-zero.md)). It cites USEPA #218 and #67, which now show a cross-reference | Posted |
 
 ## Pull requests
 
@@ -83,6 +88,12 @@ before posting." The review of #586 carries the line itself.
 | [watertap-org/watertap#1893](https://github.com/watertap-org/watertap/pull/1893) | 2026-10-31 | Fixes #1889: the METAB `model_evaluation` helpers append rows with `pd.concat`, so they hold numbers, which ends five CI failures under pandas 3.1 ([watertap/pr-metab-concat.md](watertap/pr-metab-concat.md)) | Open; its CI waits for a maintainer to approve the run (first PR from this account) |
 | [edgi-govdata-archiving/ECHO_modules#141](https://github.com/edgi-govdata-archiving/ECHO_modules/pull/141) | 2026-10-31 | Closes #140, as its maintainer invited: the README's licence paragraph says GPL v3 in EDGI's own wording and links to this repository's LICENSE ([echo-modules/pr-readme.md](echo-modules/pr-readme.md)) | Open |
 | [USEPA/WNTR#589](https://github.com/USEPA/WNTR/pull/589) | 2026-10-31 | Fixes #584: on Linux on anything but x86-64, a `NotImplementedError` naming the CPU instead of a misleading `OSError`, tested on x86-64 and aarch64 ([wntr/pr-584.md](wntr/pr-584.md)) | Open; its CI waits for a maintainer to approve the run |
+
+## Email
+
+- **The BSM1 authors:** a note on the reference's two faults and five smaller slips, sent to
+  Ulf Jeppsson, whom IWA-MIA's benchmarking page names as its contact (reported sent
+  2026-11-01; [bsm/note-to-authors.md](bsm/note-to-authors.md)).
 
 ## Also on upstream timelines
 
@@ -93,18 +104,10 @@ without rewriting history. Since 2026-10-30, commit messages write "WNTR PR 586"
 
 ## Ready, not sent
 
-- **bsm2-python:** an issue about its BSM1 rain influent file, which doesn't load
-  ([bsm2-python/issue-rain-influent.md](bsm2-python/issue-rain-influent.md)).
-- **mWater asset standards:** three additions to the unit errata mWater is considering,
-  with exact values ([mwater/issue-units.md](mwater/issue-units.md)).
-- **The BSM1 authors:** a note on the reference's two faults and five smaller slips
-  ([bsm/note-to-authors.md](bsm/note-to-authors.md)); no recipient chosen yet.
 - **SWMM:** two patches, the build flag and the `gage.c` fix, with PR texts
   ([swmm/](swmm/README.md)). They go up if the fork's maintainers want them after #431.
-  The build patch's MSVC half is now tested on Windows, with a follow-up comment for
-  #431 ([swmm/comment-431-windows.md](swmm/comment-431-windows.md)). Also a comment for #419 and #420 (the zero roughness they report is documented
-  behaviour) and an issue for a bug found while checking them, with a tested one-line
-  fix ([swmm/issue-last-transect.md](swmm/issue-last-transect.md)).
+  The build patch's MSVC half is now tested on Windows. The #431 follow-up, the #419 and
+  #420 comments and #433 have gone out (above).
 - **WaterTAP:** a one-line fix for #1892 with its test values, tested; it goes up if the
   maintainers choose that fix ([watertap/](watertap/README.md)). The #1876 comment and the
   METAB fix (#1893) have gone out (above).

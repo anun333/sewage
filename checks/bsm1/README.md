@@ -757,7 +757,7 @@ closed loop). Each of these would need its text agreed first.
   - The dynamic differences (internal recycle, the soluble clarifier; see the
     dynamic section) belong in the same issue. No open issue in QSDsan or EXPOsan
     covers any of this.
-- **bsm2-python** (an issue, possibly with a fixed file; drafted in
+- **bsm2-python** (an issue, possibly with a fixed file; posted 2026-10-31 as #9,
   [upstream/bsm2-python/](../../upstream/bsm2-python/issue-rain-influent.md)):
   - `src/bsm2_python/data/raininfluent.csv` does not load. Rows 998, 1000 and
     1001 hold `30.044.50`, `27.446.67` and `26.880.33`.

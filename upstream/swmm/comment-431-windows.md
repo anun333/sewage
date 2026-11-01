@@ -1,4 +1,4 @@
-<!-- Draft, not posted. A follow-up comment on pyswmm/Stormwater-Management-Model#431, which said Windows wasn't tested. Evidence: checks/swmm/README.md "Windows (2026-10-30)", checks/swmm/digests/windows/, GitHub Actions runs 41107977753, 41108732626 and 41109294719 of anun333/sewage. -->
+<!-- POSTED 2026-10-31 as comment 6550507709 on #431 (https://github.com/pyswmm/Stormwater-Management-Model/issues/431#issuecomment-6550507709), after the full text was approved; read back identical. Was: Draft, not posted. A follow-up comment on pyswmm/Stormwater-Management-Model#431, which said Windows wasn't tested. Evidence: checks/swmm/README.md "Windows (2026-10-30)", checks/swmm/digests/windows/, GitHub Actions runs 41107977753, 41108732626 and 41109294719 of anun333/sewage. Rechecked 2026-10-31: develop still 6c81201, #431 no comments; the CORE-MATH job ran only in 41109294719 (it failed to build in 41108732626 and wasn't in 41107977753), so the last sentence now says so; row 1 now lists Example1's .rpt, as digests/windows/summary.txt does. -->
 
 **Comment on #431:**
 
@@ -6,11 +6,11 @@ A follow-up on Windows, which the issue left untested. I ran it on GitHub's runn
 
 | Windows build | against Linux `gcc -O2` |
 | --- | --- |
-| `develop` as it is (Release: `/fp:fast`) | 14 models differ; `allclose` fails on user1, user3 (226 elements) and user5 |
+| `develop` as it is (Release: `/fp:fast`) | 14 models differ; `allclose` fails on user1, user3 (226 elements) and user5, and on Example1's `.rpt` |
 | with `/fp:precise` (and the gage.c change) | 6 models differ, the ones that depend on the C runtime's maths; user3 passes; `allclose` still fails on Example1, user1 and user5 |
 | `/fp:precise`, with SWMM's maths calls answered by CORE-MATH (correctly rounded, linked into `swmm5.dll`) | identical, all 34 `.out` and `.rpt` files, to Linux with CORE-MATH |
 
-So on Windows, `/fp:fast` is a cause of its own: it alone moves 14 models, and user3's failure entirely. What's left at `/fp:precise` is the C runtime's maths, as with glibc's on Linux and Apple's libm on macOS. With a correctly rounded libm, Windows, x86-64 Linux, aarch64 Linux and macOS give the same bits. Three runs on three different CPUs gave the same results each time.
+So on Windows, `/fp:fast` is a cause of its own: it alone moves 14 models, and user3's failure entirely. What's left at `/fp:precise` is the C runtime's maths, as with glibc's on Linux and Apple's libm on macOS. With a correctly rounded libm, Windows, x86-64 Linux, aarch64 Linux and macOS give the same bits. Both MSVC builds gave the same results in three runs on three different CPUs (two AMD, one Intel); the CORE-MATH build was run once.
 
 The workflow and the digests are at https://github.com/anun333/sewage/tree/main/checks/swmm (section "Windows").
 

@@ -1,8 +1,8 @@
-<!-- Draft, not sent. Recipient not chosen: the report (LTH-IEA-7229, 2008) gives no contact address, and a search on 2026-10-30 did not confirm who now answers for BSM1 or for the influent files hosted at iwa-mia.org. Candidates: U. Jeppsson (Lund University, Industrial Electrical Engineering and Automation, the report's publisher) or IWA's Modelling and Integrated Assessment specialist group, which hosts the files. Find a current address before sending. Every number below is in checks/bsm1/README.md, with the commands that compute it. -->
+<!-- SENT by email to Ulf Jeppsson by the maintainer, reported 2026-11-01; text approved 2026-10-31 as below. Was: Draft, not sent. Recipient not chosen: the report (LTH-IEA-7229, 2008) gives no contact address, and a search on 2026-10-30 did not confirm who now answers for BSM1 or for the influent files hosted at iwa-mia.org. Candidates: U. Jeppsson (Lund University, Industrial Electrical Engineering and Automation, the report's publisher) or IWA's Modelling and Integrated Assessment specialist group, which hosts the files. Find a current address before sending. 2026-10-31: IWA-MIA's benchmarking page (http://iwa-mia.org/benchmarking/, which hosts the files) names Prof Ulf Jeppsson as its contact, at an iea.lth.se address, and his Lund University profile (portal.research.lu.se/en/persons/ulf-jeppsson) is current and names him former chair of the IWA Task Group on benchmarking; salutation changed to him. The three IWA files' sha256 rechecked unchanged. Every number below is in checks/bsm1/README.md, with the commands that compute it. -->
 
 **Subject:** BSM1 (LTH-IEA-7229): the hosted rain and storm influent files keep SI undiluted, and two smaller points
 
-Dear BSM1 authors,
+Dear Professor Jeppsson,
 
 While comparing the open implementations of BSM1 (QSDsan/EXPOsan, WaterTAP and bsm2-python) with the 2008 report, I found two things in the reference itself that may be worth a note on the download page. Everything below can be recomputed from the report and the hosted files; the scripts and results are public at https://github.com/anun333/sewage/tree/main/checks/bsm1.
 

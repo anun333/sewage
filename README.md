@@ -14,7 +14,7 @@ is kept verbatim, unchecked, in [thread/2026-10-27-initial.md](thread/2026-10-27
 | [landscape.md](landscape.md) | The projects, checked against their own repos and papers on 2026-10-27, each claim in the thread with a verdict, and what the thread missed |
 | [ideas.md](ideas.md) | Ways to contribute, upstream and in our repos, each with what it rests on, what would prove it wrong, and the first step |
 | [checks/](checks/) | Measurements behind the ideas, rerunnable, with verdict lines |
-| [upstream/](upstream/README.md) | What has gone to other projects and its state: eight issues (SWMM, WaterTAP, EXPOsan, WNTR, and licence questions to PHES-ODM and ECHO_modules), seven PR reviews (SWMM, EPANET, bsm2-python, WNTR), a diagnosis on WaterTAP #1876, three PRs (WaterTAP, WNTR, ECHO_modules), and the patches ready if maintainers want them |
+| [upstream/](upstream/README.md) | What has gone to other projects and its state: eleven issues (SWMM, WaterTAP, EXPOsan, WNTR, bsm2-python, mWater, and licence questions to PHES-ODM and ECHO_modules), seven PR reviews (SWMM, EPANET, bsm2-python, WNTR), a diagnosis on WaterTAP #1876, comments on SWMM #419, #420 and #431, three PRs (WaterTAP, WNTR, ECHO_modules), and the patches ready if maintainers want them |
 | [rules/](rules/README.md) | The laws, standards and terms that bear on this work, checked 2026-10-29, with what each changes |
 | [thread/](thread/) | The conversations this started from, verbatim |
 

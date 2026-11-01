@@ -49,9 +49,9 @@ pilot.
    - **Posted 2026-10-29:** WaterTAP's reactor-5 oxygen
      (watertap-org/watertap#1892; a one-line fix is tested and ready if they want it)
      and EXPOsan's constants and atomic weights (QSD-Group/EXPOsan#80).
-   - **Drafted, not posted:** bsm2-python's rain file, which doesn't load
-     ([upstream/bsm2-python/](upstream/bsm2-python/README.md)), and a note to the
-     BSM authors about the reference's two faults ([upstream/bsm/](upstream/bsm/README.md)).
+   - **Posted 2026-10-31:** bsm2-python's rain file, which doesn't load (fau-evt/bsm2-python#9,
+     [upstream/bsm2-python/](upstream/bsm2-python/README.md)). A note to the BSM authors about
+     the reference's two faults went by email (reported 2026-11-01; [upstream/bsm/](upstream/bsm/README.md)).
 3. **WNTR on two ISAs, checked 2026-10-29 ([checks/wntr/](checks/wntr/README.md)).**
    - On aarch64 Linux, `pip install wntr` succeeds but `EpanetSimulator` can't run:
      WNTR loads its x86-64 EPANET library on every Linux.
@@ -62,11 +62,12 @@ pilot.
    merging USEPA SWMM #239, #234 and #237 and bsm2-python #8, and recommend changes to
    USEPA SWMM #226 and EPANET #916 (the latter after building and running it).
 5. **Small contributions to learn each community:** a review of the unit errata in
-   [mWater's new sanitation asset standard](#u4) is drafted (three points its own
-   verification missed). In the [pyswmm ecosystem](#u2), the transect-roughness
+   [mWater's new sanitation asset standard](#u4) is posted as mWater/asset-standards#1
+   (2026-10-31; three points its own verification missed). In the [pyswmm ecosystem](#u2), the transect-roughness
    reports turn out to describe documented HEC-2 behaviour, which calls for a comment
    rather than a fix; checking them found a real bug with the last transect, and a
-   tested one-line fix. The licence questions are posted:
+   tested one-line fix. Both posted 2026-10-31: a comment on #420 (pointer on #419) and
+   pyswmm/Stormwater-Management-Model#433. The licence questions are posted:
    PHES-ODM/PHES-ODM#296 ([U5](#u5)) and edgi-govdata-archiving/ECHO_modules#140 ([N2](#n2)).
 6. **[N2](#n2): screen plants in EPA's public data, contributed to EDGI's ECHO tools.**
    This is any state or the whole country, not one. It says whether plants fail on
@@ -249,8 +250,9 @@ M1 macOS 26.5; about 0.5 core-hours, every host cleaned afterwards):
   shim reached SWMM. On macOS, Apple clang turns `pow(10, x)` into `__exp10`, which the
   shim's import check caught (VOID) until it was interposed too.
 
-**Still open:** Windows (`/fp:fast` in Release builds), which wasn't run, and whether
-upstream wants bit-reproducibility or only a tolerance that holds. The patches' speed cost
+**Windows, run 2026-10-30** ([checks/swmm/](checks/swmm/README.md#windows-2026-10-30)): `/fp:fast`
+alone moves 14 models, and with CORE-MATH Windows matches Linux in all 34 files; posted
+as a follow-up on #431 (2026-10-31). **Still open:** whether upstream wants bit-reproducibility or only a tolerance that holds. The patches' speed cost
 was measured: about 1% ([upstream/swmm/](upstream/swmm/README.md)).
 
 **Where findings go:** the pyswmm fork, which merges. USEPA has merged nothing since 2023.
@@ -307,7 +309,8 @@ a fix. The check did turn up a real bug: the last transect is never read when
   water-column units carry conventional values under a 4 °C label; the acre-foot's
   correct value is 1233.482 with the international foot the tables use, not the
   survey-foot 1233.489 the report gives; `hp` = 746 is the electric horsepower. An
-  issue is drafted in [upstream/mwater/](upstream/mwater/README.md).
+  issue is posted as mWater/asset-standards#1 (2026-10-31;
+  [upstream/mwater/](upstream/mwater/README.md)).
 
 <a id="u6"></a>
 ### U6. BSM1 across its open implementations
@@ -330,8 +333,8 @@ a fix. The check did turn up a real bug: the last transect is never read when
   and the separator's split). The dynamic comparison is complete for bsm2-python
   (first order in its step) and covers one run for QSDsan.
 - **Posted 2026-10-29:** watertap-org/watertap#1892 and QSD-Group/EXPOsan#80, and a
-  review of bsm2-python's PI fix (#8). Drafted: bsm2-python's rain file and a note to the
-  BSM authors.
+  review of bsm2-python's PI fix (#8). Posted 2026-10-31: bsm2-python's rain file (#9).
+  Sent by email (reported 2026-11-01): a note to the BSM authors.
 - **What would prove it pointless.** All three agree with the reference to the stated
   tolerance. Then the result is a short note to each project saying so, which is worth
   having too.

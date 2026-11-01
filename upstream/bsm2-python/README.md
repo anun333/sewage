@@ -4,4 +4,4 @@ Our review of its PI-controller fix ([#8](https://github.com/fau-evt/bsm2-python
 
 | File | What |
 | --- | --- |
-| [issue-rain-influent.md](issue-rain-influent.md) | `data/raininfluent.csv` doesn't load: its flow column is written with thousands separators, so three values have two dots and the rest would load 1000 times too small. Not posted |
+| [issue-rain-influent.md](issue-rain-influent.md) | `data/raininfluent.csv` doesn't load: its flow column is written with thousands separators, so three values have two dots and the rest would load 1000 times too small. **Posted 2026-10-31 as [#9](https://github.com/fau-evt/bsm2-python/issues/9)** |
