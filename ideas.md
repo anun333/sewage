@@ -196,10 +196,28 @@ goes out until the maintainer has read it.
         ([dmr_rounding.py](checks/dmr_rounding.py)'s question, on real data).
 
     Standard library only, run on cfarm.
-  - **Next.** Write the screen in `checks/echo/`. Its controls are a planted unit error
-    and a planted value at the rounding edge, and the screen must catch both. Show the
-    ECHO_modules maintainer what it finds before offering it, and ask whether the missing
-    count is wanted.
+  - **Next** (as of 2026-11-01). Write the screen in `checks/echo/`. Its controls are a
+    planted unit error and a planted value at the rounding edge, and the screen must
+    catch both. Show the ECHO_modules maintainer what it finds before offering it, and
+    ask whether the missing count is wanted.
+- **First run 2026-11-03 ([checks/echo/](checks/echo/README.md)): DIFFERS.** Tennessee,
+  FY2023–FY2025, 308 POTWs reporting.
+  - **Treatment, mostly:** 7,667 limits exceeded against 2,009 values not received. Small
+    plants exceed limits about three times as often as they fail to report.
+  - **Overflows:** a fifth of the exceedances (1,564) are sewer overflows, which Tennessee
+    reports as DMR parameters.
+  - **Contradictions:** 529 statistics contradict their own definitions (a monthly
+    average above the daily maximum, a pH minimum above the maximum), at 157 plants. Most
+    are far off, so they are values in the wrong box, not rounding.
+  - **Rounding:** at the limit's precision, it decides at most 3.7% of violations, maybe
+    almost none. ECHO strips trailing zeros, so a permit's stated decimals can't be
+    recovered.
+  - **For N1:** "round exactly" has little behind it. "Compute and check the DMR from
+    the daily values" has the contradictions behind it.
+  - **Next:**
+    - lagoons, from another source;
+    - a second state, to see whether this is Tennessee's reporting or everyone's;
+    - then show EDGI's maintainer, with the missing-DMR count as a separate small offer.
 
 <a id="n1"></a>
 ### N1. DMR statistics with the rules written down

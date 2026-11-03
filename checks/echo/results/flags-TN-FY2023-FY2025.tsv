@@ -1,0 +1,889 @@
+kind	permit	outfall	location	parameter	description	period	unit_or_code	value	against	all_values
+avg>max	TN0020729	001	1	51040	E. coli	10/31/2022	CFU/100mL	38985549.0	5.1988	MK=3.89855e+07 DD=5.1988
+avg>max	TN0020729	001	1	51040	E. coli	07/31/2023	CFU/100mL	808950.0	1.1636	MK=808950 DD=1.1636
+avg>max	TN0021563	001	1	51040	E. coli	04/30/2023	#/100mL	103.0	10.1	DD=10.1 MM=103
+avg>max	TN0021652	001	1	51040	E. coli	03/31/2023	#/100mL	28.2	0.866	MM=28.2 DD=0.866
+avg>max	TN0021938	001	1	51040	E. coli	09/30/2023	#/100mL	12.0	1.0	DD=1 MM=12
+avg>max	TN0024155	001	1	51040	E. coli	11/30/2022	#/100mL	1.52	0.35	MM=1.52 DD=0.35
+avg>max	TN0025020	001	1	51040	E. coli	01/31/2023	#/100mL	13.0	12.6	MM=13 DD=12.6
+avg>max	TN0057291	001	1	51040	E. coli	07/31/2023	#/100mL	11.5	8.5	DD=8.5 MM=11.5
+avg>max	TN0057291	001	1	51040	E. coli	09/30/2023	#/100mL	44.7	19.5	DD=19.5 MM=44.7
+avg>max	TN0058521	001	1	51040	E. coli	04/30/2023	#/100mL	125.0	56.0	MM=125 DD=56
+avg>max	TN0062138	001	1	51040	E. coli	02/28/2023	#/100mL	20.0	6.0	MM=20 DD=6
+avg>max	TN0064394	001	1	51040	E. coli	03/31/2023	#/100mL	15.0	11.0	DD=11 MM=15
+avg>max	TN0064912	001	1	51040	E. coli	01/31/2023	MPN/100mL	14.0	10.9	DD=10.9 MM=14
+avg>max	TN0074870	001	1	51040	E. coli	10/31/2022	MPN/100mL	4.0	1.0	MM=4 DD=1
+avg>max	TN0078191	001	1	51040	E. coli	02/28/2023	#/100mL	37.9	2.0	MM=37.9 DD=2
+avg>max	TN0020079	001	1	50050	Flow, in conduit or thru treatment plant	06/30/2023	MGD	8.0	1.6	DD=1.6 MK=8
+avg>max	TN0020443	001	1	50050	Flow, in conduit or thru treatment plant	04/30/2023	MGD	2.8	0.97	DD=0.97 MK=2.8
+avg>max	TN0021105	001	1	50050	Flow, in conduit or thru treatment plant	02/28/2023	MGD	1744.0	0.2248	MK=1744 DD=0.2248
+avg>max	TN0022551	INF1	G	50050	Flow, in conduit or thru treatment plant	03/31/2023	MGD	2.048	1.062	DD=1.062 MK=2.048
+avg>max	TN0022560	001	G	50050	Flow, in conduit or thru treatment plant	12/31/2022	MGD	1.18	0.117	MK=1.18 DD=0.117
+avg>max	TN0023078	001	1	50050	Flow, in conduit or thru treatment plant	10/31/2022	MGD	0.051123	0.005385	DD=0.005385 MK=0.051123
+avg>max	TN0023078	001	1	50050	Flow, in conduit or thru treatment plant	11/30/2022	MGD	0.110473	0.013788	DD=0.013788 MK=0.110473
+avg>max	TN0023078	001	1	50050	Flow, in conduit or thru treatment plant	12/31/2022	MGD	0.137561	0.014526	MK=0.137561 DD=0.014526
+avg>max	TN0023833	001	1	50050	Flow, in conduit or thru treatment plant	11/30/2022	MGD	0.008	0.005	DD=0.005 MK=0.008
+avg>max	TN0024953	001	G	50050	Flow, in conduit or thru treatment plant	09/30/2023	MGD	0.1194	0.02796	DD=0.02796 MK=0.1194
+avg>max	TN0025101	001	1	50050	Flow, in conduit or thru treatment plant	11/30/2022	MGD	0.136	0.088	MK=0.136 DD=0.088
+avg>max	TN0025101	INF1	G	50050	Flow, in conduit or thru treatment plant	06/30/2023	MGD	0.119	0.117	DD=0.117 MK=0.119
+avg>max	TN0025372	INF1	G	50050	Flow, in conduit or thru treatment plant	09/30/2023	MGD	207.0	0.466	MK=207 DD=0.466
+avg>max	TN0026361	001	1	50050	Flow, in conduit or thru treatment plant	11/30/2022	MGD	0.02	0.008	DD=0.008 MK=0.02
+avg>max	TN0057860	001	1	50050	Flow, in conduit or thru treatment plant	04/30/2023	MGD	0.043	0.005	MK=0.043 DD=0.005
+avg>max	TN0057908	001	1	50050	Flow, in conduit or thru treatment plant	02/28/2023	MGD	0.45	0.05	MK=0.45 DD=0.05
+avg>max	TN0057908	001	1	50050	Flow, in conduit or thru treatment plant	09/30/2023	MGD	0.15	0.02	DD=0.02 MK=0.15
+avg>max	TN0058521	001	1	50050	Flow, in conduit or thru treatment plant	10/31/2022	MGD	0.7	0.111	MK=0.7 DD=0.111
+avg>max	TN0059480	001	1	50050	Flow, in conduit or thru treatment plant	10/31/2022	MGD	0.042243	0.002864	MK=0.042243 DD=0.002864
+avg>max	TN0059480	001	1	50050	Flow, in conduit or thru treatment plant	11/30/2022	MGD	0.041519	0.003208	DD=0.003208 MK=0.041519
+avg>max	TN0059480	001	1	50050	Flow, in conduit or thru treatment plant	12/31/2022	MGD	0.058426	0.01407	DD=0.01407 MK=0.058426
+avg>max	TN0059480	001	1	50050	Flow, in conduit or thru treatment plant	01/31/2023	MGD	0.019112	0.001634	DD=0.001634 MK=0.019112
+avg>max	TN0059480	001	1	50050	Flow, in conduit or thru treatment plant	02/28/2023	MGD	0.0501	0.01071	DD=0.01071 MK=0.0501
+avg>max	TN0059480	001	1	50050	Flow, in conduit or thru treatment plant	03/31/2023	MGD	0.01379	0.001912	DD=0.001912 MK=0.01379
+avg>max	TN0059480	001	1	50050	Flow, in conduit or thru treatment plant	04/30/2023	MGD	0.018545	0.001895	MK=0.018545 DD=0.001895
+avg>max	TN0059480	001	1	50050	Flow, in conduit or thru treatment plant	05/31/2023	MGD	0.050887	0.011534	DD=0.011534 MK=0.050887
+avg>max	TN0059480	001	1	50050	Flow, in conduit or thru treatment plant	06/30/2023	MGD	0.04393	0.002978	DD=0.002978 MK=0.04393
+avg>max	TN0059480	001	1	50050	Flow, in conduit or thru treatment plant	07/31/2023	MGD	0.048874	0.002978	DD=0.002978 MK=0.048874
+avg>max	TN0059480	001	1	50050	Flow, in conduit or thru treatment plant	08/31/2023	MGD	0.017536	0.001762	MK=0.017536 DD=0.001762
+avg>max	TN0059480	001	1	50050	Flow, in conduit or thru treatment plant	09/30/2023	MGD	0.017751	0.001673	DD=0.001673 MK=0.017751
+avg>max	TN0061701	001	G	50050	Flow, in conduit or thru treatment plant	10/31/2022	MGD	2777.0	0.343	MK=2777 DD=0.343
+avg>max	TN0064025	001	1	50050	Flow, in conduit or thru treatment plant	06/30/2023	MGD	0.261	0.039	MK=0.261 DD=0.039
+avg>max	TN0064394	001	G	50050	Flow, in conduit or thru treatment plant	12/31/2022	MGD	4.96	1.381	MK=4.96 DD=1.381
+avg>max	TN0064912	001	1	50050	Flow, in conduit or thru treatment plant	04/30/2023	MGD	0.938	0.594	DD=0.594 MK=0.938
+avg>max	TN0065218	001	1	50050	Flow, in conduit or thru treatment plant	03/31/2023	MGD	0.59	0.23	DD=0.23 MK=0.59
+avg>max	TN0065218	001	1	50050	Flow, in conduit or thru treatment plant	06/30/2023	MGD	0.38	0.217	MK=0.38 DD=0.217
+avg>max	TN0067733	001	G	50050	Flow, in conduit or thru treatment plant	03/31/2023	MGD	0.115	0.107	MK=0.115 DD=0.107
+avg>max	TN0074357	001	1	50050	Flow, in conduit or thru treatment plant	05/31/2023	MGD	0.006839	0.0012	MK=0.006839 DD=0.0012
+avg>max	TN0074586	002	1	50050	Flow, in conduit or thru treatment plant	09/30/2023	MGD	0.201	0.0231	DD=0.0231 MK=0.201
+avg>max	TN0077917	001	G	50050	Flow, in conduit or thru treatment plant	11/30/2022	MGD	15.205	0.942	DD=0.942 MK=15.205
+avg>max	TN0077917	001	1	50050	Flow, in conduit or thru treatment plant	11/30/2022	MGD	20.516	0.93	MK=20.516 DD=0.93
+avg>max	TN0077917	001	1	50050	Flow, in conduit or thru treatment plant	03/31/2023	MGD	30.845	0.996	MK=30.845 DD=0.996
+avg>max	TN0077917	001	G	50050	Flow, in conduit or thru treatment plant	05/31/2023	MGD	16.48	0.714	DD=0.714 MK=16.48
+avg>max	TN0077917	001	1	50050	Flow, in conduit or thru treatment plant	05/31/2023	MGD	19.788	0.95	MK=19.788 DD=0.95
+avg>max	TN0077917	001	1	50050	Flow, in conduit or thru treatment plant	06/30/2023	MGD	19.012	1.235	DD=1.235 MK=19.012
+avg>max	TN0077917	001	G	50050	Flow, in conduit or thru treatment plant	06/30/2023	MGD	14.695	0.672	DD=0.672 MK=14.695
+avg>max	TN0068543	001	1	50060	Chlorine, total residual	12/31/2022	mg/L	1.3	0.7	MK=1.3 DD=0.7
+avg>max	TN0020591	001	1	80082	BOD, carbonaceous [5 day, 20 C]	05/31/2023	mg/L	1.6	1.5	DD=1.5 MK=1.6 WA=1.8
+avg>max	TN0020591	001	1	80082	BOD, carbonaceous [5 day, 20 C]	06/30/2023	mg/L	1.5	0.1	WA=1 MK=1.5 DD=0.1
+avg>max	TN0022586	001	1	80082	BOD, carbonaceous [5 day, 20 C]	08/31/2023		123.0	2.5	MK=1.2 WA=174 MK=123 WA=2 DD=2.5
+avg>max	TN0024155	01B	1	80082	BOD, carbonaceous [5 day, 20 C]	12/31/2022	lb/d	611.0	311.0	DD=311 MK=611
+avg>max	TN0024155	01B	1	80082	BOD, carbonaceous [5 day, 20 C]	06/30/2023	lb/d	204.0	203.0	MK=204 DD=203
+avg>max	TN0025054	001	G	80082	BOD, carbonaceous [5 day, 20 C]	11/30/2022	mg/L	190.0	186.0	DD=186 MK=190
+avg>max	TN0025054	001	1	80082	BOD, carbonaceous [5 day, 20 C]	11/30/2022	mg/L	10.3	10.0	WA=10 DD=10 MK=10.3
+avg>max	TN0025101	INF1	G	80082	BOD, carbonaceous [5 day, 20 C]	01/31/2023	mg/L	174.3	0.291	DD=0.291 MK=174.3
+avg>max	TN0025127	001	1	80082	BOD, carbonaceous [5 day, 20 C]	03/31/2023	mg/L	1.1	1.0	DD=1 WA=1.7 MK=1.1
+avg>max	TN0064149	001	G	80082	BOD, carbonaceous [5 day, 20 C]	03/31/2023	mg/L	3232.0	375.0	MK=3232 DD=375
+avg>max	TN0064149	001	G	80082	BOD, carbonaceous [5 day, 20 C]	06/30/2023	mg/L	365.0	328.0	DD=328 MK=365
+avg>max	TN0077917	001	1	80082	BOD, carbonaceous [5 day, 20 C]	01/31/2023	lb/d	133.0	103.0	MK=133 DD=103
+avg>max	TN0078191	001	1	80082	BOD, carbonaceous [5 day, 20 C]	09/30/2023	mg/L	48.9	5.3	DD=5.3 MK=48.9 WA=5.3
+avg>max	TN0078808	001	1	80082	BOD, carbonaceous [5 day, 20 C]	11/30/2022		4.8	1.2	MK=1 MK=4.8 WA=9.7 DD=1.2 WA=1.2
+avg>max	TN0080985	002	1	80082	BOD, carbonaceous [5 day, 20 C]	05/31/2023	mg/L	7.3	4.7	MK=7.3 WA=3.7 DD=4.7
+avg>max	TN0022560	001	1	00310	BOD, 5-day, 20 deg. C	04/30/2023	lb/d	3.83	0.34	MK=3.83 DD=0.34
+avg>max	TN0025119	001	1	00310	BOD, 5-day, 20 deg. C	10/31/2022	lb/d	0.087	0.01	MK=0.087 DD=0.01
+avg>max	TN0057291	001	1	00310	BOD, 5-day, 20 deg. C	08/31/2023	mg/L	13.5	0.86	MK=13.5 DD=0.86 WA=14
+avg>max	TN0062227	001	G	00310	BOD, 5-day, 20 deg. C	09/30/2023	mg/L	177.0	16.0	DD=16 MK=177
+avg>max	TN0063932	001	G	00310	BOD, 5-day, 20 deg. C	11/30/2022	mg/L	297.95	37.5	MK=297.95 DD=37.5
+avg>max	TN0064777	001	1	00310	BOD, 5-day, 20 deg. C	04/30/2023	mg/L	14.0	12.0	MK=14 DD=12 WA=17
+avg>max	TN0065218	001	1	00310	BOD, 5-day, 20 deg. C	08/31/2023	mg/L	6.5	5.0	MK=6.5 DD=5 WA=5
+avg>max	TN0074870	001	1	00310	BOD, 5-day, 20 deg. C	02/28/2023	lb/d	2.5	0.8	MK=2.5 DD=0.8
+avg>max	TN0074870	001	1	00310	BOD, 5-day, 20 deg. C	08/31/2023	lb/d	9.9	5.0	MK=9.9 DD=5
+avg>max	TN0074870	001	1	00310	BOD, 5-day, 20 deg. C	09/30/2023	lb/d	7.9	3.7	DD=3.7 MK=7.9
+min>max	TN0077917	001	1	00400	pH	07/31/2023	SU	7.2	6.3	ME=7.2 MB=6.3
+avg>max	TN0021865	001	1	00665	Phosphorus, total [as P]	04/30/2023	mg/L	2.3	1.59	MK=2.3 DD=1.59 WA=1.59
+avg>max	TN0024473	INF1	G	00665	Phosphorus, total [as P]	12/31/2022	lb/d	36.22	27.54	MK=36.22 DD=27.54
+avg>max	TN0024945	001	1	00665	Phosphorus, total [as P]	02/28/2023	mg/L	0.899	0.0899	DD=0.0899 MK=0.899
+avg>max	TN0025488	001	1	00665	Phosphorus, total [as P]	08/31/2023	lb/d	6.34	5.14	MK=6.34 DD=5.14
+avg>max	TN0068187	001	1	00665	Phosphorus, total [as P]	10/31/2022	mg/L	23.0	20.0	DD=20 MK=23
+avg>max	TN0068187	001	1	00665	Phosphorus, total [as P]	12/31/2022	mg/L	18.8	15.9	DD=15.9 MK=18.8
+avg>max	TN0068187	001	1	00665	Phosphorus, total [as P]	02/28/2023	mg/L	12.0	9.0	MK=12 DD=9
+avg>max	TN0068187	001	1	00665	Phosphorus, total [as P]	04/30/2023	mg/L	19.6	17.6	MK=19.6 DD=17.6
+avg>max	TN0068187	001	1	00665	Phosphorus, total [as P]	05/31/2023	mg/L	19.0	16.0	MK=19 DD=16
+avg>max	TN0068187	001	1	00665	Phosphorus, total [as P]	06/30/2023	mg/L	22.5	21.0	DD=21 MK=22.5
+avg>max	TN0068187	001	1	00665	Phosphorus, total [as P]	07/31/2023	mg/L	27.0	23.0	MK=27 DD=23
+avg>max	TN0068187	001	1	00665	Phosphorus, total [as P]	08/31/2023	mg/L	17.3	14.7	DD=14.7 MK=17.3
+avg>max	TN0068187	001	1	00665	Phosphorus, total [as P]	09/30/2023	mg/L	23.0	19.0	DD=19 MK=23
+avg>max	TN0020443	001	1	00061	Stream flow, instantaneous	04/30/2023	MGD	2.81	0.97	MK=2.81 DD=0.97
+avg>max	TN0021261	INF1	G	00530	Solids, total suspended	10/31/2022	mg/L	90.0	23.0	MK=90 DD=23
+avg>max	TN0021261	INF1	G	00530	Solids, total suspended	01/31/2023	mg/L	155.0	62.0	DD=62 MK=155
+avg>max	TN0021563	001	1	00530	Solids, total suspended	05/31/2023	mg/L	6.1	2.0	WA=9.3 DD=2 MK=6.1
+avg>max	TN0022551	INF1	G	00530	Solids, total suspended	03/31/2023	mg/L	67.0	46.0	MK=67 DD=46
+avg>max	TN0022560	001	1	00530	Solids, total suspended	04/30/2023	lb/d	4.71	0.78	DD=0.78 MK=4.71
+avg>max	TN0024155	01B	1	00530	Solids, total suspended	12/31/2022	lb/d	611.0	514.0	MK=611 DD=514
+avg>max	TN0024961	001	1	00530	Solids, total suspended	03/31/2023	mg/L	15.1	10.4	DD=10.4 MK=15.1 WA=17.2
+avg>max	TN0025054	001	1	00530	Solids, total suspended	11/30/2022	mg/L	8.0	7.0	MK=8 WA=7.5 DD=7
+avg>max	TN0025054	001	G	00530	Solids, total suspended	11/30/2022	mg/L	80.0	74.0	MK=80 DD=74
+avg>max	TN0026158	001	1	00530	Solids, total suspended	11/30/2022	mg/L	2.08	2.0	DD=2 WA=2.67 MK=2.08
+avg>max	TN0026158	INF1	G	00530	Solids, total suspended	05/31/2023	mg/L	116.0	19.0	MK=116 DD=19
+avg>max	TN0057827	001	1	00530	Solids, total suspended	03/31/2023	mg/L	4.5	4.0	MK=4.5 DD=4
+avg>max	TN0060569	001	G	00530	Solids, total suspended	10/31/2022	mg/L	60.6	39.4	DD=39.4 MK=60.6
+avg>max	TN0061565	001	1	00530	Solids, total suspended	10/31/2022	mg/L	4.8	4.0	MK=4.8 DD=4 WA=8
+avg>max	TN0061701	001	G	00530	Solids, total suspended	01/31/2023	mg/L	148.0	96.5	DD=96.5 MK=148
+avg>max	TN0062294	001	1	00530	Solids, total suspended	05/31/2023	mg/L	12.0	2.0	MK=12 DD=2 WA=12
+avg>max	TN0062308	001	1	00530	Solids, total suspended	08/31/2023	mg/L	10.0	6.0	DD=6 WA=8.2 MK=10
+avg>max	TN0063959	001	G	00530	Solids, total suspended	05/31/2023	mg/L	161.0	152.0	DD=152 MK=161
+avg>max	TN0064092	001	1	00530	Solids, total suspended	12/31/2022	lb/d	96.9	96.3	DD=96.3 MK=96.9
+avg>max	TN0065218	001	1	00530	Solids, total suspended	06/30/2023	mg/L	35.0	29.0	DD=29 WA=29 MK=35
+avg>max	TN0067423	001	1	00530	Solids, total suspended	09/30/2023	mg/L	39.0	12.0	MK=39 WA=12 DD=12
+avg>max	TN0074870	001	1	00530	Solids, total suspended	04/30/2023	lb/d	0.4	0.1	MK=0.4 DD=0.1
+avg>max	TN0077691	001	1	00530	Solids, total suspended	02/28/2023	mg/L	11.8	6.0	DD=6 MK=11.8 WA=12.1
+avg>max	TN0077917	001	1	00530	Solids, total suspended	01/31/2023	lb/d	165.0	74.0	MK=165 DD=74
+avg>max	TN0081175	001	G	00530	Solids, total suspended	02/28/2023	mg/L	161.0	146.0	DD=146 MK=161
+avg>max	TN0020630	001	1	00600	Nitrogen, total [as N]	04/30/2023	lb/d	6.6	1.7	MK=6.6 DD=1.7
+avg>max	TN0022551	001	1	00600	Nitrogen, total [as N]	12/31/2022	lb/d	58.2	1.7	DD=1.7 MK=58.2
+avg>max	TN0025020	001	1	00600	Nitrogen, total [as N]	03/31/2023	lb/d	144.4	47.1	DD=47.1 MK=144.4
+avg>max	TN0020591	001	1	00610	Nitrogen, ammonia total [as N]	08/31/2023	mg/L	0.079	0.008	WA=0.079 MK=0.079 DD=0.008
+avg>max	TN0021946	001	1	00610	Nitrogen, ammonia total [as N]	09/30/2023	mg/L	5.54	5.26	DD=5.26 MK=5.54 WA=6.2
+avg>max	TN0028754	001	1	00610	Nitrogen, ammonia total [as N]	07/31/2023	mg/L	0.19	0.15	DD=0.15 MK=0.19 WA=0.224
+avg>max	TN0054810	001	1	00610	Nitrogen, ammonia total [as N]	08/31/2023	mg/L	19.8	19.2	DD=19.2 MK=19.8
+avg>max	TN0057487	001	1	00610	Nitrogen, ammonia total [as N]	06/30/2023	lb/d	1.27	0.4	DD=0.4 MK=1.27
+avg>max	TN0075868	001	1	00610	Nitrogen, ammonia total [as N]	12/31/2022	mg/L	4.853	1.11	DD=1.11 MK=4.853 WA=8.68
+avg>max	TN0020702	001	1	51040	E. coli	10/31/2023	MPN/100mL	4.1	1.1	MM=4.1 DD=1.1
+avg>max	TN0020729	001	1	51040	E. coli	03/31/2024	CFU/100mL	24528791.0	3.9216	DD=3.9216 MK=2.45288e+07
+avg>max	TN0021121	001	1	51040	E. coli	01/31/2024	#/100mL	20.0	14.4	DD=14.4 MM=20
+avg>max	TN0021237	001	1	51040	E. coli	04/30/2024	#/100mL	3.0	1.0	MM=3 DD=1
+avg>max	TN0021652	001	1	51040	E. coli	09/30/2024	#/100mL	13.1	13.0	DD=13 MM=13.1
+avg>max	TN0022560	001	1	51040	E. coli	01/31/2024	#/100mL	22420.0	2420.0	DD=2420 MM=22420
+avg>max	TN0026166	001	1	51040	E. coli	06/30/2024	MPN/100mL	14.1	1.0	DD=1 MM=14.1
+avg>max	TN0026174	001	1	51040	E. coli	06/30/2024	MPN/100mL	2.9	1.0	MM=2.9 DD=1
+avg>max	TN0026620	001	1	51040	E. coli	05/31/2024	#/100mL	36.0	10.29	MM=36 DD=10.29
+avg>max	TN0056626	001	1	51040	E. coli	01/31/2024	#/100mL	1.2	1.0	DD=1 MM=1.2
+avg>max	TN0057291	001	1	51040	E. coli	10/31/2023	#/100mL	38.3	9.58	MM=38.3 DD=9.58
+avg>max	TN0057291	001	1	51040	E. coli	12/31/2023	#/100mL	122.3	17.4	MM=122.3 DD=17.4
+avg>max	TN0057291	001	1	51040	E. coli	05/31/2024	#/100mL	125.5	98.5	DD=98.5 MM=125.5
+avg>max	TN0060933	001	1	51040	E. coli	06/30/2024	#/100mL	4.0	2.0	MK=4 DD=2
+avg>max	TN0063932	001	1	51040	E. coli	04/30/2024	MPN/100mL	1.1	1.0	MM=1.1 DD=1
+avg>max	TN0064688	001	1	51040	E. coli	01/31/2024	#/100mL	59.7	30.1	MK=59.7 DD=30.1
+avg>max	TN0064777	001	1	51040	E. coli	01/31/2024	MPN/100mL	53.0	33.0	DD=33 MM=53
+avg>max	TN0067547	001	1	51040	E. coli	03/31/2024	MPN/100mL	16.0	15.0	MM=16 DD=15
+avg>max	TN0074870	001	1	51040	E. coli	11/30/2023	MPN/100mL	4.5	1.967	DD=1.967 MM=4.5
+avg>max	TN0020443	001	5	50050	Flow, in conduit or thru treatment plant	05/31/2024	MGD	7.81	0.252	MK=7.81 DD=0.252
+avg>max	TN0020443	001	1	50050	Flow, in conduit or thru treatment plant	05/31/2024	MGD	6.3	2.1	MK=6.3 DD=2.1
+avg>max	TN0020877	001	G	50050	Flow, in conduit or thru treatment plant	02/29/2024	MGD	1.174	1.015	DD=1.015 MK=1.174
+avg>max	TN0020885	001	1	50050	Flow, in conduit or thru treatment plant	12/31/2023	MGD	1.469	1.46	DD=1.46 MK=1.469
+avg>max	TN0021164	001	1	50050	Flow, in conduit or thru treatment plant	05/31/2024	MGD	0.152	0.1	MK=0.152 DD=0.1
+avg>max	TN0021652	INF1	G	50050	Flow, in conduit or thru treatment plant	04/30/2024	MGD	375.0	1.05	MK=375 DD=1.05
+avg>max	TN0021857	001	1	50050	Flow, in conduit or thru treatment plant	11/30/2023	MGD	0.699	0.612	MK=0.699 DD=0.612
+avg>max	TN0021938	INF1	G	50050	Flow, in conduit or thru treatment plant	10/31/2023	MGD	0.073	0.029	MK=0.073 DD=0.029
+avg>max	TN0022560	INF1	G	50050	Flow, in conduit or thru treatment plant	12/31/2023	MGD	0.25	0.048	DD=0.048 MK=0.25
+avg>max	TN0022560	001	1	50050	Flow, in conduit or thru treatment plant	03/31/2024	MGD	1.55	0.2856	DD=0.2856 MK=1.55
+avg>max	TN0022560	001	1	50050	Flow, in conduit or thru treatment plant	07/31/2024	MGD	0.2429	0.1011	DD=0.1011 MK=0.2429
+avg>max	TN0023833	001	1	50050	Flow, in conduit or thru treatment plant	08/31/2024	MGD	0.006	0.003	DD=0.003 MK=0.006
+avg>max	TN0024058	001	1	50050	Flow, in conduit or thru treatment plant	07/31/2024	MGD	0.0122	0.00053	DD=0.00053 MK=0.0122
+avg>max	TN0024058	001	1	50050	Flow, in conduit or thru treatment plant	08/31/2024	MGD	0.0359	0.001631	MK=0.0359 DD=0.001631
+avg>max	TN0024058	001	1	50050	Flow, in conduit or thru treatment plant	09/30/2024	MGD	0.1299	0.006185	MK=0.1299 DD=0.006185
+avg>max	TN0024155	001	1	50050	Flow, in conduit or thru treatment plant	12/31/2023	MGD	5.6	3.8	MK=5.6 DD=3.8
+avg>max	TN0024473	001	1	50050	Flow, in conduit or thru treatment plant	09/30/2024	MGD	2724.0	0.8433	MK=2724 DD=0.8433
+avg>max	TN0024953	001	G	50050	Flow, in conduit or thru treatment plant	12/31/2023	MGD	0.0702	0.02566	DD=0.02566 MK=0.0702
+avg>max	TN0025020	INF1	G	50050	Flow, in conduit or thru treatment plant	04/30/2024	MGD	657.0	1.19	DD=1.19 MK=657
+avg>max	TN0025101	INF1	G	50050	Flow, in conduit or thru treatment plant	10/31/2023	MGD	1.109	0.111	DD=0.111 MK=1.109
+avg>max	TN0025151	001	1	50050	Flow, in conduit or thru treatment plant	11/30/2023	MGD	0.165528	0.008712	MK=0.165528 DD=0.008712
+avg>max	TN0025372	INF1	G	50050	Flow, in conduit or thru treatment plant	07/31/2024	MGD	0.181	0.159	MK=0.181 DD=0.159
+avg>max	TN0025470	001	1	50050	Flow, in conduit or thru treatment plant	07/31/2024	MGD	0.055	0.0124	DD=0.0124 MK=0.055
+avg>max	TN0028754	001	G	50050	Flow, in conduit or thru treatment plant	10/31/2023	MGD	7.649	4.588	MK=7.649 DD=4.588
+avg>max	TN0054585	001	G	50050	Flow, in conduit or thru treatment plant	01/31/2024	MGD	0.568	0.1066	MK=0.568 DD=0.1066
+avg>max	TN0057461	INF1	G	50050	Flow, in conduit or thru treatment plant	01/31/2024	MGD	65.976	47.247	MK=65.976 DD=47.247
+avg>max	TN0057860	001	1	50050	Flow, in conduit or thru treatment plant	02/29/2024	MGD	0.016	0.002	MK=0.016 DD=0.002
+avg>max	TN0058521	001	1	50050	Flow, in conduit or thru treatment plant	12/31/2023	MGD	0.216	0.059	DD=0.059 MK=0.216
+avg>max	TN0059480	001	1	50050	Flow, in conduit or thru treatment plant	10/31/2023	MGD	0.034489	0.002901	MK=0.034489 DD=0.002901
+avg>max	TN0059480	001	1	50050	Flow, in conduit or thru treatment plant	11/30/2023	MGD	0.016263	0.001555	DD=0.001555 MK=0.016263
+avg>max	TN0059480	001	1	50050	Flow, in conduit or thru treatment plant	12/31/2023	MGD	0.005811	0.001901	MK=0.005811 DD=0.001901
+avg>max	TN0059480	001	1	50050	Flow, in conduit or thru treatment plant	01/31/2024	MGD	0.003472	0.000573	MK=0.003472 DD=0.000573
+avg>max	TN0059480	001	1	50050	Flow, in conduit or thru treatment plant	02/29/2024	MGD	0.0010483	0.0002143	MK=0.0010483 DD=0.0002143
+avg>max	TN0059480	001	1	50050	Flow, in conduit or thru treatment plant	03/31/2024	MGD	0.040722	0.013554	MK=0.040722 DD=0.013554
+avg>max	TN0059480	001	1	50050	Flow, in conduit or thru treatment plant	04/30/2024	MGD	0.034067	0.007302	MK=0.034067 DD=0.007302
+avg>max	TN0059480	001	1	50050	Flow, in conduit or thru treatment plant	05/31/2024	MGD	0.084043	0.022927	MK=0.084043 DD=0.022927
+avg>max	TN0059480	001	1	50050	Flow, in conduit or thru treatment plant	06/30/2024	MGD	0.095066	0.013835	DD=0.013835 MK=0.095066
+avg>max	TN0059480	001	1	50050	Flow, in conduit or thru treatment plant	07/31/2024	MGD	0.107536	0.009912	MK=0.107536 DD=0.009912
+avg>max	TN0059480	001	1	50050	Flow, in conduit or thru treatment plant	08/31/2024	MGD	0.039893	0.002448	MK=0.039893 DD=0.002448
+avg>max	TN0059480	001	1	50050	Flow, in conduit or thru treatment plant	09/30/2024	MGD	0.045108	0.004337	DD=0.004337 MK=0.045108
+avg>max	TN0059765	001	1	50050	Flow, in conduit or thru treatment plant	06/30/2024	MGD	82760.0	3678.0	MK=82760 DD=3678
+avg>max	TN0062294	001	G	50050	Flow, in conduit or thru treatment plant	12/31/2023	MGD	158.0	0.374	DD=0.374 MK=158
+avg>max	TN0062308	001	1	50050	Flow, in conduit or thru treatment plant	10/31/2023	MGD	13.0	0.5	MK=13 DD=0.5
+avg>max	TN0062308	001	G	50050	Flow, in conduit or thru treatment plant	10/31/2023	MGD	30.2	1.0	MK=30.2 DD=1
+avg>max	TN0062308	001	1	50050	Flow, in conduit or thru treatment plant	01/31/2024	MGD	31.0	1.0	DD=1 MK=31
+avg>max	TN0062308	001	G	50050	Flow, in conduit or thru treatment plant	01/31/2024	MGD	33.2	2.4	DD=2.4 MK=33.2
+avg>max	TN0062308	001	1	50050	Flow, in conduit or thru treatment plant	02/29/2024	MGD	29.0	1.0	MK=29 DD=1
+avg>max	TN0062308	001	G	50050	Flow, in conduit or thru treatment plant	02/29/2024	MGD	33.0	2.6	MK=33 DD=2.6
+avg>max	TN0062308	001	G	50050	Flow, in conduit or thru treatment plant	03/31/2024	MGD	33.8	2.1	MK=33.8 DD=2.1
+avg>max	TN0062308	001	1	50050	Flow, in conduit or thru treatment plant	03/31/2024	MGD	31.0	1.0	DD=1 MK=31
+avg>max	TN0064149	001	1	50050	Flow, in conduit or thru treatment plant	07/31/2024	MGD	0.1198	0.0651	DD=0.0651 MK=0.1198
+avg>max	TN0064149	001	G	50050	Flow, in conduit or thru treatment plant	07/31/2024	MGD	0.1198	0.0651	MK=0.1198 DD=0.0651
+avg>max	TN0064238	001	1	50050	Flow, in conduit or thru treatment plant	12/31/2023	MGD	285.0	0.356	DD=0.356 MK=285
+avg>max	TN0064394	INF1	G	50050	Flow, in conduit or thru treatment plant	12/31/2023	MGD	155.0	0.223	MK=155 DD=0.223
+avg>max	TN0064688	001	1	50050	Flow, in conduit or thru treatment plant	03/31/2024	MGD	8.74	2.022	DD=2.022 MK=8.74
+avg>max	TN0064939	001	1	50050	Flow, in conduit or thru treatment plant	04/30/2024	MGD	0.04805	0.002453	MK=0.04805 DD=0.002453
+avg>max	TN0064939	001	1	50050	Flow, in conduit or thru treatment plant	05/31/2024	MGD	0.04805	0.002453	MK=0.04805 DD=0.002453
+avg>max	TN0064939	001	1	50050	Flow, in conduit or thru treatment plant	06/30/2024	MGD	0.04805	0.002453	DD=0.002453 MK=0.04805
+avg>max	TN0065218	001	G	50050	Flow, in conduit or thru treatment plant	09/30/2024	MGD	0.114	0.044	DD=0.044 MK=0.114
+avg>max	TN0074357	001	1	50050	Flow, in conduit or thru treatment plant	10/31/2023	MGD	0.006247	0.0008	DD=0.0008 MK=0.006247
+avg>max	TN0077691	001	1	50050	Flow, in conduit or thru treatment plant	08/31/2024	MGD	2.774	0.111	MK=2.774 DD=0.111
+avg>max	TN0077836	INF1	G	50050	Flow, in conduit or thru treatment plant	02/29/2024	MGD	51.402	7.102	DD=7.102 MK=51.402
+avg>max	TN0077836	INF1	G	50050	Flow, in conduit or thru treatment plant	09/30/2024	MGD	27.09	2.009	DD=2.009 MK=27.09
+avg>max	TN0077836	001	1	50050	Flow, in conduit or thru treatment plant	09/30/2024	MGD	29.801	1.896	DD=1.896 MK=29.801
+avg>max	TN0077917	001	G	50050	Flow, in conduit or thru treatment plant	11/30/2023	MGD	14.844	0.601	MK=14.844 DD=0.601
+avg>max	TN0077917	001	1	50050	Flow, in conduit or thru treatment plant	11/30/2023	MGD	22.962	1.084	MK=22.962 DD=1.084
+avg>max	TN0077917	001	1	50050	Flow, in conduit or thru treatment plant	12/31/2023	MGD	23.399	1.332	MK=23.399 DD=1.332
+avg>max	TN0077917	001	G	50050	Flow, in conduit or thru treatment plant	12/31/2023	MGD	16.577	0.535	DD=0.535 MK=16.577
+avg>max	TN0080985	002	1	50050	Flow, in conduit or thru treatment plant	10/31/2023	MGD	0.98	0.227	MK=0.98 DD=0.227
+avg>max	TN0080985	002	1	50050	Flow, in conduit or thru treatment plant	01/31/2024	MGD	0.526	0.253	DD=0.253 MK=0.526
+avg>max	TN0081175	001	1	50050	Flow, in conduit or thru treatment plant	11/30/2023	MGD	0.77	0.625	MK=0.77 DD=0.625
+avg>max	TN0081175	001	G	50050	Flow, in conduit or thru treatment plant	11/30/2023	MGD	0.77	0.583	MK=0.77 DD=0.583
+avg>max	TN0081175	001	1	50050	Flow, in conduit or thru treatment plant	05/31/2024	MGD	1.32	0.848	DD=0.848 MK=1.32
+avg>max	TN0023515	001	1	50060	Chlorine, total residual	09/30/2024	mg/L	0.02	0.01	DD=0.01 MK=0.02
+avg>max	TN0029106	001	1	50060	Chlorine, total residual	09/30/2024	mg/L	0.03	0.02	MK=0.03 DD=0.02
+avg>max	TN0064611	001	1	50060	Chlorine, total residual	03/31/2024	mg/L	0.11	0.1	DD=0.1 MK=0.11
+avg>max	TN0064688	001	1	50060	Chlorine, total residual	07/31/2024	mg/L	0.011	0.01	MK=0.011 DD=0.01
+avg>max	TN0020508	INF1	G	80082	BOD, carbonaceous [5 day, 20 C]	05/31/2024	mg/L	106.0	7.4	DD=7.4 MK=106
+avg>max	TN0020753	001	1	80082	BOD, carbonaceous [5 day, 20 C]	01/31/2024	mg/L	2.7	1.7	DD=1.7 MK=2.7 WA=3.4
+avg>max	TN0020877	001	G	80082	BOD, carbonaceous [5 day, 20 C]	03/31/2024	mg/L	130.1	100.0	MK=130.1 DD=100
+avg>max	TN0021253	001	G	80082	BOD, carbonaceous [5 day, 20 C]	10/31/2023	mg/L	29193.0	364.25	MK=29193 DD=364.25
+avg>max	TN0022586	001	1	80082	BOD, carbonaceous [5 day, 20 C]	09/30/2024		145.0	2.5	WA=1.7 DD=2.5 MK=145 MK=1.6 WA=172
+avg>max	TN0024155	01A	1	80082	BOD, carbonaceous [5 day, 20 C]	12/31/2023	lb/d	325.0	254.0	MK=325 DD=254
+avg>max	TN0024155	01B	1	80082	BOD, carbonaceous [5 day, 20 C]	09/30/2024	lb/d	191.0	110.0	MK=191 DD=110
+avg>max	TN0024953	001	1	80082	BOD, carbonaceous [5 day, 20 C]	06/30/2024	mg/L	25.0	4.0	MK=25 DD=4 WA=25
+avg>max	TN0024988	INF1	G	80082	BOD, carbonaceous [5 day, 20 C]	03/31/2024	mg/L	190.0	136.8	DD=136.8 MK=190
+avg>max	TN0025054	INF1	G	80082	BOD, carbonaceous [5 day, 20 C]	05/31/2024	mg/L	786.0	196.0	MK=786 DD=196
+avg>max	TN0025470	001	1	80082	BOD, carbonaceous [5 day, 20 C]	06/30/2024	mg/L	6.48	6.376	MK=6.48 WA=6.6 DD=6.376
+avg>max	TN0027618	001	1	80082	BOD, carbonaceous [5 day, 20 C]	08/31/2024	mg/L	5.0	4.0	DD=4 MK=5
+avg>max	TN0056545	001	1	80082	BOD, carbonaceous [5 day, 20 C]	02/29/2024	mg/L	4.64	2.08	MK=4.64 DD=2.08
+avg>max	TN0057908	001	1	80082	BOD, carbonaceous [5 day, 20 C]	01/31/2024	lb/d	0.64	0.34	MK=0.64 DD=0.34
+avg>max	TN0057908	INF1	G	80082	BOD, carbonaceous [5 day, 20 C]	02/29/2024	mg/L	19.25	0.3	DD=0.3 MK=19.25
+avg>max	TN0060933	001	1	80082	BOD, carbonaceous [5 day, 20 C]	06/30/2024	mg/L	0.9	0.8	DD=0.8 MK=0.9
+avg>max	TN0062111	01B	1	80082	BOD, carbonaceous [5 day, 20 C]	04/30/2024	mg/L	14.0	6.0	DD=6 WA=17 MK=14
+avg>max	TN0062626	001	1	80082	BOD, carbonaceous [5 day, 20 C]	02/29/2024	mg/L	3.1	2.7	MK=3.1 WA=2.7 DD=2.7
+avg>max	TN0075078	INF1	G	80082	BOD, carbonaceous [5 day, 20 C]	11/30/2023	mg/L	110.0	1.181	DD=1.181 MK=110
+avg>max	TN0075868	001	G	80082	BOD, carbonaceous [5 day, 20 C]	10/31/2023	mg/L	387.8	241.0	MK=387.8 DD=241
+avg>max	TN0077917	001	G	80082	BOD, carbonaceous [5 day, 20 C]	05/31/2024	mg/L	248.1	216.0	MK=248.1 DD=216
+avg>max	TN0080721	001	1	80082	BOD, carbonaceous [5 day, 20 C]	12/31/2023		88.4	3.8	WA=105 DD=3.8 MK=2.8 MK=88.4 WA=3
+avg>max	TN0080721	INF1	G	80082	BOD, carbonaceous [5 day, 20 C]	12/31/2023		374.3	97.8	MK=374.3 DD=97.8
+avg>max	TN0080721	INF1	G	80082	BOD, carbonaceous [5 day, 20 C]	03/31/2024	mg/L	1979.8	205.9	DD=205.9 MK=1979.8
+avg>max	TN0080985	INF1	G	80082	BOD, carbonaceous [5 day, 20 C]	01/31/2024	mg/L	190.0	111.6	DD=111.6 MK=190
+avg>max	TN0023574	INF1	G	00310	BOD, 5-day, 20 deg. C	09/30/2024	mg/L	217.0	92.0	MK=217 DD=92
+avg>max	TN0023680	001	1	00310	BOD, 5-day, 20 deg. C	09/30/2024	mg/L	8.0	6.0	DD=6 MK=8
+avg>max	TN0025119	001	1	00310	BOD, 5-day, 20 deg. C	10/31/2023	lb/d	0.23	0.11	DD=0.11 MK=0.23
+avg>max	TN0062138	001	1	00310	BOD, 5-day, 20 deg. C	04/30/2024	mg/L	7.0	6.0	WA=7 DD=6 MK=7
+avg>max	TN0064394	001	1	00310	BOD, 5-day, 20 deg. C	12/31/2023	mg/L	29.3	21.68	WA=29.3 MK=29.3 DD=21.68
+avg>max	TN0064394	001	1	00310	BOD, 5-day, 20 deg. C	06/30/2024	mg/L	26.16	16.9	WA=26.16 DD=16.9 MK=26.16
+avg>max	TN0064394	001	1	00310	BOD, 5-day, 20 deg. C	08/31/2024	mg/L	20.7	18.0	WA=20.7 MK=20.7 DD=18
+min>max	TN0020460	001	1	00400	pH	11/30/2023	SU	8.6	7.5	DC=8.6 MB=7.5
+min>max	TN0023001	001	1	00400	pH	10/31/2023	SU	7.2	7.0	ME=7.2 MB=7
+min>max	TN0023680	001	1	00400	pH	08/31/2024	SU	7.1	6.9	DD=6.9 DC=7.1
+min>max	TN0023680	001	1	00400	pH	09/30/2024	SU	7.1	6.9	DD=6.9 DC=7.1
+min>max	TN0023698	001	1	00400	pH	08/31/2024	SU	7.1	7.0	DD=7 DC=7.1
+min>max	TN0023698	001	1	00400	pH	09/30/2024	SU	7.0	6.8	DC=7 DD=6.8
+min>max	TN0060933	001	1	00400	pH	06/30/2024	SU	7.29	6.86	DC=7.29 DD=6.86
+min>max	TN0080985	002	1	00400	pH	06/30/2024	SU	7.8	7.4	DC=7.8 DD=7.4
+avg>max	TN0021237	001	1	00665	Phosphorus, total [as P]	02/29/2024	mg/L	9.0	0.67	MK=9 DD=0.67
+avg>max	TN0056626	001	1	00665	Phosphorus, total [as P]	02/29/2024	mg/L	0.4	0.2	DD=0.2 MK=0.4
+avg>max	TN0056626	001	1	00665	Phosphorus, total [as P]	03/31/2024	mg/L	0.2	0.1	MK=0.2 DD=0.1
+avg>max	TN0065501	001	1	00665	Phosphorus, total [as P]	09/30/2024	lb/d	4.92	4.9	DD=4.9 MK=4.92
+avg>max	TN0068187	001	1	00665	Phosphorus, total [as P]	10/31/2023	mg/L	21.3	18.88	DD=18.88 MK=21.3
+avg>max	TN0068187	001	1	00665	Phosphorus, total [as P]	11/30/2023	mg/L	23.0	21.0	MK=23 DD=21
+avg>max	TN0068187	001	1	00665	Phosphorus, total [as P]	12/31/2023	mg/L	22.0	16.0	DD=16 MK=22
+avg>max	TN0068187	001	1	00665	Phosphorus, total [as P]	01/31/2024	mg/L	18.0	16.0	MK=18 DD=16
+avg>max	TN0068187	001	1	00665	Phosphorus, total [as P]	02/29/2024	mg/L	18.0	12.0	DD=12 MK=18
+avg>max	TN0068187	001	1	00665	Phosphorus, total [as P]	03/31/2024	mg/L	14.3	12.0	DD=12 MK=14.3
+avg>max	TN0068187	001	1	00665	Phosphorus, total [as P]	04/30/2024	mg/L	19.0	17.0	DD=17 MK=19
+avg>max	TN0068187	001	1	00665	Phosphorus, total [as P]	05/31/2024	mg/L	22.0	16.0	DD=16 MK=22
+avg>max	TN0068187	001	1	00665	Phosphorus, total [as P]	06/30/2024	mg/L	14.0	12.0	DD=12 MK=14
+avg>max	TN0068187	001	1	00665	Phosphorus, total [as P]	07/31/2024	mg/L	24.0	14.0	DD=14 MK=24
+avg>max	TN0068187	001	1	00665	Phosphorus, total [as P]	08/31/2024	mg/L	15.0	12.0	DD=12 MK=15
+avg>max	TN0068187	001	1	00665	Phosphorus, total [as P]	09/30/2024	mg/L	24.0	13.0	MK=24 DD=13
+avg>max	TN0020443	001	1	00061	Stream flow, instantaneous	05/31/2024	MGD	6.3	2.1	MK=6.3 DD=2.1
+avg>max	TN0020052	001	G	00530	Solids, total suspended	03/31/2024	mg/L	195.0	2.0	MK=195 DD=2
+avg>max	TN0021580	001	1	00530	Solids, total suspended	11/30/2023	lb/d	58.9	12.4	DD=12.4 MK=58.9
+avg>max	TN0021741	INF1	G	00530	Solids, total suspended	06/30/2024	mg/L	109.2	0.242	MK=109.2 DD=0.242
+avg>max	TN0023701	001	1	00530	Solids, total suspended	09/30/2024	mg/L	15.0	7.0	DD=7 MK=15
+avg>max	TN0025119	001	1	00530	Solids, total suspended	10/31/2023	lb/d	0.24	0.12	DD=0.12 MK=0.24
+avg>max	TN0026174	001	1	00530	Solids, total suspended	06/30/2024	mg/L	2.61	0.4	WA=0.4 MK=2.61 DD=0.4
+avg>max	TN0026247	001	1	00530	Solids, total suspended	06/30/2024	mg/L	53.5	39.0	DD=39 MK=53.5 WA=90
+avg>max	TN0055310	001	G	00530	Solids, total suspended	10/31/2023	mg/L	150.0	126.0	DD=126 MK=150
+avg>max	TN0056545	001	1	00530	Solids, total suspended	06/30/2024	mg/L	6.6	4.6	DD=4.6 MK=6.6
+avg>max	TN0059765	001	1	00530	Solids, total suspended	06/30/2024	lb/d	0.05004	0.04378	MK=0.05004 DD=0.04378
+avg>max	TN0060569	001	G	00530	Solids, total suspended	01/31/2024	mg/L	136.0	2.04	MK=136 DD=2.04
+avg>max	TN0060933	001	1	00530	Solids, total suspended	06/30/2024	mg/L	9.3	8.2	MK=9.3 DD=8.2
+avg>max	TN0062308	001	1	00530	Solids, total suspended	07/31/2024	mg/L	98.4	22.0	MK=98.4 WA=11.8 DD=22
+avg>max	TN0064394	001	1	00530	Solids, total suspended	10/31/2023	mg/L	86.7	17.0	DD=17 WA=7 MK=86.7
+avg>max	TN0064394	001	1	00530	Solids, total suspended	12/31/2023	mg/L	32.9	30.0	WA=32.9 DD=30 MK=32.9
+avg>max	TN0064394	001	1	00530	Solids, total suspended	03/31/2024	mg/L	18.6	5.0	MK=18.6 DD=5 WA=18.6
+avg>max	TN0064394	001	1	00530	Solids, total suspended	05/31/2024	mg/L	18.7	10.0	MK=18.7 WA=26 DD=10
+avg>max	TN0064777	001	G	00530	Solids, total suspended	04/30/2024	mg/L	2424.0	24.0	MK=2424 DD=24
+avg>max	TN0064971	001	1	00530	Solids, total suspended	07/31/2024	mg/L	22.0	1.7	WA=6.8 DD=1.7 MK=22
+avg>max	TN0065218	001	1	00530	Solids, total suspended	10/31/2023	mg/L	25.5	25.0	DD=25 WA=25.5 MK=25.5
+avg>max	TN0065218	001	1	00530	Solids, total suspended	01/31/2024	mg/L	7.5	7.0	MK=7.5 DD=7 WA=7
+avg>max	TN0065218	001	1	00530	Solids, total suspended	04/30/2024	mg/L	26.5	22.0	WA=22 DD=22 MK=26.5
+avg>max	TN0065358	INF1	G	00530	Solids, total suspended	12/31/2023	mg/L	2580.0	491.0	MK=2580 DD=491
+avg>max	TN0067130	001	1	00530	Solids, total suspended	11/30/2023	mg/L	16.0	11.0	DD=11 MK=16
+avg>max	TN0067202	001	V	00530	Solids, total suspended	12/31/2023	mg/L	22.0	15.0	DD=15 MK=22
+avg>max	TN0077917	001	1	00530	Solids, total suspended	07/31/2024	lb/d	30.5	22.0	MK=30.5 DD=22
+avg>max	TN0078191	001	1	00530	Solids, total suspended	06/30/2024	mg/L	154.9	40.0	DD=40 WA=15 MK=154.9
+avg>max	TN0080721	001	1	00530	Solids, total suspended	12/31/2023		114.0	7.0	MK=114 MK=3.7 DD=7 WA=124.8 WA=4.3
+avg>max	TN0023001	001	1	00600	Nitrogen, total [as N]	06/30/2024	mg/L	59.1	12.5	DD=12.5 MK=59.1
+avg>max	TN0020613	001	EG	00610	Nitrogen, ammonia total [as N]	12/31/2023	mg/L	0.32	0.112	MK=0.32 WA=0.04 DD=0.112
+avg>max	TN0021067	001	1	00610	Nitrogen, ammonia total [as N]	10/31/2023	mg/L	0.08	0.06	MK=0.08 WA=0.08 DD=0.06
+avg>max	TN0023469	001	1	00610	Nitrogen, ammonia total [as N]	09/30/2024		4.3	0.96	WA=11.3 MK=0.36 WA=0.96 MK=4.3 DD=0.96
+avg>max	TN0026166	001	1	00610	Nitrogen, ammonia total [as N]	07/31/2024	mg/L	6.69	0.355	DD=0.355 WA=2.456 MK=6.69
+avg>max	TN0026174	001	1	00610	Nitrogen, ammonia total [as N]	01/31/2024	mg/L	87.31	11.0	DD=11 MK=87.31 WA=11
+avg>max	TN0026174	001	1	00610	Nitrogen, ammonia total [as N]	07/31/2024	lb/d	19.949	6.403	DD=6.403 MK=19.949
+avg>max	TN0059765	001	1	00610	Nitrogen, ammonia total [as N]	06/30/2024	lb/d	0.104	0.05	MK=0.104 DD=0.05
+avg>max	TN0020818	001	1	51040	E. coli	06/30/2025	#/100mL	113.0	58.0	MM=113 DD=58
+avg>max	TN0021237	001	1	51040	E. coli	08/31/2025	#/100mL	3.0	1.0	MM=3 DD=1
+avg>max	TN0024449	001	1	51040	E. coli	12/31/2024	#/100mL	3.0	2.1	MM=3 DD=2.1
+avg>max	TN0057291	001	1	51040	E. coli	07/31/2025	#/100mL	4.0	2.0	DD=2 MM=4
+avg>max	TN0062308	001	1	51040	E. coli	02/28/2025	MPN/100mL	14.1	13.2	MM=14.1 DD=13.2
+avg>max	TN0064688	001	1	51040	E. coli	06/30/2025	#/100mL	15.0	3.5	DD=3.5 MK=15
+avg>max	TN0064688	001	1	51040	E. coli	07/31/2025	#/100mL	13.0	3.5	MK=13 DD=3.5
+avg>max	TN0067130	001	1	51040	E. coli	10/31/2024	#/100mL	12.0	11.0	DD=11 MK=12
+avg>max	TN0067130	001	1	51040	E. coli	01/31/2025	#/100mL	4.0	3.0	MK=4 DD=3
+avg>max	TN0067130	001	1	51040	E. coli	05/31/2025	#/100mL	378.0	211.0	MK=378 DD=211
+avg>max	TN0002666	001	1	50050	Flow, in conduit or thru treatment plant	07/31/2025	MGD	0.089	0.012	MK=0.089 DD=0.012
+avg>max	TN0020508	INF1	G	50050	Flow, in conduit or thru treatment plant	01/31/2025	MGD	0.616	0.41	MK=0.616 DD=0.41
+avg>max	TN0020818	INF1	G	50050	Flow, in conduit or thru treatment plant	10/31/2024	MGD	0.158	0.024	DD=0.024 MK=0.158
+avg>max	TN0020818	INF1	G	50050	Flow, in conduit or thru treatment plant	02/28/2025	MGD	0.366	0.287	DD=0.287 MK=0.366
+avg>max	TN0021652	INF1	G	50050	Flow, in conduit or thru treatment plant	01/31/2025	MGD	0.447	0.081	DD=0.081 MK=0.447
+avg>max	TN0021652	001	1	50050	Flow, in conduit or thru treatment plant	05/31/2025	MGD	10.04	0.83	DD=0.83 MK=10.04
+avg>max	TN0021946	INF1	G	50050	Flow, in conduit or thru treatment plant	09/30/2025	MGD	0.473	0.383	MK=0.473 DD=0.383
+avg>max	TN0022560	INF1	G	50050	Flow, in conduit or thru treatment plant	03/31/2025	MGD	17.89	0.1789	DD=0.1789 MK=17.89
+avg>max	TN0022560	INF1	G	50050	Flow, in conduit or thru treatment plant	09/30/2025	MGD	0.767	0.136	MK=0.767 DD=0.136
+avg>max	TN0023680	001	1	50050	Flow, in conduit or thru treatment plant	01/31/2025	MGD	0.003	0.002	DD=0.002 MK=0.003
+avg>max	TN0023680	001	1	50050	Flow, in conduit or thru treatment plant	05/31/2025	MGD	0.003	0.0	DD=0 MK=0.003
+avg>max	TN0023698	001	1	50050	Flow, in conduit or thru treatment plant	12/31/2024	MGD	0.005	0.004	DD=0.004 MK=0.005
+avg>max	TN0023698	001	1	50050	Flow, in conduit or thru treatment plant	03/31/2025	MGD	0.004	0.003	DD=0.003 MK=0.004
+avg>max	TN0023698	001	1	50050	Flow, in conduit or thru treatment plant	05/31/2025	MGD	0.005	0.0	MK=0.005 DD=0
+avg>max	TN0023833	001	1	50050	Flow, in conduit or thru treatment plant	08/31/2025	MGD	0.005	0.003	DD=0.003 MK=0.005
+avg>max	TN0024058	001	1	50050	Flow, in conduit or thru treatment plant	10/31/2024	MGD	0.04135	0.001797	DD=0.001797 MK=0.04135
+avg>max	TN0024058	001	1	50050	Flow, in conduit or thru treatment plant	11/30/2024	MGD	0.0371	0.00176	DD=0.00176 MK=0.0371
+avg>max	TN0024058	001	1	50050	Flow, in conduit or thru treatment plant	12/31/2024	MGD	0.033	0.0015	DD=0.0015 MK=0.033
+avg>max	TN0024058	001	1	50050	Flow, in conduit or thru treatment plant	01/31/2025	MGD	0.0338	0.001469	MK=0.0338 DD=0.001469
+avg>max	TN0024058	001	1	50050	Flow, in conduit or thru treatment plant	02/28/2025	MGD	0.0519	0.002595	DD=0.002595 MK=0.0519
+avg>max	TN0024058	001	1	50050	Flow, in conduit or thru treatment plant	03/31/2025	MGD	0.0417	0.001985	MK=0.0417 DD=0.001985
+avg>max	TN0024058	001	1	50050	Flow, in conduit or thru treatment plant	04/30/2025	MGD	0.0553	0.002404	MK=0.0553 DD=0.002404
+avg>max	TN0024058	001	1	50050	Flow, in conduit or thru treatment plant	05/31/2025	MGD	0.0701	0.003186	MK=0.0701 DD=0.003186
+avg>max	TN0024058	001	1	50050	Flow, in conduit or thru treatment plant	06/30/2025	MGD	0.0332	0.00158	MK=0.0332 DD=0.00158
+avg>max	TN0024058	001	1	50050	Flow, in conduit or thru treatment plant	07/31/2025	MGD	0.00322	0.0014	MK=0.00322 DD=0.0014
+avg>max	TN0024058	001	1	50050	Flow, in conduit or thru treatment plant	08/31/2025	MGD	0.0459	0.002185	DD=0.002185 MK=0.0459
+avg>max	TN0024058	001	1	50050	Flow, in conduit or thru treatment plant	09/30/2025	MGD	0.064	0.02909	MK=0.064 DD=0.02909
+avg>max	TN0025101	INF1	G	50050	Flow, in conduit or thru treatment plant	07/31/2025	MGD	0.14	0.12	MK=0.14 DD=0.12
+avg>max	TN0025119	001	1	50050	Flow, in conduit or thru treatment plant	06/30/2025	MGD	0.15	0.08	DD=0.08 MK=0.15
+avg>max	TN0026166	INF1	G	50050	Flow, in conduit or thru treatment plant	08/31/2025	MGD	0.39	0.066	MK=0.39 DD=0.066
+avg>max	TN0026166	001	1	50050	Flow, in conduit or thru treatment plant	09/30/2025	MGD	0.518	0.4	MK=0.518 DD=0.4
+avg>max	TN0026361	001	1	50050	Flow, in conduit or thru treatment plant	07/31/2025	MGD	0.19	0.035	DD=0.035 MK=0.19
+avg>max	TN0026620	001	Z	50050	Flow, in conduit or thru treatment plant	02/28/2025	MGD	60.27	10.41	DD=10.41 MK=60.27
+avg>max	TN0027626	001	1	50050	Flow, in conduit or thru treatment plant	09/30/2025	MGD	0.003236	0.001768	DD=0.001768 MK=0.003236
+avg>max	TN0029106	001	1	50050	Flow, in conduit or thru treatment plant	04/30/2025	MGD	6.48e-05	1.584e-05	MK=6.48e-05 DD=1.584e-05
+avg>max	TN0058092	002	1	50050	Flow, in conduit or thru treatment plant	01/31/2025	MGD	0.000696	0.000239	MK=0.000696 DD=0.000239
+avg>max	TN0058190	001	1	50050	Flow, in conduit or thru treatment plant	07/31/2025	MGD	0.225	0.216	MK=0.225 DD=0.216
+avg>max	TN0059480	001	1	50050	Flow, in conduit or thru treatment plant	10/31/2024	MGD	0.061415	0.008938	MK=0.061415 DD=0.008938
+avg>max	TN0059480	001	1	50050	Flow, in conduit or thru treatment plant	11/30/2024	MGD	0.018006	0.00185	MK=0.018006 DD=0.00185
+avg>max	TN0059480	001	1	50050	Flow, in conduit or thru treatment plant	12/31/2024	MGD	0.006634	0.001208	DD=0.001208 MK=0.006634
+avg>max	TN0059480	001	1	50050	Flow, in conduit or thru treatment plant	01/31/2025	MGD	0.0031768	0.0001024	DD=0.0001024 MK=0.0031768
+avg>max	TN0059480	001	1	50050	Flow, in conduit or thru treatment plant	02/28/2025	MGD	0.014174	0.004153	DD=0.004153 MK=0.014174
+avg>max	TN0059480	001	1	50050	Flow, in conduit or thru treatment plant	03/31/2025	MGD	0.011058	0.005695	MK=0.011058 DD=0.005695
+avg>max	TN0059480	001	1	50050	Flow, in conduit or thru treatment plant	04/30/2025	MGD	0.017538	0.012104	MK=0.017538 DD=0.012104
+avg>max	TN0059480	001	1	50050	Flow, in conduit or thru treatment plant	05/31/2025	MGD	0.172413	0.045247	MK=0.172413 DD=0.045247
+avg>max	TN0059480	001	1	50050	Flow, in conduit or thru treatment plant	06/30/2025	MGD	0.082559	0.005286	MK=0.082559 DD=0.005286
+avg>max	TN0059480	001	1	50050	Flow, in conduit or thru treatment plant	07/31/2025	MGD	0.048197	0.005113	MK=0.048197 DD=0.005113
+avg>max	TN0062201	001	G	50050	Flow, in conduit or thru treatment plant	06/30/2025	MGD	0.093	0.035	MK=0.093 DD=0.035
+avg>max	TN0062634	001	1	50050	Flow, in conduit or thru treatment plant	11/30/2024	MGD	0.301	0.203	DD=0.203 MK=0.301
+avg>max	TN0064025	INF1	G	50050	Flow, in conduit or thru treatment plant	12/31/2024	MGD	0.021	0.02	MK=0.021 DD=0.02
+avg>max	TN0064025	001	1	50050	Flow, in conduit or thru treatment plant	03/31/2025	MGD	0.37	0.04	DD=0.04 MK=0.37
+avg>max	TN0064297	001	1	50050	Flow, in conduit or thru treatment plant	04/30/2025	MGD	0.015176	0.007269	MK=0.015176 DD=0.007269
+avg>max	TN0067202	001	V	50050	Flow, in conduit or thru treatment plant	07/31/2025	MGD	0.6556	0.0303	DD=0.0303 MK=0.6556
+avg>max	TN0067733	INF1	G	50050	Flow, in conduit or thru treatment plant	08/31/2025	MGD	0.93	0.116	MK=0.93 DD=0.116
+avg>max	TN0074071	001	1	50050	Flow, in conduit or thru treatment plant	12/31/2024	MGD	0.351	0.14	MK=0.351 DD=0.14
+avg>max	TN0074357	001	1	50050	Flow, in conduit or thru treatment plant	11/30/2024	MGD	0.065332	0.002178	DD=0.002178 MK=0.065332
+avg>max	TN0074357	001	1	50050	Flow, in conduit or thru treatment plant	02/28/2025	MGD	0.095998	0.012	DD=0.012 MK=0.095998
+avg>max	TN0074357	001	1	50050	Flow, in conduit or thru treatment plant	05/31/2025	MGD	5871.0	0.011	MK=5871 DD=0.011
+avg>max	TN0074586	001	1	50050	Flow, in conduit or thru treatment plant	03/31/2025	MGD	0.037	0.0282	DD=0.0282 MK=0.037
+avg>max	TN0074870	INF1	G	50050	Flow, in conduit or thru treatment plant	10/31/2024	MGD	0.114	0.0273	DD=0.0273 MK=0.114
+avg>max	TN0074870	INF1	G	50050	Flow, in conduit or thru treatment plant	01/31/2025	MGD	0.222	0.0635	MK=0.222 DD=0.0635
+avg>max	TN0074870	001	1	50050	Flow, in conduit or thru treatment plant	06/30/2025	MGD	175.0	0.0419	DD=0.0419 MK=175
+avg>max	TN0077836	INF1	G	50050	Flow, in conduit or thru treatment plant	11/30/2024	MGD	25.192	1.402	MK=25.192 DD=1.402
+avg>max	TN0077836	001	1	50050	Flow, in conduit or thru treatment plant	12/31/2024	MGD	34.803	1.818	MK=34.803 DD=1.818
+avg>max	TN0077836	INF1	G	50050	Flow, in conduit or thru treatment plant	12/31/2024	MGD	30.689	2.211	MK=30.689 DD=2.211
+avg>max	TN0077836	INF1	G	50050	Flow, in conduit or thru treatment plant	01/31/2025	MGD	30.878	1.868	DD=1.868 MK=30.878
+avg>max	TN0077836	001	1	50050	Flow, in conduit or thru treatment plant	03/31/2025	MGD	36.462	1.873	MK=36.462 DD=1.873
+avg>max	TN0077836	INF1	G	50050	Flow, in conduit or thru treatment plant	03/31/2025	MGD	27.803	1.998	MK=27.803 DD=1.998
+avg>max	TN0077836	INF1	G	50050	Flow, in conduit or thru treatment plant	05/31/2025	MGD	24.154	1.186	MK=24.154 DD=1.186
+avg>max	TN0077836	INF1	G	50050	Flow, in conduit or thru treatment plant	07/31/2025	MGD	22.977	0.912	DD=0.912 MK=22.977
+avg>max	TN0077836	INF1	G	50050	Flow, in conduit or thru treatment plant	08/31/2025	MGD	25.466	1.816	MK=25.466 DD=1.816
+avg>max	TN0077917	001	1	50050	Flow, in conduit or thru treatment plant	11/30/2024	MGD	25.523	1.97	MK=25.523 DD=1.97
+avg>max	TN0077917	INF1	G	50050	Flow, in conduit or thru treatment plant	11/30/2024	MGD	19.393	1.615	DD=1.615 MK=19.393
+avg>max	TN0077917	001	1	50050	Flow, in conduit or thru treatment plant	03/31/2025	MGD	25.885	2.259	DD=2.259 MK=25.885
+avg>max	TN0077917	INF1	G	50050	Flow, in conduit or thru treatment plant	03/31/2025	MGD	19.867	1.715	DD=1.715 MK=19.867
+avg>max	TN0077917	001	1	50050	Flow, in conduit or thru treatment plant	08/31/2025	MGD	19.622	0.798	MK=19.622 DD=0.798
+avg>max	TN0077917	001	1	50050	Flow, in conduit or thru treatment plant	09/30/2025	MGD	21.561	1.777	MK=21.561 DD=1.777
+avg>max	TN0077917	INF1	G	50050	Flow, in conduit or thru treatment plant	09/30/2025	MGD	13.451	0.448	DD=0.448 MK=13.451
+avg>max	TN0078042	INF1	G	50050	Flow, in conduit or thru treatment plant	05/31/2025	MGD	0.53	0.09	MK=0.53 DD=0.09
+avg>max	TN0078042	INF1	G	50050	Flow, in conduit or thru treatment plant	08/31/2025	MGD	0.00851	0.00348	MK=0.00851 DD=0.00348
+avg>max	TN0078271	INF1	G	50050	Flow, in conduit or thru treatment plant	08/31/2025	MGD	0.547	0.512	DD=0.512 MK=0.547
+avg>max	TN0021652	001	1	50060	Chlorine, total residual	10/31/2024	mg/L	0.09	0.012	DD=0.012 MK=0.09
+avg>max	TN0021652	001	1	50060	Chlorine, total residual	04/30/2025	mg/L	0.09	0.012	DD=0.012 MK=0.09
+avg>max	TN0021946	001	1	50060	Chlorine, total residual	06/30/2025	mg/L	0.2	0.04	DD=0.04 MK=0.2
+avg>max	TN0026361	001	1	50060	Chlorine, total residual	03/31/2025	mg/L	0.01	0.0	MK=0.01 DD=0
+avg>max	TN0020630	001	1	80082	BOD, carbonaceous [5 day, 20 C]	09/30/2025	mg/L	4.9	4.1	MK=4.9 WA=2.7 DD=4.1
+avg>max	TN0021652	INF1	G	80082	BOD, carbonaceous [5 day, 20 C]	02/28/2025	mg/L	730.7	141.0	DD=141 MK=730.7
+avg>max	TN0021946	001	1	80082	BOD, carbonaceous [5 day, 20 C]	10/31/2024	mg/L	3.4	0.6	DD=0.6 MK=3.4 WA=3.4
+avg>max	TN0024155	01B	1	80082	BOD, carbonaceous [5 day, 20 C]	02/28/2025	lb/d	456.0	212.0	MK=456 DD=212
+avg>max	TN0024155	01B	1	80082	BOD, carbonaceous [5 day, 20 C]	04/30/2025	lb/d	71.0	33.0	MK=71 DD=33
+avg>max	TN0024791	001	1	80082	BOD, carbonaceous [5 day, 20 C]	01/31/2025	mg/L	3.4	1.3	DD=1.3 WA=6.6 MK=3.4
+avg>max	TN0026174	001	1	80082	BOD, carbonaceous [5 day, 20 C]	11/30/2024	lb/d	28.6	10.0	MK=28.6 DD=10
+avg>max	TN0028622	001	1	80082	BOD, carbonaceous [5 day, 20 C]	04/30/2025	mg/L	11.3	4.7	DD=4.7 MK=11.3 WA=13
+avg>max	TN0060933	001	1	80082	BOD, carbonaceous [5 day, 20 C]	11/30/2024	mg/L	1.6	1.1	MK=1.6 DD=1.1
+avg>max	TN0061841	INF1	G	80082	BOD, carbonaceous [5 day, 20 C]	09/30/2025	mg/L	73.6	12.36	DD=12.36 MK=73.6
+avg>max	TN0077917	INF1	G	80082	BOD, carbonaceous [5 day, 20 C]	12/31/2024	mg/L	261.4	187.0	DD=187 MK=261.4
+avg>max	TN0077917	INF1	G	80082	BOD, carbonaceous [5 day, 20 C]	07/31/2025	mg/L	186.0	1.592	DD=1.592 MK=186
+avg>max	TN0080985	INF1	G	80082	BOD, carbonaceous [5 day, 20 C]	08/31/2025	mg/L	153.8	84.4	MK=153.8 DD=84.4
+avg>max	TN0021211	001	1	00310	BOD, 5-day, 20 deg. C	05/31/2025	mg/L	56.6428	14.0	DD=14 MK=56.6428 WA=8.6666
+avg>max	TN0022993	INF1	G	00310	BOD, 5-day, 20 deg. C	09/30/2025	mg/L	282.68	194.88	MK=282.68 DD=194.88
+avg>max	TN0025119	INF1	G	00310	BOD, 5-day, 20 deg. C	06/30/2025	mg/L	12.0	3.5	MK=12 DD=3.5
+avg>max	TN0058521	INF1	G	00310	BOD, 5-day, 20 deg. C	02/28/2025	mg/L	739.7	490.0	DD=490 MK=739.7
+avg>max	TN0058521	INF1	G	00310	BOD, 5-day, 20 deg. C	09/30/2025	mg/L	4.63	0.6	MK=4.63 DD=0.6
+avg>max	TN0062031	001	G	00310	BOD, 5-day, 20 deg. C	04/30/2025	mg/L	78.0	62.0	MK=78 DD=62
+avg>max	TN0062171	001	G	00310	BOD, 5-day, 20 deg. C	12/31/2024	mg/L	94.0	22.0	MK=94 DD=22
+avg>max	TN0063886	INF1	G	00310	BOD, 5-day, 20 deg. C	07/31/2025	mg/L	119.0	114.0	DD=114 MK=119
+avg>max	TN0064394	001	1	00310	BOD, 5-day, 20 deg. C	05/31/2025	mg/L	41.46	17.84	WA=41.46 DD=17.84 MK=41.46
+avg>max	TN0064394	001	1	00310	BOD, 5-day, 20 deg. C	06/30/2025	mg/L	49.62	16.57	WA=49.62 MK=49.62 DD=16.57
+avg>max	TN0064394	001	1	00310	BOD, 5-day, 20 deg. C	09/30/2025	mg/L	27.0	18.69	WA=27 DD=18.69 MK=27
+min>max	TN0020818	001	1	00400	pH	08/31/2025	SU	7.58	7.09	MB=7.09 ME=7.58
+min>max	TN0021741	001	1	00400	pH	06/30/2025	SU	7.3	0.0	DD=0 DC=7.3
+min>max	TN0021946	001	1	00400	pH	06/30/2025	SU	7.5	7.0	MB=7 DC=7.5
+min>max	TN0023680	001	1	00400	pH	10/31/2024	SU	6.9	6.8	DC=6.9 DD=6.8
+min>max	TN0023680	001	1	00400	pH	05/31/2025	SU	6.9	6.8	DC=6.9 DD=6.8
+min>max	TN0023680	001	1	00400	pH	08/31/2025	SU	6.9	6.8	DD=6.8 DC=6.9
+min>max	TN0023680	001	1	00400	pH	09/30/2025	SU	6.8	6.7	DC=6.8 DD=6.7
+min>max	TN0023698	001	1	00400	pH	02/28/2025	SU	6.9	6.8	DC=6.9 DD=6.8
+min>max	TN0024503	001	1	00400	pH	05/31/2025	SU	7.02	6.95	DC=7.02 DD=6.95
+min>max	TN0024953	001	1	00400	pH	05/31/2025	SU	7.7	7.2	ME=7.7 MB=7.2
+min>max	TN0024988	001	1	00400	pH	08/31/2025	SU	637.0	7.3	MB=7.3 ME=637
+min>max	TN0030899	001	1	00400	pH	12/31/2024	SU	7.4	6.8	MB=6.8 ME=7.4
+min>max	TN0057461	001	1	00400	pH	04/30/2025	SU	7.46	7.0	ME=7.46 MB=7
+min>max	TN0057461	001	1	00400	pH	08/31/2025	SU	7.52	7.39	MB=7.39 ME=7.52
+min>max	TN0064912	001	1	00400	pH	06/30/2025	SU	7.6	7.1	ME=7.6 MB=7.1
+min>max	TN0074497	001	1	00400	pH	02/28/2025	SU	7.4	7.0	DD=7 DC=7.4
+min>max	TN0077917	001	1	00400	pH	11/30/2024	SU	7.9	7.7	ME=7.9 MB=7.7
+min>max	TN0078271	001	1	00400	pH	06/30/2025	SU	7.5	7.1	DD=7.1 DC=7.5
+min>max	TN0078841	001	1	00400	pH	12/31/2024	SU	6.9	6.3	DC=6.9 DD=6.3
+min>max	TN0078841	001	1	00400	pH	01/31/2025	SU	6.9	6.4	DC=6.9 DD=6.4
+avg>max	TN0021865	001	1	00665	Phosphorus, total [as P]	09/30/2025	mg/L	1.78	0.2	MK=1.78 DD=0.2 WA=1.78
+avg>max	TN0028827	001	1	00665	Phosphorus, total [as P]	01/31/2025	mg/L	140.0	1.3	DD=1.3 MK=140
+avg>max	TN0056626	001	1	00665	Phosphorus, total [as P]	01/31/2025	mg/L	0.4	0.3	MK=0.4 DD=0.3
+avg>max	TN0056626	001	1	00665	Phosphorus, total [as P]	03/31/2025	mg/L	0.3	0.2	MK=0.3 DD=0.2
+avg>max	TN0068187	001	1	00665	Phosphorus, total [as P]	10/31/2024	mg/L	17.0	15.0	DD=15 MK=17
+avg>max	TN0068187	001	1	00665	Phosphorus, total [as P]	11/30/2024	mg/L	18.0	14.0	DD=14 MK=18
+avg>max	TN0068187	001	1	00665	Phosphorus, total [as P]	01/31/2025	mg/L	11.0	9.0	MK=11 DD=9
+avg>max	TN0068187	001	1	00665	Phosphorus, total [as P]	02/28/2025	mg/L	17.0	10.0	MK=17 DD=10
+avg>max	TN0068187	001	1	00665	Phosphorus, total [as P]	03/31/2025	mg/L	15.0	14.0	DD=14 MK=15
+avg>max	TN0068187	001	1	00665	Phosphorus, total [as P]	04/30/2025	mg/L	17.0	14.0	DD=14 MK=17
+avg>max	TN0068187	001	1	00665	Phosphorus, total [as P]	05/31/2025	mg/L	22.0	17.0	DD=17 MK=22
+avg>max	TN0068187	001	1	00665	Phosphorus, total [as P]	06/30/2025	mg/L	19.0	16.0	DD=16 MK=19
+avg>max	TN0068187	001	1	00665	Phosphorus, total [as P]	07/31/2025	mg/L	20.0	16.0	DD=16 MK=20
+avg>max	TN0068187	001	1	00665	Phosphorus, total [as P]	08/31/2025	mg/L	17.0	14.0	MK=17 DD=14
+avg>max	TN0068187	001	1	00665	Phosphorus, total [as P]	09/30/2025	mg/L	22.0	17.0	MK=22 DD=17
+avg>max	TN0028622	001	1	01042	Copper, total [as Cu]	07/31/2025	mg/L	0.00429	0.0	MK=0.00429 DD=0
+avg>max	TN0021741	INF1	G	00530	Solids, total suspended	07/31/2025	mg/L	91.71	0.138	DD=0.138 MK=91.71
+avg>max	TN0021946	001	G	00530	Solids, total suspended	10/31/2024	mg/L	92.0	0.9	DD=0.9 MK=92
+avg>max	TN0022985	001	1	00530	Solids, total suspended	02/28/2025	mg/L	5.8	2.0	DD=2 WA=3.5 MK=5.8
+avg>max	TN0023477	INF1	G	00530	Solids, total suspended	05/31/2025	mg/L	116.0	90.7	DD=90.7 MK=116
+avg>max	TN0023680	001	1	00530	Solids, total suspended	10/31/2024	mg/L	10.0	6.0	MK=10 DD=6
+avg>max	TN0023680	001	1	00530	Solids, total suspended	11/30/2024	mg/L	8.0	7.0	DD=7 MK=8
+avg>max	TN0023680	001	1	00530	Solids, total suspended	02/28/2025	mg/L	9.0	5.0	MK=9 DD=5
+avg>max	TN0023680	001	1	00530	Solids, total suspended	05/31/2025	mg/L	6.0	3.0	DD=3 MK=6
+avg>max	TN0023680	001	1	00530	Solids, total suspended	09/30/2025	mg/L	25.0	16.7	DD=16.7 MK=25
+avg>max	TN0023698	001	1	00530	Solids, total suspended	10/31/2024	mg/L	14.0	10.0	DD=10 MK=14
+avg>max	TN0023698	001	1	00530	Solids, total suspended	05/31/2025	mg/L	9.0	4.0	MK=9 DD=4
+avg>max	TN0024155	01B	1	00530	Solids, total suspended	04/30/2025	lb/d	84.0	40.0	MK=84 DD=40
+avg>max	TN0025020	001	1	00530	Solids, total suspended	03/31/2025	mg/L	6.4	2.0	MK=6.4 WA=11.7 DD=2
+avg>max	TN0025054	001	1	00530	Solids, total suspended	07/31/2025	mg/L	3.0	1.0	DD=1 WA=3.3 MK=3
+avg>max	TN0025372	001	1	00530	Solids, total suspended	11/30/2024	mg/L	23.6	5.0	WA=5 MK=23.6 DD=5
+avg>max	TN0028754	001	1	00530	Solids, total suspended	05/31/2025	mg/L	18.1	9.0	MK=18.1 DD=9 WA=25.4
+avg>max	TN0058521	INF1	G	00530	Solids, total suspended	02/28/2025	mg/L	193.3	82.0	DD=82 MK=193.3
+avg>max	TN0059323	001	1	00530	Solids, total suspended	10/31/2024	mg/L	0.1	0.02	WA=0.02 DD=0.02 MK=0.1
+avg>max	TN0059765	001	1	00530	Solids, total suspended	06/30/2025	mg/L	0.53	0.5	MK=0.53 WA=0.53 DD=0.5
+avg>max	TN0060933	INF1	G	00530	Solids, total suspended	11/30/2024	mg/L	755.0	458.0	DD=458 MK=755
+avg>max	TN0060933	001	1	00530	Solids, total suspended	11/30/2024	mg/L	9.1	8.1	MK=9.1 DD=8.1
+avg>max	TN0061701	INF1	G	00530	Solids, total suspended	10/31/2024	mg/L	181.3	105.0	DD=105 MK=181.3
+avg>max	TN0061701	INF1	G	00530	Solids, total suspended	04/30/2025	mg/L	113.1	2.4	DD=2.4 MK=113.1
+avg>max	TN0062111	01A	G	00530	Solids, total suspended	02/28/2025	mg/L	347.0	320.0	DD=320 MK=347
+avg>max	TN0078191	001	G	00530	Solids, total suspended	04/30/2025	mg/L	89.5	24.0	MK=89.5 DD=24
+avg>max	TN0081906	001	1	00530	Solids, total suspended	07/31/2025	mg/L	701.0	15.0	WA=9 DD=15 MK=701
+avg>max	TN0021865	001	1	00600	Nitrogen, total [as N]	07/31/2025	mg/L	9.71	8.11	MK=9.71 WA=11.3 DD=8.11
+avg>max	TN0024198	001	1	00600	Nitrogen, total [as N]	05/31/2025	mg/L	5.59	0.32	MK=5.59 DD=0.32
+avg>max	TN0028827	001	1	00600	Nitrogen, total [as N]	01/31/2025	mg/L	517.0	5.44	MK=517 DD=5.44
+avg>max	TN0020079	002	1	00610	Nitrogen, ammonia total [as N]	04/30/2025	mg/L	0.43	0.28	WA=0.107 DD=0.28 MK=0.43
+avg>max	TN0020508	001	1	00610	Nitrogen, ammonia total [as N]	03/31/2025	mg/L	0.014	0.0018	DD=0.0018 WA=0.013 MK=0.014
+avg>max	TN0020630	001	1	00610	Nitrogen, ammonia total [as N]	04/30/2025	mg/L	1.2	0.26	MK=1.2 DD=0.26 WA=0.26
+avg>max	TN0021652	001	1	00610	Nitrogen, ammonia total [as N]	11/30/2024	mg/L	55.55	11.3	MK=55.55 DD=11.3
+avg>max	TN0021652	001	1	00610	Nitrogen, ammonia total [as N]	04/30/2025	mg/L	46.44	23.8	DD=23.8 MK=46.44
+avg>max	TN0023469	001	1	00610	Nitrogen, ammonia total [as N]	10/31/2024		1.3	0.16	WA=2 MK=0.1 DD=0.16 MK=1.3 WA=0.16
+avg>max	TN0023469	001	1	00610	Nitrogen, ammonia total [as N]	11/30/2024		5.0	0.55	MK=0.37 WA=0.55 DD=0.55 WA=8 MK=5
+avg>max	TN0023698	001	1	00610	Nitrogen, ammonia total [as N]	10/31/2024	mg/L	4.83	3.34	MK=4.83 DD=3.34
+avg>max	TN0023698	001	1	00610	Nitrogen, ammonia total [as N]	11/30/2024	mg/L	11.7	0.713	MK=11.7 DD=0.713
+avg>max	TN0023698	001	1	00610	Nitrogen, ammonia total [as N]	12/31/2024	mg/L	0.502	0.138	MK=0.502 DD=0.138
+avg>max	TN0023698	001	1	00610	Nitrogen, ammonia total [as N]	02/28/2025	mg/L	7.2	5.7	MK=7.2 DD=5.7
+avg>max	TN0023698	001	1	00610	Nitrogen, ammonia total [as N]	05/31/2025	mg/L	0.575	0.191	DD=0.191 MK=0.575
+avg>max	TN0023698	001	1	00610	Nitrogen, ammonia total [as N]	09/30/2025	mg/L	12.6	6.55	DD=6.55 MK=12.6
+avg>max	TN0026166	001	1	00610	Nitrogen, ammonia total [as N]	06/30/2025	mg/L	0.943	0.2	WA=0.2 DD=0.2 MK=0.943
+avg>max	TN0026247	001	1	00610	Nitrogen, ammonia total [as N]	08/31/2025	mg/L	7.098	1.97	DD=1.97 MK=7.098 WA=1.97
+avg>max	TN0056626	001	1	00610	Nitrogen, ammonia total [as N]	01/31/2025	lb/d	2.3	0.94	MK=2.3 DD=0.94
+avg>max	TN0058092	002	1	00610	Nitrogen, ammonia total [as N]	02/28/2025	mg/L	8.0	7.0	MK=8 DD=7
+avg>max	TN0060933	001	1	00610	Nitrogen, ammonia total [as N]	01/31/2025	mg/L	0.25	0.05	DD=0.05 MK=0.25
+avg>max	TN0067539	001	1	00610	Nitrogen, ammonia total [as N]	02/28/2025	mg/L	1.55	0.227	WA=0.227 DD=0.227 MK=1.55
+avg>max	TN0068802	001	1	00610	Nitrogen, ammonia total [as N]	06/30/2025	mg/L	0.7	0.11	MK=0.7 DD=0.11
+load x0.1	TN0057908	001	1	80082	BOD, carbonaceous [5 day, 20 C]	02/28/2023	MK	1.68	16.8885	conc=4.5 flow=0.45 ratio=0.09948
+load x10	TN0020711	001	1	00310	BOD, 5-day, 20 deg. C	07/31/2023	MK	243000.0	23664.333	conc=33.5 flow=84.7 ratio=10.26862
+load x3.785	TN0062138	001	1	00310	BOD, 5-day, 20 deg. C	06/30/2023	MK	19.0	5.0874	conc=10 flow=0.061 ratio=3.73472
+load x3.785	TN0062201	001	1	00310	BOD, 5-day, 20 deg. C	11/30/2022	MK	22.7	6.15492	conc=9 flow=0.082 ratio=3.68811
+load x8.34	TN0062227	001	1	00665	Phosphorus, total [as P]	09/30/2023	MK	4.25	0.52175	conc=1.84 flow=0.034 ratio=8.14566
+load x3.785	TN0028622	001	1	00530	Solids, total suspended	01/31/2023	MK	6.8	1.7514	conc=0.3 flow=0.7 ratio=3.88261
+load x0.1	TN0057908	001	1	00530	Solids, total suspended	02/28/2023	MK	1.21	12.0096	conc=3.2 flow=0.45 ratio=0.10075
+load x0.1	TN0057908	001	1	00530	Solids, total suspended	09/30/2023	MK	0.6	5.8797	conc=4.7 flow=0.15 ratio=0.10205
+load x0.001	TN0059897	001	1	00530	Solids, total suspended	10/31/2022	MK	9.89	9604.1772	conc=3.4 flow=338.7 ratio=0.00103
+load x3.785	TN0062138	001	1	00530	Solids, total suspended	08/31/2023	MK	68.0	17.56404	conc=27 flow=0.078 ratio=3.87155
+load x10	TN0062138	001	1	00530	Solids, total suspended	09/30/2023	MK	48.0	4.80384	conc=24 flow=0.024 ratio=9.99201
+load x3.785	TN0062201	001	1	00530	Solids, total suspended	11/30/2022	MK	43.0	11.62596	conc=17 flow=0.082 ratio=3.69862
+load x3.785	TN0020079	002	1	00610	Nitrogen, ammonia total [as N]	08/31/2023	MK	5.0	1.31355	conc=0.035 flow=4.5 ratio=3.80648
+load x0.1	TN0057908	001	1	00610	Nitrogen, ammonia total [as N]	02/28/2023	MK	1.53	15.7626	conc=4.2 flow=0.45 ratio=0.09707
+load x0.1199	TN0057908	001	1	00610	Nitrogen, ammonia total [as N]	09/30/2023	MK	0.64	5.30424	conc=4.24 flow=0.15 ratio=0.12066
+load x3.785	TN0062201	001	1	00610	Nitrogen, ammonia total [as N]	11/30/2022	MK	0.152	0.041033	conc=0.06 flow=0.082 ratio=3.70435
+load x0.1199	TN0064688	001	1	80082	BOD, carbonaceous [5 day, 20 C]	03/31/2024	MK	17.6	145.7832	conc=2 flow=8.74 ratio=0.12073
+load x0.1	TN0022560	001	1	00310	BOD, 5-day, 20 deg. C	09/30/2024	MK	0.55	5.639508	conc=23 flow=0.0294 ratio=0.09753
+load x0.2642	TN0064394	001	1	00310	BOD, 5-day, 20 deg. C	03/31/2024	MK	13.45	51.487407	conc=13.45 flow=0.459 ratio=0.26123
+load x0.1199	TN0056626	001	1	00665	Phosphorus, total [as P]	12/31/2023	MK	0.04	0.340272	conc=0.2 flow=0.204 ratio=0.11755
+load x3.785	TN0021164	001	1	00530	Solids, total suspended	04/30/2024	MK	10.4	2.792232	conc=5.4 flow=0.062 ratio=3.72462
+load x10	TN0021164	001	1	00530	Solids, total suspended	06/30/2024	MK	18.3	1.853982	conc=5.7 flow=0.039 ratio=9.87065
+load x0.1	TN0059846	001	1	00530	Solids, total suspended	04/30/2024	MK	0.031	0.303576	conc=4 flow=0.0091 ratio=0.10212
+load x0.1	TN0064394	001	1	00530	Solids, total suspended	01/31/2024	MK	19.2	197.785602	conc=49.1 flow=0.483 ratio=0.09707
+load x0.1199	TN0064688	001	1	00530	Solids, total suspended	03/31/2024	MK	79.2	656.0244	conc=9 flow=8.74 ratio=0.12073
+load x0.1199	TN0020591	001	1	00610	Nitrogen, ammonia total [as N]	05/31/2024	MK	0.042	0.34194	conc=1 flow=0.041 ratio=0.12283
+load x0.1199	TN0064688	001	1	00610	Nitrogen, ammonia total [as N]	03/31/2024	MK	0.09	0.728916	conc=0.01 flow=8.74 ratio=0.12347
+load x3.785	TN0021865	001	1	80082	BOD, carbonaceous [5 day, 20 C]	08/31/2025	MK	12.62	3.335166	conc=0.43 flow=0.93 ratio=3.78392
+load x10	TN0024988	001	1	80082	BOD, carbonaceous [5 day, 20 C]	08/31/2025	MK	468.8	45.66567	conc=23.5 flow=0.233 ratio=10.26592
+load x0.001	TN0026247	001	1	00665	Phosphorus, total [as P]	04/30/2025	MK	41.153	41926.848	conc=3.2 flow=1571 ratio=0.00098
+load x0.001	TN0026247	001	1	00665	Phosphorus, total [as P]	06/30/2025	MK	60.31	60870.1572	conc=3.09 flow=2362 ratio=0.00099
+load x0.001	TN0026247	001	1	00665	Phosphorus, total [as P]	09/30/2025	MK	25.62	25167.618	conc=2.1 flow=1437 ratio=0.00102
+load x3.785	TN0020508	001	1	00530	Solids, total suspended	08/31/2025	MK	26.9	6.900516	conc=1.4 flow=0.591 ratio=3.89826
+load x3.785	TN0062642	001	1	00530	Solids, total suspended	10/31/2024	MK	15.6	4.04073	conc=9.5 flow=0.051 ratio=3.86069
+load x3.785	TN0064092	001	1	00530	Solids, total suspended	08/31/2025	MK	78.8	21.015132	conc=8.6 flow=0.293 ratio=3.74968
+load x3.785	TN0074870	001	1	00530	Solids, total suspended	12/31/2024	MK	1.5	0.405491	conc=2.6 flow=0.0187 ratio=3.69922
+load x0.001	TN0026247	001	1	00600	Nitrogen, total [as N]	04/30/2025	MK	180.53	184740.174	conc=14.1 flow=1571 ratio=0.00098
+load x0.001	TN0026247	001	1	00600	Nitrogen, total [as N]	09/30/2025	MK	81.63	81495.144	conc=6.8 flow=1437 ratio=0.00100
+load x0.1	TN0024180	001	1	00610	Nitrogen, ammonia total [as N]	08/31/2025	MK	0.367	3.752166	conc=0.22 flow=2.045 ratio=0.09781
+load x0.001	TN0026247	001	1	00610	Nitrogen, ammonia total [as N]	05/31/2025	MK	80.57	80120.712	conc=5.84 flow=1645 ratio=0.00101
+load x0.001	TN0026247	001	1	00610	Nitrogen, ammonia total [as N]	09/30/2025	MK	44.13	44402.8689	conc=3.705 flow=1437 ratio=0.00099
+load x10	TN0028622	001	1	00610	Nitrogen, ammonia total [as N]	04/30/2025	MK	0.74	0.075994	conc=0.017 flow=0.536 ratio=9.73760
+load x0.2642	TN0059366	001	1	00610	Nitrogen, ammonia total [as N]	07/31/2025	MK	1.0	3.8364	conc=1 flow=0.46 ratio=0.26066
+load x3.785	TN0062642	001	1	00610	Nitrogen, ammonia total [as N]	10/31/2024	MK	0.81	0.21267	conc=0.5 flow=0.051 ratio=3.80872
+load x0.1	TN0064688	001	1	00610	Nitrogen, ammonia total [as N]	08/31/2025	MK	0.104	1.041249	conc=0.55 flow=0.227 ratio=0.09988
+outlier	TN0020079	001	1	51040	E. coli	02/28/2023	DD #/100mL	2419.6	20.1	E90
+outlier	TN0020079	002	1	51040	E. coli	02/28/2023	MK #/100mL	2419.6	1.5	E90
+outlier	TN0020079	002	1	51040	E. coli	03/31/2023	MK #/100mL	2419.6	1.5	E90
+outlier	TN0020079	002	1	51040	E. coli	02/28/2023	DD #/100mL	2419.6	7.3	E90
+outlier	TN0020079	002	1	51040	E. coli	03/31/2023	DD #/100mL	2419.6	7.3	E90
+outlier	TN0020079	002	1	51040	E. coli	08/31/2025	DD #/100mL	1119.9	7.3	E90
+outlier	TN0020541	001	1	51040	E. coli	01/31/2024	DD #/100mL	1986.3	12.0	E90
+outlier	TN0020575	01A	1	51040	E. coli	08/31/2025	MM MPN/100mL	205.0	2.0	E90
+outlier	TN0020729	001	1	51040	E. coli	10/31/2022	MK CFU/100mL	38985549.0	2322.0	
+outlier	TN0020729	001	1	51040	E. coli	11/30/2022	MK CFU/100mL	279751.0	2322.0	
+outlier	TN0020729	001	1	51040	E. coli	07/31/2023	MK CFU/100mL	808950.0	2322.0	
+outlier	TN0020729	001	1	51040	E. coli	08/31/2023	MK CFU/100mL	234846.0	2322.0	
+outlier	TN0020729	001	1	51040	E. coli	02/29/2024	MK CFU/100mL	1690464.0	2322.0	
+outlier	TN0020729	001	1	51040	E. coli	03/31/2024	MK CFU/100mL	24528791.0	2322.0	
+outlier	TN0021164	001	1	51040	E. coli	08/31/2023	DD #/100mL	411.0	1.0	
+outlier	TN0021164	001	1	51040	E. coli	09/30/2023	DD #/100mL	2420.0	1.0	E90
+outlier	TN0021164	001	1	51040	E. coli	01/31/2024	DD #/100mL	420.0	1.0	
+outlier	TN0021164	001	1	51040	E. coli	04/30/2024	DD #/100mL	1300.0	1.0	E90
+outlier	TN0021211	001	1	51040	E. coli	01/31/2024	DD MPN/100mL	1732.9	8.5	E90
+outlier	TN0021652	001	1	51040	E. coli	09/30/2023	DD #/100mL	2420.0	2.0	E90
+outlier	TN0021652	001	1	51040	E. coli	09/30/2025	DD #/100mL	249.0	2.0	
+outlier	TN0022586	001	1	51040	E. coli	10/31/2022	DD #/100mL	2419.6	16.5	E90
+outlier	TN0024180	001	1	51040	E. coli	04/30/2025	DD #/100mL	1553.0	12.5	E90
+outlier	TN0024180	001	1	51040	E. coli	05/31/2025	DD #/100mL	2419.0	12.5	E90
+outlier	TN0025038	001	1	51040	E. coli	12/31/2024	DD #/100mL	2419.6	14.4	E90
+outlier	TN0025151	001	1	51040	E. coli	01/31/2025	MK #/100mL	2047.0	7.68	E90
+outlier	TN0025151	001	1	51040	E. coli	01/31/2025	DD #/100mL	2420.0	17.0	E90
+outlier	TN0028550	001	1	51040	E. coli	12/31/2024	MK #/100mL	1210.3	2.0	E90
+outlier	TN0054810	001	1	51040	E. coli	08/31/2023	DD #/100mL	2420.0	11.5	E90
+outlier	TN0054810	001	1	51040	E. coli	02/28/2025	DD #/100mL	2420.0	11.5	E90
+outlier	TN0054810	001	1	51040	E. coli	08/31/2023	GA #/100mL	2420.0	4.5	E90
+outlier	TN0056626	001	1	51040	E. coli	02/28/2023	DD MPN/100mL	816.0	5.0	E90
+outlier	TN0059323	001	1	51040	E. coli	05/31/2024	DD #/100mL	866.4	1.6	
+outlier	TN0059323	001	1	51040	E. coli	06/30/2024	DD #/100mL	613.1	1.6	
+outlier	TN0059323	001	1	51040	E. coli	02/28/2025	DD #/100mL	222.4	1.6	
+outlier	TN0059323	001	1	51040	E. coli	07/31/2025	DD #/100mL	2419.6	1.6	E90
+outlier	TN0059480	001	1	51040	E. coli	01/31/2025	DD #/100mL	1733.0	5.0	E90
+outlier	TN0059790	001	1	51040	E. coli	02/29/2024	DD #/100mL	9678.4	58.900000000000006	E90
+outlier	TN0059790	001	1	51040	E. coli	11/30/2023	MM #/100mL	2779.4	6.949999999999999	E90
+outlier	TN0059790	001	1	51040	E. coli	12/31/2023	MM #/100mL	2842.9	6.949999999999999	E90
+outlier	TN0059790	001	1	51040	E. coli	01/31/2024	MM #/100mL	1268.6	6.949999999999999	E90
+outlier	TN0059790	001	1	51040	E. coli	02/29/2024	MM #/100mL	852.4	6.949999999999999	E90
+outlier	TN0059790	001	1	51040	E. coli	04/30/2024	MM #/100mL	2650.0	6.949999999999999	E90
+outlier	TN0061841	001	1	51040	E. coli	01/31/2024	DD #/100mL	579.0	4.1	
+outlier	TN0061841	001	1	51040	E. coli	08/31/2024	DD #/100mL	517.3	4.1	
+outlier	TN0062006	001	1	51040	E. coli	07/31/2023	DD #/100mL	1203.0	1.0	E90
+outlier	TN0062006	001	1	51040	E. coli	08/31/2023	DD #/100mL	313.0	1.0	
+outlier	TN0062006	001	1	51040	E. coli	02/29/2024	DD #/100mL	2420.0	1.0	E90
+outlier	TN0062006	001	1	51040	E. coli	01/31/2025	DD #/100mL	517.0	1.0	E90
+outlier	TN0062120	001	1	51040	E. coli	03/31/2023	DD MPN/100mL	1414.0	4.0	E90
+outlier	TN0062120	001	1	51040	E. coli	06/30/2025	DD MPN/100mL	866.0	4.0	
+outlier	TN0062201	001	1	51040	E. coli	01/31/2023	DD MPN/100mL	489.9	2.3	
+outlier	TN0062227	001	1	51040	E. coli	02/28/2025	GA MPN/100mL	5464.0	4.3	E90
+outlier	TN0064297	001	1	51040	E. coli	05/31/2025	DD #/100mL	1120.0	3.0	E90
+outlier	TN0064670	001	1	51040	E. coli	03/31/2023	DD #/100mL	2419.6	4.65	E90
+outlier	TN0064670	001	1	51040	E. coli	01/31/2024	DD #/100mL	1119.9	4.65	E90
+outlier	TN0064670	001	1	51040	E. coli	04/30/2025	DD #/100mL	920.8	4.65	E90
+outlier	TN0065218	001	1	51040	E. coli	12/31/2024	MM MPN/100mL	112.0	1.0	
+outlier	TN0065218	001	1	51040	E. coli	04/30/2023	DD MPN/100mL	261.0	2.0	
+outlier	TN0065218	001	1	51040	E. coli	05/31/2024	DD MPN/100mL	260.0	2.0	
+outlier	TN0065498	001	1	51040	E. coli	01/31/2023	DD #/100mL	2420.0	6.15	E90
+outlier	TN0065498	001	1	51040	E. coli	11/30/2023	DD #/100mL	1553.0	6.15	E90
+outlier	TN0065498	001	1	51040	E. coli	01/31/2024	DD #/100mL	1986.0	6.15	E90
+outlier	TN0065498	001	1	51040	E. coli	01/31/2023	MK #/100mL	2420.0	6.15	E90
+outlier	TN0065498	001	1	51040	E. coli	11/30/2023	MK #/100mL	1553.0	6.15	E90
+outlier	TN0065498	001	1	51040	E. coli	01/31/2024	MK #/100mL	1986.0	6.15	E90
+outlier	TN0067083	001	1	51040	E. coli	10/31/2022	DD MPN/100mL	2419.6	14.2	E90
+outlier	TN0074331	001	1	51040	E. coli	01/31/2023	DD #/100mL	141.0	1.0	
+outlier	TN0074331	001	1	51040	E. coli	08/31/2024	DD #/100mL	2420.0	1.0	E90
+outlier	TN0074331	001	1	51040	E. coli	08/31/2024	MM #/100mL	419.0	1.0	E90
+outlier	TN0075868	001	1	51040	E. coli	10/31/2022	DD #/100mL	437.4	4.1	
+outlier	TN0076007	001	1	51040	E. coli	11/30/2022	MM #/100mL	100.0	1.0	
+outlier	TN0076007	001	1	51040	E. coli	05/31/2023	MM #/100mL	1210.0	1.0	E90
+outlier	TN0076007	001	1	51040	E. coli	11/30/2022	DD #/100mL	200.0	1.0	
+outlier	TN0076007	001	1	51040	E. coli	04/30/2023	DD #/100mL	127.0	1.0	
+outlier	TN0076007	001	1	51040	E. coli	05/31/2023	DD #/100mL	2420.0	1.0	E90
+outlier	TN0076007	001	1	51040	E. coli	02/29/2024	DD #/100mL	141.0	1.0	
+outlier	TN0076007	001	1	51040	E. coli	12/31/2024	DD #/100mL	231.0	1.0	
+outlier	TN0076007	001	1	51040	E. coli	06/30/2025	DD #/100mL	157.0	1.0	
+outlier	TN0078042	001	1	51040	E. coli	02/28/2025	MM #/100mL	2671.2	18.5	E90
+outlier	TN0078042	001	1	51040	E. coli	04/30/2025	MM #/100mL	2579.9	18.5	E90
+outlier	TN0078042	001	1	51040	E. coli	04/30/2025	DD #/100mL	17330.0	67.0	E90
+outlier	TN0078051	001	1	51040	E. coli	01/31/2024	DD #/100mL	816.0	7.0	
+outlier	TN0078051	001	1	51040	E. coli	09/30/2024	DD #/100mL	1203.0	7.0	E90
+outlier	TN0078051	001	1	51040	E. coli	11/30/2024	DD #/100mL	1414.0	7.0	E90
+outlier	TN0078603	001	1	51040	E. coli	05/31/2024	MM #/100mL	857.5	1.9	E90
+outlier	TN0020478	INF1	G	50050	Flow, in conduit or thru treatment plant	08/31/2023	MK MGD	1895.0	1.823	
+outlier	TN0020478	INF1	G	50050	Flow, in conduit or thru treatment plant	08/31/2023	DD MGD	3180.0	3.29	
+outlier	TN0020478	001	1	50050	Flow, in conduit or thru treatment plant	01/31/2025	DD MGD	2612.0	2.9965	
+outlier	TN0020494	001	1	50050	Flow, in conduit or thru treatment plant	04/30/2024	DD MGD	2104.0	2.9985	
+outlier	TN0020656	004	1	50050	Flow, in conduit or thru treatment plant	04/30/2025	DD MGD	7.017	0.0067	
+outlier	TN0020656	004	1	50050	Flow, in conduit or thru treatment plant	04/30/2025	MK MGD	3.545	0.0047	
+outlier	TN0021067	INF1	G	50050	Flow, in conduit or thru treatment plant	07/31/2024	DD MGD	3513.0	4.8294999999999995	
+outlier	TN0021067	INF1	G	50050	Flow, in conduit or thru treatment plant	07/31/2024	MK MGD	2309.0	2.4305	
+outlier	TN0021105	001	1	50050	Flow, in conduit or thru treatment plant	02/28/2023	MK MGD	1744.0	0.1396	
+outlier	TN0021539	001	1	50050	Flow, in conduit or thru treatment plant	11/30/2024	DD MGD	348.0	0.598	
+outlier	TN0021652	INF1	G	50050	Flow, in conduit or thru treatment plant	04/30/2024	MK MGD	375.0	0.4	
+outlier	TN0023001	001	1	50050	Flow, in conduit or thru treatment plant	12/31/2022	MK MGD	872.0	1.124	
+outlier	TN0023001	001	1	50050	Flow, in conduit or thru treatment plant	12/31/2022	DD MGD	1336.0	2.0789999999999997	
+outlier	TN0023001	001	G	50050	Flow, in conduit or thru treatment plant	12/31/2022	MK MGD	866.0	1.101	
+outlier	TN0023001	001	G	50050	Flow, in conduit or thru treatment plant	12/31/2022	DD MGD	1353.0	2.0015	
+outlier	TN0024121	001	1	50050	Flow, in conduit or thru treatment plant	11/30/2024	DD MGD	9820.0	16.740000000000002	
+outlier	TN0024473	INF1	G	50050	Flow, in conduit or thru treatment plant	05/31/2023	DD MGD	4453.0	0.8427	
+outlier	TN0024473	INF1	G	50050	Flow, in conduit or thru treatment plant	06/30/2023	DD MGD	8738.0	0.8427	
+outlier	TN0024473	INF1	G	50050	Flow, in conduit or thru treatment plant	05/31/2023	MK MGD	3004.0	0.34075	
+outlier	TN0024473	001	1	50050	Flow, in conduit or thru treatment plant	09/30/2024	MK MGD	2724.0	0.34245000000000003	
+outlier	TN0025372	INF1	G	50050	Flow, in conduit or thru treatment plant	09/30/2023	MK MGD	207.0	0.28400000000000003	
+outlier	TN0026247	001	1	50050	Flow, in conduit or thru treatment plant	04/30/2025	DD MGD	2021.0	2.169	
+outlier	TN0026247	001	1	50050	Flow, in conduit or thru treatment plant	05/31/2025	DD MGD	1950.0	2.169	
+outlier	TN0026247	001	1	50050	Flow, in conduit or thru treatment plant	06/30/2025	DD MGD	2630.0	2.169	
+outlier	TN0026247	001	1	50050	Flow, in conduit or thru treatment plant	07/31/2025	DD MGD	2802.0	2.169	
+outlier	TN0026247	001	1	50050	Flow, in conduit or thru treatment plant	09/30/2025	DD MGD	2148.0	2.169	
+outlier	TN0026247	001	1	50050	Flow, in conduit or thru treatment plant	04/30/2025	MK MGD	1571.0	1.698	
+outlier	TN0026247	001	1	50050	Flow, in conduit or thru treatment plant	05/31/2025	MK MGD	1645.0	1.698	
+outlier	TN0026247	001	1	50050	Flow, in conduit or thru treatment plant	06/30/2025	MK MGD	2362.0	1.698	
+outlier	TN0026247	001	1	50050	Flow, in conduit or thru treatment plant	07/31/2025	MK MGD	2194.0	1.698	
+outlier	TN0026247	001	1	50050	Flow, in conduit or thru treatment plant	09/30/2025	MK MGD	1437.0	1.698	
+outlier	TN0026247	INF1	G	50050	Flow, in conduit or thru treatment plant	04/30/2025	DD MGD	9694.0	3.434	
+outlier	TN0026247	INF1	G	50050	Flow, in conduit or thru treatment plant	05/31/2025	DD MGD	4505.0	3.434	
+outlier	TN0026247	INF1	G	50050	Flow, in conduit or thru treatment plant	06/30/2025	DD MGD	4987.0	3.434	
+outlier	TN0026247	INF1	G	50050	Flow, in conduit or thru treatment plant	07/31/2025	DD MGD	7348.0	3.434	
+outlier	TN0026247	INF1	G	50050	Flow, in conduit or thru treatment plant	08/31/2025	DD MGD	3872.0	3.434	
+outlier	TN0026247	INF1	G	50050	Flow, in conduit or thru treatment plant	09/30/2025	DD MGD	3148.0	3.434	
+outlier	TN0026247	INF1	G	50050	Flow, in conduit or thru treatment plant	04/30/2025	MK MGD	2832.0	2.1335	
+outlier	TN0026247	INF1	G	50050	Flow, in conduit or thru treatment plant	05/31/2025	MK MGD	3150.0	2.1335	
+outlier	TN0026247	INF1	G	50050	Flow, in conduit or thru treatment plant	06/30/2025	MK MGD	3251.0	2.1335	
+outlier	TN0026247	INF1	G	50050	Flow, in conduit or thru treatment plant	07/31/2025	MK MGD	2829.0	2.1335	
+outlier	TN0026247	INF1	G	50050	Flow, in conduit or thru treatment plant	08/31/2025	MK MGD	2764.0	2.1335	
+outlier	TN0026247	INF1	G	50050	Flow, in conduit or thru treatment plant	09/30/2025	MK MGD	2239.0	2.1335	
+outlier	TN0026409	001	1	50050	Flow, in conduit or thru treatment plant	02/29/2024	DD MGD	1050.0	1.1875	
+outlier	TN0026620	001	Z	50050	Flow, in conduit or thru treatment plant	12/31/2024	MK MGD	60.27	0.2195	
+outlier	TN0026620	001	Z	50050	Flow, in conduit or thru treatment plant	02/28/2025	MK MGD	60.27	0.2195	
+outlier	TN0026620	001	Z	50050	Flow, in conduit or thru treatment plant	03/31/2025	MK MGD	92.6	0.2195	
+outlier	TN0026620	001	Z	50050	Flow, in conduit or thru treatment plant	05/31/2025	MK MGD	37.84	0.2195	
+outlier	TN0026620	001	Z	50050	Flow, in conduit or thru treatment plant	06/30/2025	MK MGD	171.978	0.2195	
+outlier	TN0026620	001	Z	50050	Flow, in conduit or thru treatment plant	07/31/2025	MK MGD	231.0	0.2195	
+outlier	TN0026620	001	Z	50050	Flow, in conduit or thru treatment plant	12/31/2024	DD MGD	258.11	1.49	
+outlier	TN0026620	001	Z	50050	Flow, in conduit or thru treatment plant	03/31/2025	DD MGD	249.18	1.49	
+outlier	TN0026620	001	Z	50050	Flow, in conduit or thru treatment plant	06/30/2025	DD MGD	174.67	1.49	
+outlier	TN0026620	001	Z	50050	Flow, in conduit or thru treatment plant	07/31/2025	DD MGD	258.0	1.49	
+outlier	TN0026620	001	1	50050	Flow, in conduit or thru treatment plant	05/31/2024	DD MGD	130.22	0.107	
+outlier	TN0055026	001	1	50050	Flow, in conduit or thru treatment plant	12/31/2024	DD MGD	363.0	0.2455	
+outlier	TN0057291	INF1	G	50050	Flow, in conduit or thru treatment plant	02/29/2024	DD MGD	1469.0	1.276	
+outlier	TN0059897	001	1	50050	Flow, in conduit or thru treatment plant	10/31/2022	DD MGD	414.0	0.4	
+outlier	TN0059897	001	1	50050	Flow, in conduit or thru treatment plant	10/31/2022	MK MGD	338.7	0.2685	
+outlier	TN0060569	001	1	50050	Flow, in conduit or thru treatment plant	07/31/2024	DD MGD	93.22	0.076	
+outlier	TN0060569	001	1	50050	Flow, in conduit or thru treatment plant	08/31/2024	DD MGD	58.93	0.076	
+outlier	TN0060569	001	G	50050	Flow, in conduit or thru treatment plant	07/31/2024	DD MGD	88.18	0.077	
+outlier	TN0060569	001	G	50050	Flow, in conduit or thru treatment plant	08/31/2024	DD MGD	96.42	0.077	
+outlier	TN0060569	001	G	50050	Flow, in conduit or thru treatment plant	07/31/2024	MK MGD	22.63	0.04	
+outlier	TN0060569	001	G	50050	Flow, in conduit or thru treatment plant	08/31/2024	MK MGD	21.62	0.04	
+outlier	TN0060569	001	1	50050	Flow, in conduit or thru treatment plant	07/31/2024	MK MGD	27.27	0.043	
+outlier	TN0060569	001	1	50050	Flow, in conduit or thru treatment plant	08/31/2024	MK MGD	17.9	0.043	
+outlier	TN0061701	001	G	50050	Flow, in conduit or thru treatment plant	10/31/2022	MK MGD	2777.0	0.584	
+outlier	TN0062138	INF1	G	50050	Flow, in conduit or thru treatment plant	10/31/2023	MK MGD	35891.61	0.091	
+outlier	TN0062138	INF1	G	50050	Flow, in conduit or thru treatment plant	10/31/2023	DD MGD	52500.0	0.328	
+outlier	TN0062294	001	G	50050	Flow, in conduit or thru treatment plant	12/31/2023	MK MGD	158.0	0.241	
+outlier	TN0063886	001	G	50050	Flow, in conduit or thru treatment plant	01/31/2024	DD MGD	1246.0	0.85	
+outlier	TN0064238	001	1	50050	Flow, in conduit or thru treatment plant	12/31/2023	MK MGD	285.0	0.42200000000000004	
+outlier	TN0064785	001	1	50050	Flow, in conduit or thru treatment plant	06/30/2024	DD MGD	20155.0	2.482	
+outlier	TN0065358	INF1	G	50050	Flow, in conduit or thru treatment plant	12/31/2024	DD MGD	5300.0	4.8	
+outlier	TN0065358	INF1	G	50050	Flow, in conduit or thru treatment plant	12/31/2024	MK MGD	2342.0	2.0615	
+outlier	TN0067202	001	V	50050	Flow, in conduit or thru treatment plant	07/31/2025	MK MGD	0.6556	0.0057185	
+outlier	TN0074071	001	1	50050	Flow, in conduit or thru treatment plant	06/30/2024	DD MGD	10.0	0.035	
+outlier	TN0074071	001	1	50050	Flow, in conduit or thru treatment plant	08/31/2025	DD MGD	8.405	0.035	
+outlier	TN0074071	001	1	50050	Flow, in conduit or thru treatment plant	09/30/2025	DD MGD	8.691	0.035	
+outlier	TN0074071	001	1	50050	Flow, in conduit or thru treatment plant	08/31/2025	MK MGD	3.793	0.005968	
+outlier	TN0074071	001	1	50050	Flow, in conduit or thru treatment plant	09/30/2025	MK MGD	3.155	0.005968	
+outlier	TN0074357	001	1	50050	Flow, in conduit or thru treatment plant	05/31/2025	MK MGD	5871.0	0.0052	
+outlier	TN0074870	001	1	50050	Flow, in conduit or thru treatment plant	06/30/2025	MK MGD	175.0	0.017	
+outlier	TN0060054	IMP2	1	50060	Chlorine, total residual	05/31/2025	DD mg/L	8.8	0.04	
+outlier	TN0021253	001	G	80082	BOD, carbonaceous [5 day, 20 C]	10/31/2023	MK mg/L	29193.0	239.32	
+outlier	TN0020443	001	1	00300	Oxygen, dissolved [DO]	06/30/2025	IB mg/L	6076.0	6.3	
+outlier	TN0021245	001	1	00310	BOD, 5-day, 20 deg. C	02/28/2023	DD mg/L	1032.4	6.8	E90
+outlier	TN0021245	001	1	00310	BOD, 5-day, 20 deg. C	01/31/2025	DD mg/L	709.0	6.8	E90
+outlier	TN0021245	001	1	00310	BOD, 5-day, 20 deg. C	02/28/2023	WA lb/d	2116.6	15.55	E90
+outlier	TN0020117	001	1	00665	Phosphorus, total [as P]	04/30/2024	MK lb/d	4897.0	12.0	
+outlier	TN0062634	001	1	00665	Phosphorus, total [as P]	02/28/2025	RA lb/d	261.0	1.75	
+outlier	TN0062634	001	1	00665	Phosphorus, total [as P]	06/30/2025	RA lb/d	343.47	1.75	
+outlier	TN0062634	001	1	00665	Phosphorus, total [as P]	07/31/2025	RA lb/d	549.76	1.75	
+outlier	TN0020443	001	1	00061	Stream flow, instantaneous	01/31/2023	DD MGD	927.0	3.12	
+outlier	TN0020443	001	1	00061	Stream flow, instantaneous	07/31/2023	DD MGD	1770.0	3.12	
+outlier	TN0020443	001	1	00061	Stream flow, instantaneous	08/31/2023	DD MGD	1580.0	3.12	
+outlier	TN0021245	001	1	00530	Solids, total suspended	02/28/2023	DD mg/L	1594.2	7.699999999999999	E90
+outlier	TN0021245	001	1	00530	Solids, total suspended	01/31/2025	DD mg/L	1091.7	7.699999999999999	E90
+outlier	TN0021245	001	1	00530	Solids, total suspended	02/28/2023	WA lb/d	3268.1	15.75	E90
+outlier	TN0021245	001	1	00530	Solids, total suspended	02/28/2023	WA mg/L	801.3	5.65	E90
+outlier	TN0020711	001	1	00545	Solids, settleable	09/30/2025	DD mL/L	50.0	0.5	E90
+outlier	TN0056103	001	1	00545	Solids, settleable	03/31/2025	DD mL/L	11.0	0.1	E90
+outlier	TN0058238	001	1	00545	Solids, settleable	01/31/2024	DD mL/L	8.0	0.01	E90
+outlier	TN0062120	001	1	00545	Solids, settleable	11/30/2024	DD mL/L	1.0	0.01	
+outlier	TN0063959	001	1	00545	Solids, settleable	03/31/2023	DD mL/L	60.0	0.1	E90
+outlier	TN0063959	001	1	00545	Solids, settleable	04/30/2023	DD mL/L	45.0	0.1	E90
+outlier	TN0063959	001	1	00545	Solids, settleable	03/31/2024	DD mL/L	37.0	0.1	E90
+outlier	TN0063959	001	1	00545	Solids, settleable	04/30/2024	DD mL/L	90.0	0.1	E90
+outlier	TN0063959	001	1	00545	Solids, settleable	11/30/2024	DD mL/L	290.0	0.1	E90
+outlier	TN0063959	001	1	00545	Solids, settleable	12/31/2024	DD mL/L	160.0	0.1	E90
+outlier	TN0063959	001	1	00545	Solids, settleable	02/28/2025	DD mL/L	20.0	0.1	E90
+outlier	TN0063959	001	1	00545	Solids, settleable	06/30/2025	DD mL/L	20.0	0.1	E90
+outlier	TN0076007	001	1	00545	Solids, settleable	05/31/2023	DD mL/L	13.4	0.1	E90
+outlier	TN0078603	001	1	00545	Solids, settleable	08/31/2023	DD mL/L	70.0	0.5	E90
+outlier	TN0078603	001	1	00545	Solids, settleable	07/31/2024	DD mL/L	100.0	0.5	E90
+outlier	TN0078603	001	1	00545	Solids, settleable	08/31/2024	DD mL/L	217.0	0.5	E90
+outlier	TN0078603	001	1	00545	Solids, settleable	10/31/2024	DD mL/L	70.0	0.5	E90
+outlier	TN0081175	001	1	00545	Solids, settleable	01/31/2024	DD mL/L	34.0	0.1	E90
+outlier	TN0022560	001	1	00600	Nitrogen, total [as N]	05/31/2024	MB mg/L	4035.0	5.99	
+outlier	TN0026620	001	EG	00600	Nitrogen, total [as N]	12/31/2022	RA lb/yr	579.9	0.8	
+outlier	TN0028827	001	1	00600	Nitrogen, total [as N]	01/31/2025	MK mg/L	517.0	3.535	
+outlier	TN0062634	001	1	00600	Nitrogen, total [as N]	02/28/2025	RA lb/d	2222.0	6.95	
+outlier	TN0062634	001	1	00600	Nitrogen, total [as N]	06/30/2025	RA lb/d	2377.7	6.95	
+outlier	TN0062634	001	1	00600	Nitrogen, total [as N]	07/31/2025	RA lb/d	2268.84	6.95	
+outlier	TN0020079	002	1	00610	Nitrogen, ammonia total [as N]	02/28/2023	MK lb/d	1494.8	4.5	E90
+outlier	TN0020079	002	1	00610	Nitrogen, ammonia total [as N]	03/31/2023	MK lb/d	585.5	4.5	E90
+outlier	TN0020079	002	1	00610	Nitrogen, ammonia total [as N]	02/28/2023	WA mg/L	11.3	0.1015	E90
+outlier	TN0020079	002	1	00610	Nitrogen, ammonia total [as N]	03/31/2023	WA mg/L	11.125	0.1015	E90
+outlier	TN0020079	002	1	00610	Nitrogen, ammonia total [as N]	02/28/2023	MK mg/L	8.39	0.0455	E90
+outlier	TN0020079	002	1	00610	Nitrogen, ammonia total [as N]	03/31/2023	MK mg/L	11.125	0.0455	E90
+outlier	TN0020079	002	EG	00610	Nitrogen, ammonia total [as N]	02/28/2023	WA lb/d	1494.8	14.6	E90
+outlier	TN0020591	001	1	00610	Nitrogen, ammonia total [as N]	03/31/2023	DD mg/L	12.35	0.11	E90
+outlier	TN0023515	001	1	00610	Nitrogen, ammonia total [as N]	02/28/2025	DD mg/L	11.9	0.1	
+outlier	TN0059404	001	1	00610	Nitrogen, ammonia total [as N]	03/31/2024	MK lb/d	157.012	1.239	E90
+outlier	TN0059790	001	1	00610	Nitrogen, ammonia total [as N]	12/31/2022	MK mg/L	0.772	0.001	
+outlier	TN0059790	001	1	00610	Nitrogen, ammonia total [as N]	02/28/2023	MK mg/L	0.541	0.001	
+outlier	TN0059790	001	1	00610	Nitrogen, ammonia total [as N]	05/31/2023	MK mg/L	0.185	0.001	
+outlier	TN0059790	001	1	00610	Nitrogen, ammonia total [as N]	06/30/2023	MK mg/L	0.235	0.001	
+outlier	TN0059790	001	1	00610	Nitrogen, ammonia total [as N]	12/31/2022	DD mg/L	1.61	0.001	
+outlier	TN0059790	001	1	00610	Nitrogen, ammonia total [as N]	02/28/2023	DD mg/L	1.07	0.001	
+outlier	TN0059790	001	1	00610	Nitrogen, ammonia total [as N]	05/31/2023	DD mg/L	0.404	0.001	
+outlier	TN0059790	001	1	00610	Nitrogen, ammonia total [as N]	06/30/2023	DD mg/L	0.393	0.001	
+outlier	TN0064297	001	1	00610	Nitrogen, ammonia total [as N]	05/31/2025	DD mg/L	46.8	0.324	E90
+outlier	TN0064297	001	1	00610	Nitrogen, ammonia total [as N]	05/31/2025	MK mg/L	23.45	0.212	E90
+outlier	TN0075868	001	1	00610	Nitrogen, ammonia total [as N]	10/31/2022	WA lb/d	236.36	1.2295	E90
+outlier	TN0075868	001	1	00610	Nitrogen, ammonia total [as N]	11/30/2022	WA lb/d	275.863	1.2295	E90
+outlier	TN0075868	001	1	00610	Nitrogen, ammonia total [as N]	12/31/2022	WA lb/d	257.002	1.2295	E90
+outlier	TN0075868	001	1	00610	Nitrogen, ammonia total [as N]	01/31/2023	WA lb/d	276.954	1.2295	E90
+outlier	TN0075868	001	1	00610	Nitrogen, ammonia total [as N]	12/31/2023	WA lb/d	137.631	1.2295	E90
+outlier	TN0075868	001	1	00610	Nitrogen, ammonia total [as N]	10/31/2022	DD mg/L	9.81	0.054000000000000006	E90
+outlier	TN0075868	001	1	00610	Nitrogen, ammonia total [as N]	11/30/2022	DD mg/L	9.32	0.054000000000000006	E90
+outlier	TN0075868	001	1	00610	Nitrogen, ammonia total [as N]	01/31/2023	DD mg/L	6.1	0.054000000000000006	E90
+outlier	TN0075868	001	1	00610	Nitrogen, ammonia total [as N]	12/31/2023	DD mg/L	7.61	0.054000000000000006	E90
+outlier	TN0075868	001	1	00610	Nitrogen, ammonia total [as N]	10/31/2022	WA mg/L	9.59	0.0335	E90
+outlier	TN0075868	001	1	00610	Nitrogen, ammonia total [as N]	11/30/2022	WA mg/L	9.23	0.0335	E90
+outlier	TN0075868	001	1	00610	Nitrogen, ammonia total [as N]	12/31/2022	WA mg/L	8.68	0.0335	E90
+outlier	TN0075868	001	1	00610	Nitrogen, ammonia total [as N]	01/31/2023	WA mg/L	5.95	0.0335	E90
+outlier	TN0075868	001	1	00610	Nitrogen, ammonia total [as N]	12/31/2023	WA mg/L	4.17	0.0335	E90
+outlier	TN0075868	001	1	00610	Nitrogen, ammonia total [as N]	10/31/2022	MK lb/d	132.285	0.6895	E90
+outlier	TN0075868	001	1	00610	Nitrogen, ammonia total [as N]	11/30/2022	MK lb/d	199.754	0.6895	E90
+outlier	TN0075868	001	1	00610	Nitrogen, ammonia total [as N]	12/31/2022	MK lb/d	191.423	0.6895	E90
+outlier	TN0075868	001	1	00610	Nitrogen, ammonia total [as N]	01/31/2023	MK lb/d	147.066	0.6895	E90
+outlier	TN0075868	001	1	00610	Nitrogen, ammonia total [as N]	10/31/2022	MK mg/L	4.942	0.018	E90
+outlier	TN0075868	001	1	00610	Nitrogen, ammonia total [as N]	11/30/2022	MK mg/L	6.912	0.018	E90
+outlier	TN0075868	001	1	00610	Nitrogen, ammonia total [as N]	12/31/2022	MK mg/L	4.853	0.018	E90
+outlier	TN0075868	001	1	00610	Nitrogen, ammonia total [as N]	01/31/2023	MK mg/L	3.7	0.018	E90
+outlier	TN0021211	001	1	51040	E. coli	01/31/2025	DD #/100mL	686.7	6.8	E90
+outlier	TN0058092	002	1	51040	E. coli	09/30/2024	MM #/100mL	2384.0	10.0	E90
+outlier	TN0058092	002	1	51040	E. coli	09/30/2024	DD #/100mL	2420.0	10.0	E90
+outlier	TN0058092	002	1	51040	E. coli	10/31/2024	DD #/100mL	9800.0	10.0	E90
+outlier	TN0059641	001	1	51040	E. coli	11/30/2024	DD #/100mL	488.0	1.0	
+outlier	TN0059641	001	1	51040	E. coli	09/30/2025	DD #/100mL	687.0	1.0	
+outlier	TN0060232	001	1	51040	E. coli	01/31/2025	DD #/100mL	2419.6	19.9	E90
+outlier	TN0060232	001	1	51040	E. coli	02/28/2025	DD #/100mL	2419.6	19.9	E90
+outlier	TN0067130	001	1	51040	E. coli	11/30/2023	DD #/100mL	2420.0	3.0	E90
+outlier	TN0067130	001	1	51040	E. coli	12/31/2023	DD #/100mL	326.0	3.0	
+outlier	TN0067130	001	1	51040	E. coli	05/31/2024	DD #/100mL	2420.0	3.0	E90
+outlier	TN0067130	001	1	51040	E. coli	09/30/2024	DD #/100mL	2419.0	3.0	E90
+outlier	TN0067130	001	1	51040	E. coli	11/30/2023	MK #/100mL	1271.0	1.75	E90
+outlier	TN0067130	001	1	51040	E. coli	05/31/2024	MK #/100mL	1215.0	1.75	E90
+outlier	TN0067130	001	1	51040	E. coli	09/30/2024	MK #/100mL	1210.0	1.75	E90
+outlier	TN0067130	001	1	51040	E. coli	05/31/2025	MK #/100mL	378.0	1.75	E90
+outlier	TN0022560	INF1	G	50050	Flow, in conduit or thru treatment plant	01/31/2024	DD MGD	118.0	0.1789	
+outlier	TN0022560	INF1	G	50050	Flow, in conduit or thru treatment plant	02/29/2024	DD MGD	44.79	0.1789	
+outlier	TN0022560	INF1	G	50050	Flow, in conduit or thru treatment plant	04/30/2025	DD MGD	51.0	0.1789	
+outlier	TN0022560	INF1	G	50050	Flow, in conduit or thru treatment plant	01/31/2024	MK MGD	30.0	0.088	
+outlier	TN0022560	INF1	G	50050	Flow, in conduit or thru treatment plant	02/29/2024	MK MGD	12.14	0.088	
+outlier	TN0022560	INF1	G	50050	Flow, in conduit or thru treatment plant	03/31/2025	MK MGD	17.89	0.088	
+outlier	TN0025020	INF1	G	50050	Flow, in conduit or thru treatment plant	04/30/2024	MK MGD	657.0	0.6435	
+outlier	TN0027626	001	1	50050	Flow, in conduit or thru treatment plant	09/30/2024	DD MGD	5738.0	0.010156	
+outlier	TN0027626	001	1	50050	Flow, in conduit or thru treatment plant	10/31/2024	DD MGD	6815.0	0.010156	
+outlier	TN0027626	001	1	50050	Flow, in conduit or thru treatment plant	11/30/2024	DD MGD	5564.0	0.010156	
+outlier	TN0027626	001	1	50050	Flow, in conduit or thru treatment plant	12/31/2024	DD MGD	8538.0	0.010156	
+outlier	TN0027626	001	1	50050	Flow, in conduit or thru treatment plant	09/30/2024	MK MGD	2665.4	0.004867	
+outlier	TN0027626	001	1	50050	Flow, in conduit or thru treatment plant	10/31/2024	MK MGD	3270.9	0.004867	
+outlier	TN0027626	001	1	50050	Flow, in conduit or thru treatment plant	11/30/2024	MK MGD	3116.8	0.004867	
+outlier	TN0027626	001	1	50050	Flow, in conduit or thru treatment plant	12/31/2024	MK MGD	3622.0	0.004867	
+outlier	TN0029106	001	1	50050	Flow, in conduit or thru treatment plant	03/31/2025	DD MGD	8928.0	0.000864	
+outlier	TN0029106	001	1	50050	Flow, in conduit or thru treatment plant	03/31/2025	MK MGD	1858.0	9.5065e-05	
+outlier	TN0055239	001	1	50050	Flow, in conduit or thru treatment plant	12/31/2024	DD MGD	1650.0	0.0009170000000000001	
+outlier	TN0055239	001	1	50050	Flow, in conduit or thru treatment plant	12/31/2024	MK MGD	940.769	0.00043088	
+outlier	TN0056545	001	1	50050	Flow, in conduit or thru treatment plant	11/30/2023	MK MGD	4434.0	8.27	
+outlier	TN0056545	001	1	50050	Flow, in conduit or thru treatment plant	12/31/2023	MK MGD	3882.0	8.27	
+outlier	TN0056545	001	1	50050	Flow, in conduit or thru treatment plant	01/31/2024	MK MGD	5586.0	8.27	
+outlier	TN0056545	001	1	50050	Flow, in conduit or thru treatment plant	02/29/2024	MK MGD	7030.0	8.27	
+outlier	TN0056545	001	1	50050	Flow, in conduit or thru treatment plant	03/31/2024	MK MGD	5926.0	8.27	
+outlier	TN0056545	001	1	50050	Flow, in conduit or thru treatment plant	04/30/2024	MK MGD	6731.0	8.27	
+outlier	TN0056545	001	1	50050	Flow, in conduit or thru treatment plant	05/31/2024	MK MGD	3763.0	8.27	
+outlier	TN0056545	001	1	50050	Flow, in conduit or thru treatment plant	07/31/2024	MK MGD	939.0	8.27	
+outlier	TN0056545	001	1	50050	Flow, in conduit or thru treatment plant	08/31/2024	MK MGD	7979.0	8.27	
+outlier	TN0056545	001	1	50050	Flow, in conduit or thru treatment plant	11/30/2023	DD MGD	10337.0	20.1	
+outlier	TN0056545	001	1	50050	Flow, in conduit or thru treatment plant	12/31/2023	DD MGD	8859.0	20.1	
+outlier	TN0056545	001	1	50050	Flow, in conduit or thru treatment plant	01/31/2024	DD MGD	18269.0	20.1	
+outlier	TN0056545	001	1	50050	Flow, in conduit or thru treatment plant	02/29/2024	DD MGD	16888.0	20.1	
+outlier	TN0056545	001	1	50050	Flow, in conduit or thru treatment plant	03/31/2024	DD MGD	15833.0	20.1	
+outlier	TN0056545	001	1	50050	Flow, in conduit or thru treatment plant	04/30/2024	DD MGD	11826.0	20.1	
+outlier	TN0056545	001	1	50050	Flow, in conduit or thru treatment plant	05/31/2024	DD MGD	8506.0	20.1	
+outlier	TN0056545	001	1	50050	Flow, in conduit or thru treatment plant	07/31/2024	DD MGD	3542.0	20.1	
+outlier	TN0056545	001	1	50050	Flow, in conduit or thru treatment plant	08/31/2024	DD MGD	9061.0	20.1	
+outlier	TN0059765	001	1	50050	Flow, in conduit or thru treatment plant	06/30/2024	MK MGD	82760.0	0.002576	
+outlier	TN0059765	001	1	50050	Flow, in conduit or thru treatment plant	06/30/2024	DD MGD	3678.0	0.004	
+outlier	TN0064394	INF1	G	50050	Flow, in conduit or thru treatment plant	12/31/2023	MK MGD	155.0	0.331	
+outlier	TN0067130	001	1	50050	Flow, in conduit or thru treatment plant	05/31/2024	MK MGD	9432.0	0.006363	
+outlier	TN0059404	01A	1	00665	Phosphorus, total [as P]	05/31/2025	MK lb/d	1680.22	11.3	
+outlier	TN0059404	01A	1	00600	Nitrogen, total [as N]	05/31/2025	MK lb/d	4982.86	20.5	
+outlier	TN0059765	001	1	00610	Nitrogen, ammonia total [as N]	06/30/2024	MK lb/d	0.104	0.0005	
+outlier	TN0061743	001	1	51040	E. coli	09/30/2025	DD #/100mL	2400.0	4.0	E90
