@@ -94,8 +94,8 @@ goes out until the maintainer has read it.
   - SWMM's build flag and `gage.c` fix (tested 2026-10-27);
   - WaterTAP's reactor-5 oxygen (#1892), and its METAB tests under pandas 3.1 (open as
     #1893 since 2026-10-31);
-  - ECHO_modules' README licence paragraph, which its maintainer invited (open as #141
-    since 2026-10-31).
+  - ECHO_modules' README licence paragraph, which its maintainer invited (opened as
+    #141 on 2026-10-31, merged 2026-11-02).
 - **Methods carried across projects:**
   - crnumerics' `repro-scan` and `repro-diff` on each project's own build, as a CI
     step a project could keep. SWMM and WNTR come first, since both showed the effects.
