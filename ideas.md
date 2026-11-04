@@ -48,7 +48,8 @@ pilot.
      Our review there is posted (2026-10-29).
    - **Posted 2026-10-29:** WaterTAP's reactor-5 oxygen
      (watertap-org/watertap#1892; a one-line fix is tested and ready if they want it)
-     and EXPOsan's constants and atomic weights (QSD-Group/EXPOsan#80).
+     and EXPOsan's constants and atomic weights (QSD-Group/EXPOsan#80; its maintainer
+     took it on 2026-11-03).
    - **Posted 2026-10-31:** bsm2-python's rain file, which doesn't load (fau-evt/bsm2-python#9,
      [upstream/bsm2-python/](upstream/bsm2-python/README.md)). A note to the BSM authors about
      the reference's two faults went by email (reported 2026-11-01; [upstream/bsm/](upstream/bsm/README.md)).
